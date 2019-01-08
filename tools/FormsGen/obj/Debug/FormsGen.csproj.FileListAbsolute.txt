@@ -1,0 +1,11 @@
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/bin/Debug/FormsGen.dll
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/bin/Debug/FormsGen.pdb
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/bin/Debug/Microsoft.Build.Framework.dll
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/bin/Debug/Microsoft.Build.Utilities.Core.dll
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/bin/Debug/System.Threading.Thread.dll
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/bin/Debug/Microsoft.Build.Framework.xml
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/bin/Debug/Microsoft.Build.Utilities.Core.xml
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/obj/Debug/FormsGen.csproj.CoreCompileInputs.cache
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/obj/Debug/FormsGen.dll
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/obj/Debug/FormsGen.pdb
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGen/obj/Debug/FormsGen.csprojResolveAssemblyReference.cache

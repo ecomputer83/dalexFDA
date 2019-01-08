@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.DashboardPage"
+             xmlns:local="clr-namespace:Zenith"
+             xmlns:effects="clr-namespace:Zenith"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <chart:ChartColorCollection x:Key="Colors">
+                <Color>#46A173</Color>
+            </chart:ChartColorCollection>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+  <ContentPage.Content>
+        <RelativeLayout Padding="0" BackgroundColor="{StaticResource PalmLeaf}">
+
+            
+            <Grid   RowSpacing="0"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".10*" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height=".3*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                
+                <StackLayout Grid.Row="0" Grid.RowSpan="2" Spacing="10" Padding="16,10,16,10" VerticalOptions="StartAndExpand">
+                    <Label Text="Client ID: DLX1234567890 " TextColor="#FFF" FontSize="20" HorizontalOptions="Start"  Margin="0,10,0,10" />
+                    <Label Text="No of Active Investments: 4" TextColor="#FFF" FontSize="20" HorizontalOptions="Center"  Margin="0,0,0,0" />
+                    <Label Text="Investments near maturity in 14 days: 1" TextColor="#FFF" FontSize="20" HorizontalOptions="Center"  Margin="0,0,0,0" />
+                    <Label Text="Total Investment Balance " TextColor="#FFF" FontSize="24" HorizontalOptions="Center"  Margin="0,10,0,0" />
+                </StackLayout>
+                
+                <ContentView Grid.Row="2" BackgroundColor="#FFF">
+                </ContentView>
+                
+                <Frame Grid.Row="1" Grid.RowSpan="2" BackgroundColor="#FFF" OutlineColor="#EBEBEB" Padding="16,8" Margin="0,2" HorizontalOptions="Center" 
+                       HeightRequest="60">
+                    <Label Text="{Binding TotalAmount}" TextColor="#46A173" FontSize="30" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                </Frame>
+                
+                <StackLayout Grid.Row="3" BackgroundColor="#FFF" Padding="0,10,0,0">
+                    <local:CustomEntry Text="{Binding AccountNumber}" FontSize="16" HeightRequest="42" Margin="0,0,0,6" />
+                    <ListView x:Name="list" Grid.Row="2" ItemsSource="{Binding Investments}" CachingStrategy="RecycleElement" 
+                    SeparatorVisibility="None" HasUnevenRows="true" ItemTapped="Handle_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <local:OrderItemView Margin="8,4" Product="{Binding Order.Product}" Terminal="{Binding Order.Terminal}" 
+                                    TerminalDetail="{Binding Order.TerminalDetail}" Destination="{Binding Order.Destination}" 
+                                    DestinationDetail="{Binding Order.DestinationDetail}" OrderNumber="{Binding Order.OrderNumber}" 
+                                    Status="{Binding Order.Status}" StatusColor="{Binding Order.OrderType, Converter={StaticResource OrderTypeColor}}"
+                                />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+                </StackLayout>
+               
+                <StackLayout Grid.Row="4" Orientation="Horizontal" HeightRequest="50" BackgroundColor="#FFF" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
+                        Padding="16,8">
+                    <Button Text="OVERVIEW" Style="{Binding OverviewTabStyle}" Command="{Binding Overview}" />
+                    <Button Text="HISTORY" Style="{Binding HistoryTabStyle}" Command="{Binding History}" />
+                </StackLayout>
+            </Grid>
+        </RelativeLayout>
+  </ContentPage.Content>
+</ContentPage>

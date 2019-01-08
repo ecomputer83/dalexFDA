@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2DFA8749-AFF5-4C02-8F63-3F96989E3542}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FormsGen</RootNamespace>
+    <AssemblyName>FormsGen</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Mock-Employer-iOS|AnyCPU'">
+    <OutputPath>bin\Mock-Employer-iOS\</OutputPath>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Threading.Thread">
+      <HintPath>..\..\packages\System.Threading.Thread.4.0.0\lib\net46\System.Threading.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="Microsoft.Build.Framework">
+      <HintPath>..\..\packages\Microsoft.Build.Framework.15.1.1012\lib\net46\Microsoft.Build.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Utilities.Core">
+      <HintPath>..\..\packages\Microsoft.Build.Utilities.Core.15.1.1012\lib\net46\Microsoft.Build.Utilities.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\Command.cs" />
+    <Compile Include="Model\Page.cs" />
+    <Compile Include="Model\PageService.cs" />
+    <Compile Include="Model\PageType.cs" />
+    <Compile Include="Model\Property.cs" />
+    <Compile Include="Model\Service.cs" />
+    <Compile Include="Tasks\ProjectBuilderTask.cs" />
+    <Compile Include="Model\Project.cs" />
+    <Compile Include="Service\ProjectBuilder.cs" />
+    <Compile Include="Templates\vm.cs">
+      <DependentUpon>vm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\vm.code.cs" />
+    <Compile Include="Templates\vmgen.cs">
+      <DependentUpon>vmgen.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\vmgen.code.cs" />
+    <Compile Include="Templates\vmgenitem.cs">
+      <DependentUpon>vmgenitem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\vmgenitem.code.cs" />
+    <Compile Include="Templates\vmitem.cs">
+      <DependentUpon>vmitem.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\vmitem.code.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Templates\vm.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>vm.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\vmgen.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>vmgen.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\vmgenitem.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>vmgenitem.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\vmitem.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>vmitem.cs</LastGenOutput>
+    </None>
+    <None Include="Tasks\FormsGen.targets" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

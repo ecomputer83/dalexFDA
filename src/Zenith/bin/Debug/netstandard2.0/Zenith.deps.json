@@ -1,0 +1,298 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": "42486db05de43450b96aa985f7c2e945d8284631"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "Zenith/1.0.0": {
+        "dependencies": {
+          "Acr.UserDialogs": "7.0.1",
+          "Effects": "1.0.0",
+          "FreshMvvm": "2.2.4",
+          "Microsoft.AppCenter.Analytics": "1.9.0",
+          "Microsoft.AppCenter.Crashes": "1.9.0",
+          "NETStandard.Library": "2.0.3",
+          "PropertyChanged.Fody": "2.5.13",
+          "Rg.Plugins.Popup": "1.1.4.168",
+          "Syncfusion.Xamarin.SfChart": "15.2.0.46",
+          "Xamarin.Forms": "3.0.0.482510",
+          "Xamarin.Forms.CarouselView": "2.3.0-pre2",
+          "Zenith.Abstractions": "1.0.0",
+          "XamSvg.Shared": "1.0.1.0",
+          "XamSvg.XamForms": "1.0.1.0"
+        },
+        "runtime": {
+          "Zenith.dll": {}
+        }
+      },
+      "Acr.UserDialogs/7.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Acr.UserDialogs.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Fody/3.2.9": {},
+      "FreshMvvm/2.2.4": {
+        "runtime": {
+          "lib/netstandard1.0/FreshIOC.dll": {
+            "assemblyVersion": "1.0.6606.27413",
+            "fileVersion": "1.0.6606.27413"
+          },
+          "lib/netstandard1.0/FreshMvvm.dll": {
+            "assemblyVersion": "1.0.6606.27413",
+            "fileVersion": "1.0.6606.27413"
+          }
+        }
+      },
+      "Microsoft.AppCenter/1.9.0": {
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "1.9.0.0"
+          }
+        }
+      },
+      "Microsoft.AppCenter.Analytics/1.9.0": {
+        "dependencies": {
+          "Microsoft.AppCenter": "1.9.0"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.Analytics.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "1.9.0.0"
+          }
+        }
+      },
+      "Microsoft.AppCenter.Crashes/1.9.0": {
+        "dependencies": {
+          "Microsoft.AppCenter": "1.9.0"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.Crashes.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "1.9.0.0"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "PropertyChanged.Fody/2.5.13": {
+        "dependencies": {
+          "Fody": "3.2.9",
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.0/PropertyChanged.dll": {
+            "assemblyVersion": "2.5.13.0",
+            "fileVersion": "2.5.13.0"
+          }
+        }
+      },
+      "Rg.Plugins.Popup/1.1.4.168": {
+        "dependencies": {
+          "Xamarin.Forms": "3.0.0.482510"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Rg.Plugins.Popup.dll": {
+            "assemblyVersion": "1.1.4.168",
+            "fileVersion": "1.1.4.168"
+          }
+        }
+      },
+      "Syncfusion.Xamarin.SfChart/15.2.0.46": {
+        "dependencies": {
+          "Xamarin.Forms": "3.0.0.482510"
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.SfChart.XForms.dll": {
+            "assemblyVersion": "15.2451.0.46",
+            "fileVersion": "15.2451.0.46"
+          }
+        }
+      },
+      "Xamarin.Forms/3.0.0.482510": {
+        "runtime": {
+          "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          },
+          "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
+      "Xamarin.Forms.CarouselView/2.3.0-pre2": {
+        "dependencies": {
+          "Xamarin.Forms": "3.0.0.482510"
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.CarouselView.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Effects/1.0.0": {
+        "dependencies": {
+          "Xamarin.Forms": "3.0.0.482510"
+        },
+        "runtime": {
+          "Effects.dll": {}
+        }
+      },
+      "Zenith.Abstractions/1.0.0": {
+        "runtime": {
+          "Zenith.Abstractions.dll": {}
+        }
+      },
+      "XamSvg.Shared/1.0.1.0": {
+        "runtime": {
+          "XamSvg.Shared.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        }
+      },
+      "XamSvg.XamForms/1.0.1.0": {
+        "runtime": {
+          "XamSvg.XamForms.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Zenith/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Acr.UserDialogs/7.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+eGbTgwaFPzcaRnMdnAK5pHA0eoeoxkhy80FNwGeewqvA+DM6fUPM9yMbrN2hw3rcuBaXd2ghy2Xq5XU7m8qkw==",
+      "path": "acr.userdialogs/7.0.1",
+      "hashPath": "acr.userdialogs.7.0.1.nupkg.sha512"
+    },
+    "Fody/3.2.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XlyrpJccSXIeBhXNMnpqt8iK8X4bw+zWJ/5UGE7Iv9qcSsxGd1hD2Lbh+m4cVsPfDCE49vxyD951B2Z8jldCEg==",
+      "path": "fody/3.2.9",
+      "hashPath": "fody.3.2.9.nupkg.sha512"
+    },
+    "FreshMvvm/2.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CgrGEFdU17EsQzXiUgOOUjtLaTTCWMu9U1BsplGhVx7pPlcpMiVAo8kesnBdDR0D9jhZ96znwJxWIrmOdZJZWA==",
+      "path": "freshmvvm/2.2.4",
+      "hashPath": "freshmvvm.2.2.4.nupkg.sha512"
+    },
+    "Microsoft.AppCenter/1.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jUCmustijWMUCKlY2kzMUuPqcoVxCSJBR2FpjUQsR7kUTdrPvoKgfPeSr/b6eF5g3nLRbl6GRW7StnnY7yMh+Q==",
+      "path": "microsoft.appcenter/1.9.0",
+      "hashPath": "microsoft.appcenter.1.9.0.nupkg.sha512"
+    },
+    "Microsoft.AppCenter.Analytics/1.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bHXciKGX6WOZlxomjB/gfC+M191TFMN07mjzEUjBj1agNJ3wG8d8fOC7WZKBRbWN8APZ7OyNfZaKCPFGzyPcJw==",
+      "path": "microsoft.appcenter.analytics/1.9.0",
+      "hashPath": "microsoft.appcenter.analytics.1.9.0.nupkg.sha512"
+    },
+    "Microsoft.AppCenter.Crashes/1.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TE1huyfrNaMOXjr+zAtX5hZ5TQVsWlCKyjIeNkLXT5TBRW54TpmEXEAOw6oOvqP61qDDT5RKUNeptSAd7qSQxQ==",
+      "path": "microsoft.appcenter.crashes/1.9.0",
+      "hashPath": "microsoft.appcenter.crashes.1.9.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "PropertyChanged.Fody/2.5.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RJ3oo1IIpLfhaU1yx9j6yRrkWHvES8JUBZ1hvBUb82rDYNbew39fsAMAJEiUVIzE3pofuZba3vx7A7SUsf8wQg==",
+      "path": "propertychanged.fody/2.5.13",
+      "hashPath": "propertychanged.fody.2.5.13.nupkg.sha512"
+    },
+    "Rg.Plugins.Popup/1.1.4.168": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pARxyFFrnOoCZfRbAiE8v3+8py/sH5SX8NJAjfaydJJO3cm13yNaNw8EelEONJVQY2T0zFhCfZSc4CDjjaSylQ==",
+      "path": "rg.plugins.popup/1.1.4.168",
+      "hashPath": "rg.plugins.popup.1.1.4.168.nupkg.sha512"
+    },
+    "Syncfusion.Xamarin.SfChart/15.2.0.46": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CSDZpqmrvj40Gvz1X3erTnzc3b7Wav9Wj6DVZBz1rXDJkvG2qZ+7+F5dARiEdJUsJkxG8SnknWv5hdYVuI0dVw==",
+      "path": "syncfusion.xamarin.sfchart/15.2.0.46",
+      "hashPath": "syncfusion.xamarin.sfchart.15.2.0.46.nupkg.sha512"
+    },
+    "Xamarin.Forms/3.0.0.482510": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kq209d8qVvulrY3o+nGirENZ3kaZpEN7VWRErWcW1M+ahtDgm4BUXQJ5s9hnp1SAGxQMTMhDAVI3uk5g9NV7hA==",
+      "path": "xamarin.forms/3.0.0.482510",
+      "hashPath": "xamarin.forms.3.0.0.482510.nupkg.sha512"
+    },
+    "Xamarin.Forms.CarouselView/2.3.0-pre2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+xxUr80PHBiYkrBQQ4oXYm9Xi9lUSwhVzIeoGuSOc37LkoC83grG3irOpw0tevtfMIzS109QAJ7pNULq6evjgQ==",
+      "path": "xamarin.forms.carouselview/2.3.0-pre2",
+      "hashPath": "xamarin.forms.carouselview.2.3.0-pre2.nupkg.sha512"
+    },
+    "Effects/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Zenith.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "XamSvg.Shared/1.0.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "XamSvg.XamForms/1.0.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

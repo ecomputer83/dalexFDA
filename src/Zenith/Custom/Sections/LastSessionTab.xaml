@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.LastSessionTab">
+    <ContentView.Content>
+        <StackLayout Spacing="6">
+            <Label Text="YOUR LAST SESSION WAS ON" TextColor="{StaticResource Liver}" FontSize="16" Margin="16,0" />
+            <Label x:Name="data" TextColor="{StaticResource Liver}" FontSize="17" Margin="16,0" />
+            <BoxView HeightRequest="1.2" BackgroundColor="{StaticResource PastelGray}" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

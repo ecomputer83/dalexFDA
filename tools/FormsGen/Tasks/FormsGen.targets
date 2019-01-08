@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Project DefaultTargets="FormsGen" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+   <UsingTask TaskName="FormsGen.ProjectBuilderTask"  AssemblyFile="$(MSBuildThisFileDirectory)FormsGen.dll"/>
+
+	<Target Name="FormsGen" AfterTargets="BeforeBuild">
+		<Message Text="Project File Name = $(MSBuildThisFileDirectory)FormsGen.dll" />
+        <FormsGen.ProjectBuilderTask ProjectFile="$(ProjectDir)FormsGen.xml"></FormsGen.ProjectBuilderTask>
+    </Target>
+</Project>

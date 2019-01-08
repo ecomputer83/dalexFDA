@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType></DebugType>
+    <OutputPath>..\..\..\zenith\src\Zenith.Abstractions\bin\Release\netstandard2.0</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug-Mock|AnyCPU' ">
+    <IntermediateOutputPath>obj\Debug-Mock</IntermediateOutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\zenith\src\Zenith.Abstractions\bin\Debug-Mock\netstandard2.0</OutputPath>
+    <DefineConstants>ENV_LOCAL_MOCK;DEBUG;NETSTANDARD;NETSTANDARD2_0;</DefineConstants>
+    <NoWarn>1701;1702</NoWarn>
+    <NoStdLib>true</NoStdLib>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\..\..\zenith\src\Zenith.Abstractions\bin\Debug\netstandard2.0</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+    <Folder Include="DataObjects\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Configuration\config.dev.xml" />
+    <None Remove="Configuration\config.localdev.xml" />
+    <None Remove="Configuration\config.localmock.xml" />
+    <None Remove="Configuration\config.localtest.xml" />
+    <None Remove="Configuration\config.localunit.xml" />
+    <None Remove="Configuration\config.localunit %28copy%29.xml" />
+    <None Remove="Configuration\config.localunit %28another copy%29.xml" />
+    <None Remove="Configuration\config.localunit %283rd copy%29.xml" />
+    <None Remove="Configuration\config.localunit %284th copy%29.xml" />
+    <None Remove="Configuration\config.localunit %285th copy%29.xml" />
+    <None Remove="Configuration\config.localunit %286th copy%29.xml" />
+    <None Remove="Configuration\config.prod %28copy%29.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configuration\config.dev.xml" />
+    <EmbeddedResource Include="Configuration\config.localdev.xml" />
+    <EmbeddedResource Include="Configuration\config.localmock.xml" />
+    <EmbeddedResource Include="Configuration\config.localtest.xml" />
+    <EmbeddedResource Include="Configuration\config.localunit.xml" />
+    <EmbeddedResource Include="Configuration\config.prod.xml" />
+    <EmbeddedResource Include="Configuration\config.unit.xml" />
+    <EmbeddedResource Include="Configuration\config.localstaging.xml" />
+    <EmbeddedResource Include="Configuration\config.mock.xml" />
+    <EmbeddedResource Include="Configuration\config.test.xml" />
+    <EmbeddedResource Include="Configuration\config.store.xml" />
+    <EmbeddedResource Include="Configuration\config.uitests.xml" />
+    <EmbeddedResource Include="Configuration\config.staging.xml" />
+  </ItemGroup>
+</Project>

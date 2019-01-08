@@ -1,0 +1,127 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
+    <PackageReference Include="FreshMvvm" Version="2.2.4" />
+    <PackageReference Include="PropertyChanged.Fody" Version="2.5.13" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="16.3.0.21" />
+    <PackageReference Include="Xamarin.Forms.CarouselView" Version="2.3.0-pre2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Custom\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Images\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Scenarios\" />
+    <Folder Include="Services\" />
+    <Folder Include="Helpers\PageTestRunner\" />
+    <Folder Include="Helpers\PageTestRunner\UnitTests\" />
+    <Folder Include="Helpers\PageTestRunner\UnitTestScenarios\" />
+    <Folder Include="Pages\Security\" />
+    <Folder Include="Pages\Account\" />
+    <Folder Include="Pages\Account\ActivateAccount\" />
+    <Folder Include="Custom\Entries\" />
+    <Folder Include="Custom\Navigation\" />
+    <Folder Include="Custom\Effects\" />
+    <Folder Include="Custom\Menu\" />
+    <Folder Include="Custom\Label\" />
+    <Folder Include="Pages\Signup\" />
+    <Folder Include="Pages\Signup\AuthenticationWelcome\" />
+    <Folder Include="Pages\Security\Login\" />
+    <Folder Include="Pages\Account\Activate\" />
+    <Folder Include="Pages\General\" />
+    <Folder Include="Pages\General\Dashboard\" />
+    <Folder Include="Custom\Sections\" />
+<<<<<<< Updated upstream
+    <Folder Include="Pages\General\LeftNav\" />
+=======
+    <Folder Include="Pages\Transfer\" />
+    <Folder Include="Pages\Transfer\Transfer\" />
+>>>>>>> Stashed changes
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="XamSvg.Shared">
+      <HintPath>..\..\lib\XamSvgForms-2.1.0\lib\mobile\XamSvg.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="XamSvg.XamForms">
+      <HintPath>..\..\lib\XamSvgForms-2.1.0\lib\mobile\XamSvg.XamForms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Effects\Effects.csproj" />
+    <ProjectReference Include="..\Zenith.Abstractions\Zenith.Abstractions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Images\icon-down-arrow.svg" />
+    <None Remove="Images\icon-add.svg" />
+    <None Remove="Images\icon-up-arrow.svg" />
+    <None Remove="Images\icon-question.svg" />
+    <None Remove="Images\icon-phone.svg" />
+    <None Remove="Images\icon-location.svg" />
+    <None Remove="Images\icon-fingerprint.svg" />
+    <None Remove="Images\icon-left-arrow.svg" />
+    <None Remove="Images\z-icon-backward.svg" />
+    <None Remove="Images\icon-right-arrow.svg" />
+    <None Remove="Images\icon-right-arrow.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\icon-down-arrow.svg" />
+    <EmbeddedResource Include="Images\icon-add.svg" />
+    <EmbeddedResource Include="Images\icon-up-arrow.svg" />
+    <EmbeddedResource Include="Images\icon-question.svg" />
+    <EmbeddedResource Include="Images\icon-phone.svg" />
+    <EmbeddedResource Include="Images\icon-location.svg" />
+    <EmbeddedResource Include="Images\icon-fingerprint.svg" />
+    <EmbeddedResource Include="Images\icon-left-arrow.svg" />
+    <EmbeddedResource Include="Images\icon-right-arrow.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Transfwer\Account\Activate\ActivatePage.xaml.cs">
+      <DependentUpon>ActivatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Transfwer\Account\ActivateAccount\ActivateAccountPage.xaml.cs">
+      <DependentUpon>ActivateAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Transfwer\General\Dashboard\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Transfwer\Security\Login\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Transfwer\Signup\AuthenticationWelcome\AuthenticationWelcomePage.xaml.cs">
+      <DependentUpon>AuthenticationWelcomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Account\Activate\ActivatePage.xaml.cs">
+      <DependentUpon>ActivatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Account\ActivateAccount\ActivateAccountPage.xaml.cs">
+      <DependentUpon>ActivateAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\General\Dashboard\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Security\Login\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Signup\AuthenticationWelcome\AuthenticationWelcomePage.xaml.cs">
+      <DependentUpon>AuthenticationWelcomePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy inheritsSet="null" scope="application/xaml+xml" />
+          <XmlFormattingPolicy inheritsSet="null" scope="application/xaml+xml" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <Import Project="..\..\lib\FormsGen\FormsGen.targets" />
+</Project>

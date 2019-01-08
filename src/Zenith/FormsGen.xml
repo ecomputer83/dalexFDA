@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Project SchemaVersion="1" Namespace="Zenith">
+  <Pages>
+
+    <Page Name="Activate" Folder="Account">
+      <Commands>
+        <Command Name="Back" />
+        <Command Name="DebitCard" />
+        <Command Name="HardwareToken" />
+        <Command Name="OpenAccount" />
+        <Command Name="QuickAccess" />
+        <Command Name="RegisterNewDevice" />
+        <Command Name="TermsAndConditions" />
+      </Commands>
+      <Properties>
+        <Property Name="AccountNumber" TypeName="string" />
+      </Properties>
+    </Page>
+
+    <Page Name="ActivateAccount" Folder="Account">
+      <Commands>
+        <Command Name="Activate" />
+        <Command Name="Back" />
+        <Command Name="Swipe" />
+      </Commands>
+      <Properties>
+        <Property Name="AccountNumber" TypeName="string" />
+        <Property Name="BVN" TypeName="string" />
+      </Properties>
+    </Page>
+
+    <Page Name="AuthenticationWelcome" Folder="Signup">
+      <Commands>
+        <Command Name="Login" />
+        <Command Name="Activate" />
+        <Command Name="OpenAccount" />
+        <Command Name="RegisterNewDevice" />
+      </Commands>
+    </Page>
+
+    <Page Name="ComingSoon" Folder="General">
+      
+    </Page>
+
+    <Page Name="Dashboard" Folder="General">
+      <Commands>
+        <Command Name="Overview" />
+        <Command Name="History" />
+      </Commands>
+      <Properties>
+        <Property Name="Items" TypeName="string" ForListItem="true" />
+        <Property Name="IsOverviewTab" TypeName="bool" />
+        <Property Name="LastSession" TypeName="string" />
+        <Property Name="TotalAmount" TypeName="string" />
+      </Properties>
+      <Services>
+        <Service Name="IUserDialogs" />
+      </Services>
+    </Page>
+
+    <Page Name="LeftNav" Folder="General">
+      <Commands>
+        <Command Name="Overview" />
+        <Command Name="Transfer" />
+        <Command Name="AirtimeRecharge" />
+        <Command Name="BillsPaymentAndCollections" />
+        <Command Name="RecurringPayment" />
+        <Command Name="CardsAndCheques" />
+        <Command Name="TravelAndLeisure" />
+        <Command Name="Messages" />
+        <Command Name="Settings" />
+        <Command Name="ZenithNearMe" />
+        <Command Name="Logout" />
+      </Commands>
+      <Services>
+        <Service Name="IAppService" />
+        <Service Name="IUserDialogs" />
+      </Services>
+    </Page>
+    
+    <Page Name="Login" Folder="Security">
+      <Commands>
+        <Command Name="Login" />
+        <Command Name="Back" />
+      </Commands>
+      <Properties>
+        <Property Name="AccountNumber" TypeName="string" />
+        <Property Name="Password" TypeName="string" />
+      </Properties>
+      <Services>
+        <Service Name="IAppService" />
+      </Services>
+    </Page>
+
+    <Page Name="Transfer" Folder="Transfer">
+      <Commands>
+        <Command Name="Continue" />
+        <Command Name="OpenBeneficiary" />
+        <Command Name="OpenAccount" />
+        <Command Name="OpenBank" />
+        <Command Name="TextChanged" />
+        <Command Name="Done" />
+        <Command Name="Back" />
+      </Commands>
+      <Properties>
+        <Property Name="TransferType" TypeName="ObservableCollection&lt;Zenith.Abstractions.TransferType&gt;" />
+        <Property Name="FromBeneficiary" TypeName="List&lt;Zenith.Abstractions.Beneficiary&gt;" />
+        <Property Name="FromAccount" TypeName="ObservableCollection&lt;Zenith.Abstractions.DashboardAccountItem&gt;" />
+        <Property Name="Amount" TypeName="string" />
+        <Property Name="Description" TypeName="string" />
+        <Property Name="BankName" TypeName="string" />
+        <Property Name="BankAccount" TypeName="string" />
+        <Property Name="AccountName" TypeName="string" />
+        <Property Name="Pin" TypeName="string" />
+      </Properties>
+            <Services>
+        <Service Name="IAppService" />
+        <Service Name="IUserDialogs" />
+      </Services>
+    </Page>
+
+  </Pages>
+  
+  <Services>
+    <Service Name="IAppService" FullTypeName="Zenith.Abstractions.IAppService" DisplayName="AppService" IsDefault="false" />
+    <Service Name="IErrorManager" FullTypeName="Zenith.Abstractions.IErrorManager" DisplayName="ErrorManager" IsDefault="true" />
+    <Service Name="IUserDialogs" FullTypeName="Acr.UserDialogs.IUserDialogs" DisplayName="Dialog" IsDefault="false" />
+  </Services>
+</Project>

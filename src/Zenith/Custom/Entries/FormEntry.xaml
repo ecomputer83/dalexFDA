@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.FormEntry"
+             xmlns:local="clr-namespace:Zenith;assembly=Zenith"
+             xmlns:effects="clr-namespace:Effects;assembly=Effects">
+  <ContentView.Content>
+        <StackLayout Spacing="12">
+            <local:CustomEntry x:Name="data" Text="" TextColor="{StaticResource Liver}" PlaceholderColor="{StaticResource Manatee}" FontSize="16">
+                <local:CustomEntry.Effects>
+                    <effects:RemoveBorderEffect />
+                </local:CustomEntry.Effects>
+            </local:CustomEntry>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

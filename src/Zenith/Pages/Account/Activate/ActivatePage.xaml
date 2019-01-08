@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Zenith.ActivatePage"
+             NavigationPage.HasNavigationBar="false"
+             xmlns:local="clr-namespace:Zenith"
+             xmlns:effects="clr-namespace:Zenith"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+    <ContentPage.Content>
+        <RelativeLayout Padding="0">
+            <!-- Background -->
+            <Image  Aspect="AspectFill"
+                    Source="background.png"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                />
+            
+            <Grid   RowSpacing="0"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                
+                <StackLayout Grid.Row="0" Margin="0,0,0,0">
+                    
+                    <!-- BACK BUTTON -->
+                    <StackLayout Orientation="Horizontal" Spacing="8" Padding="16,42">
+                        <svg:SvgImage Svg="res:images.icon-left-arrow" ColorMapping="000000=FFFFFF" WidthRequest="20" />
+                        <Label Text="BACK" TextColor="#FFF" FontSize="14" FontAttributes="Bold" VerticalOptions="Center" VerticalTextAlignment="Center" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Back}" />
+                        </StackLayout.GestureRecognizers>
+                     </StackLayout>
+                    
+                    <StackLayout Spacing="12" VerticalOptions="CenterAndExpand">
+                        <Image Source="zenith_gray.png" WidthRequest="110" HorizontalOptions="Center"  />
+                        <Label Text="aspire" TextColor="#FFF" FontSize="30" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="1" VerticalOptions="EndAndExpand" Padding="0" Spacing="40">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="64">
+                        <svg:SvgImage Svg="res:images.icon-location" ColorMapping="000000=FFFFFF" WidthRequest="34" HorizontalOptions="StartAndExpand" />
+                        <svg:SvgImage Svg="res:images.icon-phone" ColorMapping="000000=FFFFFF" WidthRequest="34" HorizontalOptions="CenterAndExpand" />
+                        <svg:SvgImage Svg="res:images.icon-question" ColorMapping="000000=FFFFFF" WidthRequest="34" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+
+                     <!-- FORM SECTION -->
+                    <ScrollView BackgroundColor="#FFF">
+                        <StackLayout Padding="24,32" Spacing="6">
+                            <local:FormEntry Placeholder="Activate your account number..." Text="{Binding AccountNumber}" Margin="0,12" />
+                            
+                            <Button Text="HARDWARE TOKEN" Style="{StaticResource PrimaryButton}" Command="{Binding HardwareToken}" />
+                            <StackLayout Spacing="4" Orientation="Horizontal" Margin="0,0,0,12">
+                                <Button Text="DEBIT CARD" Style="{StaticResource SecondaryButton}" Command="{Binding DebitCard}" />
+                                <Button Text="QUICK ACCESS" Style="{StaticResource SecondaryButton}" Command="{Binding QuickAccess}" />
+                            </StackLayout>
+
+                            <Label TextColor="{StaticResource Liver}" HorizontalTextAlignment="Center" FontSize="12">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="By registering account you are accepting " FontSize="12" />
+                                        <Span Text="Terms &amp; Conditions" FontAttributes="Bold" FontSize="12" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TermsAndConditions}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,20,0,0">
+                                <Label Text="OPEN AN ACCOUNT" TextColor="{StaticResource Liver}" FontSize="14" LineBreakMode="NoWrap">
+                                   <Label.Effects>
+                                        <local:UnderlineEffect />
+                                    </Label.Effects>
+                                </Label>
+                                <Label Text="REGISTER A NEW DEVICE" TextColor="{StaticResource Liver}" FontSize="14" LineBreakMode="NoWrap" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                    <Label.Effects>
+                                        <local:UnderlineEffect />
+                                    </Label.Effects>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Grid>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

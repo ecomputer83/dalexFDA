@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.AuthenticationWelcomePage"
+             NavigationPage.HasNavigationBar="false"
+             xmlns:local="clr-namespace:Zenith"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+    <ContentPage.Content>
+        <RelativeLayout Padding="0">
+            <!-- Background -->
+            <Image  Aspect="AspectFill"
+                    Source="background.png"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                />
+            
+            <StackLayout
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                <StackLayout VerticalOptions="CenterAndExpand" Margin="0,100,0,0">
+                    <Image Source="zenith_gray.png" HeightRequest="110" Margin="0,0,0,20" HorizontalOptions="Center" />
+                    <Label Text="aspire" TextColor="#FFF" FontSize="30" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Start" />
+                </StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand" Padding="24,0,24,24">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,0,0,44" Spacing="64">
+                        <svg:SvgImage Svg="res:images.icon-location" ColorMapping="000000=FFFFFF" WidthRequest="34" HorizontalOptions="StartAndExpand" />
+                        <svg:SvgImage Svg="res:images.icon-phone" ColorMapping="000000=FFFFFF" WidthRequest="34" HorizontalOptions="CenterAndExpand" />
+                        <svg:SvgImage Svg="res:images.icon-question" ColorMapping="000000=FFFFFF" WidthRequest="34" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <Button Text="ACTIVATE" Style="{StaticResource PrimaryButton}" Command="{Binding Activate}" Margin="0,0,0,12" />
+                    <Button Text="LOG IN" Style="{StaticResource SecondaryButton}" Command="{Binding Login}" Margin="0,0,0,0" />
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,24,0,32">
+                        <Label Text="OPEN AN ACCOUNT" TextColor="#FFF" FontSize="14" Opacity=".7" LineBreakMode="NoWrap">
+                            <Label.Effects>
+                                <local:UnderlineEffect />
+                            </Label.Effects>
+                        </Label>
+                        <Label Text="REGISTER A NEW DEVICE" TextColor="#FFF" FontSize="14" Opacity=".7" LineBreakMode="NoWrap" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                            <Label.Effects>
+                                <local:UnderlineEffect />
+                            </Label.Effects>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

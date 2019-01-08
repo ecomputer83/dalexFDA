@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.TipsContainer"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+  <ContentView.Content>
+        <ScrollView Margin="0,8">
+            <StackLayout>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource GrayBoro}" />
+                <StackLayout Padding="24" Orientation="Horizontal">
+                    <Label Text="Useful Tips" TextColor="{StaticResource Liver}" />
+                    <svg:SvgImage Svg="res:images.icon-add" ColorMapping="000000=D7D8D9" HorizontalOptions="EndAndExpand" WidthRequest="20" />
+                </StackLayout>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource GrayBoro}" />
+                <StackLayout Padding="24" Orientation="Horizontal">
+                    <Label Text="Mobile App" TextColor="{StaticResource Liver}" />
+                    <svg:SvgImage Svg="res:images.icon-add" ColorMapping="000000=D7D8D9" HorizontalOptions="EndAndExpand" WidthRequest="20" />
+                </StackLayout>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource GrayBoro}" />
+                <StackLayout Padding="24" Orientation="Horizontal">
+                    <Label Text="Register your Account" TextColor="{StaticResource Liver}"  />
+                    <svg:SvgImage Svg="res:images.icon-add" ColorMapping="000000=D7D8D9" HorizontalOptions="EndAndExpand" WidthRequest="20" />
+                </StackLayout>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource GrayBoro}" />
+                <StackLayout Padding="24" Orientation="Horizontal">
+                    <Label Text="Support" TextColor="{StaticResource Liver}" />
+                    <svg:SvgImage Svg="res:images.icon-add" ColorMapping="000000=D7D8D9" HorizontalOptions="EndAndExpand" WidthRequest="20" />
+                </StackLayout>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource GrayBoro}" />
+                <StackLayout Padding="24" Orientation="Horizontal">
+                    <Label Text="Scam Alert" TextColor="{StaticResource Liver}" />
+                    <svg:SvgImage Svg="res:images.icon-add" ColorMapping="000000=D7D8D9" HorizontalOptions="EndAndExpand" WidthRequest="20" />
+                </StackLayout>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource GrayBoro}" />
+                <StackLayout Padding="24" Orientation="Horizontal">
+                    <Label Text="Security Centre" TextColor="{StaticResource Liver}" />
+                    <svg:SvgImage Svg="res:images.icon-add" ColorMapping="000000=D7D8D9" HorizontalOptions="EndAndExpand" WidthRequest="20" />
+                </StackLayout>
+                <BoxView HeightRequest="1" BackgroundColor="{StaticResource GrayBoro}" />
+            </StackLayout>
+        </ScrollView>
+  </ContentView.Content>
+</ContentView>

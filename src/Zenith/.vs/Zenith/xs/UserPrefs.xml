@@ -1,0 +1,13 @@
+﻿<Properties StartupConfiguration="{A821CDD5-7986-4FF6-B6D1-16BD7647765A}|Default">
+  <MonoDevelop.Ide.ItemProperties.Zenith FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Zenith.UITests FirstBuild="True" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Zenith.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Zenith.iOS FirstBuild="True" />
+</Properties>

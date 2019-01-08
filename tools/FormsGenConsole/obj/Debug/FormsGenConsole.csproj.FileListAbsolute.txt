@@ -1,0 +1,12 @@
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/bin/Debug/FormsGenConsole.exe
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/bin/Debug/FormsGenConsole.pdb
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/bin/Debug/FormsGen.dll
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/bin/Debug/Microsoft.Build.Utilities.Core.dll
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/bin/Debug/Microsoft.Build.Framework.dll
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/bin/Debug/FormsGen.pdb
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/bin/Debug/Microsoft.Build.Utilities.Core.xml
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/bin/Debug/Microsoft.Build.Framework.xml
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/obj/Debug/FormsGenConsole.csprojResolveAssemblyReference.cache
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/obj/Debug/FormsGenConsole.csproj.CoreCompileInputs.cache
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/obj/Debug/FormsGenConsole.exe
+/Users/bakaresulaimon/Documents/sandbox/relief/tools/FormsGenConsole/obj/Debug/FormsGenConsole.pdb

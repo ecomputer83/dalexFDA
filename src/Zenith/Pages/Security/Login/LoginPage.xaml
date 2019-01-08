@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.LoginPage"
+             NavigationPage.HasNavigationBar="false"
+             xmlns:local="clr-namespace:Zenith;assembly=Zenith"
+             xmlns:effects="clr-namespace:Zenith"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <!-- LOGO -->
+            <Image Grid.Row="0" Aspect="AspectFill" Source="logo.png" HeightRequest="300" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            
+            <StackLayout Grid.Row="1" Spacing="8" Padding="24,0" HorizontalOptions="FillAndExpand">
+                <Label Text="Phone Number" FontSize="16" FontAttributes="Bold" />
+                
+                <Grid ColumnSpacing="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <local:CustomEntry Grid.Column="0" Text="{Binding PhoneExtension}" Placeholder="+233" PlaceholderColor="{StaticResource Manatee}"
+                           FontSize="16" HeightRequest="42"
+                        />
+                    <local:CustomEntry Grid.Column="1" Text="{Binding PhoneNumber}" FontSize="16" HeightRequest="42" />
+                </Grid>
+                
+                <Label Text="PIN" FontSize="16" FontAttributes="Bold" Margin="0,16,0,0" />
+                <local:CustomEntry Text="{Binding PIN}" FontSize="16" HeightRequest="42" />
+                
+                <Button Text="LOG IN" Style="{StaticResource PrimaryButton}" Command="{Binding Login}" Margin="0,22,0,8" />
+                
+                <Label Text="Forgot Password" TextColor="{StaticResource PalmLeaf}" HorizontalOptions="Center" FontSize="14" />
+            </StackLayout>
+            <Grid Grid.Row="2" ColumnSpacing="0" HeightRequest="60" BackgroundColor="{StaticResource PalmLeaf}" 
+                  HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <ContentView Grid.Column="0" HorizontalOptions="FillAndExpand">
+                        <Label FontSize="16" FontAttributes="Bold" TextColor="#FFF" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,16,0,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="SIGN UP" />
+                                    <Span Text="&#13;" />
+                                    <Span Text="EXISTING USER" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </ContentView>
+                    
+                    <BoxView Grid.Column="1" WidthRequest="3" BackgroundColor="#FFF" />
+                    
+                    <ContentView Grid.Column="2" HorizontalOptions="FillAndExpand">
+                        <Label FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#FFF" Margin="0,16,0,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="CREATE" />
+                                    <Span Text="&#10;" />
+                                    <Span Text="NEW ACCOUNT" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </ContentView>
+                </Grid>
+         </Grid>
+    </ContentPage.Content>
+</ContentPage>
