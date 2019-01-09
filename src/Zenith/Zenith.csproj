@@ -36,7 +36,6 @@
     <Folder Include="Custom\Menu\" />
     <Folder Include="Custom\Label\" />
     <Folder Include="Pages\Signup\" />
-    <Folder Include="Pages\Signup\AuthenticationWelcome\" />
     <Folder Include="Pages\Security\Login\" />
     <Folder Include="Pages\Account\Activate\" />
     <Folder Include="Pages\General\" />
@@ -49,6 +48,11 @@
     <Folder Include="Helpers\Behaviour\" />
     <Folder Include="Pages\Signup\NewUserSignup\" />
     <Folder Include="Converter\" />
+    <Folder Include="Pages\Signup\ExistingUserSignup\" />
+    <Folder Include="Pages\Investment\" />
+    <Folder Include="Pages\Investment\InvestmentDetails\" />
+    <Folder Include="Pages\Investment\RedeemRequest\" />
+    <Folder Include="Pages\Investment\RolloverRequest\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XamSvg.Shared">
@@ -98,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Custom\Modal\MyAccountPopupDialog.xaml" />
+    <EmbeddedResource Remove="Pages\Signup\AuthenticationWelcome\AuthenticationWelcomePage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\icon-down-arrow.svg" />
@@ -141,9 +146,6 @@
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Security\Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Signup\AuthenticationWelcome\AuthenticationWelcomePage.xaml.cs">
-      <DependentUpon>AuthenticationWelcomePage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\Transfer\Transfer\TransferPage.xaml.cs">
       <DependentUpon>TransferPage.xaml</DependentUpon>

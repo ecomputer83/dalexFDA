@@ -50,6 +50,30 @@ namespace Zenith
         }
 
             
+        private async Task ExecuteLogin()
+        {
+            try
+            {
+                await this.CoreMethods.DisplayAlert("Login","Login","OK");
+            }
+            catch(Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+            
+        private async Task ExecuteActivate()
+        {
+            try
+            {
+                await this.CoreMethods.DisplayAlert("Activate","Activate","OK");
+            }
+            catch(Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+            
         private async Task ExecuteOpenAccount()
         {
             try

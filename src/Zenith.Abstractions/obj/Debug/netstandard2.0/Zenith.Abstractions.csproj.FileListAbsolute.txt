@@ -7,3 +7,12 @@
 /Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Zenith.Abstractions/obj/Debug/netstandard2.0/Zenith.Abstractions.AssemblyInfo.cs
 /Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Zenith.Abstractions/obj/Debug/netstandard2.0/Zenith.Abstractions.dll
 /Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Zenith.Abstractions/obj/Debug/netstandard2.0/Zenith.Abstractions.pdb
+/Users/bakaresulaimon/Desktop/PracticeArea/zenith/src/Zenith.Abstractions/bin/Debug/netstandard2.0/netstandard2.0/Zenith.Abstractions.deps.json
+/Users/bakaresulaimon/Desktop/PracticeArea/zenith/src/Zenith.Abstractions/bin/Debug/netstandard2.0/netstandard2.0/Zenith.Abstractions.dll
+/Users/bakaresulaimon/Desktop/PracticeArea/zenith/src/Zenith.Abstractions/bin/Debug/netstandard2.0/netstandard2.0/Zenith.Abstractions.pdb
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/obj/Debug/netstandard2.0/Zenith.Abstractions.csprojAssemblyReference.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/obj/Debug/netstandard2.0/Zenith.Abstractions.csproj.CoreCompileInputs.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/obj/Debug/netstandard2.0/Zenith.Abstractions.AssemblyInfoInputs.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/obj/Debug/netstandard2.0/Zenith.Abstractions.AssemblyInfo.cs
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/obj/Debug/netstandard2.0/Zenith.Abstractions.dll
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/obj/Debug/netstandard2.0/Zenith.Abstractions.pdb

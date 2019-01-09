@@ -533,7 +533,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.dll": {}
@@ -1305,11 +1305,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Android/Zenith.Android.csproj",
+      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Android/Zenith.Android.csproj",
       "projectName": "Zenith.Android",
-      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Android/Zenith.Android.csproj",
+      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Android/Zenith.Android.csproj",
       "packagesPath": "/Users/bakaresulaimon/.nuget/packages/",
-      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Android/obj",
+      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Android/obj",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/bakaresulaimon/.config/NuGet/NuGet.Config"
@@ -1324,8 +1324,8 @@
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith/Zenith.csproj": {
-              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith/Zenith.csproj"
+            "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/Zenith.csproj": {
+              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/Zenith.csproj"
             }
           }
         }

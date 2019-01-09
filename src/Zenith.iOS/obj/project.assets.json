@@ -317,7 +317,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.dll": {}
@@ -331,7 +331,7 @@
         "framework": "Xamarin.iOS,Version=v1.0",
         "dependencies": {
           "Effects": "1.0.0",
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.iOS.dll": {}
@@ -677,7 +677,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.dll": {}
@@ -691,7 +691,7 @@
         "framework": "Xamarin.iOS,Version=v1.0",
         "dependencies": {
           "Effects": "1.0.0",
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.iOS.dll": {}
@@ -1037,7 +1037,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.dll": {}
@@ -1051,7 +1051,7 @@
         "framework": "Xamarin.iOS,Version=v1.0",
         "dependencies": {
           "Effects": "1.0.0",
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.iOS.dll": {}
@@ -1397,7 +1397,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.dll": {}
@@ -1411,7 +1411,7 @@
         "framework": "Xamarin.iOS,Version=v1.0",
         "dependencies": {
           "Effects": "1.0.0",
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.iOS.dll": {}
@@ -1961,11 +1961,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.iOS/Zenith.iOS.csproj",
+      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.iOS/Zenith.iOS.csproj",
       "projectName": "Zenith.iOS",
-      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.iOS/Zenith.iOS.csproj",
+      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.iOS/Zenith.iOS.csproj",
       "packagesPath": "/Users/bakaresulaimon/.nuget/packages/",
-      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.iOS/obj",
+      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.iOS/obj",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/bakaresulaimon/.config/NuGet/NuGet.Config"
@@ -1980,14 +1980,14 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Effects.iOS/Effects.iOS.csproj": {
-              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Effects.iOS/Effects.iOS.csproj"
+            "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/Effects.iOS.csproj": {
+              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/Effects.iOS.csproj"
             },
-            "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Effects/Effects.csproj": {
-              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Effects/Effects.csproj"
+            "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/Effects.csproj": {
+              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/Effects.csproj"
             },
-            "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith/Zenith.csproj": {
-              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith/Zenith.csproj"
+            "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/Zenith.csproj": {
+              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/Zenith.csproj"
             }
           }
         }

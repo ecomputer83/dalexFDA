@@ -16,10 +16,10 @@ namespace Zenith {
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Custom/Entries/FormEntry.xaml")]
     public partial class FormEntry : global::Xamarin.Forms.ContentView {
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Zenith.CustomEntry data;
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(FormEntry));
             data = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Zenith.CustomEntry>(this, "data");

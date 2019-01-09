@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.InvestmentDetailsPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <Grid   RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                
+                <StackLayout Grid.Row="0" Grid.RowSpan="2" Spacing="8" Padding="32,16,32,46" BackgroundColor="{StaticResource PalmLeaf}">
+                    <Label Text="INV000019" TextColor="{StaticResource White}" FontSize="18" FontAttributes="Bold" />
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Certificate No." TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="DFC123456" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Status" TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="Active" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Account Name" TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="TETTEH &amp; BROTHERS" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+                
+                <ContentView Grid.Row="2" BackgroundColor="#FFF">
+                </ContentView>
+                
+                <ContentView Grid.Row="1" Grid.RowSpan="2" BackgroundColor="{StaticResource PalmLeaf}" Margin="0,2" HorizontalOptions="Center" HeightRequest="60">
+                    <ContentView Margin="2" BackgroundColor="#FFF" Padding="16,8">
+                        <Label Text="128 DAYS MORE" TextColor="{StaticResource PalmLeaf}" FontSize="24" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                    </ContentView>
+                </ContentView>
+            </Grid>
+            
+            <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
+                <Label Text="More Info" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+            </ContentView>
+            
+            <ScrollView>
+                <StackLayout Spacing="12" Padding="12">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Principal" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="GHS 10,000.00" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Term" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="365 Days" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Rate P.A." TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="23%" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Start Date" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="12 Dec. 2018" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Maturity Date" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="12 Dec. 2019" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Interest Amount" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="GHS 2,300.00" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Int. Earned" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="GHS 1,800.00" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Redemption Value" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="GHS 11,800.00" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Maturity Value" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="GHS 12,300.00" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+                
+            <Button Text="VIEW CERTIFICATE" Style="{StaticResource PrimaryButton}" Command="{Binding ViewCertificate}" Margin="16,8,16,6" VerticalOptions="EndAndExpand" />
+            <Button Text="REDEEM INVESTMENT" Style="{StaticResource PrimaryButton}" Command="{Binding RedeemInvestment}" Margin="16,0,16,6" />
+            <Button Text="ROLLOVER INVESTMENT" Style="{StaticResource SecondaryButton}" Command="{Binding RolloverInvestment}" Margin="16,0,16,12" />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

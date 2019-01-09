@@ -182,11 +182,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Data.Mock/Zenith.Data.Mock.csproj",
+      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/Zenith.Data.Mock.csproj",
       "projectName": "Zenith.Data.Mock",
-      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Data.Mock/Zenith.Data.Mock.csproj",
+      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/Zenith.Data.Mock.csproj",
       "packagesPath": "/Users/bakaresulaimon/.nuget/packages/",
-      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Data.Mock/obj",
+      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

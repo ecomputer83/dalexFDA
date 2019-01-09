@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Zenith.RedemptionRequestPage"
+             xmlns:local="clr-namespace:Zenith;assembly=Zenith">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <StackLayout Spacing="8" Padding="32,16,32,16" BackgroundColor="{StaticResource PalmLeaf}">
+                <Label Text="INV000019" TextColor="{StaticResource White}" FontSize="18" FontAttributes="Bold" />
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Certificate No." TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
+                    <Label Text="DFC123456" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Status" TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
+                    <Label Text="Active" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Account Name" TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
+                    <Label Text="TETTEH &amp; BROTHERS" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Amount Available" TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
+                    <Label Text="GHS 11,800.00" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+            </StackLayout>
+            
+            <ScrollView>
+                <StackLayout Spacing="8">
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
+                        <Label Text="Request Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+                    
+                    <Label Text="Redemption Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="2,000.00" FontSize="16" HorizontalTextAlignment="End" HeightRequest="42" Margin="32,0,32,6" />
+                    
+                    <Label Text="Reinvestment Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="9,800.00" TextColor="{StaticResource Liver}" FontSize="16" IsEnabled="false" HorizontalTextAlignment="End" 
+                            BackgroundColor="{StaticResource GrayBoro}" HeightRequest="42" Margin="32,0,32,6"
+                        />
+                    
+                    <Label Text="New Duration [Days]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="182" FontSize="16" HorizontalTextAlignment="End"
+                            HeightRequest="42" Margin="32,0,32,6"
+                        />
+                    
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
+                        <Label Text="Security Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+                    
+                    <Label Text="Security Question" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <Label Text="WHAT IS YOUR NAME" FontSize="16" Margin="32,0,32,6"  />
+                    
+                    <Label Text="Answer" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="{Binding Answer}" FontSize="16" HeightRequest="42" Margin="32,0" />
+                    
+                    <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" Margin="32,0" />
+                </StackLayout>
+            </ScrollView>
+            
+            <Button Text="NEGOTIATE TRANSACTION" Style="{StaticResource PrimaryButton}" Command="{Binding NegotiateTransaction}" Margin="16" 
+                    VerticalOptions="EndAndExpand" 
+                />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,3 +6,13 @@
 /Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects/obj/Debug/netstandard2.0/Effects.AssemblyInfo.cs
 /Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects/obj/Debug/netstandard2.0/Effects.dll
 /Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects/obj/Debug/netstandard2.0/Effects.pdb
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/bin/Debug/netstandard2.0/Effects.deps.json
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/bin/Debug/netstandard2.0/Effects.dll
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/bin/Debug/netstandard2.0/Effects.pdb
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/Effects.csprojAssemblyReference.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/Effects.csproj.CoreCompileInputs.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/Effects.AssemblyInfoInputs.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/Effects.AssemblyInfo.cs
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/Effects.dll
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/Effects.pdb
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/XamlC.stamp

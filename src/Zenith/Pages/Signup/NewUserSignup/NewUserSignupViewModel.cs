@@ -17,6 +17,7 @@ namespace Zenith
         //commands
         public Command Register { get; private set; }
         public Command Cancel { get; private set; }
+        public Command Agree { get; private set; }
 
         public NewUserSignupViewModel(IErrorManager ErrorManager, IAppService AppService)
         {
@@ -25,8 +26,19 @@ namespace Zenith
 
             Register = new Command(async () => await ExecuteRegister());
             Cancel = new Command(async () => await ExecuteCancel());
+            Agree = new Command(async () => await ExecuteAgree());
+        }
 
-            IsAgreementSelected = true;
+        private async Task ExecuteAgree()
+        {
+            try
+            {
+                IsAgreementSelected = !IsAgreementSelected;
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
         }
 
         private async Task ExecuteRegister()
@@ -46,7 +58,7 @@ namespace Zenith
         {
             try
             {
-
+                await CoreMethods.PopPageModel();
             }
             catch (Exception ex)
             {

@@ -15,7 +15,7 @@
                 <RowDefinition Height="60" />
             </Grid.RowDefinitions>
             <!-- LOGO -->
-            <Image Grid.Row="0" Aspect="AspectFill" Source="logo.png" HeightRequest="300" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            <Image Grid.Row="0" Aspect="AspectFill" Source="logo.png" HeightRequest="200" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
             
             <StackLayout Grid.Row="1" Spacing="8" Padding="24,0" HorizontalOptions="FillAndExpand">
                 <Label Text="Phone Number" FontSize="16" FontAttributes="Bold" />

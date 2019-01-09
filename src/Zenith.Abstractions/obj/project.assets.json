@@ -182,11 +182,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/Zenith.Abstractions.csproj",
+      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/Zenith.Abstractions.csproj",
       "projectName": "Zenith.Abstractions",
-      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/Zenith.Abstractions.csproj",
+      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/Zenith.Abstractions.csproj",
       "packagesPath": "/Users/bakaresulaimon/.nuget/packages/",
-      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/obj",
+      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

@@ -184,7 +184,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "compile": {
           "bin/placeholder/Effects.dll": {}
@@ -808,11 +808,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith/Zenith.csproj",
+      "projectUniqueName": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/Zenith.csproj",
       "projectName": "Zenith",
-      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith/Zenith.csproj",
+      "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/Zenith.csproj",
       "packagesPath": "/Users/bakaresulaimon/.nuget/packages/",
-      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith/obj",
+      "outputPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -830,11 +830,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Effects/Effects.csproj": {
-              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Effects/Effects.csproj"
+            "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/Effects.csproj": {
+              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/Effects.csproj"
             },
-            "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/Zenith.Abstractions.csproj": {
-              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/Zenith.Abstractions.csproj"
+            "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/Zenith.Abstractions.csproj": {
+              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/Zenith.Abstractions.csproj"
             }
           }
         }

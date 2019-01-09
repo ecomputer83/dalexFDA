@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "42486db05de43450b96aa985f7c2e945d8284631"
+    "signature": "8aa82019b01857fbb4eff02c5df951ce7c7a76f2"
   },
   "compilationOptions": {},
   "targets": {
@@ -18,7 +18,8 @@
           "PropertyChanged.Fody": "2.5.13",
           "Rg.Plugins.Popup": "1.1.4.168",
           "Syncfusion.Xamarin.SfChart": "15.2.0.46",
-          "Xamarin.Forms": "3.0.0.482510",
+          "Xam.Plugins.Forms.ImageCircle": "3.0.0.5",
+          "Xamarin.Forms": "3.3.0.967583",
           "Xamarin.Forms.CarouselView": "2.3.0-pre2",
           "Zenith.Abstractions": "1.0.0",
           "XamSvg.Shared": "1.0.1.0",
@@ -99,7 +100,7 @@
       },
       "Rg.Plugins.Popup/1.1.4.168": {
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "runtime": {
           "lib/netstandard1.0/Rg.Plugins.Popup.dll": {
@@ -110,7 +111,7 @@
       },
       "Syncfusion.Xamarin.SfChart/15.2.0.46": {
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "runtime": {
           "lib/portable-win+net45+wp80+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Syncfusion.SfChart.XForms.dll": {
@@ -119,7 +120,18 @@
           }
         }
       },
-      "Xamarin.Forms/3.0.0.482510": {
+      "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
+        "dependencies": {
+          "Xamarin.Forms": "3.3.0.967583"
+        },
+        "runtime": {
+          "lib/netstandard2.0/ImageCircle.Forms.Plugin.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Xamarin.Forms/3.3.0.967583": {
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
             "assemblyVersion": "2.0.0.0",
@@ -137,7 +149,7 @@
       },
       "Xamarin.Forms.CarouselView/2.3.0-pre2": {
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "runtime": {
           "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Xamarin.Forms.CarouselView.dll": {
@@ -148,7 +160,7 @@
       },
       "Effects/1.0.0": {
         "dependencies": {
-          "Xamarin.Forms": "3.0.0.482510"
+          "Xamarin.Forms": "3.3.0.967583"
         },
         "runtime": {
           "Effects.dll": {}
@@ -260,12 +272,19 @@
       "path": "syncfusion.xamarin.sfchart/15.2.0.46",
       "hashPath": "syncfusion.xamarin.sfchart.15.2.0.46.nupkg.sha512"
     },
-    "Xamarin.Forms/3.0.0.482510": {
+    "Xam.Plugins.Forms.ImageCircle/3.0.0.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kq209d8qVvulrY3o+nGirENZ3kaZpEN7VWRErWcW1M+ahtDgm4BUXQJ5s9hnp1SAGxQMTMhDAVI3uk5g9NV7hA==",
-      "path": "xamarin.forms/3.0.0.482510",
-      "hashPath": "xamarin.forms.3.0.0.482510.nupkg.sha512"
+      "sha512": "sha512-59HyuAaUzuloQmu/PVCDCJQMRuuhqmIpCQ+d5hH5Qp8AZsa/vDi5ulrXDKRMZSZt/xbXsyZV+aZ/W/SZaYt2Mg==",
+      "path": "xam.plugins.forms.imagecircle/3.0.0.5",
+      "hashPath": "xam.plugins.forms.imagecircle.3.0.0.5.nupkg.sha512"
+    },
+    "Xamarin.Forms/3.3.0.967583": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aebAEUHkER6WRo4WpsDd8jq4EudSl3WS4n7Pxcq8ea+x9fHi9PstCU0dU2D5PGvSeKa3yEFSpRljOEjI7qtsNA==",
+      "path": "xamarin.forms/3.3.0.967583",
+      "hashPath": "xamarin.forms.3.3.0.967583.nupkg.sha512"
     },
     "Xamarin.Forms.CarouselView/2.3.0-pre2": {
       "type": "package",

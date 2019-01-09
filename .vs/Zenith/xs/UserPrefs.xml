@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}|Default">
+  <MonoDevelop.Ide.ItemProperties.targets.Zenith.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9DC8B0B2-7FF5-4E11-B401-7630B7EA2ABB" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/Zenith/Pages/Investment/RedeemRequest/RedemptionRequestPage.xaml">
+    <Files>
+      <File FileName="src/Zenith/Pages/Investment/InvestmentDetails/InvestmentDetailsPage.xaml" Line="44" Column="123" />
+      <File FileName="src/Zenith/Pages/Investment/RedeemRequest/RedemptionRequestPage.xaml" Line="69" Column="23" />
+      <File FileName="src/Zenith/Pages/Investment/RolloverRequest/RolloverRequestPage.xaml" Line="6" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.targets.Zenith.Android PreferredExecutionTarget="Android.c565b619" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

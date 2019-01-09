@@ -51,11 +51,11 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <local:OrderItemView Margin="8,4" Product="{Binding Order.Product}" Terminal="{Binding Order.Terminal}" 
+                            <!--<local:OrderItemView Margin="8,4" Product="{Binding Order.Product}" Terminal="{Binding Order.Terminal}" 
                                     TerminalDetail="{Binding Order.TerminalDetail}" Destination="{Binding Order.Destination}" 
                                     DestinationDetail="{Binding Order.DestinationDetail}" OrderNumber="{Binding Order.OrderNumber}" 
                                     Status="{Binding Order.Status}" StatusColor="{Binding Order.OrderType, Converter={StaticResource OrderTypeColor}}"
-                                />
+                                />-->
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
