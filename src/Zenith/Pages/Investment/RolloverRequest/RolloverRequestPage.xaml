@@ -35,7 +35,7 @@
                         <Label Text="Request Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
                     
-                    <Label Text="Reinvestment Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <Label Text="Reinvest Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
                     <local:CustomEntry Text="12,300.00" TextColor="{StaticResource Liver}" FontSize="16" IsEnabled="false" HorizontalTextAlignment="End" 
                             BackgroundColor="{StaticResource GrayBoro}" HeightRequest="42" Margin="32,0,32,6"
                         />
