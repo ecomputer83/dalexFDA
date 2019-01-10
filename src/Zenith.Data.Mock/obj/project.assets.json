@@ -25,6 +25,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "Zenith.Abstractions/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Zenith.Abstractions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Zenith.Abstractions.dll": {}
+        }
       }
     }
   },
@@ -168,11 +178,17 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "Zenith.Abstractions/1.0.0": {
+      "type": "project",
+      "path": "../Zenith.Abstractions/Zenith.Abstractions.csproj",
+      "msbuildProject": "../Zenith.Abstractions/Zenith.Abstractions.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.3"
+      "NETStandard.Library >= 2.0.3",
+      "Zenith.Abstractions >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -203,7 +219,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/Zenith.Abstractions.csproj": {
+              "projectPath": "/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Abstractions/Zenith.Abstractions.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

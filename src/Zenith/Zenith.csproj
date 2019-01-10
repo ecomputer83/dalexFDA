@@ -53,6 +53,9 @@
     <Folder Include="Pages\Investment\InvestmentDetails\" />
     <Folder Include="Pages\Investment\RedeemRequest\" />
     <Folder Include="Pages\Investment\RolloverRequest\" />
+    <Folder Include="Pages\MakeDeposit\" />
+    <Folder Include="Pages\MakeDeposit\ManualDeposit\" />
+    <Folder Include="Custom\Pickers\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XamSvg.Shared">
@@ -71,6 +74,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Effects\Effects.csproj" />
     <ProjectReference Include="..\Zenith.Abstractions\Zenith.Abstractions.csproj" />
+    <ProjectReference Include="..\Zenith.Data.Mock\Zenith.Data.Mock.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Images\icon-down-arrow.svg" />

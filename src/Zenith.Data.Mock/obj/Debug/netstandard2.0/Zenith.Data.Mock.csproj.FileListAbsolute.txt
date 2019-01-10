@@ -1,0 +1,12 @@
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/bin/Debug/netstandard2.0/Zenith.Data.Mock.deps.json
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/bin/Debug/netstandard2.0/Zenith.Data.Mock.dll
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/bin/Debug/netstandard2.0/Zenith.Data.Mock.pdb
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/bin/Debug/netstandard2.0/Zenith.Abstractions.dll
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/bin/Debug/netstandard2.0/Zenith.Abstractions.pdb
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/obj/Debug/netstandard2.0/Zenith.Data.Mock.csprojAssemblyReference.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/obj/Debug/netstandard2.0/Zenith.Data.Mock.csproj.CoreCompileInputs.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/obj/Debug/netstandard2.0/Zenith.Data.Mock.AssemblyInfoInputs.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/obj/Debug/netstandard2.0/Zenith.Data.Mock.AssemblyInfo.cs
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/obj/Debug/netstandard2.0/Zenith.Data.Mock.csproj.CopyComplete
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/obj/Debug/netstandard2.0/Zenith.Data.Mock.dll
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.Data.Mock/obj/Debug/netstandard2.0/Zenith.Data.Mock.pdb

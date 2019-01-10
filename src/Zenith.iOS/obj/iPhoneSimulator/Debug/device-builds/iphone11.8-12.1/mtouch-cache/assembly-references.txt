@@ -54,6 +54,7 @@
 /Users/bakaresulaimon/.nuget/packages/microsoft.appcenter.analytics/1.9.0/lib/Xamarin.iOS10/Microsoft.AppCenter.Analytics.iOS.Bindings.dll
 /Users/bakaresulaimon/.nuget/packages/microsoft.appcenter.crashes/1.9.0/lib/Xamarin.iOS10/Microsoft.AppCenter.Crashes.dll
 /Users/bakaresulaimon/.nuget/packages/microsoft.appcenter.crashes/1.9.0/lib/Xamarin.iOS10/Microsoft.AppCenter.Crashes.iOS.Bindings.dll
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/bin/Debug/netstandard2.0/Zenith.Data.Mock.dll
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/bin/Debug/netstandard2.0/Effects.dll
 /Users/bakaresulaimon/.nuget/packages/syncfusion.xamarin.sfchart/15.2.0.46/lib/Xamarin.iOS10/Syncfusion.SfChart.XForms.dll
 /Users/bakaresulaimon/.nuget/packages/xam.plugins.forms.imagecircle/3.0.0.5/lib/xamarinios10/ImageCircle.Forms.Plugin.dll

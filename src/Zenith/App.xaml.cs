@@ -7,6 +7,7 @@ using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Zenith.Abstractions;
+using Zenith.Data.Mock;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Zenith
@@ -114,6 +115,8 @@ namespace Zenith
             //if (EnvironmentConfiguration.Pharmacy.UsesMockData)
             //{
             //    //FreshIOC.Container.Register<IMobileDeviceService, MockMobileDeviceService>();
+
+            FreshIOC.Container.Register<IDepositService, DepositService>();
 
             //}
 

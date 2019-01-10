@@ -22,6 +22,7 @@
           "Xamarin.Forms": "3.3.0.967583",
           "Xamarin.Forms.CarouselView": "2.3.0-pre2",
           "Zenith.Abstractions": "1.0.0",
+          "Zenith.Data.Mock": "1.0.0",
           "XamSvg.Shared": "1.0.1.0",
           "XamSvg.XamForms": "1.0.1.0"
         },
@@ -171,6 +172,14 @@
           "Zenith.Abstractions.dll": {}
         }
       },
+      "Zenith.Data.Mock/1.0.0": {
+        "dependencies": {
+          "Zenith.Abstractions": "1.0.0"
+        },
+        "runtime": {
+          "Zenith.Data.Mock.dll": {}
+        }
+      },
       "XamSvg.Shared/1.0.1.0": {
         "runtime": {
           "XamSvg.Shared.dll": {
@@ -299,6 +308,11 @@
       "sha512": ""
     },
     "Zenith.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Zenith.Data.Mock/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

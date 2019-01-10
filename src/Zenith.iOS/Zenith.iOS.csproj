@@ -97,6 +97,9 @@
     <Compile Include="Renderers\CustomEntryRenderer.cs" />
     <Compile Include="Effects\UnderlineEffect.cs" />
     <Compile Include="Helpers\Appearance.cs" />
+    <Compile Include="Renderers\CustomPickerRenderer.cs" />
+    <Compile Include="Effects\RemoveBorderEffect.cs" />
+    <Compile Include="Renderers\CustomDatePickerRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

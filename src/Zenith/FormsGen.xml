@@ -29,15 +29,6 @@
       </Properties>
     </Page>
 
-    <Page Name="AuthenticationWelcome" Folder="Signup">
-      <Commands>
-        <Command Name="Login" />
-        <Command Name="Activate" />
-        <Command Name="OpenAccount" />
-        <Command Name="RegisterNewDevice" />
-      </Commands>
-    </Page>
-
     <Page Name="ComingSoon" Folder="General">
       
     </Page>

@@ -184,3 +184,5 @@
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.iOS/obj/iPhoneSimulator/Debug/Zenith.iOS.csproj.CopyComplete
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.iOS/obj/iPhoneSimulator/Debug/Zenith.iOS.exe
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.iOS/obj/iPhoneSimulator/Debug/Zenith.iOS.pdb
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.iOS/bin/iPhoneSimulator/Debug/Zenith.Data.Mock.dll
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.iOS/bin/iPhoneSimulator/Debug/Zenith.Data.Mock.pdb

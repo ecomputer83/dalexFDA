@@ -233,6 +233,7 @@
 -r=/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/lib/XamSvgForms-2.1.0/lib/ios-unified/XamSvg.XamForms.iOS.dll
 -r=/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/bin/Debug/netstandard2.0/Zenith.dll
 -r=/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/bin/Debug/netstandard2.0/Zenith.Abstractions.dll
+-r=/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/bin/Debug/netstandard2.0/Zenith.Data.Mock.dll
 --target-framework=Xamarin.iOS,v1.0
 --root-assembly=/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith.iOS/bin/iPhoneSimulator/Debug/Zenith.iOS.exe
 
