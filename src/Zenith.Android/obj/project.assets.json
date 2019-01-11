@@ -557,7 +557,8 @@
           "Xam.Plugins.Forms.ImageCircle": "3.0.0.5",
           "Xamarin.Forms": "3.3.0.967583",
           "Xamarin.Forms.CarouselView": "2.3.0-pre2",
-          "Zenith.Abstractions": "1.0.0"
+          "Zenith.Abstractions": "1.0.0",
+          "Zenith.Data.Mock": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Zenith.dll": {}
@@ -574,6 +575,19 @@
         },
         "runtime": {
           "bin/placeholder/Zenith.Abstractions.dll": {}
+        }
+      },
+      "Zenith.Data.Mock/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Zenith.Abstractions": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Zenith.Data.Mock.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Zenith.Data.Mock.dll": {}
         }
       }
     }
@@ -1277,6 +1291,11 @@
       "type": "project",
       "path": "../Zenith.Abstractions/Zenith.Abstractions.csproj",
       "msbuildProject": "../Zenith.Abstractions/Zenith.Abstractions.csproj"
+    },
+    "Zenith.Data.Mock/1.0.0": {
+      "type": "project",
+      "path": "../Zenith.Data.Mock/Zenith.Data.Mock.csproj",
+      "msbuildProject": "../Zenith.Data.Mock/Zenith.Data.Mock.csproj"
     }
   },
   "projectFileDependencyGroups": {

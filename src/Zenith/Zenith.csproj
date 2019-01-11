@@ -56,6 +56,9 @@
     <Folder Include="Pages\MakeDeposit\" />
     <Folder Include="Pages\MakeDeposit\ManualDeposit\" />
     <Folder Include="Custom\Pickers\" />
+    <Folder Include="Pages\MakeDeposit\DepositPayment\" />
+    <Folder Include="Pages\MakeDeposit\DepositInvestmentDetails\" />
+    <Folder Include="Pages\MakeDeposit\CardPaymentDetails\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XamSvg.Shared">
@@ -103,6 +106,8 @@
     <None Remove="Images\icon-dropdown-arrow.svg" />
     <None Remove="Images\icon-checkbox.svg" />
     <None Remove="Images\icon-checkbox-selected.svg" />
+    <None Remove="Images\icon-unselected.svg" />
+    <None Remove="Images\icons_selected.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Custom\Modal\MyAccountPopupDialog.xaml" />
@@ -133,6 +138,8 @@
     <EmbeddedResource Include="Images\icon-dropdown-arrow.svg" />
     <EmbeddedResource Include="Images\icon-checkbox.svg" />
     <EmbeddedResource Include="Images\icon-checkbox-selected.svg" />
+    <EmbeddedResource Include="Images\icon-unselected.svg" />
+    <EmbeddedResource Include="Images\icon-selected.svg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Custom\Modal\BeneficiaryPopUpDialog.xaml.cs" />

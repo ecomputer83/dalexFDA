@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.DepositPaymentPage"
+             xmlns:local="clr-namespace:Zenith;assembly=Zenith"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:RadioButtonImageConverter x:Key="RadioButtonImage" /> 
+            <local:RadioButtonColorConverter x:Key="RadioButtonColor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <ContentView BackgroundColor="{StaticResource OffWhite3}" Margin="0">
+                <Label Text="GHIPSS Payment Engine" TextColor="{StaticResource Liver}" FontSize="22" FontAttributes="Bold" 
+                       Margin="16,24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            </ContentView>
+            <ScrollView>
+                <StackLayout Spacing="8">
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
+                        <Label Text="Form Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+                    
+                    <Label Text="Beneficiary Account Name" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="DALEX FINANCE &amp; LEASING COMPANY LIMITED" TextColor="{StaticResource Liver}" FontSize="16" Margin="32,0,32,6"
+                            IsEnabled="false" HeightRequest="42" BackgroundColor="{StaticResource GrayBoro}"
+                        />
+                    
+                    <Label Text="Payment Purpose" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="Payment for New FDA Investment" TextColor="{StaticResource Liver}" FontSize="16"
+                            HeightRequest="42" Margin="32,0,32,6"
+                        />
+                    
+                    <Label Text="Deposit Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="22,000.00" TextColor="{StaticResource Liver}" FontSize="16" HorizontalTextAlignment="End"
+                            HeightRequest="42" Margin="32,0,32,6"
+                        />
+                    
+                    <Label Text="Transaction Fee" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="22.00" TextColor="{StaticResource Liver}" FontSize="16" HorizontalTextAlignment="End"
+                            HeightRequest="42" Margin="32,0,32,6" BackgroundColor="{StaticResource GrayBoro}"
+                        />
+                    
+                    <Label Text="Payment Method" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <StackLayout Orientation="Horizontal" Padding="32,6" Spacing="20">
+                        <StackLayout Orientation="Horizontal">
+                            <svg:SvgImage 
+                                    Svg="{Binding IsBank, Converter={StaticResource RadioButtonImage}"
+                                    ColorMapping="{Binding IsBank, Converter={StaticResource RadioButtonColor}"
+                                    InputTransparent="true"
+                                    WidthRequest="25"
+                                    VerticalOptions="Center"
+                                />
+                            <Label Text="Bank Direct Debit" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource Liver}" 
+                                   VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Center" 
+                                />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Bank}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <svg:SvgImage 
+                                    Svg="{Binding IsCard, Converter={StaticResource RadioButtonImage}"
+                                    ColorMapping="{Binding IsCard, Converter={StaticResource RadioButtonColor}"
+                                    InputTransparent="true"
+                                    WidthRequest="25"
+                                    VerticalOptions="Center"
+                                />
+                            <Label Text="Payment Card" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource Liver}" 
+                                   VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Center" 
+                                />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Card}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            
+            <Button Text="CONTINUE" Style="{StaticResource PrimaryButton}" Command="{Binding Continue}" Margin="16" 
+                    VerticalOptions="EndAndExpand" 
+                />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

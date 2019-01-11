@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}|Default">
   <MonoDevelop.Ide.ItemProperties.targets.Zenith.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9DC8B0B2-7FF5-4E11-B401-7630B7EA2ABB" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/Zenith.Android/Renderers/CustomDatePickerRenderer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/Zenith/Pages/MakeDeposit/CardPaymentDetails/CardPaymentDetailsPage.xaml">
     <Files>
-      <File FileName="src/Zenith/Pages/Investment/RedeemRequest/RedemptionRequestPage.xaml" Line="69" Column="23" />
+      <File FileName="src/Zenith/Pages/Investment/RedeemRequest/RedemptionRequestPage.xaml" Line="43" Column="70" />
       <File FileName="src/Zenith/Pages/Investment/RolloverRequest/RolloverRequestPage.xaml" Line="5" Column="64" />
-      <File FileName="src/Zenith/Pages/MakeDeposit/ManualDeposit/ManualDepositPage.xaml" Line="38" Column="135" />
-      <File FileName="src/Zenith.iOS/Renderers/CustomDatePickerRenderer.cs" Line="15" Column="83" />
-      <File FileName="src/Zenith.Android/Renderers/CustomPickerRenderer.cs" Line="7" Column="79" />
-      <File FileName="src/Zenith.Android/Renderers/CustomDatePickerRenderer.cs" Line="13" Column="45" />
+      <File FileName="src/Zenith/Pages/MakeDeposit/ManualDeposit/ManualDepositPage.xaml" Line="7" Column="80" />
+      <File FileName="src/Zenith/Pages/MakeDeposit/DepositPayment/DepositPaymentPage.xaml" Line="5" Column="64" />
+      <File FileName="src/Zenith/Pages/MakeDeposit/DepositInvestmentDetails/DepositInvestmentDetailsPage.xaml" Line="44" Column="48" />
+      <File FileName="src/Zenith/Pages/MakeDeposit/CardPaymentDetails/CardPaymentDetailsPage.xaml" Line="6" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.CardPaymentDetailsPage"
+             xmlns:local="clr-namespace:Zenith;assembly=Zenith">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <ContentView BackgroundColor="{StaticResource OffWhite3}" Margin="0">
+                <Label Text="Card Payment Details" TextColor="{StaticResource Liver}" FontSize="22" FontAttributes="Bold" 
+                       Margin="16,24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            </ContentView>
+            <ScrollView>
+                <StackLayout Spacing="8">
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
+                        <Label Text="Form Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+                    
+                    <Label Text="Debit Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="22,000.00" TextColor="{StaticResource Liver}" FontSize="16" HorizontalTextAlignment="End"
+                            HeightRequest="42" Margin="32,0,32,6"
+                        />
+                    
+                    <Label Text="Card Number" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="" Placeholder="5321 XXXX XXXX 9017" PlaceholderColor="{StaticResource Manatee}"
+                             TextColor="{StaticResource Liver}" FontSize="16" HeightRequest="42" Margin="32,0,32,6"
+                        />
+                    
+                    <Label Text="Card Holder Name" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="" Placeholder="Papa Godwin Hanson" PlaceholderColor="{StaticResource Manatee}"
+                             TextColor="{StaticResource Liver}" FontSize="16" HeightRequest="42" Margin="32,0,32,6"
+                        />
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackLayout Spacing="8" Grid.Column="0">
+                            <Label Text="Expiry Date" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                            <local:CustomEntry Text="" Placeholder="MM/YYYY" PlaceholderColor="{StaticResource Manatee}"
+                                     TextColor="{StaticResource Liver}" FontSize="16" HeightRequest="42" Margin="32,0,32,6"
+                                />
+                        </StackLayout>
+                        
+                        <StackLayout Spacing="8" Grid.Column="1">
+                            <Label Text="CVV" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                            <local:CustomEntry Text="" IsPassword="true" Placeholder="XXX" PlaceholderColor="{StaticResource Manatee}" WidthRequest="100"
+                                     TextColor="{StaticResource Liver}" FontSize="16" HorizontalOptions="Start" HeightRequest="42" Margin="32,0,32,6"
+                                />
+                        </StackLayout>
+                    </Grid>
+                    
+                    <Label Text="PIN" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:CustomEntry Text="" IsPassword="true" Placeholder="XXXX" PlaceholderColor="{StaticResource Manatee}" WidthRequest="100" 
+                            TextColor="{StaticResource Liver}" FontSize="16" HorizontalOptions="Start" HeightRequest="42" Margin="32,0,32,6"
+                        />
+                    
+                </StackLayout>
+            </ScrollView>
+            
+            <Button Text="PAY" Style="{StaticResource PrimaryButton}" Command="{Binding Continue}" Margin="16" 
+                    VerticalOptions="EndAndExpand" 
+                />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

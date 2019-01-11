@@ -57,3 +57,6 @@
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/bin/Debug/netstandard2.0/Zenith.Data.Mock.dll
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/bin/Debug/netstandard2.0/Zenith.Data.Mock.pdb
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/obj/Debug/netstandard2.0/Pages/MakeDeposit/ManualDeposit/ManualDepositPage.xaml.g.cs
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/obj/Debug/netstandard2.0/Pages/MakeDeposit/DepositPayment/DepositPaymentPage.xaml.g.cs
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/obj/Debug/netstandard2.0/Pages/MakeDeposit/CardPaymentDetails/CardPaymentDetailsPage.xaml.g.cs
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Zenith/obj/Debug/netstandard2.0/Pages/MakeDeposit/DepositInvestmentDetails/DepositInvestmentDetailsPage.xaml.g.cs
