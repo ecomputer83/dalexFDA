@@ -51,6 +51,30 @@ namespace Zenith
             Setup();
         }
 
+            
+        private async Task ExecuteOverview()
+        {
+            try
+            {
+                await this.CoreMethods.DisplayAlert("Overview","Overview","OK");
+            }
+            catch(Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+            
+        private async Task ExecuteHistory()
+        {
+            try
+            {
+                await this.CoreMethods.DisplayAlert("History","History","OK");
+            }
+            catch(Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
  
 
     }

@@ -9,49 +9,47 @@
             <Grid ColumnSpacing="6" RowSpacing="8">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="36" />
-                    <RowDefinition />
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".3*"/>
-                    <ColumnDefinition Width="1" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                
 
-                <ContentView x:Name="productBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand">
-                    <Label x:Name="product" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontSize="18" FontAttributes="Bold" 
-                            TextColor="{StaticResource White}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"
-                        />
-                </ContentView>
-
-                <StackLayout Grid.Row="1" Grid.Column="0" Spacing="2" VerticalOptions="Center" Orientation="Horizontal" Margin="4,0,4,12">
+                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="2" VerticalOptions="Center" Orientation="Horizontal" Margin="4,0,4,12">
                     <Label FontSize="14" FontAttributes="Bold" Text="Principal #" TextColor="{StaticResource Manatee}" HorizontalOptions="Start" LineBreakMode="WordWrap" />
                     <Label x:Name="principal" Grid.Row="1" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Liver}" 
                            HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-4,0,0"
                         />
                 </StackLayout>
 
-                <BoxView Grid.Row="1" Grid.Column="1" WidthRequest="1.5" Margin="0,6,0,15" Opacity=".3" BackgroundColor="{StaticResource Manatee}" />
-
-                <StackLayout Grid.Row="1" Grid.Column="2" Margin="0,0,16,12" HorizontalOptions="Start" Spacing="6" VerticalOptions="FillAndExpand">
-                    <StackLayout Spacing="4">
-                        <Label x:Name="terminal" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource Liver}" LineBreakMode="WordWrap" />
-                        <StackLayout Spacing="2" Orientation="Horizontal" HorizontalOptions="Start" Padding="0">
-                            <svg:SvgImage Svg="res:images.icon_location_filled" WidthRequest="12" VerticalOptions="Center" ColorMapping="000000=979797"
-                                    HorizontalOptions="Start"
-                                />
-                            <Label x:Name="terminalDetail" FontSize="14" TextColor="{StaticResource Manatee}" LineBreakMode="TailTruncation" />
-                        </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="0" Margin="0,0,16,12" HorizontalOptions="Start" Spacing="6" VerticalOptions="FillAndExpand">
+                    <StackLayout Spacing="2" Orientation="Horizontal">
+                       <Label FontSize="14" FontAttributes="Bold" Text="Term " TextColor="{StaticResource Manatee}" HorizontalOptions="Start" LineBreakMode="WordWrap" />
+                        <Label x:Name="days" Grid.Row="1" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Liver}" 
+                           HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-4,0,0"
+                        />
+                    </StackLayout>
+                    <StackLayout Spacing="2" Orientation="Horizontal">
+                       <Label FontSize="14" FontAttributes="Bold" Text="Rate %" TextColor="{StaticResource Manatee}" HorizontalOptions="Start" LineBreakMode="WordWrap" />
+                        <Label x:Name="rate" Grid.Row="1" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Liver}" 
+                           HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-4,0,0"
+                        />
+                    </StackLayout>
+                    <StackLayout Spacing="2" Orientation="Horizontal">
+                       <Label FontSize="14" FontAttributes="Bold" Text="Start Date " TextColor="{StaticResource Manatee}" HorizontalOptions="Start" LineBreakMode="WordWrap" />
+                        <Label x:Name="sdate" Grid.Row="1" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Liver}" 
+                           HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-4,0,0"
+                        />
+                    </StackLayout>
+                    <StackLayout Spacing="2" Orientation="Horizontal">
+                       <Label FontSize="14" FontAttributes="Bold" Text="Maturity Value #" TextColor="{StaticResource Manatee}" HorizontalOptions="Start" LineBreakMode="WordWrap" />
+                        <Label x:Name="maturity" Grid.Row="1" Grid.Column="0" FontSize="20" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Liver}" 
+                           HorizontalTextAlignment="Center" VerticalOptions="Start" Margin="0,-4,0,0"
+                        />
                     </StackLayout>
 
-                    <StackLayout Spacing="4" HorizontalOptions="Start">
-                        <Label x:Name="destination" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource Liver}" LineBreakMode="WordWrap" />
-                        <StackLayout Spacing="2" Orientation="Horizontal" HorizontalOptions="Start" Padding="0">
-                            <svg:SvgImage Svg="res:images.icon_location" WidthRequest="12" VerticalOptions="Center" ColorMapping="000000=979797"
-                                    HorizontalOptions="Start"
-                                />
-                            <Label x:Name="destinationDetail" FontSize="14" TextColor="{StaticResource Manatee}" LineBreakMode="TailTruncation" />
-                        </StackLayout>
-                    </StackLayout>
+                    
                 </StackLayout>
             </Grid>
         </Frame>

@@ -8,19 +8,14 @@ namespace Zenith
     {
         readonly IErrorManager ErrorManager;
         readonly DashboardViewModel Parent;
-        public DashboardViewModel.HistoryItem HistoryItem { get; set; }
+        public DashboardViewModel.InvestmentItem Investment { get; set; }
         public Color AmountColor { get; set; }
 
-        public DashboardItemViewModel(IErrorManager errorManager, DashboardViewModel parent, DashboardViewModel.HistoryItem historyItem)
+        public DashboardItemViewModel(IErrorManager errorManager, DashboardViewModel parent, DashboardViewModel.InvestmentItem historyItem)
         {
             ErrorManager = errorManager;
             Parent = parent;
-            HistoryItem = historyItem;
-
-            if (HistoryItem.TransactionType == TransactionType.Credit)
-                AmountColor = (Color)Application.Current.Resources["Red"];
-            else 
-                AmountColor = (Color)Application.Current.Resources["Green"];
+            Investment = historyItem;
         }
     }
 }

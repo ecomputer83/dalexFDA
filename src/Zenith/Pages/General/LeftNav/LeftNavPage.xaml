@@ -26,16 +26,15 @@
                 <ScrollView Grid.Row="1" Padding="0,30,0,0">
                     <StackLayout>
                         <BoxView HeightRequest="1" BackgroundColor="{StaticResource PastelGray}" />
-                        <local:MenuItem Text="Overview" Command="{Binding Overview}" Icon="res:images.icon-copy" />
-                        <local:MenuItem Text="Transfer" Command="{Binding Transfer}" Icon="res:images.icon-transfer" />
-                        <local:MenuItem Text="Airtime Recharge" Command="{Binding AirtimeRecharge}" Icon="res:images.icon-airtime" />
-                        <local:MenuItem Text="Bills Payment &amp; Collections" Command="{Binding BillsPaymentAndCollections}" Icon="res:images.icon-payment" />
-                        <local:MenuItem Text="Recurring Payment" Command="{Binding RecurringPayment}" Icon="res:images.icon-replay" />
-                        <local:MenuItem Text="Cards &amp; Cheques" Command="{Binding CardAndCheques}" Icon="res:images.icon-card" />
-                        <local:MenuItem Text="Travel and Leisure" Command="{Binding TravelAndLeisure}" Icon="res:images.icon-travel" />
-                        <local:MenuItem Text="Messages" Command="{Binding Messages}" Icon="res:images.icon-envelope" />
-                        <local:MenuItem Text="Settings" Command="{Binding Settings}" Icon="res:images.icon-settings" />
-                        <local:MenuItem Text="Zenith Near Me" Command="{Binding ZenithNearMe}" Icon="res:images.icon-location" />
+                        <local:MenuItem Text="Make Deposit" Command="{Binding Overview}" Icon="res:images.icon-copy" />
+                        <local:MenuItem Text="Account Statements" Command="{Binding Transfer}" Icon="res:images.icon-transfer" />
+                        <local:MenuItem Text="Transaction History" Command="{Binding AirtimeRecharge}" Icon="res:images.icon-airtime" />
+                        <local:MenuItem Text="Notifications" Command="{Binding BillsPaymentAndCollections}" Icon="res:images.icon-payment" />
+                        <local:MenuItem Text="Update Contact Info" Command="{Binding RecurringPayment}" Icon="res:images.icon-replay" />
+                        <local:MenuItem Text="Enquiries" Command="{Binding CardAndCheques}" Icon="res:images.icon-card" />
+                        <local:MenuItem Text="Feedback and Complaints" Command="{Binding TravelAndLeisure}" Icon="res:images.icon-travel" />
+                        <local:MenuItem Text="My Profile" Command="{Binding Messages}" Icon="res:images.icon-envelope" />
+                        <local:MenuItem Text="My Relationship Officer" Command="{Binding Settings}" Icon="res:images.icon-settings" />
                         <local:MenuItem Text="Logout" Command="{Binding Logout}" Icon="res:images.icon-logout" />
                     </StackLayout>
                 </ScrollView>

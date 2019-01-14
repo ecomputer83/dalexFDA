@@ -25,8 +25,7 @@
                     <RowDefinition Height=".10*" />
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
-                    <RowDefinition Height=".3*" />
-                    <RowDefinition Height="50" />
+                    <RowDefinition Height=".5*" />
                 </Grid.RowDefinitions>
                 
                 <StackLayout Grid.Row="0" Grid.RowSpan="2" Spacing="10" Padding="16,10,16,10" VerticalOptions="StartAndExpand">
@@ -51,21 +50,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <!--<local:OrderItemView Margin="8,4" Product="{Binding Order.Product}" Terminal="{Binding Order.Terminal}" 
-                                    TerminalDetail="{Binding Order.TerminalDetail}" Destination="{Binding Order.Destination}" 
-                                    DestinationDetail="{Binding Order.DestinationDetail}" OrderNumber="{Binding Order.OrderNumber}" 
-                                    Status="{Binding Order.Status}" StatusColor="{Binding Order.OrderType, Converter={StaticResource OrderTypeColor}}"
-                                />-->
+                            <local:InvestmentView Margin="8,4" Principal="{Binding Investment.Principal}" Days="{Binding Investment.Days}" 
+                                    Rate="{Binding Investment.Rate}" StartDate="{Binding Investment.StartDate}" 
+                                    Maturity="{Binding Investment.Maturity}"
+                                />
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-                </StackLayout>
-               
-                <StackLayout Grid.Row="4" Orientation="Horizontal" HeightRequest="50" BackgroundColor="#FFF" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
-                        Padding="16,8">
-                    <Button Text="OVERVIEW" Style="{Binding OverviewTabStyle}" Command="{Binding Overview}" />
-                    <Button Text="HISTORY" Style="{Binding HistoryTabStyle}" Command="{Binding History}" />
                 </StackLayout>
             </Grid>
         </RelativeLayout>

@@ -31,17 +31,9 @@ namespace  Zenith
 
     public partial class DashboardViewModel: BaseViewModel
     {
-        public ObservableCollection<CategoricalData> Data { get; set; }
-        public ObservableCollection<CategoricalData> Transactions { get; set; }
-        public ObservableCollection<DashboardAccountItem> DashboardAccountItems { get; set; }
         public ObservableCollection<DashboardItemViewModel> HistoryItemsSource { get; set; }
-        public List<HistoryItem> HistoryItems { get; set; } 
-        public bool IsHistoryTab { get { return !IsOverviewTab; }}
-        public Style OverviewTabStyle { get; set; }
-        public Style HistoryTabStyle { get; set; }
+        public List<InvestmentItem> Investments { get; set; } 
 
-        private Style activeTab = (Style)Application.Current.Resources["ActiveTab"];
-        private Style inactiveTab = (Style)Application.Current.Resources["InactiveTab"];
             
         public async override void Init(object initData)
         {
@@ -53,11 +45,8 @@ namespace  Zenith
                 {
                     LastSession = DateTime.Now.ToUniversalTime().ToString();
                     IsOverviewTab = true;
-                    SetupDashboardItems();
-                    SetupTransactions(0);
-                    SetupHistoryItems(0);
-                    OverviewTabStyle = activeTab;
-                    HistoryTabStyle = inactiveTab;
+                    SetupTransactions();
+                    SetupHistoryItems();
                 }
             }
             catch (Exception ex)
@@ -66,143 +55,38 @@ namespace  Zenith
             }
         }
 
-        private static ObservableCollection<CategoricalData> GetCategoricalData()
+        public async void SetupTransactions()
         {
-            var data = new ObservableCollection<CategoricalData>  {
-            new CategoricalData { Category = "A", Value = 0.63 },
-            new CategoricalData { Category = "B", Value = 0.85 },
-            new CategoricalData { Category = "C", Value = 1.05 },
-            new CategoricalData { Category = "D", Value = 0.96 },
-            new CategoricalData { Category = "E", Value = 0.78 },
-        };
-
-            return data;
+            TotalAmount = "GHS 999,999,000.00";
         }
 
-        private void SetupDashboardItems()
-        {
-            DashboardAccountItems = new ObservableCollection<DashboardAccountItem>
-            {
-                new DashboardAccountItem { AccountNumber="1234515612", AccountType = "CURRENT ACCOUNT" },
-                new DashboardAccountItem { AccountNumber="4714123411", AccountType = "SAVINGS ACCOUNT" }
-            };
-        }
-
-        public async void SetupTransactions(int position)
-        {
-            try
-            {
-                Transactions = new ObservableCollection<CategoricalData>();
-                switch (position)
-                {
-                    case 0:
-                        Transactions.Add(new CategoricalData { Category = "Jan", Value = 44 });
-                        Transactions.Add(new CategoricalData { Category = "Feb", Value = 53 });
-                        Transactions.Add(new CategoricalData { Category = "Mar", Value = 64 });
-                        Transactions.Add(new CategoricalData { Category = "Apr", Value = 75 });
-                        Transactions.Add(new CategoricalData { Category = "May", Value = 83 });
-                        Transactions.Add(new CategoricalData { Category = "Jun", Value = 87 });
-                        Transactions.Add(new CategoricalData { Category = "Jul", Value = 84 });
-                        Transactions.Add(new CategoricalData { Category = "Sep", Value = 78 });
-                        Transactions.Add(new CategoricalData { Category = "Oct", Value = 67 });
-                        Transactions.Add(new CategoricalData { Category = "Nov", Value = 55 });
-                        Transactions.Add(new CategoricalData { Category = "Dec", Value = 45 });
-                        TotalAmount = "GHS 999,999,000.00";
-                        break;
-                    case 1:
-                        Transactions.Add(new CategoricalData { Category = "Jan", Value = 61 });
-                        Transactions.Add(new CategoricalData { Category = "Feb", Value = 46 });
-                        Transactions.Add(new CategoricalData { Category = "Mar", Value = 66 });
-                        Transactions.Add(new CategoricalData { Category = "Apr", Value = 09 });
-                        Transactions.Add(new CategoricalData { Category = "May", Value = 90 });
-                        Transactions.Add(new CategoricalData { Category = "Jun", Value = 45 });
-                        Transactions.Add(new CategoricalData { Category = "Jul", Value = 43 });
-                        Transactions.Add(new CategoricalData { Category = "Sep", Value = 87 });
-                        Transactions.Add(new CategoricalData { Category = "Oct", Value = 89 });
-                        Transactions.Add(new CategoricalData { Category = "Nov", Value = 87 });
-                        Transactions.Add(new CategoricalData { Category = "Dec", Value = 54 });
-                        TotalAmount = "₦127,500.00";
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                await ErrorManager.DisplayErrorMessageAsync(ex);
-            }
-        }
-
-        private async Task ExecuteOverview()
-        {
-            try
-            {
-                IsOverviewTab = true;
-                OverviewTabStyle = activeTab;
-                HistoryTabStyle = inactiveTab;
-            }
-            catch (Exception ex)
-            {
-                await ErrorManager.DisplayErrorMessageAsync(ex);
-            }
-        }
-
-        private async Task ExecuteHistory()
-        {
-            try
-            {
-                IsOverviewTab = false;
-                OverviewTabStyle = inactiveTab;
-                HistoryTabStyle = activeTab;
-            }
-            catch (Exception ex)
-            {
-                await ErrorManager.DisplayErrorMessageAsync(ex);
-            }
-        }
-
-        public void SetupHistoryItems(int position)
+        public void SetupHistoryItems()
         {
             var list = new List<DashboardItemViewModel>();
-            switch (position)
-            {
-                case 0:
-                    HistoryItems = new List<HistoryItem>
+            Investments = new List<InvestmentItem>
                     {
-                        new HistoryItem { Date = DateTime.Now.AddDays(-20), Amount = "₦1,000.00", Description = "OTAL INTEREST", TransactionType = TransactionType.Credit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-24), Amount = "₦12,000.00", Description = "VANULA LTD", TransactionType = TransactionType.Credit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-12), Amount = "₦10,290.00", Description = "LOREM IPSUM", TransactionType = TransactionType.Debit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-21), Amount = "₦2,000.00", Description = "ATM WITHDRAWAL", TransactionType = TransactionType.Credit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-10), Amount = "₦500.00", Description = "OTAL INTEREST", TransactionType = TransactionType.Debit },
+                        new InvestmentItem { StartDate = DateTime.Now.AddDays(-20), Principal = "GHS 1,000,000.00", Days = "380", Rate = "3.75", Maturity="GHS 1,000,000.00" },
+                        new InvestmentItem { StartDate = DateTime.Now.AddDays(-50), Principal = "GHS 10,000,000.00", Days = "380", Rate = "3.75", Maturity="GHS 10,000,000.00" },
+                        new InvestmentItem { StartDate = DateTime.Now.AddDays(-70), Principal = "GHS 1,500,000.00", Days = "380", Rate = "3.75", Maturity="GHS 1,500,000.00" },
+                        new InvestmentItem { StartDate = DateTime.Now.AddDays(-90), Principal = "GHS 1,700,000.00", Days = "380", Rate = "3.75", Maturity="GHS 1,700,000.00" },
+                        new InvestmentItem { StartDate = DateTime.Now.AddDays(-120), Principal = "GHS 15,000,000.00", Days = "380", Rate = "3.75", Maturity="GHS 15,000,000.00" }
                     };
-                    break;
-                case 1:
-                    HistoryItems = new List<HistoryItem>
-                    {
-                        new HistoryItem { Date = DateTime.Now.AddDays(-9), Amount = "₦1,000.00", Description = "ATM WITHDRAWAL", TransactionType = TransactionType.Credit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-17), Amount = "₦1,230.00", Description = "USUM VENTURES", TransactionType = TransactionType.Debit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-23), Amount = "₦3,442.00", Description = "VANULA LTD", TransactionType = TransactionType.Credit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-10), Amount = "₦500.00", Description = "OTAL INTEREST", TransactionType = TransactionType.Debit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-18), Amount = "₦870.00", Description = "LOREM IPSUM", TransactionType = TransactionType.Debit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-23), Amount = "₦1,000.00", Description = "ATM WITHDRAWAL", TransactionType = TransactionType.Credit },
-                        new HistoryItem { Date = DateTime.Now.AddDays(-15), Amount = "₦3,000.00", Description = "ATM WITHDRAWAL", TransactionType = TransactionType.Credit },
-                    };
-                    break;
-            }
 
 
-            foreach(var item in HistoryItems)
+            foreach(var item in Investments)
             {
                 list.Add(new DashboardItemViewModel(ErrorManager, this, item));
             }
             HistoryItemsSource = new ObservableCollection<DashboardItemViewModel>(list);
         }
 
-        public class HistoryItem
+        public class InvestmentItem
         {
-            public DateTime Date { get; set; }
-            public string DateDisplay { get { return Date.ToShortDateString(); } }
-            public string Amount { get; set; }
-            public string Description { get; set; }
-            public string TransactionType { get; set; }
+            public DateTime StartDate { get; set; }
+            public string Principal { get; set; }
+            public string Days { get; set; }
+            public string Rate { get; set; }
+            public string Maturity { get; set; }
         }
     }
 }
