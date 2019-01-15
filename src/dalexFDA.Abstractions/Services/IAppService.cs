@@ -5,8 +5,11 @@ namespace Zenith.Abstractions
     {
         object CurrentNavigation { get; set; }
         void StartMainFlow();
-        void StartOverviewFlow();
-        void StartTransferFlow();
+        void StartElectronicFundTransfer();
+        void StartManualBankDeposit();
+        void StartAccountStatements();
+        void StartTransferHistory();
+
         void Logout();
     }
 }

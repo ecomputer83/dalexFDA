@@ -46,11 +46,11 @@ namespace Zenith
 
             //if (EnvironmentHelper.Configuration.IsInScreenUnitTestingMode)
             //{
-                page = FreshPageModelResolver.ResolvePageModel<UnitTestsViewModel>();
+               // page = FreshPageModelResolver.ResolvePageModel<UnitTestsViewModel>();
             //}
             //else
             //{
-            //page = FreshPageModelResolver.ResolvePageModel<AuthenticationWelcomeViewModel>();
+            page = FreshPageModelResolver.ResolvePageModel<LoginViewModel>();
             //}
 
 
@@ -69,15 +69,27 @@ namespace Zenith
             MainPage = new CustomNav();
         }
 
-        public void StartOverviewFlow()
+        public void StartElectronicFundTransfer()
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<DepositPaymentViewModel>();
+            StartFlow(page);
+        }
+
+        public void StartManualBankDeposit()
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<ManualDepositViewModel>();
+            StartFlow(page);
+        }
+
+        public void StartAccountStatements()
         {
             var page = FreshPageModelResolver.ResolvePageModel<DashboardViewModel>();
             StartFlow(page);
         }
 
-        public void StartTransferFlow()
+        public void StartTransferHistory()
         {
-            var page = FreshPageModelResolver.ResolvePageModel<TransferViewModel>();
+            var page = FreshPageModelResolver.ResolvePageModel<DashboardViewModel>();
             StartFlow(page);
         }
 

@@ -86,7 +86,7 @@ namespace Zenith
         {
             try
             {
-
+                AppService.StartElectronicFundTransfer();
             }
             catch (Exception ex)
             {
@@ -98,7 +98,7 @@ namespace Zenith
         {
             try
             {
-
+                AppService.StartManualBankDeposit();
             }
             catch (Exception ex)
             {
@@ -110,7 +110,7 @@ namespace Zenith
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("BillsPaymentAndCollections", "BillsPaymentAndCollections", "OK");
+                AppService.StartAccountStatements();
             }
             catch (Exception ex)
             {
@@ -122,7 +122,7 @@ namespace Zenith
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("RecurringPayment", "RecurringPayment", "OK");
+                await this.CoreMethods.DisplayAlert("Transfer History", "Coming Soon", "OK");
             }
             catch (Exception ex)
             {
@@ -134,7 +134,7 @@ namespace Zenith
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("CardsAndCheques", "CardsAndCheques", "OK");
+                await this.CoreMethods.DisplayAlert("Notifications", "Coming Soon", "OK");
             }
             catch (Exception ex)
             {
@@ -146,7 +146,7 @@ namespace Zenith
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("TravelAndLeisure", "TravelAndLeisure", "OK");
+                await this.CoreMethods.DisplayAlert("Update Contact Info", "Coming Soon", "OK");
             }
             catch (Exception ex)
             {
@@ -158,7 +158,7 @@ namespace Zenith
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("Messages", "Messages", "OK");
+                await this.CoreMethods.DisplayAlert("Enquires", "Coming Soon", "OK");
             }
             catch (Exception ex)
             {
@@ -170,7 +170,7 @@ namespace Zenith
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("Settings", "Settings", "OK");
+                await this.CoreMethods.DisplayAlert("Feedback and Complaints", "Coming Soon", "OK");
             }
             catch (Exception ex)
             {
@@ -182,7 +182,7 @@ namespace Zenith
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("ZenithNearMe", "ZenithNearMe", "OK");
+                await this.CoreMethods.DisplayAlert("My Profile", "Coming Soon", "OK");
             }
             catch (Exception ex)
             {
