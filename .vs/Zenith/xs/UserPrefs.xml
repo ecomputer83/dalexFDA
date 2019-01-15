@@ -1,19 +1,14 @@
 ﻿<Properties StartupConfiguration="{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}|Default">
   <MonoDevelop.Ide.ItemProperties.targets.Zenith.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9DC8B0B2-7FF5-4E11-B401-7630B7EA2ABB" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/Zenith/Pages/General/LeftNav/LeftNavPage.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/Zenith/Pages/General/Dashboard/DashboardViewModel.cs">
     <Files>
-      <File FileName="src/Zenith/Pages/Investment/RedeemRequest/RedemptionRequestPage.xaml" Line="43" Column="70" />
-      <File FileName="src/Zenith/Pages/Investment/RolloverRequest/RolloverRequestPage.xaml" Line="5" Column="64" />
-      <File FileName="src/Zenith/Pages/MakeDeposit/ManualDeposit/ManualDepositPage.xaml" Line="7" Column="80" />
-      <File FileName="src/Zenith/Pages/MakeDeposit/DepositPayment/DepositPaymentPage.xaml" Line="5" Column="64" />
-      <File FileName="src/Zenith/Pages/MakeDeposit/DepositInvestmentDetails/DepositInvestmentDetailsPage.xaml" Line="19" Column="50" />
-      <File FileName="src/Zenith/Pages/MakeDeposit/CardPaymentDetails/CardPaymentDetailsPage.xaml" Line="55" Column="83" />
-      <File FileName="src/Zenith/Custom/Sections/InvestmentView.xaml" Line="58" Column="1" />
-      <File FileName="src/Zenith/Custom/Sections/InvestmentView.xaml.cs" Line="1" Column="1" />
-      <File FileName="src/Zenith/Pages/General/Dashboard/DashboardPage.xaml" Line="33" Column="56" />
-      <File FileName="src/Zenith/Pages/General/Dashboard/DashboardViewModel.cs" Line="33" Column="6" />
-      <File FileName="src/Zenith/Pages/General/Dashboard/DashboardItemViewModel.cs" Line="14" Column="127" />
-      <File FileName="src/Zenith/Pages/General/LeftNav/LeftNavPage.xaml" Line="46" Column="1" />
+      <File FileName="src/Zenith/Pages/General/LeftNav/LeftNavPage.xaml" Line="40" Column="40" />
+      <File FileName="src/Zenith/Pages/General/LeftNav/LeftNavViewModel.cs" Line="61" Column="33" />
+      <File FileName="src/Zenith/Pages/General/Dashboard/DashboardPage.xaml" Line="44" Column="64" />
+      <File FileName="src/Zenith/Custom/Sections/InvestmentView.xaml" Line="8" Column="46" />
+      <File FileName="src/Zenith/Custom/Sections/InvestmentView.xaml.cs" Line="29" Column="1" />
+      <File FileName="src/Zenith/Pages/General/Dashboard/DashboardViewModel.cs" Line="60" Column="31" />
+      <File FileName="src/Zenith/Pages/General/Dashboard/DashboardItemViewModel.cs" Line="18" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

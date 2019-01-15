@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Zenith.LeftNavPage"
+             xmlns:local="clr-namespace:Zenith;assembly=Zenith"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundColor="{StaticResource PalmLeaf}">
+    <ContentPage.Content>
+        <StackLayout Padding="0">
+            <!-- Background -->
+            <Grid   RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Spacing="16" Padding="16,24" Orientation="Horizontal" BackgroundColor="{StaticResource MintGreen}" 
+                        VerticalOptions="CenterAndExpand">
+                    <AbsoluteLayout WidthRequest="60" HeightRequest="60" VerticalOptions="Center" HorizontalOptions="Center">
+                        <circle:CircleImage Aspect="AspectFill" FillColor="{StaticResource AndroidGreen}" HeightRequest="60" 
+                                HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60" 
+                            />
+                        <svg:SvgImage Svg="res:images.icon-profile" ColorMapping="950503=FFFFFF" AbsoluteLayout.LayoutBounds="0,14,60,30"
+                                WidthRequest="18"
+                           />
+                    </AbsoluteLayout>
+                    <StackLayout Spacing="4" VerticalOptions="CenterAndExpand">
+                        <Label Text="Papa G. Hanson" TextColor="{StaticResource Liver}" FontSize="16" />
+                        <Label Text="Adabraka, North Accra, GH" TextColor="{StaticResource Liver}" FontSize="16" />
+                        <Label Text="Client ID: 2345670001DLX" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" />
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView Grid.Row="1" Padding="0">
+                    <StackLayout>
+                        <local:MenuItem Text="Make Deposit" HasSubItem="true" IsOpen="{Binding IsMakeDepositOpen}" Command="{Binding MakeDeposit}" Icon="res:images.icon-copy" />
+                        <local:SubMenuItem Text="Electronic Fund Transfer" IsVisible="{Binding IsMakeDepositOpen}" Command="{Binding ElectronicFundTransfer}" Icon="res:images.icon-payment" />
+                        <local:SubMenuItem Text="Manual Bank Deposit" IsVisible="{Binding IsMakeDepositOpen}" Command="{Binding ManualBankDeposit}" Icon="res:images.icon-transfer" />
+                        
+                        <local:MenuItem Text="Account Statements" Command="{Binding Transfer}" Icon="res:images.icon-transfer" />
+                        <local:MenuItem Text="Transaction History" Command="{Binding AirtimeRecharge}" Icon="res:images.icon-airtime" />
+                        <local:MenuItem Text="Notifications" Command="{Binding BillsPaymentAndCollections}" Icon="res:images.icon-payment" />
+                        <local:MenuItem Text="Update Contact Info" Command="{Binding RecurringPayment}" Icon="res:images.icon-replay" />
+                        <local:MenuItem Text="Enquiries" Command="{Binding CardAndCheques}" Icon="res:images.icon-card" />
+                        <local:MenuItem Text="Feedback and Complaints" Command="{Binding TravelAndLeisure}" Icon="res:images.icon-travel" />
+                        <local:MenuItem Text="My Profile" Command="{Binding Messages}" Icon="res:images.icon-envelope" />
+                        <local:MenuItem Text="My Relationship Officer" Command="{Binding Settings}" Icon="res:images.icon-settings" />
+                        <local:MenuItem Text="Logout" Command="{Binding Logout}" Icon="res:images.icon-logout" />
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
