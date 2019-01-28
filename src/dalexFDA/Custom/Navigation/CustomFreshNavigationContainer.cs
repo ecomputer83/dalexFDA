@@ -4,7 +4,7 @@ using FreshMvvm;
 using Xamarin.Forms;
 using System.Linq;
 
-namespace Zenith
+namespace dalexFDA
 {
     public class CustomFreshNavigationContainer : Xamarin.Forms.NavigationPage, IFreshNavigationService
     {

@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public partial class DashboardViewModel
     {
         //default services
-        internal readonly Zenith.Abstractions.IErrorManager ErrorManager;
+        internal readonly dalexFDA.Abstractions.IErrorManager ErrorManager;
 
         //other services
         internal readonly Acr.UserDialogs.IUserDialogs Dialog;
@@ -34,7 +34,7 @@ namespace Zenith
 
         public DashboardViewModel
         (
-           Zenith.Abstractions.IErrorManager ErrorManager
+           dalexFDA.Abstractions.IErrorManager ErrorManager
           ,Acr.UserDialogs.IUserDialogs Dialog
         )
         {

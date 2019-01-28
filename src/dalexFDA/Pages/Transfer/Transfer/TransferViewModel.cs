@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 using Xamarin.Forms;
 using System.Linq;
 using Acr.UserDialogs;
 
-namespace  Zenith
+namespace  dalexFDA
 {
     public partial class TransferViewModel: BaseViewModel
     {

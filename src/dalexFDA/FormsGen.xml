@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Project SchemaVersion="1" Namespace="Zenith">
+<Project SchemaVersion="1" Namespace="dalexFDA">
   <Pages>
 
     <Page Name="Activate" Folder="Account">
@@ -53,6 +53,8 @@
       <Commands>
         <Command Name="Login" />
         <Command Name="Back" />
+        <Command Name="SignUpExistingUser" />
+        <Command Name="SignUpNewUser" />
       </Commands>
       <Properties>
         <Property Name="AccountNumber" TypeName="string" />
@@ -74,9 +76,9 @@
         <Command Name="Back" />
       </Commands>
       <Properties>
-        <Property Name="TransferType" TypeName="ObservableCollection&lt;Zenith.Abstractions.TransferType&gt;" />
-        <Property Name="FromBeneficiary" TypeName="List&lt;Zenith.Abstractions.Beneficiary&gt;" />
-        <Property Name="FromAccount" TypeName="ObservableCollection&lt;Zenith.Abstractions.DashboardAccountItem&gt;" />
+        <Property Name="TransferType" TypeName="ObservableCollection&lt;dalexFDA.Abstractions.TransferType&gt;" />
+        <Property Name="FromBeneficiary" TypeName="List&lt;dalexFDA.Abstractions.Beneficiary&gt;" />
+        <Property Name="FromAccount" TypeName="ObservableCollection&lt;dalexFDA.Abstractions.DashboardAccountItem&gt;" />
         <Property Name="Amount" TypeName="string" />
         <Property Name="Description" TypeName="string" />
         <Property Name="BankName" TypeName="string" />
@@ -93,8 +95,8 @@
   </Pages>
   
   <Services>
-    <Service Name="IAppService" FullTypeName="Zenith.Abstractions.IAppService" DisplayName="AppService" IsDefault="false" />
-    <Service Name="IErrorManager" FullTypeName="Zenith.Abstractions.IErrorManager" DisplayName="ErrorManager" IsDefault="true" />
+    <Service Name="IAppService" FullTypeName="dalexFDA.Abstractions.IAppService" DisplayName="AppService" IsDefault="false" />
+    <Service Name="IErrorManager" FullTypeName="dalexFDA.Abstractions.IErrorManager" DisplayName="ErrorManager" IsDefault="true" />
     <Service Name="IUserDialogs" FullTypeName="Acr.UserDialogs.IUserDialogs" DisplayName="Dialog" IsDefault="false" />
   </Services>
 </Project>

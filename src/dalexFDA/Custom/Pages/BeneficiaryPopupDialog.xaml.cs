@@ -5,7 +5,7 @@ using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     public partial class BeneficiaryPopupDialog : PopupPage
     {

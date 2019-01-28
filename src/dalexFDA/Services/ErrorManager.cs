@@ -2,9 +2,9 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 
-namespace Zenith
+namespace dalexFDA
 {
     public class ErrorManager : IErrorManager
     {

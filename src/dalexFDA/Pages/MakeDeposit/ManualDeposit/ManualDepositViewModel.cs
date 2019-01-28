@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public class ManualDepositViewModel : BaseViewModel
@@ -14,6 +14,10 @@ namespace Zenith
         internal readonly IErrorManager ErrorManager;
 
         readonly IDepositService DepositService;
+
+
+        public bool IsSuccessful { get; set; }
+        public bool IsNotSuccesful { get { return !IsSuccessful; } }
 
         public List<string> Banks { get; set; }
         public string BankName { get; set; }
@@ -23,12 +27,15 @@ namespace Zenith
 
         public Command ChangeBank { get; set; }
 
+        public Command Negotiate { get; set; }
+
         public ManualDepositViewModel(IErrorManager ErrorManager, IDepositService DepositService)
         {
             this.ErrorManager = ErrorManager;
             this.DepositService = DepositService;
 
             ChangeBank = new Command(async () => await ExecuteChangeBank());
+            Negotiate = new Command(async () => await ExecuteNegotiate());
         }
 
         public async override void Init(object initData)
@@ -51,6 +58,18 @@ namespace Zenith
             try
             {
                 BankCode = AllBanks.Where(x => x.BankName == BankName).Select(x => x.BankCode.ToString()).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private async Task ExecuteNegotiate()
+        {
+            try
+            {
+                IsSuccessful = true;
             }
             catch (Exception ex)
             {

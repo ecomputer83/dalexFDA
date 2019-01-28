@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public class ExistingUserSignupViewModel : BaseViewModel

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     public partial class FormEntry : ContentView
     {
@@ -64,6 +64,27 @@ namespace Zenith
             try
             {
                 data.Placeholder = Placeholder;
+            }
+            catch { }
+        }
+
+        #endregion
+
+        #region HorizontalTextAlignment
+
+        public static readonly BindableProperty HorizontalTextAlignmentProperty = BindableProperty.Create("HorizontalTextAlignment", typeof(TextAlignment), typeof(FormEntry), TextAlignment.Start);
+
+        public TextAlignment HorizontalTextAlignment
+        {
+            get { return (TextAlignment)GetValue(HorizontalTextAlignmentProperty); }
+            set { SetValue(HorizontalTextAlignmentProperty, value); }
+        }
+
+        private void SetHorizontalTextAlignment()
+        {
+            try
+            {
+                data.HorizontalTextAlignment = HorizontalTextAlignment;
             }
             catch { }
         }
@@ -134,6 +155,11 @@ namespace Zenith
             if (propertyName == PlaceholderProperty.PropertyName)
             {
                 SetPlaceholder();
+            }
+
+            if (propertyName == HorizontalTextAlignmentProperty.PropertyName)
+            {
+                SetHorizontalTextAlignment();
             }
         }
 

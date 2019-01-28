@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Zenith.ActivateAccountPage"
-             xmlns:local="clr-namespace:Zenith"
+             x:Class="dalexFDA.ActivateAccountPage"
+             xmlns:local="clr-namespace:dalexFDA"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
@@ -44,8 +44,8 @@
                         <Label Text="Activate Account" TextColor="#000" FontSize="28" HorizontalOptions="Center"
                                HorizontalTextAlignment="Center" Margin="0,16"
                             />
-                        <local:FormEntry Text="{Binding AccountNumber}" Placeholder="Enter your account number" Margin="0,8,0,24" />
-                        <local:FormEntry Text="{Binding BVN}" Placeholder="BVN" />
+                        <!--<local:FormEntry Text="{Binding AccountNumber}" Placeholder="Enter your account number" Margin="0,8,0,24" />
+                        <local:FormEntry Text="{Binding BVN}" Placeholder="BVN" />-->
                         <Button Text="ACTIVATE" Style="{StaticResource PrimaryButton}" Command="{Binding Activate}" Margin="0,24,0,24" />
 
                         <local:SwipeCell Command="{Binding Swipe}" />

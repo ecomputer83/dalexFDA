@@ -4,10 +4,10 @@ using CoreGraphics;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using Zenith.iOS;
+using dalexFDA.iOS;
 
 [assembly: ExportRenderer(typeof(DatePicker), typeof(CustomDatePickerRenderer))]
-namespace Zenith.iOS
+namespace dalexFDA.iOS
 {
     public class CustomDatePickerRenderer : DatePickerRenderer
     {

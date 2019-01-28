@@ -1,9 +1,9 @@
 ﻿using System;
-namespace Zenith.Abstractions
+namespace dalexFDA.Abstractions
 {
     public class EnvironmentHelper
     {
-        const string prefix = "Zenith.Abstractions.Configuration";
+        const string prefix = "dalexFDA.Abstractions.Configuration";
 
         private EnvironmentHelper()
         {

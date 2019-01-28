@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     public partial class LastSessionTab : ContentView
     {

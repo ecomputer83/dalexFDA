@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Zenith
+namespace dalexFDA
 {
     public class PageScenario
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 
-namespace Zenith
+namespace dalexFDA
 {
     public partial class LoginViewModel : BaseViewModel
     {
@@ -24,6 +24,31 @@ namespace Zenith
             try
             {
                 await CoreMethods.PopPageModel();
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+
+        private async Task ExecuteSignUpExistingUser()
+        {
+            try
+            {
+                await CoreMethods.PushPageModel<ExistingUserSignupViewModel>();
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private async Task ExecuteSignUpNewUser()
+        {
+            try
+            {
+                await CoreMethods.PushPageModel<NewUserSignupViewModel>();
             }
             catch (Exception ex)
             {

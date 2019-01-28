@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Zenith.NewUserSignupPage"
-             xmlns:local="clr-namespace:Zenith;assembly=Zenith"
-             xmlns:effects="clr-namespace:Zenith"
+             x:Class="dalexFDA.NewUserSignupPage"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
+             xmlns:effects="clr-namespace:dalexFDA"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
              xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              BackgroundColor="White"
@@ -27,33 +27,31 @@
             <ScrollView>
                 <StackLayout Spacing="6" Padding="32,0">
                     <Label Text="First Name" FontSize="16" FontAttributes="Bold" />
-                    <local:CustomEntry Text="{Binding FirstName}" FontSize="16" HeightRequest="42" Margin="0,0,0,6" />
+                    <local:FormEntry Text="{Binding FirstName}" Margin="0,0,0,6" />
                     
                     <Label Text="Last Name" FontSize="16" FontAttributes="Bold" />
-                    <local:CustomEntry Text="{Binding LastName}" FontSize="16" HeightRequest="42" Margin="0,0,0,6" />
+                    <local:FormEntry Text="{Binding LastName}" Margin="0,0,0,6" />
                     
                     <Label Text="Phone Number" FontSize="16" FontAttributes="Bold" />
                     <StackLayout Spacing="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <local:CustomEntry Text="{Binding PhoneExtension}" Placeholder="+233" PlaceholderColor="{StaticResource Manatee}"
-                               FontSize="16" HeightRequest="42" WidthRequest="120"
-                            />
-                        <local:CustomEntry Text="{Binding PhoneNumber}" FontSize="16" HeightRequest="42" HorizontalOptions="FillAndExpand" />
+                        <local:FormEntry Text="{Binding PhoneExtension}" Placeholder="+233" WidthRequest="120" />
+                        <local:FormEntry Text="{Binding PhoneNumber}" HorizontalOptions="FillAndExpand" />
                     </StackLayout>
                     
                     <Label Text="Email Address" FontSize="16" FontAttributes="Bold" />
-                    <local:CustomEntry Text="{Binding EmailAddress}" FontSize="16" HeightRequest="42" Margin="0,0,0,6" />
+                    <local:FormEntry Text="{Binding EmailAddress}" Margin="0,0,0,6" />
                     
                     <Label Text="Security Question" FontSize="16" FontAttributes="Bold" />
-                    <local:CustomEntry Text="{Binding SecurityQuestion}" FontSize="16" HeightRequest="42" Margin="0,0,0,6" />
+                    <local:FormEntry Text="{Binding SecurityQuestion}" Margin="0,0,0,6" />
                     
                     <Label Text="Security Answer" FontSize="16" FontAttributes="Bold" />
-                    <local:CustomEntry Text="{Binding SecurityAnswer}" FontSize="16" HeightRequest="42" Margin="0,0,0,6" />
+                    <local:FormEntry Text="{Binding SecurityAnswer}" Margin="0,0,0,6" />
                     
                     <Label Text="4-Digit PIN" FontSize="16" FontAttributes="Bold" />
-                    <local:CustomEntry Text="{Binding PIN}" IsPassword="true" FontSize="16" WidthRequest="120" HorizontalOptions="Start" HeightRequest="42" Margin="0,0,0,6" />
+                    <local:FormEntry Text="{Binding PIN}" IsPassword="true" WidthRequest="120" HorizontalOptions="Start" Margin="0,0,0,6" />
                     
                     <Label Text="Confirm PIN" FontSize="16" FontAttributes="Bold" />
-                    <local:CustomEntry Text="{Binding ConfirmPIN}" IsPassword="true" FontSize="16" WidthRequest="120" HorizontalOptions="Start" HeightRequest="42" Margin="0,0,0,6" />
+                    <local:FormEntry Text="{Binding ConfirmPIN}" IsPassword="true" WidthRequest="120" HorizontalOptions="Start" Margin="0,0,0,6" />
                     
                 </StackLayout>
             </ScrollView>

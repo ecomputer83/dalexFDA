@@ -2,15 +2,15 @@
 using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public class NewUserSignupViewModel : BaseViewModel
     {
-        readonly Zenith.Abstractions.IErrorManager ErrorManager;
-        readonly Zenith.Abstractions.IAppService AppService;
+        readonly dalexFDA.Abstractions.IErrorManager ErrorManager;
+        readonly dalexFDA.Abstractions.IAppService AppService;
 
         public bool IsAgreementSelected { get; set; }
 

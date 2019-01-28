@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Zenith.TransferPage"
-             xmlns:local="clr-namespace:Zenith"
+             x:Class="dalexFDA.TransferPage"
+             xmlns:local="clr-namespace:dalexFDA"
              xmlns:effects="clr-namespace:Effects;assembly=Effects"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
     <ContentPage.Content>

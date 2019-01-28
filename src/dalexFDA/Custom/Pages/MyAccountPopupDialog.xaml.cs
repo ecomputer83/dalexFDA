@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 
-namespace Zenith
+namespace dalexFDA
 {
     public partial class MyAccountPopupDialog : PopupPage
     {

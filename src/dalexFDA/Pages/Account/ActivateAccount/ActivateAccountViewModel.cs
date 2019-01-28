@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using PropertyChanged;
 
-namespace Zenith
+namespace dalexFDA
 {
     public partial class ActivateAccountViewModel : BaseViewModel
     {

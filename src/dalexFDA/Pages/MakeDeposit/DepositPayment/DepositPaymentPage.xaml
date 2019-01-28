@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Zenith.DepositPaymentPage"
-             xmlns:local="clr-namespace:Zenith;assembly=Zenith"
-             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+             x:Class="dalexFDA.DepositPaymentPage"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             Title="Electronic Fund Transfer">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:RadioButtonImageConverter x:Key="RadioButtonImage" /> 
@@ -23,24 +24,18 @@
                     </ContentView>
                     
                     <Label Text="Beneficiary Account Name" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:CustomEntry Text="DALEX FINANCE &amp; LEASING COMPANY LIMITED" TextColor="{StaticResource Liver}" FontSize="16" Margin="32,0,32,6"
-                            IsEnabled="false" HeightRequest="42" BackgroundColor="{StaticResource GrayBoro}"
+                    <local:FormEntry Text="DALEX FINANCE &amp; LEASING COMPANY LIMITED" Margin="32,0,32,6"
+                            IsEnabled="false" BackgroundColor="{StaticResource GrayBoro}"
                         />
                     
                     <Label Text="Payment Purpose" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:CustomEntry Text="Payment for New FDA Investment" TextColor="{StaticResource Liver}" FontSize="16"
-                            HeightRequest="42" Margin="32,0,32,6"
-                        />
+                    <local:FormEntry Text="Payment for New FDA Investment" Margin="32,0,32,6" />
                     
                     <Label Text="Deposit Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:CustomEntry Text="22,000.00" TextColor="{StaticResource Liver}" FontSize="16" HorizontalTextAlignment="End"
-                            HeightRequest="42" Margin="32,0,32,6"
-                        />
+                    <local:FormEntry Text="22,000.00" HorizontalTextAlignment="End" Margin="32,0,32,6" />
                     
                     <Label Text="Transaction Fee" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:CustomEntry Text="22.00" TextColor="{StaticResource Liver}" FontSize="16" HorizontalTextAlignment="End"
-                            HeightRequest="42" Margin="32,0,32,6" BackgroundColor="{StaticResource GrayBoro}"
-                        />
+                    <local:FormEntry Text="22.00" HorizontalTextAlignment="End" Margin="32,0,32,6" BackgroundColor="{StaticResource GrayBoro}" />
                     
                     <Label Text="Payment Method" FontSize="16" FontAttributes="Bold" Margin="32,0" />
                     <StackLayout Orientation="Horizontal" Padding="32,6" Spacing="20">

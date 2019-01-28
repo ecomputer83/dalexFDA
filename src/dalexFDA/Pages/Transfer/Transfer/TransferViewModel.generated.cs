@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public partial class TransferViewModel
     {
         //default services
-        internal readonly Zenith.Abstractions.IErrorManager ErrorManager;
+        internal readonly dalexFDA.Abstractions.IErrorManager ErrorManager;
 
         //other services
-        internal readonly Zenith.Abstractions.IAppService AppService;
+        internal readonly dalexFDA.Abstractions.IAppService AppService;
         internal readonly Acr.UserDialogs.IUserDialogs Dialog;
 
         //commands
@@ -34,9 +34,9 @@ namespace Zenith
         public Command Back { get; private set; }
 
         //properties
-        public ObservableCollection<Zenith.Abstractions.TransferType> TransferType { get; set; }
-        public List<Zenith.Abstractions.Beneficiary> FromBeneficiary { get; set; }
-        public ObservableCollection<Zenith.Abstractions.DashboardAccountItem> FromAccount { get; set; }
+        public ObservableCollection<dalexFDA.Abstractions.TransferType> TransferType { get; set; }
+        public List<dalexFDA.Abstractions.Beneficiary> FromBeneficiary { get; set; }
+        public ObservableCollection<dalexFDA.Abstractions.DashboardAccountItem> FromAccount { get; set; }
         public string Amount { get; set; }
         public string Description { get; set; }
         public string BankName { get; set; }
@@ -46,8 +46,8 @@ namespace Zenith
 
         public TransferViewModel
         (
-           Zenith.Abstractions.IErrorManager ErrorManager
-          ,Zenith.Abstractions.IAppService AppService
+           dalexFDA.Abstractions.IErrorManager ErrorManager
+          ,dalexFDA.Abstractions.IAppService AppService
           ,Acr.UserDialogs.IUserDialogs Dialog
         )
         {

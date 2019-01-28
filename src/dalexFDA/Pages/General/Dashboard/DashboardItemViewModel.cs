@@ -1,21 +1,41 @@
 ﻿using System;
 using Xamarin.Forms;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
+using System.Threading.Tasks;
 
-namespace Zenith
+namespace dalexFDA
 {
     public class DashboardItemViewModel 
     {
         readonly IErrorManager ErrorManager;
         readonly DashboardViewModel Parent;
-        public DashboardViewModel.InvestmentItem Investment { get; set; }
+        public InvestmentItem Investment { get; set; }
         public Color AmountColor { get; set; }
 
-        public DashboardItemViewModel(IErrorManager errorManager, DashboardViewModel parent, DashboardViewModel.InvestmentItem historyItem)
+        public Command ViewDetail { get; set; }
+
+
+        public DashboardItemViewModel(IErrorManager errorManager, DashboardViewModel parent, InvestmentItem historyItem)
         {
             ErrorManager = errorManager;
             Parent = parent;
             Investment = historyItem;
+
+            ViewDetail = new Command(async () => await ExecuteViewDetail());
         }
+
+        private async Task ExecuteViewDetail()
+        {
+            try
+            {
+                var nav = new InvestmentDetailsViewModel.Nav { Investment = Investment };
+                await Parent.CoreMethods.PushPageModel<InvestmentDetailsViewModel>(nav);
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
     }
 }

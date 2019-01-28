@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using PropertyChanged;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public class UnitTestsViewModel : BaseViewModel

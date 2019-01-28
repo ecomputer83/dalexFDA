@@ -12,20 +12,22 @@ using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public partial class LoginViewModel
     {
         //default services
-        internal readonly Zenith.Abstractions.IErrorManager ErrorManager;
+        internal readonly dalexFDA.Abstractions.IErrorManager ErrorManager;
 
         //other services
-        internal readonly Zenith.Abstractions.IAppService AppService;
+        internal readonly dalexFDA.Abstractions.IAppService AppService;
 
         //commands
         public Command Login { get; private set; }
         public Command Back { get; private set; }
+        public Command SignUpExistingUser { get; private set; }
+        public Command SignUpNewUser { get; private set; }
 
         //properties
         public string AccountNumber { get; set; }
@@ -33,8 +35,8 @@ namespace Zenith
 
         public LoginViewModel
         (
-           Zenith.Abstractions.IErrorManager ErrorManager
-          ,Zenith.Abstractions.IAppService AppService
+           dalexFDA.Abstractions.IErrorManager ErrorManager
+          ,dalexFDA.Abstractions.IAppService AppService
         )
         {
             //setup default services
@@ -46,6 +48,8 @@ namespace Zenith
             //setup commands
             Login = new Command(async () => await ExecuteLogin());
             Back = new Command(async () => await ExecuteBack());
+            SignUpExistingUser = new Command(async () => await ExecuteSignUpExistingUser());
+            SignUpNewUser = new Command(async () => await ExecuteSignUpNewUser());
   
             Setup();
         }

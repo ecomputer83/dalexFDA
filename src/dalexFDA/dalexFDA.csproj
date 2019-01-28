@@ -78,7 +78,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Effects\Effects.csproj" />
     <ProjectReference Include="..\dalexFDA.Abstractions\dalexFDA.Abstractions.csproj" />
-    <ProjectReference Include="..\delexFDA.Data.Mock\dalexFDA.Data.Mock.csproj" />
+    <ProjectReference Include="..\dalexFDA.Data.Mock\dalexFDA.Data.Mock.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Images\icon-down-arrow.svg" />
@@ -109,6 +109,7 @@
     <None Remove="Images\icon-checkbox-selected.svg" />
     <None Remove="Images\icon-unselected.svg" />
     <None Remove="Images\icons_selected.svg" />
+    <None Remove="Images\icon-success.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Custom\Modal\MyAccountPopupDialog.xaml" />
@@ -141,6 +142,7 @@
     <EmbeddedResource Include="Images\icon-checkbox-selected.svg" />
     <EmbeddedResource Include="Images\icon-unselected.svg" />
     <EmbeddedResource Include="Images\icon-selected.svg" />
+    <EmbeddedResource Include="Images\icon-success.svg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Custom\Modal\BeneficiaryPopUpDialog.xaml.cs" />

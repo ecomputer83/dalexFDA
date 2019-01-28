@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Zenith
+namespace dalexFDA
 {
     public class PageScenarioSetup
     {

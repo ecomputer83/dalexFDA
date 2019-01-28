@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Zenith.FormEntry"
-             xmlns:local="clr-namespace:Zenith;assembly=Zenith"
+             x:Class="dalexFDA.FormEntry"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
              xmlns:effects="clr-namespace:Effects;assembly=Effects">
   <ContentView.Content>
-        <StackLayout Spacing="12">
-            <local:CustomEntry x:Name="data" Text="" TextColor="{StaticResource Liver}" PlaceholderColor="{StaticResource Manatee}" FontSize="16">
-                <local:CustomEntry.Effects>
-                    <effects:RemoveBorderEffect />
-                </local:CustomEntry.Effects>
-            </local:CustomEntry>
+        <StackLayout BackgroundColor="{StaticResource PalmLeaf}">
+            <StackLayout BackgroundColor="{StaticResource White}" Margin="1">
+                <local:CustomEntry x:Name="data" Text="" Margin="6,0" TextColor="{StaticResource Liver}"
+                        VerticalOptions="CenterAndExpand" PlaceholderColor="{StaticResource Manatee}" FontSize="16">
+                    <local:CustomEntry.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double" iOS="42" Android="34" />
+                    </local:CustomEntry.HeightRequest>
+                    <local:CustomEntry.Effects>
+                        <effects:RemoveBorderEffect />
+                    </local:CustomEntry.Effects>
+                </local:CustomEntry>
+            </StackLayout>
         </StackLayout>
   </ContentView.Content>
 </ContentView>

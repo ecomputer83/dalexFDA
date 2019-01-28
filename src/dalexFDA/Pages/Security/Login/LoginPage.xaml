@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Zenith.LoginPage"
+             x:Class="dalexFDA.LoginPage"
              NavigationPage.HasNavigationBar="false"
-             xmlns:local="clr-namespace:Zenith;assembly=Zenith"
-             xmlns:effects="clr-namespace:Zenith"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
+             xmlns:effects="clr-namespace:dalexFDA"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
              BackgroundColor="White">
     <ContentPage.Content>
@@ -26,14 +26,13 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     
-                    <local:CustomEntry Grid.Column="0" Text="{Binding PhoneExtension}" Placeholder="+233" PlaceholderColor="{StaticResource Manatee}"
-                           FontSize="16" HeightRequest="42"
+                    <local:FormEntry Grid.Column="0" Text="{Binding PhoneExtension}" Placeholder="+233"
                         />
-                    <local:CustomEntry Grid.Column="1" Text="{Binding PhoneNumber}" FontSize="16" HeightRequest="42" />
+                    <local:FormEntry Grid.Column="1" Text="{Binding PhoneNumber}" />
                 </Grid>
                 
                 <Label Text="PIN" FontSize="16" FontAttributes="Bold" Margin="0,16,0,0" />
-                <local:CustomEntry Text="{Binding PIN}" FontSize="16" HeightRequest="42" />
+                <local:FormEntry Text="{Binding PIN}" IsPassword="true" />
                 
                 <Button Text="LOG IN" Style="{StaticResource PrimaryButton}" Command="{Binding Login}" Margin="0,22,0,8" />
                 
@@ -57,12 +56,15 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SignUpExistingUser}" />
+                        </ContentView.GestureRecognizers>
                     </ContentView>
                     
                     <BoxView Grid.Column="1" WidthRequest="3" BackgroundColor="#FFF" />
                     
                     <ContentView Grid.Column="2" HorizontalOptions="FillAndExpand">
-                        <Label FontSize="16" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#FFF" Margin="0,16,0,0">
+                        <Label FontSize="16" InputTransparent="true" FontAttributes="Bold" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#FFF" Margin="0,16,0,0">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="CREATE" />
@@ -71,6 +73,9 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SignUpNewUser}" />
+                        </ContentView.GestureRecognizers>
                     </ContentView>
                 </Grid>
          </Grid>

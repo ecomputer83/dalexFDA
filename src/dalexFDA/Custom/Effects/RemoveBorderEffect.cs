@@ -1,11 +1,11 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     public class RemoveBorderEffect : RoutingEffect
     {
-        public RemoveBorderEffect() : base("Zenith.GradientEffect")
+        public RemoveBorderEffect() : base("dalexFDA.GradientEffect")
         {
         }
     }

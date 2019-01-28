@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public class UnitTestsItemViewModel

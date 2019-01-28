@@ -2,7 +2,7 @@
 using System.Collections;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     public static class ItemsSourcer
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Zenith.Abstractions
+namespace dalexFDA.Abstractions
 {
     public class DashboardAccountItem
     {

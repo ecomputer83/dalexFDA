@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public class DepositPaymentViewModel : BaseViewModel
@@ -17,6 +17,7 @@ namespace Zenith
         //commands
         public Command Bank { get; private set; }
         public Command Card { get; private set; }
+        public Command Continue { get; private set; }
 
         public DepositPaymentViewModel(IErrorManager ErrorManager)
         {
@@ -24,6 +25,7 @@ namespace Zenith
 
             Bank = new Command(async () => await ExecuteBank());
             Card = new Command(async () => await ExecuteCard());
+            Continue = new Command(async () => await ExecuteContinue());
 
             IsBank = true;
         }
@@ -45,6 +47,18 @@ namespace Zenith
             try
             {
                 IsBank = false;
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private async Task ExecuteContinue()
+        {
+            try
+            {
+                await CoreMethods.PushPageModel<CardPaymentDetailsViewModel>();
             }
             catch (Exception ex)
             {

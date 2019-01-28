@@ -3,7 +3,7 @@ using System.Linq;
 using FreshMvvm;
 using PropertyChanged;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public class BaseViewModel : FreshBasePageModel

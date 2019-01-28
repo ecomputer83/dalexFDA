@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Zenith.Abstractions
+namespace dalexFDA.Abstractions
 {
     public interface IDepositService
     {

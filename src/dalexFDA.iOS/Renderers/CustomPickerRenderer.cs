@@ -1,12 +1,12 @@
 ﻿using System;
-using Zenith;
-using Zenith.iOS;
+using dalexFDA;
+using dalexFDA.iOS;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]
-namespace Zenith.iOS
+namespace dalexFDA.iOS
 {
     public class CustomPickerRenderer : PickerRenderer
     {

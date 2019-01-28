@@ -4,11 +4,11 @@ using Foundation;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using Zenith;
-using Zenith.iOS;
+using dalexFDA;
+using dalexFDA.iOS;
 
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
-namespace Zenith.iOS
+namespace dalexFDA.iOS
 {
     public class CustomEntryRenderer : EntryRenderer
     {

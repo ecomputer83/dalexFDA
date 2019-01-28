@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     public class EventToCommandBehavior : BehaviorBase<View>
     {

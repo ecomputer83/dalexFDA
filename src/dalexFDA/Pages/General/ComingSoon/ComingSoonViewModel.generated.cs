@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public partial class ComingSoonViewModel
     {
         //default services
-        internal readonly Zenith.Abstractions.IErrorManager ErrorManager;
+        internal readonly dalexFDA.Abstractions.IErrorManager ErrorManager;
 
         //other services
 
@@ -28,7 +28,7 @@ namespace Zenith
 
         public ComingSoonViewModel
         (
-           Zenith.Abstractions.IErrorManager ErrorManager
+           dalexFDA.Abstractions.IErrorManager ErrorManager
         )
         {
             //setup default services

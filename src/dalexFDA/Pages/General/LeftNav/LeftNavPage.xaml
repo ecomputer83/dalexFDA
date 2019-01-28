@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Zenith.LeftNavPage"
-             xmlns:local="clr-namespace:Zenith;assembly=Zenith"
+             x:Class="dalexFDA.LeftNavPage"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
              xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              NavigationPage.HasNavigationBar="false"
@@ -37,13 +37,13 @@
                         <local:SubMenuItem Text="Electronic Fund Transfer" IsVisible="{Binding IsMakeDepositOpen}" Command="{Binding ElectronicFundTransfer}" Icon="res:images.icon-payment" />
                         <local:SubMenuItem Text="Manual Bank Deposit" IsVisible="{Binding IsMakeDepositOpen}" Command="{Binding ManualBankDeposit}" Icon="res:images.icon-transfer" />
                         
-                        <local:MenuItem Text="Account Statements" Command="{Binding Transfer}" Icon="res:images.icon-transfer" />
-                        <local:MenuItem Text="Transaction History" Command="{Binding AirtimeRecharge}" Icon="res:images.icon-airtime" />
-                        <local:MenuItem Text="Notifications" Command="{Binding BillsPaymentAndCollections}" Icon="res:images.icon-payment" />
-                        <local:MenuItem Text="Update Contact Info" Command="{Binding RecurringPayment}" Icon="res:images.icon-replay" />
-                        <local:MenuItem Text="Enquiries" Command="{Binding CardAndCheques}" Icon="res:images.icon-card" />
-                        <local:MenuItem Text="Feedback and Complaints" Command="{Binding TravelAndLeisure}" Icon="res:images.icon-travel" />
-                        <local:MenuItem Text="My Profile" Command="{Binding Messages}" Icon="res:images.icon-envelope" />
+                        <local:MenuItem Text="Account Statements" Command="{Binding AccountStatements}" Icon="res:images.icon-transfer" />
+                        <local:MenuItem Text="Transaction History" Command="{Binding TransactionHistory}" Icon="res:images.icon-airtime" />
+                        <local:MenuItem Text="Notifications" Command="{Binding Notifications}" Icon="res:images.icon-payment" />
+                        <local:MenuItem Text="Update Contact Info" Command="{Binding UpdateContactInfo}" Icon="res:images.icon-replay" />
+                        <local:MenuItem Text="Enquiries" Command="{Binding Enquiries}" Icon="res:images.icon-card" />
+                        <local:MenuItem Text="Feedback and Complaints" Command="{Binding Feedback}" Icon="res:images.icon-travel" />
+                        <local:MenuItem Text="My Profile" Command="{Binding MyProfile}" Icon="res:images.icon-envelope" />
                         <local:MenuItem Text="My Relationship Officer" Command="{Binding Settings}" Icon="res:images.icon-settings" />
                         <local:MenuItem Text="Logout" Command="{Binding Logout}" Icon="res:images.icon-logout" />
                     </StackLayout>

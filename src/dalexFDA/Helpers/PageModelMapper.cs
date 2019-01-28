@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FreshMvvm;
 
-namespace Zenith
+namespace dalexFDA
 {
     public class PageModelMapper : IFreshPageModelMapper
     {

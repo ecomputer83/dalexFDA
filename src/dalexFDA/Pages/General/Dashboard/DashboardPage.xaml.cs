@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Xamarin.Forms;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 
-namespace Zenith
+namespace dalexFDA
 {
     public partial class DashboardPage : ContentPage
     {
@@ -18,6 +18,9 @@ namespace Zenith
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             var list = sender as ListView;
+            var model = e.Item as DashboardItemViewModel;
+            if (model != null)
+                model.ViewDetail.Execute(null);
             list.SelectedItem = null;
         }
 

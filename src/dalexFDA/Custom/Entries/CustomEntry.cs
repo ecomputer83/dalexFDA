@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace Zenith
+namespace dalexFDA
 {
     public class CustomEntry : Entry
     {

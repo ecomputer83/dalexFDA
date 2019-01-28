@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace Zenith.Abstractions
+namespace dalexFDA.Abstractions
 {
     public static class ResourceHelper
     {
