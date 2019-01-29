@@ -28,10 +28,6 @@ namespace dalexFDA.Data.WebServices
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
             var response = await service.Signup(data);
 
-
-
-            Debug.WriteLine($"response  ==== {response}");
-
             return response;
         }
     }

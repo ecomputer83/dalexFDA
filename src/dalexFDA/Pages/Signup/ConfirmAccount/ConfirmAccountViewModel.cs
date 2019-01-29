@@ -21,6 +21,7 @@ namespace dalexFDA
         public string TokenErrorMessage { get; set; }
 
         public Command Confirm { get; private set; }
+        public Command Cancel { get; private set; }
 
         Nav Data;
         public class Nav
@@ -36,6 +37,7 @@ namespace dalexFDA
             this.Dialog = Dialog;
 
             Confirm = new Command(async () => await ExecuteConfirm());
+            Cancel = new Command(async () => await ExecuteCancel());
         }
 
         public async override void Init(object initData)
@@ -73,7 +75,24 @@ namespace dalexFDA
                 using (Dialog.Loading("Registering..."))
                 {
                     var response = await AccountService.ConfirmAccount(Phone, Token);
+
+                    if (response)
+                    {
+                        AppService.Logout();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private async Task ExecuteCancel()
+        {
+            try
+            {               
+                AppService.Logout();
             }
             catch (Exception ex)
             {

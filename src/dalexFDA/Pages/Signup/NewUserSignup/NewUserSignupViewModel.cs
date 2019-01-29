@@ -106,14 +106,14 @@ namespace dalexFDA
                         PhoneNumber = FullPhoneNumber,
                         SecurityQuestion = SecurityQuestion,
                         SecurityAnswer = SecurityAnswer,
-                        MobileDevice = new MobileDevice
-                        {
-                            DeviceId = DeviceInfo.Id,
-                            DeviceType = DeviceInfo.Platform.ToString(),
-                            DeviceModel = DeviceInfo.Model,
-                            DeviceVersion = DeviceInfo.Version,
-                            DeviceVendorId = DeviceInfo.Id
-                        }
+                        //MobileDevice = new MobileDevice
+                        //{
+                        //    DeviceId = DeviceInfo.Id,
+                        //    DeviceType = DeviceInfo.Platform.ToString(),
+                        //    DeviceModel = DeviceInfo.Model,
+                        //    DeviceVersion = DeviceInfo.Version,
+                        //    DeviceVendorId = DeviceInfo.Id
+                        //}
                     };
                     var response = await AccountService.Signup(request);
 
