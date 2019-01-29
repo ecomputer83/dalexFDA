@@ -95,6 +95,12 @@
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>3.0.0.5</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.DeviceInfo">
+      <Version>4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>3.1.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -171,6 +177,16 @@
     <ProjectReference Include="..\dalexFDA.Abstractions\dalexFDA.Abstractions.csproj">
       <Project>{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}</Project>
       <Name>dalexFDA.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Effects\Effects.csproj">
+      <Project>{9BBE4704-4E61-4F51-836C-FD4CE5FC93D0}</Project>
+      <Name>Effects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Effects.Android\Effects.Android.csproj">
+      <IsAppExtension>true</IsAppExtension>
+      <Project>{B73D523F-CA61-4B2D-86D9-CC467A3E55F7}</Project>
+      <Name>Effects.Android</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
