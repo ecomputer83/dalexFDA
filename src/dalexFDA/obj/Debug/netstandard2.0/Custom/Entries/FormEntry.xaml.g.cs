@@ -8,21 +8,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Custom.Entries.FormEntry.xaml", "Custom/Entries/FormEntry.xaml", typeof(global::Zenith.FormEntry))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Custom.Entries.FormEntry.xaml", "Custom/Entries/FormEntry.xaml", typeof(global::dalexFDA.FormEntry))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Custom/Entries/FormEntry.xaml")]
     public partial class FormEntry : global::Xamarin.Forms.ContentView {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Zenith.CustomEntry data;
+        private global::Xamarin.Forms.StackLayout container;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::dalexFDA.CustomEntry data;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Label caption;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(FormEntry));
-            data = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Zenith.CustomEntry>(this, "data");
+            container = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "container");
+            data = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::dalexFDA.CustomEntry>(this, "data");
+            caption = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "caption");
         }
     }
 }

@@ -91,6 +91,85 @@ namespace dalexFDA
 
         #endregion
 
+        #region EntryWidth
+
+        public static readonly BindableProperty EntryWidthProperty = BindableProperty.Create("EntryWidth", typeof(double), typeof(FormEntry), null);
+
+        public double EntryWidth
+        {
+            get { return (double)GetValue(EntryWidthProperty); }
+            set { SetValue(EntryWidthProperty, value); }
+        }
+
+        private void SetEntryWidth()
+        {
+            try
+            {
+                data.WidthRequest = EntryWidth;
+            }
+            catch { }
+        }
+
+        #endregion
+
+        #region HasError
+
+        public static readonly BindableProperty HasErrorProperty = BindableProperty.Create("HasError", typeof(bool), typeof(FormEntry), false, BindingMode.TwoWay);
+
+        public bool HasError
+        {
+            get { return (bool)GetValue(HasErrorProperty); }
+            set { SetValue(HasErrorProperty, value); }
+        }
+
+        private void SetHasError()
+        {
+            try
+            {
+                Color color;
+                Color textColor;
+                bool isVisible;
+
+                if (HasError)
+                {
+                    color = (Color)Application.Current.Resources["Kucrimson"];
+                    isVisible = true;
+                }
+                else
+                {
+                    color = (Color)Application.Current.Resources["PalmLeaf"];
+                    isVisible = false;
+                }
+
+                container.BackgroundColor = color;
+                caption.IsVisible = isVisible;
+            }
+            catch { }
+        }
+
+        #endregion
+
+        #region ErrorMessage
+
+        public static readonly BindableProperty ErrorMessageProperty = BindableProperty.Create("ErrorMessage", typeof(string), typeof(FormEntry), default(string), BindingMode.TwoWay);
+
+        public string ErrorMessage
+        {
+            get { return (string)GetValue(ErrorMessageProperty); }
+            set { SetValue(ErrorMessageProperty, value); }
+        }
+
+        private void SetErrorMessage()
+        {
+            try
+            {
+                caption.Text = ErrorMessage;
+            }
+            catch { }
+        }
+
+        #endregion
+
         #region IsPassword
 
         public static readonly BindableProperty IsPasswordProperty = BindableProperty.Create("IsPassword", typeof(bool), typeof(FormEntry), false);
@@ -152,6 +231,16 @@ namespace dalexFDA
                 SetKeyboard();
             }
 
+            if (propertyName == HasErrorProperty.PropertyName)
+            {
+                SetHasError();
+            }
+
+            if (propertyName == ErrorMessageProperty.PropertyName)
+            {
+                SetErrorMessage();
+            }
+
             if (propertyName == PlaceholderProperty.PropertyName)
             {
                 SetPlaceholder();
@@ -160,6 +249,11 @@ namespace dalexFDA
             if (propertyName == HorizontalTextAlignmentProperty.PropertyName)
             {
                 SetHorizontalTextAlignment();
+            }
+
+            if (propertyName == EntryWidthProperty.PropertyName)
+            {
+                SetEntryWidth();
             }
         }
 

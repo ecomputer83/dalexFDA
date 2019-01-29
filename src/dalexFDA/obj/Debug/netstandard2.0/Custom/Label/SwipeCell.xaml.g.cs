@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Custom.Label.SwipeCell.xaml", "Custom/Label/SwipeCell.xaml", typeof(global::Zenith.SwipeCell))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Custom.Label.SwipeCell.xaml", "Custom/Label/SwipeCell.xaml", typeof(global::dalexFDA.SwipeCell))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Custom/Label/SwipeCell.xaml")]

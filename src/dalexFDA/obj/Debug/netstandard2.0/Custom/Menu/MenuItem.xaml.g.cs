@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Custom.Menu.MenuItem.xaml", "Custom/Menu/MenuItem.xaml", typeof(global::Zenith.MenuItem))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Custom.Menu.MenuItem.xaml", "Custom/Menu/MenuItem.xaml", typeof(global::dalexFDA.MenuItem))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Custom/Menu/MenuItem.xaml")]

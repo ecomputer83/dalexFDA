@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Zenith.Abstractions;
+using dalexFDA.Abstractions;
 
-namespace Zenith.Data.Mock
+namespace dalexFDA.Data.Mock
 {
     public class DepositService : IDepositService
     {

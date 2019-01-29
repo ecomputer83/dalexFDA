@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Pages.Investment.RedeemRequest.RedemptionRequestPage.xaml", "Pages/Investment/RedeemRequest/RedemptionRequestPage.xaml", typeof(global::Zenith.RedemptionRequestPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Pages.Investment.RedeemRequest.RedemptionRequestPage.xaml", "Pages/Investment/RedeemRequest/RedemptionRequestPage.xaml", typeof(global::dalexFDA.RedemptionRequestPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages/Investment/RedeemRequest/RedemptionRequestPage.xaml")]

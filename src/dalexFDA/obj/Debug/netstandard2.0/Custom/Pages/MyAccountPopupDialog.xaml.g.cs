@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Custom.Pages.MyAccountPopupDialog.xaml", "Custom/Pages/MyAccountPopupDialog.xaml", typeof(global::Zenith.MyAccountPopupDialog))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Custom.Pages.MyAccountPopupDialog.xaml", "Custom/Pages/MyAccountPopupDialog.xaml", typeof(global::dalexFDA.MyAccountPopupDialog))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Custom/Pages/MyAccountPopupDialog.xaml")]

@@ -16,9 +16,9 @@ namespace dalexFDA.iOS
         {
             base.OnElementChanged(e);
 
-            //Control.BorderStyle = UITextBorderStyle.None;
-            //Control.SpellCheckingType = UITextSpellCheckingType.No;             // No Spellchecking
-            //Control.AutocorrectionType = UITextAutocorrectionType.No;           // No Autocorrection
+            Control.BorderStyle = UITextBorderStyle.None;
+            Control.SpellCheckingType = UITextSpellCheckingType.No;             // No Spellchecking
+            Control.AutocorrectionType = UITextAutocorrectionType.No;           // No Autocorrection
             //Control.AutocapitalizationType = UITextAutocapitalizationType.None; // No Autocapitalization
 
         }

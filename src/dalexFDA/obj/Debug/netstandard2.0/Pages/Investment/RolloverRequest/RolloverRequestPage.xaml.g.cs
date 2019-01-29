@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Pages.Investment.RolloverRequest.RolloverRequestPage.xaml", "Pages/Investment/RolloverRequest/RolloverRequestPage.xaml", typeof(global::Zenith.RolloverRequestPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Pages.Investment.RolloverRequest.RolloverRequestPage.xaml", "Pages/Investment/RolloverRequest/RolloverRequestPage.xaml", typeof(global::dalexFDA.RolloverRequestPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages/Investment/RolloverRequest/RolloverRequestPage.xaml")]

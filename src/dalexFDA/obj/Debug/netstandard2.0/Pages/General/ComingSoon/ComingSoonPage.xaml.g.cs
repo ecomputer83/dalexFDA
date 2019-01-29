@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Pages.General.ComingSoon.ComingSoonPage.xaml", "Pages/General/ComingSoon/ComingSoonPage.xaml", typeof(global::Zenith.ComingSoonPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Pages.General.ComingSoon.ComingSoonPage.xaml", "Pages/General/ComingSoon/ComingSoonPage.xaml", typeof(global::dalexFDA.ComingSoonPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages/General/ComingSoon/ComingSoonPage.xaml")]

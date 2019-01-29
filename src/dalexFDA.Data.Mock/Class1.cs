@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Zenith.Data.Mock
+namespace dalexFDA.Data.Mock
 {
     public class Class1
     {

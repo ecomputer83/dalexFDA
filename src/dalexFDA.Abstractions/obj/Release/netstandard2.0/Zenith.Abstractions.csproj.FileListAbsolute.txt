@@ -1,7 +1,0 @@
-/Users/bakaresulaimon/Desktop/PracticeArea/zenith/src/Zenith.Abstractions/bin/Release/netstandard2.0/netstandard2.0/Zenith.Abstractions.deps.json
-/Users/bakaresulaimon/Desktop/PracticeArea/zenith/src/Zenith.Abstractions/bin/Release/netstandard2.0/netstandard2.0/Zenith.Abstractions.dll
-/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/obj/Release/netstandard2.0/Zenith.Abstractions.csprojAssemblyReference.cache
-/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/obj/Release/netstandard2.0/Zenith.Abstractions.csproj.CoreCompileInputs.cache
-/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/obj/Release/netstandard2.0/Zenith.Abstractions.AssemblyInfoInputs.cache
-/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/obj/Release/netstandard2.0/Zenith.Abstractions.AssemblyInfo.cs
-/Users/bakaresulaimon/Desktop/PracticeArea/dalex/src/Zenith.Abstractions/obj/Release/netstandard2.0/Zenith.Abstractions.dll

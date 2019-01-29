@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Pages.Account.ActivateAccount.ActivateAccountPage.xaml", "Pages/Account/ActivateAccount/ActivateAccountPage.xaml", typeof(global::Zenith.ActivateAccountPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Pages.Account.ActivateAccount.ActivateAccountPage.xaml", "Pages/Account/ActivateAccount/ActivateAccountPage.xaml", typeof(global::dalexFDA.ActivateAccountPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages/Account/ActivateAccount/ActivateAccountPage.xaml")]

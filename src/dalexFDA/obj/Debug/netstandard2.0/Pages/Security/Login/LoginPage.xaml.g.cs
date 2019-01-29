@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Pages.Security.Login.LoginPage.xaml", "Pages/Security/Login/LoginPage.xaml", typeof(global::Zenith.LoginPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Pages.Security.Login.LoginPage.xaml", "Pages/Security/Login/LoginPage.xaml", typeof(global::dalexFDA.LoginPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages/Security/Login/LoginPage.xaml")]

@@ -1,11 +1,11 @@
 ﻿using System;
-using Zenith;
-using Zenith.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using dalexFDA;
+using dalexFDA.Droid;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]
-namespace Zenith.Droid
+namespace dalexFDA.Droid
 {
     public class CustomPickerRenderer : PickerRenderer
     {

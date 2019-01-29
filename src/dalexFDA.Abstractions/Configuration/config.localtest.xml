@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
-<EnvironmentConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Environment>LocalTest</Environment>
-  <IsInScreenUnitTestingMode>false</IsInScreenUnitTestingMode>
-  <UsesMockData>false</UsesMockData>
-  <ServiceUrl></ServiceUrl>
-  <AppCenteriOSKey></AppCenteriOSKey>
-  <AppCenterDroidKey></AppCenterDroidKey>
-</EnvironmentConfiguration>

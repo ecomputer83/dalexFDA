@@ -1,13 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
 using Android.Graphics.Drawables;
+using dalexFDA;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Zenith;
-using Zenith.Droid;
+using dalexFDA.Droid;
 
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
-namespace Zenith.Droid
+namespace dalexFDA.Droid
 {
     public class CustomEntryRenderer : EntryRenderer
     {

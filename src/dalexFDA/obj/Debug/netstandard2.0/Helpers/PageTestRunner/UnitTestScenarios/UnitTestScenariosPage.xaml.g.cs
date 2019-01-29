@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Helpers.PageTestRunner.UnitTestScenarios.UnitTestScenariosPage.xaml", "Helpers/PageTestRunner/UnitTestScenarios/UnitTestScenariosPage.xaml", typeof(global::Zenith.UnitTestScenariosPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Helpers.PageTestRunner.UnitTestScenarios.UnitTestScenariosPage.xaml", "Helpers/PageTestRunner/UnitTestScenarios/UnitTestScenariosPage.xaml", typeof(global::dalexFDA.UnitTestScenariosPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Helpers/PageTestRunner/UnitTestScenarios/UnitTestScenariosPage.xaml")]

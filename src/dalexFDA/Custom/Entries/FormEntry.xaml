@@ -3,20 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="dalexFDA.FormEntry"
              xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
-             xmlns:effects="clr-namespace:Effects;assembly=Effects">
-  <ContentView.Content>
-        <StackLayout BackgroundColor="{StaticResource PalmLeaf}">
-            <StackLayout BackgroundColor="{StaticResource White}" Margin="1">
-                <local:CustomEntry x:Name="data" Text="" Margin="6,0" TextColor="{StaticResource Liver}"
-                        VerticalOptions="CenterAndExpand" PlaceholderColor="{StaticResource Manatee}" FontSize="16">
-                    <local:CustomEntry.HeightRequest>
-                        <OnPlatform x:TypeArguments="x:Double" iOS="42" Android="34" />
-                    </local:CustomEntry.HeightRequest>
-                    <local:CustomEntry.Effects>
-                        <effects:RemoveBorderEffect />
-                    </local:CustomEntry.Effects>
-                </local:CustomEntry>
+             xmlns:effects="clr-namespace:dalexFDA;assembly=dalexFDA">
+    <ContentView.Content>
+        <StackLayout Spacing="2">
+            <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}">
+                <StackLayout BackgroundColor="{StaticResource White}" Margin="1">
+                    <local:CustomEntry x:Name="data" Text="" Margin="6,0" TextColor="{StaticResource Liver}"
+                            VerticalOptions="CenterAndExpand" PlaceholderColor="{StaticResource Manatee}" FontSize="16" TextChanged="Handle_TextChanged">
+                        <local:CustomEntry.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double" iOS="42" Android="34" />
+                        </local:CustomEntry.HeightRequest>
+                    </local:CustomEntry>
+                </StackLayout>
             </StackLayout>
+            <Label x:Name="caption" IsVisible="false" TextColor="{StaticResource Kucrimson}" FontSize="14" Margin="4,0" />
         </StackLayout>
-  </ContentView.Content>
+    </ContentView.Content>
 </ContentView>

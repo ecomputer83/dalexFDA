@@ -4,7 +4,6 @@
              x:Class="dalexFDA.LoginPage"
              NavigationPage.HasNavigationBar="false"
              xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
-             xmlns:effects="clr-namespace:dalexFDA"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
              BackgroundColor="White">
     <ContentPage.Content>
@@ -26,8 +25,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     
-                    <local:FormEntry Grid.Column="0" Text="{Binding PhoneExtension}" Placeholder="+233"
-                        />
+                    <local:FormEntry Grid.Column="0" Text="{Binding PhoneExtension}" Placeholder="+233" />
                     <local:FormEntry Grid.Column="1" Text="{Binding PhoneNumber}" />
                 </Grid>
                 

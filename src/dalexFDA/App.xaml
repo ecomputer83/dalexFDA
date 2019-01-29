@@ -13,6 +13,7 @@
             <Color x:Key="JetGray">#323333</Color>
             <Color x:Key="PastelGray">#CCCCCC</Color>
             <Color x:Key="Red">#DC0A0F</Color>
+            <Color x:Key="Kucrimson">#e70000</Color>
             <Color x:Key="SpaceGray">#494A4B</Color>
             <Color x:Key="OffWhite3">#f8f8f8</Color>
             <Color x:Key="Green">#46A173</Color>

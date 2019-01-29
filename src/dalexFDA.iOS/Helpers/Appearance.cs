@@ -2,7 +2,7 @@
 using UIKit;
 using Xamarin.Forms.Platform.iOS;
 
-namespace Zenith.iOS
+namespace dalexFDA.iOS
 {
     public static class Appearance
     {

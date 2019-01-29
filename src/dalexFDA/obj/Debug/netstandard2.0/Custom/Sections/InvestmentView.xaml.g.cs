@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Custom.Sections.InvestmentView.xaml", "Custom/Sections/InvestmentView.xaml", typeof(global::Zenith.InvestmentView))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Custom.Sections.InvestmentView.xaml", "Custom/Sections/InvestmentView.xaml", typeof(global::dalexFDA.InvestmentView))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Custom/Sections/InvestmentView.xaml")]

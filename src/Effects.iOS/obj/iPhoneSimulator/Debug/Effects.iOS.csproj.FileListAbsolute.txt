@@ -1,14 +1,3 @@
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/bin/iPhoneSimulator/Debug/Effects.iOS.dll
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/bin/iPhoneSimulator/Debug/Effects.iOS.pdb
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/bin/iPhoneSimulator/Debug/Effects.dll
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/bin/iPhoneSimulator/Debug/Effects.pdb
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/obj/iPhoneSimulator/Debug/actool/_PartialAppManifest.items
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/obj/iPhoneSimulator/Debug/actool/_BundleResourceWithLogicalName.items
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/obj/iPhoneSimulator/Debug/optimized/
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/obj/iPhoneSimulator/Debug/Effects.iOS.csprojResolveAssemblyReference.cache
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/obj/iPhoneSimulator/Debug/Effects.iOS.csproj.CoreCompileInputs.cache
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/obj/iPhoneSimulator/Debug/Effects.iOS.dll
-/Users/bakaresulaimon/Documents/sandbox/zenithmobile/src/Effects.iOS/obj/iPhoneSimulator/Debug/Effects.iOS.pdb
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/bin/iPhoneSimulator/Debug/Effects.iOS.dll
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/bin/iPhoneSimulator/Debug/Effects.iOS.pdb
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/bin/iPhoneSimulator/Debug/Effects.dll
@@ -18,7 +7,7 @@
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/obj/iPhoneSimulator/Debug/optimized/
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/obj/iPhoneSimulator/Debug/Effects.iOS.csprojAssemblyReference.cache
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/obj/iPhoneSimulator/Debug/Effects.iOS.csproj.CoreCompileInputs.cache
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/obj/iPhoneSimulator/Debug/XamlC.stamp
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/obj/iPhoneSimulator/Debug/Effects.iOS.csproj.CopyComplete
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/obj/iPhoneSimulator/Debug/Effects.iOS.dll
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/obj/iPhoneSimulator/Debug/Effects.iOS.pdb
-/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects.iOS/obj/iPhoneSimulator/Debug/XamlC.stamp

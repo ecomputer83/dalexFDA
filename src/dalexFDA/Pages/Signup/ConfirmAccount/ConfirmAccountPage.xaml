@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="dalexFDA.ConfirmAccountPage"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA">
+    <ContentPage.Content>
+        <StackLayout Spacing="6" VerticalOptions="CenterAndExpand">
+            <Label Text="Token" FontSize="16" FontAttributes="Bold" />
+            <local:FormEntry Text="{Binding Token}" HasError="{Binding TokenHasError}" ErrorMessage="{Binding TokenErrorMessage}" Margin="0,0,0,6" />
+            
+            <Button Text="Continue" Style="{StaticResource PrimaryButton}" Margin="0,6,0,0" Command="{Binding Confirm}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

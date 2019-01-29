@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportEffect(typeof(RemoveBorderEffect), "RemoveBorderEffect")]
-namespace Zenith.iOS
+namespace dalexFDA.iOS
 {
     public class RemoveBorderEffect : PlatformEffect
     {

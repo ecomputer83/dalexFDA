@@ -16,6 +16,10 @@
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.9.0" />
     <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="15.2.0.46" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Custom\" />
@@ -60,6 +64,7 @@
     <Folder Include="Pages\MakeDeposit\DepositInvestmentDetails\" />
     <Folder Include="Pages\MakeDeposit\CardPaymentDetails\" />
     <Folder Include="Pages\Profile\" />
+    <Folder Include="Pages\Signup\ConfirmAccount\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XamSvg.Shared">
@@ -79,6 +84,7 @@
     <ProjectReference Include="..\Effects\Effects.csproj" />
     <ProjectReference Include="..\dalexFDA.Abstractions\dalexFDA.Abstractions.csproj" />
     <ProjectReference Include="..\dalexFDA.Data.Mock\dalexFDA.Data.Mock.csproj" />
+    <ProjectReference Include="..\dalexFDA.Data.WebServices\dalexFDA.Data.WebServices.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Images\icon-down-arrow.svg" />

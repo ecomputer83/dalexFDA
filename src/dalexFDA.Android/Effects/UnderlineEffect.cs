@@ -3,11 +3,11 @@ using Android.Graphics;
 using Android.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Zenith.Droid;
+using dalexFDA.Droid;
 
-[assembly: ResolutionGroupName("Zenith")]
+[assembly: ResolutionGroupName("dalexFDA")]
 [assembly: ExportEffect(typeof(UnderlineEffect), "UnderlineEffect")]
-namespace Zenith.Droid
+namespace dalexFDA.Droid
 {
     public class UnderlineEffect : PlatformEffect
     {

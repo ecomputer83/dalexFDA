@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Custom.Sections.LastSessionTab.xaml", "Custom/Sections/LastSessionTab.xaml", typeof(global::Zenith.LastSessionTab))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Custom.Sections.LastSessionTab.xaml", "Custom/Sections/LastSessionTab.xaml", typeof(global::dalexFDA.LastSessionTab))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Custom/Sections/LastSessionTab.xaml")]

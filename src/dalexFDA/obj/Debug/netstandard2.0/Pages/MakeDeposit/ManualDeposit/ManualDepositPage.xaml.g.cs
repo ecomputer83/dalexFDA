@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Pages.MakeDeposit.ManualDeposit.ManualDepositPage.xaml", "Pages/MakeDeposit/ManualDeposit/ManualDepositPage.xaml", typeof(global::Zenith.ManualDepositPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Pages.MakeDeposit.ManualDeposit.ManualDepositPage.xaml", "Pages/MakeDeposit/ManualDeposit/ManualDepositPage.xaml", typeof(global::dalexFDA.ManualDepositPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages/MakeDeposit/ManualDeposit/ManualDepositPage.xaml")]

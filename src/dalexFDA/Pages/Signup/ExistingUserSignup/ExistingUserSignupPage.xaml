@@ -15,16 +15,16 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Spacing="0">
-            <AbsoluteLayout WidthRequest="90" HeightRequest="90" VerticalOptions="Start" HorizontalOptions="Center" Margin="0,16">
-                <circle:CircleImage Aspect="AspectFill" FillColor="{StaticResource AndroidGreen}" HeightRequest="90" 
-                        HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="90" 
-                    />
-                <svg:SvgImage Svg="res:images.icon-profile" ColorMapping="950503=FFFFFF" AbsoluteLayout.LayoutBounds="0,20,90,45"
-                        WidthRequest="18"
-                   />
-            </AbsoluteLayout>
             <ScrollView>
                 <StackLayout Spacing="6" Padding="32,0">
+                     <AbsoluteLayout WidthRequest="90" HeightRequest="90" VerticalOptions="Start" HorizontalOptions="Center" Margin="0,16">
+                        <circle:CircleImage Aspect="AspectFill" FillColor="{StaticResource AndroidGreen}" HeightRequest="90" 
+                                HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="90" 
+                            />
+                        <svg:SvgImage Svg="res:images.icon-profile" ColorMapping="950503=FFFFFF" AbsoluteLayout.LayoutBounds="0,20,90,45"
+                                WidthRequest="18"
+                           />
+                    </AbsoluteLayout>
                     <Label Text="Phone Number" FontSize="16" FontAttributes="Bold" />
                     <StackLayout Spacing="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <local:FormEntry Text="{Binding PhoneExtension}" Placeholder="+233" WidthRequest="120" />

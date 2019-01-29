@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Pages.General.LeftNav.LeftNavPage.xaml", "Pages/General/LeftNav/LeftNavPage.xaml", typeof(global::Zenith.LeftNavPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Pages.General.LeftNav.LeftNavPage.xaml", "Pages/General/LeftNav/LeftNavPage.xaml", typeof(global::dalexFDA.LeftNavPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages/General/LeftNav/LeftNavPage.xaml")]

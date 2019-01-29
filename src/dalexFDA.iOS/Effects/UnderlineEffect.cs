@@ -3,11 +3,11 @@ using Foundation;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-using Zenith.iOS;
+using dalexFDA.iOS;
 
-[assembly: ResolutionGroupName("Zenith")]
+[assembly: ResolutionGroupName("dalexFDA")]
 [assembly: ExportEffect(typeof(UnderlineEffect), "UnderlineEffect")]
-namespace Zenith.iOS
+namespace dalexFDA.iOS
 {
     public class UnderlineEffect : PlatformEffect
     {

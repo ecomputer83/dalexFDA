@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Pages.MakeDeposit.DepositInvestmentDetails.DepositInvestmentDetailsPage.xa" +
-    "ml", "Pages/MakeDeposit/DepositInvestmentDetails/DepositInvestmentDetailsPage.xaml", typeof(global::Zenith.DepositInvestmentDetailsPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Pages.MakeDeposit.DepositInvestmentDetails.DepositInvestmentDetailsPage." +
+    "xaml", "Pages/MakeDeposit/DepositInvestmentDetails/DepositInvestmentDetailsPage.xaml", typeof(global::dalexFDA.DepositInvestmentDetailsPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages/MakeDeposit/DepositInvestmentDetails/DepositInvestmentDetailsPage.xaml")]

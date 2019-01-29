@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Zenith.Pages.Transfer.Transfer.TransferPage.xaml", "Pages/Transfer/Transfer/TransferPage.xaml", typeof(global::Zenith.TransferPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("dalexFDA.Pages.Transfer.Transfer.TransferPage.xaml", "Pages/Transfer/Transfer/TransferPage.xaml", typeof(global::dalexFDA.TransferPage))]
 
-namespace Zenith {
+namespace dalexFDA {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages/Transfer/Transfer/TransferPage.xaml")]

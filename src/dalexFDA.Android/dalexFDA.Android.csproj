@@ -60,21 +60,6 @@
     <Reference Include="XamSvg.XamForms.Droid">
       <HintPath>..\..\lib\XamSvgForms-2.1.0\lib\android\XamSvg.XamForms.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Xamarin.Android.Chart">
-      <HintPath>..\..\lib\Telerik\Xamarin\Android\Telerik.Xamarin.Android.Chart.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Xamarin.Android.Common">
-      <HintPath>..\..\lib\Telerik\Xamarin\Android\Telerik.Xamarin.Android.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Xamarin.Android.Primitives">
-      <HintPath>..\..\lib\Telerik\Xamarin\Android\Telerik.Xamarin.Android.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.Chart">
-      <HintPath>..\..\lib\Telerik\Xamarin\Android\Telerik.XamarinForms.Chart.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.Common">
-      <HintPath>..\..\lib\Telerik\Xamarin\Android\Telerik.XamarinForms.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
@@ -119,6 +104,7 @@
     <Compile Include="Renderers\CustomEntryRenderer.cs" />
     <Compile Include="Renderers\CustomPickerRenderer.cs" />
     <Compile Include="Renderers\CustomDatePickerRenderer.cs" />
+    <Compile Include="Services\AndroidFileStorageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -175,11 +161,16 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Effects\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dalexFDA\dalexFDA.csproj">
       <Project>{B1080B86-0D06-4DDE-B3FD-D9B090FE4C29}</Project>
       <Name>dalexFDA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dalexFDA.Abstractions\dalexFDA.Abstractions.csproj">
+      <Project>{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}</Project>
+      <Name>dalexFDA.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

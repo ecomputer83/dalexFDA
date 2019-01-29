@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 using FreshMvvm;
 using Microsoft.AppCenter;
@@ -8,7 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using dalexFDA.Abstractions;
 using dalexFDA.Data.Mock;
-//using dalexFDA.Data.Mock;
+using dalexFDA.Data.WebServices;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace dalexFDA
@@ -16,9 +15,17 @@ namespace dalexFDA
     public partial class App : Application, IAppService
     {
         public object CurrentNavigation { get; set; }
+        IEnvironmentConfiguration Config;
 
         public App()
         {
+            ISetting Settings = FreshIOC.Container.Resolve<ISetting>();
+
+            var configurationService = FreshIOC.Container.Resolve<IConfigurationService>();
+            Config = configurationService.Current;
+
+            Settings.StoreAndGenerateAppID();
+
             InitializeComponent();
             RegisterServices();
             StartApp();
@@ -125,13 +132,15 @@ namespace dalexFDA
             FreshIOC.Container.Register<IErrorManager, ErrorManager>();
             FreshIOC.Container.Register<Acr.UserDialogs.IUserDialogs>(Acr.UserDialogs.UserDialogs.Instance);
 
-            //if (EnvironmentConfiguration.Pharmacy.UsesMockData)
-            //{
-            //    //FreshIOC.Container.Register<IMobileDeviceService, MockMobileDeviceService>();
-
-            FreshIOC.Container.Register<IDepositService, DepositService>();
-
-            //}
+            if (Config.Mock.Enabled)
+            {
+                FreshIOC.Container.Register<IDepositService, DepositService>();
+            }
+            else
+            {
+                FreshIOC.Container.Register<IDepositService, DepositService>();
+                FreshIOC.Container.Register<IAccountService, AccountService>();
+            }
 
             var assembly = typeof(App).GetTypeInfo().Assembly;
             XamSvg.Shared.Config.ResourceAssembly = assembly;

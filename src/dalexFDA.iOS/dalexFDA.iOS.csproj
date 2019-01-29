@@ -100,6 +100,8 @@
     <Compile Include="Renderers\CustomPickerRenderer.cs" />
     <Compile Include="Effects\RemoveBorderEffect.cs" />
     <Compile Include="Renderers\CustomDatePickerRenderer.cs" />
+    <Compile Include="Services\iOSFileStorageService.cs" />
+    <Compile Include="Helpers\ContainerConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -185,6 +187,12 @@
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
       <Version>3.0.0.5</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.DeviceInfo">
+      <Version>4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>3.1.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -200,11 +208,16 @@
       <Project>{9BBE4704-4E61-4F51-836C-FD4CE5FC93D0}</Project>
       <Name>Effects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dalexFDA.Abstractions\dalexFDA.Abstractions.csproj">
+      <Project>{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}</Project>
+      <Name>dalexFDA.Abstractions</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />
     <Folder Include="Effects\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\zenith_gray.png" />
@@ -213,5 +226,14 @@
     <BundleResource Include="Resources\Menu.png" />
     <BundleResource Include="Resources\Menu%402x.png" />
     <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="..\dalexFDA.Abstractions\Configuration\config.common.dev.json">
+      <Link>config.common.dev.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\dalexFDA.Abstractions\Configuration\config.common.json">
+      <Link>config.common.json</Link>
+    </BundleResource>
+    <BundleResource Include="..\dalexFDA.Abstractions\Configuration\config.common.mock.json">
+      <Link>config.common.mock.json</Link>
+    </BundleResource>
   </ItemGroup>
 </Project>

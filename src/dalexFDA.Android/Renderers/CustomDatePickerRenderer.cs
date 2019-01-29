@@ -1,11 +1,11 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Zenith;
-using Zenith.Droid;
+using dalexFDA;
+using dalexFDA.Droid;
 
 [assembly: ExportRenderer(typeof(DatePicker), typeof(CustomDatePickerRenderer))]
-namespace Zenith.Droid
+namespace dalexFDA.Droid
 {
     public class CustomDatePickerRenderer : DatePicker
     {

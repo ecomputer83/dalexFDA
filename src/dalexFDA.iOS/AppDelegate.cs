@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using dalexFDA.Abstractions;
 using Foundation;
+using FreshMvvm;
 using UIKit;
 
-namespace Zenith.iOS
+namespace dalexFDA.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
@@ -20,11 +21,24 @@ namespace Zenith.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
+
+        ISetting Settings;
+        IEnvironmentConfiguration Config;
+
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            ContainerConfig.Load();
+
+            var configService = FreshIOC.Container.Resolve<IConfigurationService>();
+            var config = configService.Load();
+            Config = config;
+
             Bootstrap_Init();
 
             global::Xamarin.Forms.Forms.Init();
+
+            Settings = FreshIOC.Container.Resolve<ISetting>();
+            Settings.StoreAndGenerateAppID();
 
             Bootstrap_Post_Forms_Init();
 

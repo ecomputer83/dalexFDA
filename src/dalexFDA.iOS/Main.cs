@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace Zenith.iOS
+namespace dalexFDA.iOS
 {
     public class Application
     {
