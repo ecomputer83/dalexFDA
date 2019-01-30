@@ -7,5 +7,6 @@ namespace dalexFDA.Abstractions
     {
         Task<SignupResponse> Signup(SignupRequest data);
         Task<bool> ConfirmAccount(string phoneNumber, string code);
+        Task<User> GetUserByPhoneNumber(string phoneNumber);
     }
 }

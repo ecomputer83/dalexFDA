@@ -28,6 +28,27 @@ namespace dalexFDA
             catch { }
         }
 
+        #region Name
+
+        public static readonly BindableProperty NameProperty = BindableProperty.Create("Name", typeof(string), typeof(FormEntry), default(string));
+
+        public string Name
+        {
+            get { return (string)GetValue(NameProperty); }
+            set { SetValue(NameProperty, value); }
+        }
+
+        private void SetName()
+        {
+            try
+            {
+                name.Text = Name;
+            }
+            catch { }
+        }
+
+        #endregion
+
         #region Text
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create("Text", typeof(string), typeof(FormEntry), default(string), BindingMode.TwoWay);
@@ -212,6 +233,27 @@ namespace dalexFDA
 
         #endregion
 
+        #region EntryColor
+
+        public static readonly BindableProperty EntryColorProperty = BindableProperty.Create("EntryColor", typeof(Color), typeof(FormEntry), default(Color));
+
+        public Color EntryColor
+        {
+            get { return (Color)GetValue(EntryColorProperty); }
+            set { SetValue(EntryColorProperty, value); }
+        }
+
+        private void SetEntryColor()
+        {
+            try
+            {
+                innerContainer.BackgroundColor = EntryColor;
+            }
+            catch { }
+        }
+
+        #endregion
+
         protected override void OnPropertyChanged(string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
@@ -255,6 +297,16 @@ namespace dalexFDA
             {
                 SetEntryWidth();
             }
+
+            if (propertyName == NameProperty.PropertyName)
+            {
+                SetName();
+            }
+
+            if (propertyName == EntryColorProperty.PropertyName)
+            {
+                SetEntryColor();
+            }
         }
 
         void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
@@ -277,6 +329,20 @@ namespace dalexFDA
                     data.Focus();
             }
             catch { }
+        }
+
+        void Handle_Unfocused(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            var name1 = Name;
+            if (name.Text == "Phone")
+            {
+                var model = this.BindingContext as ExistingUserSignupViewModel;
+
+                if(model != null)
+                {
+                    model.GetUserDetailsFromPhoneNumber.Execute(null);
+                }
+            }
         }
     }
 }

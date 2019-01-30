@@ -87,7 +87,7 @@
             
             <StackLayout Orientation="Horizontal" Spacing="8" VerticalOptions="EndAndExpand" Padding="16">
                 <Button Text="CANCEL" Style="{StaticResource PrimaryButton}" Command="{Binding Cancel}" />
-                <Button Text="REGISTER" Style="{StaticResource PrimaryButton}" Command="{Binding Register}" />
+                <Button Text="REGISTER" Style="{StaticResource PrimaryButton}" IsEnabled="{Binding IsRegisterEnabled}" Command="{Binding Register}" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

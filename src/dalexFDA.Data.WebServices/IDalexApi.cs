@@ -16,6 +16,9 @@ namespace dalexFDA.Data.WebServices
         [Post("/api/Account/VerifySmsToken")]
         Task<bool> ConfirmAccount(string PhoneNumber, string token);
 
+        [Get("/api/Account/GetAccount")]
+        Task<User> GetUserByPhoneNumber(string PhoneNumber);
+
         #endregion
     }
 }

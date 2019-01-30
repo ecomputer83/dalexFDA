@@ -23,6 +23,7 @@ namespace dalexFDA
         readonly IUserDialogs Dialog;
 
         public bool IsAgreementSelected { get; set; }
+        public bool IsRegisterEnabled { get { return !IsAgreementSelected; } }
 
         public string FirstName { get; set; }
         public bool FirstNameHasError { get; set; }
@@ -31,7 +32,7 @@ namespace dalexFDA
         public bool LastNameHasError { get; set; }
         public string LastNameErrorMessage { get; set; }
 
-        public string FullPhoneNumber { get; set; }
+        public string FullPhoneNumber { get { return PhoneExtension.Replace("+", "") + PhoneNumber; } }
         public string PhoneNumber { get; set; }
         public bool PhoneNumberHasError { get; set; }
         public string PhoneNumberErrorMessage { get; set; }
@@ -95,7 +96,6 @@ namespace dalexFDA
 
                 using (Dialog.Loading("Registering..."))
                 {
-                    FullPhoneNumber = PhoneExtension + PhoneNumber;
                     var request = new SignupRequest
                     {
                         FirstName = FirstName,
@@ -125,7 +125,7 @@ namespace dalexFDA
             {
                 var errorContent = JsonConvert.DeserializeObject<ErrorMessage>(ex.Content);
 
-                await CoreMethods.DisplayAlert("Error", errorContent?.ModelState?.array?.ToString(), "Ok");
+                await CoreMethods.DisplayAlert("Oops", "An error occured. Please try again later.", "Ok");
 
                 Debug.WriteLine($"=======ApiException: {ex.Content}=======");
             }
