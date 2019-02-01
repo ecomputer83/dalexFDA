@@ -29,6 +29,12 @@ namespace dalexFDA {
         private global::dalexFDA.CustomEntry data;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::dalexFDA.NumericValidationBehavior numericBehavior;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::dalexFDA.EntryLengthValidatorBehavior maxLengthBehavior;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Label caption;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
@@ -38,6 +44,8 @@ namespace dalexFDA {
             container = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "container");
             innerContainer = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.StackLayout>(this, "innerContainer");
             data = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::dalexFDA.CustomEntry>(this, "data");
+            numericBehavior = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::dalexFDA.NumericValidationBehavior>(this, "numericBehavior");
+            maxLengthBehavior = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::dalexFDA.EntryLengthValidatorBehavior>(this, "maxLengthBehavior");
             caption = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "caption");
         }
     }

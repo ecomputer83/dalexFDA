@@ -7,3 +7,4 @@
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/XamlC.stamp
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/Effects.dll
 /Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/Effects.pdb
+/Users/bakaresulaimon/Desktop/PracticeArea/dalexFDA/src/Effects/obj/Debug/netstandard2.0/Effects.csprojAssemblyReference.cache

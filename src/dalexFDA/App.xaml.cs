@@ -140,6 +140,7 @@ namespace dalexFDA
             {
                 FreshIOC.Container.Register<IDepositService, DepositService>();
                 FreshIOC.Container.Register<IAccountService, AccountService>();
+                FreshIOC.Container.Register<IAuthenticationService, AuthenticationService>();
             }
 
             var assembly = typeof(App).GetTypeInfo().Assembly;

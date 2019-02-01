@@ -49,21 +49,7 @@
       </Services>
     </Page>
     
-    <Page Name="Login" Folder="Security">
-      <Commands>
-        <Command Name="Login" />
-        <Command Name="Back" />
-        <Command Name="SignUpExistingUser" />
-        <Command Name="SignUpNewUser" />
-      </Commands>
-      <Properties>
-        <Property Name="AccountNumber" TypeName="string" />
-        <Property Name="Password" TypeName="string" />
-      </Properties>
-      <Services>
-        <Service Name="IAppService" />
-      </Services>
-    </Page>
+    
 
     <Page Name="Transfer" Folder="Transfer">
       <Commands>

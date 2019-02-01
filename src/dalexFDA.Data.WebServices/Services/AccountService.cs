@@ -12,7 +12,6 @@ namespace dalexFDA.Data.WebServices
         public AccountService(IConfigurationService configurationService)
         {
             Config = configurationService.Current;
-
         }
 
         public async Task<bool> ConfirmAccount(string phoneNumber, string code)
@@ -35,6 +34,14 @@ namespace dalexFDA.Data.WebServices
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
             var response = await service.Signup(data);
+
+            return response;
+        }
+
+        public async Task<SignupResponse> SignupExistingUser(SignupRequest data)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.SignupExistingUser(data);
 
             return response;
         }
