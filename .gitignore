@@ -18,6 +18,14 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+/src/Effects.Android/obj/*
+/src/Effects.iOS/obj/*
+/src/Effects/obj/*
+
+/src/dalexFDA.Abstractions/obj/*
+/src/dalexFDA.Android/obj/*
+/src/dalexFDA.iOS/obj/*
+/src/dalexFDA/obj/*
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -233,3 +241,14 @@ _Pvt_Extensions
 /tools/Addins/Cake.Slack
 /tools/Addins/Cake.Xamarin
 /tools/Addins
+/src/Effects.Android/obj
+/src/Effects/obj
+/src/Effects.iOS/obj
+/src/dalexFDA.Abstractions/obj
+/src/dalexFDA.Android/obj
+/src/dalexFDA.Data.Mock/obj
+/src/dalexFDA.iOS/obj
+/src/dalexFDA/obj
+/src/dalexFDA/bin
+/src/Effects/bin
+/src/Effects.iOS/bin
