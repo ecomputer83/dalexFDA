@@ -212,6 +212,48 @@ namespace dalexFDA
 
         #endregion
 
+        #region IsNumeric
+
+        public static readonly BindableProperty IsNumericProperty = BindableProperty.Create("IsNumeric", typeof(bool), typeof(FormEntry), false);
+
+        public bool IsNumeric
+        {
+            get { return (bool)GetValue(IsNumericProperty); }
+            set { SetValue(IsNumericProperty, value); }
+        }
+
+        private void SetIsNumeric()
+        {
+            try
+            {
+                numericBehavior.IsNumeric = IsNumeric;
+            }
+            catch { }
+        }
+
+        #endregion
+
+        #region MaxLength
+
+        public static readonly BindableProperty MaxLengthProperty = BindableProperty.Create("MaxLength", typeof(int), typeof(FormEntry), 0);
+
+        public int MaxLength
+        {
+            get { return (int)GetValue(MaxLengthProperty); }
+            set { SetValue(MaxLengthProperty, value); }
+        }
+
+        private void SetMaxLength()
+        {
+            try
+            {
+                maxLengthBehavior.MaxLength = MaxLength;
+            }
+            catch { }
+        }
+
+        #endregion
+
         #region Keyboard
 
         public static readonly BindableProperty KeyboardProperty = BindableProperty.Create("Keyboard", typeof(Keyboard), typeof(FormEntry), default(Keyboard));
@@ -307,6 +349,16 @@ namespace dalexFDA
             {
                 SetEntryColor();
             }
+
+            if (propertyName == IsNumericProperty.PropertyName)
+            {
+                SetIsNumeric();
+            }
+
+            if (propertyName == MaxLengthProperty.PropertyName)
+            {
+                SetMaxLength();
+            }
         }
 
         void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
@@ -314,6 +366,18 @@ namespace dalexFDA
             try
             {
                 this.Text = e.NewTextValue;
+
+                if (this.BindingContext is ExistingUserSignupViewModel model)
+                {
+                    var nav = new ExistingUserSignupViewModel.CommandNav { Name = Name };
+                    model.Validate.Execute(nav);
+                }
+
+                if (this.BindingContext is LoginViewModel loginModel)
+                {
+                    var nav = new LoginViewModel.CommandNav { Name = Name };
+                    loginModel.Validate.Execute(nav);
+                }
             }
             catch (Exception ex)
             {
@@ -333,12 +397,10 @@ namespace dalexFDA
 
         void Handle_Unfocused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            var name1 = Name;
-            if (name.Text == "Phone")
+            if (Name == "PhoneExtension" || Name == "PhoneNumber")
             {
-                var model = this.BindingContext as ExistingUserSignupViewModel;
 
-                if(model != null)
+                if (this.BindingContext is ExistingUserSignupViewModel model)
                 {
                     model.GetUserDetailsFromPhoneNumber.Execute(null);
                 }

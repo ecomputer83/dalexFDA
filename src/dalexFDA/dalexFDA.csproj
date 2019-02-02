@@ -66,6 +66,7 @@
     <Folder Include="Pages\MakeDeposit\CardPaymentDetails\" />
     <Folder Include="Pages\Profile\" />
     <Folder Include="Pages\Signup\ConfirmAccount\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XamSvg.Shared">
