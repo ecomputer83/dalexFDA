@@ -60,6 +60,24 @@ namespace dalexFDA
         public Command Register { get; private set; }
         public Command Cancel { get; private set; }
         public Command Agree { get; private set; }
+        public Command Validate { get; private set; }
+
+        public class CommandNav
+        {
+            public string Name { get; set; }
+        }
+
+        private const string first_name_error_message = "Please enter your first name.";
+        private const string last_name_error_message = "Please enter your last name.";
+        private const string phone_number_error_message = "Please enter your phone number.";
+        private const string email_address_error_message = "Please enter an email address.";
+        private const string invalid_email_address_error_message = "Please enter a valid email address.";
+        private const string security_question_error_message = "Please enter a question.";
+        private const string security_answer_error_message = "Please provide an answer to the question.";
+        private const string incorrect_security_answer_error_message = "The answer you provided is incorrect.";
+        private const string pin_error_message = "Please enter a PIN.";
+        private const string confirmpin_error_message = "Please re-enter your PIN.";
+        private const string inconsistent_pin_error_message = "The PINs do not match.";
 
         public NewUserSignupViewModel(IErrorManager ErrorManager, IAppService AppService, IAccountService AccountService, ISetting Settings,
                                         IDeviceInfo DeviceInfo, IUserDialogs Dialog)
@@ -74,6 +92,7 @@ namespace dalexFDA
             Register = new Command(async () => await ExecuteRegister());
             Cancel = new Command(async () => await ExecuteCancel());
             Agree = new Command(async () => await ExecuteAgree());
+            Validate = new Command<CommandNav>(async (obj) => await ExecuteValidate(obj));
         }
 
         private async Task ExecuteAgree()
@@ -92,7 +111,8 @@ namespace dalexFDA
         {
             try
             {
-                if (!PerformValidation()) return;
+                if (!IsAgreementSelected) return;
+                if (PerformValidation()) return;
 
                 using (Dialog.Loading("Registering..."))
                 {
@@ -105,15 +125,7 @@ namespace dalexFDA
                         ConfirmPassword = PIN,
                         PhoneNumber = FullPhoneNumber,
                         SecurityQuestion = SecurityQuestion,
-                        SecurityAnswer = SecurityAnswer,
-                        //MobileDevice = new MobileDevice
-                        //{
-                        //    DeviceId = DeviceInfo.Id,
-                        //    DeviceType = DeviceInfo.Platform.ToString(),
-                        //    DeviceModel = DeviceInfo.Model,
-                        //    DeviceVersion = DeviceInfo.Version,
-                        //    DeviceVendorId = DeviceInfo.Id
-                        //}
+                        SecurityAnswer = SecurityAnswer
                     };
                     var response = await AccountService.Signup(request);
 
@@ -147,88 +159,106 @@ namespace dalexFDA
             }
         }
 
+        private async Task ExecuteValidate(CommandNav obj)
+        {
+            try
+            {
+                ValidateControls(obj?.Name);
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private void ValidateControls(string name)
+        {
+            switch (name)
+            {
+                case "PhoneExtension":
+                    PhoneExtensionHasError = string.IsNullOrEmpty(PhoneExtension);
+                    PhoneNumberErrorMessage = phone_number_error_message;
+                    break;
+                case "PhoneNumber":
+                    PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
+                    PhoneNumberErrorMessage = phone_number_error_message;
+                    break;
+                case "FirstName":
+                    FirstNameHasError = string.IsNullOrEmpty(FirstName);
+                    FirstNameErrorMessage = first_name_error_message;
+                    break;
+                case "LastName":
+                    LastNameHasError = string.IsNullOrEmpty(LastName);
+                    LastNameErrorMessage = last_name_error_message;
+                    break;
+                case "EmailAddress":
+                    EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
+                    EmailAddressErrorMessage = email_address_error_message;
+                    EmailAddressHasError = !EmailAddressHasError ? !ValidateEmail(EmailAddress) : EmailAddressHasError;
+                    EmailAddressErrorMessage = !EmailAddressHasError && !ValidateEmail(EmailAddress) ? invalid_email_address_error_message : string.Empty;
+                    break;
+                case "SecurityQuestion":
+                    SecurityQuestionHasError = string.IsNullOrEmpty(SecurityQuestion);
+                    SecurityQuestionErrorMessage = security_question_error_message;
+                    break;
+                case "SecurityAnswer":
+                    SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
+                    SecurityAnswerErrorMessage = security_answer_error_message;
+                    break;
+                case "PIN":
+                    PinHasError = string.IsNullOrEmpty(PIN);
+                    PinErrorMessage = pin_error_message;
+                    break;
+                case "ConfirmPIN":
+                    ConfirmPinHasError = string.IsNullOrEmpty(ConfirmPIN);
+                    ConfirmPinErrorMessage = confirmpin_error_message;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private bool PerformValidation()
         {
-            bool isValid = true;
-            bool isValidEmail;
-
             ClearErrors();
+            bool isValidEmail = ValidateEmail(EmailAddress);
 
-            if (string.IsNullOrEmpty(FirstName))
-            {
-                FirstNameHasError = true;
-                FirstNameErrorMessage = "Please enter your first name.";
-                isValid = false;
-            }
+            PhoneExtensionHasError = string.IsNullOrEmpty(PhoneExtension);
+            PhoneNumberErrorMessage = phone_number_error_message;
+            PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
+            PhoneNumberErrorMessage = phone_number_error_message;
 
-            if (string.IsNullOrEmpty(LastName))
-            {
-                LastNameHasError = true;
-                LastNameErrorMessage = "Please enter your last name.";
-                isValid = false;
-            }
+            FirstNameHasError = string.IsNullOrEmpty(FirstName);
+            FirstNameErrorMessage = first_name_error_message;
+            LastNameHasError = string.IsNullOrEmpty(LastName);
+            LastNameErrorMessage = last_name_error_message;
 
-            if (string.IsNullOrEmpty(PhoneExtension))
-            {
-                PhoneExtensionHasError = true;
-                PhoneNumberErrorMessage = "Please enter a phone number.";
-                isValid = false;
-            }
+            EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
+            EmailAddressErrorMessage = email_address_error_message;
+            EmailAddressHasError = !EmailAddressHasError ? !isValidEmail : EmailAddressHasError;
+            EmailAddressErrorMessage = !EmailAddressHasError && !isValidEmail ? invalid_email_address_error_message : string.Empty;
 
-            if (string.IsNullOrEmpty(PhoneNumber))
-            {
-                PhoneNumberHasError = true;
-                PhoneNumberErrorMessage = "Please enter a phone number.";
-                isValid = false;
-            }
+            SecurityQuestionHasError = string.IsNullOrEmpty(SecurityQuestion);
+            SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
+            SecurityAnswerErrorMessage = security_answer_error_message;
 
-            if (string.IsNullOrEmpty(EmailAddress))
-            {
-                EmailAddressHasError = true;
-                EmailAddressErrorMessage = "Please enter an email.";
-                isValid = false;
-            }
+            PinHasError = string.IsNullOrEmpty(PIN);
+            PinErrorMessage = pin_error_message;
+            ConfirmPinHasError = string.IsNullOrEmpty(ConfirmPIN);
+            ConfirmPinErrorMessage = confirmpin_error_message;
+            PinHasError = ConfirmPinHasError = !PinHasError && !ConfirmPinHasError;
+            PinErrorMessage = inconsistent_pin_error_message;
+            ConfirmPinErrorMessage = string.Empty;
 
-            if (!string.IsNullOrEmpty(EmailAddress))
-            {
-                isValidEmail = Regex.IsMatch(EmailAddress,
+            return PhoneHasError || FirstNameHasError || LastNameHasError || EmailAddressHasError || SecurityQuestionHasError || SecurityAnswerHasError ||
+                PinHasError || ConfirmPinHasError;
+        }
+
+        private bool ValidateEmail(string email)
+        {
+            return Regex.IsMatch(email,
                                          @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
                                          RegexOptions.IgnoreCase);
-                EmailAddressHasError = !isValidEmail;
-                EmailAddressErrorMessage = "Please enter a valid email to continue.";
-                isValid = isValidEmail;
-            }
-
-            if (string.IsNullOrEmpty(SecurityQuestion))
-            {
-                SecurityQuestionHasError = true;
-                SecurityQuestionErrorMessage = "Please provide a question.";
-                isValid = false;
-            }
-
-            if (string.IsNullOrEmpty(SecurityAnswer))
-            {
-                SecurityAnswerHasError = true;
-                SecurityAnswerErrorMessage = "Please fill in an answer to the question.";
-                isValid = false;
-            }
-
-            if (string.IsNullOrEmpty(PIN))
-            {
-                PinHasError = true;
-                PinErrorMessage = "Please enter a password.";
-                isValid = false;
-            }
-
-            if (PIN != ConfirmPIN)
-            {
-                PinHasError = true;
-                ConfirmPinHasError = true;
-                PinErrorMessage = "Both passwords do not match";
-                isValid = false;
-            }
-
-            return isValid;
         }
 
         private void ClearErrors()

@@ -131,6 +131,7 @@ namespace dalexFDA
             FreshIOC.Container.Register<IAppService>(this);
             FreshIOC.Container.Register<IErrorManager, ErrorManager>();
             FreshIOC.Container.Register<Acr.UserDialogs.IUserDialogs>(Acr.UserDialogs.UserDialogs.Instance);
+            FreshIOC.Container.Register<ISession, SessionService>();
 
             if (Config.Mock.Enabled)
             {
@@ -140,6 +141,7 @@ namespace dalexFDA
             {
                 FreshIOC.Container.Register<IDepositService, DepositService>();
                 FreshIOC.Container.Register<IAccountService, AccountService>();
+                FreshIOC.Container.Register<IInvestmentService, InvestmentService>();
                 FreshIOC.Container.Register<IAuthenticationService, AuthenticationService>();
             }
 

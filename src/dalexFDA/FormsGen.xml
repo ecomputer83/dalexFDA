@@ -33,21 +33,7 @@
       
     </Page>
 
-    <Page Name="Dashboard" Folder="General">
-      <Commands>
-        <Command Name="Overview" />
-        <Command Name="History" />
-      </Commands>
-      <Properties>
-        <Property Name="Items" TypeName="string" ForListItem="true" />
-        <Property Name="IsOverviewTab" TypeName="bool" />
-        <Property Name="LastSession" TypeName="string" />
-        <Property Name="TotalAmount" TypeName="string" />
-      </Properties>
-      <Services>
-        <Service Name="IUserDialogs" />
-      </Services>
-    </Page>
+    
     
     
 

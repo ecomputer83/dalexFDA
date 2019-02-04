@@ -9,6 +9,6 @@ namespace dalexFDA.Abstractions
         Task<SignupResponse> SignupExistingUser(SignupRequest data);
         Task<bool> ConfirmAccount(string phoneNumber, string code);
         Task<User> GetUserByPhoneNumber(string phoneNumber);
-        Task<UserAccount> GetUser();
+        Task<User> GetUser();
     }
 }

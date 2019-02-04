@@ -22,12 +22,27 @@ namespace dalexFDA.Data.WebServices
             return response;
         }
 
-        public async Task<UserAccount> GetUser()
+        public async Task<User> GetUser()
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
             var response = await service.GetUser();
 
-            return response;
+            if (response != null)
+            {
+                User user = new User
+                {
+                    FullName = response.fullName,
+                    Email = response.email,
+                    PhoneNumber = response.phoneNumber
+                };
+                return user;
+            }
+            else
+            {
+                return null;
+            }
+
+
         }
 
         public async Task<User> GetUserByPhoneNumber(string phoneNumber)

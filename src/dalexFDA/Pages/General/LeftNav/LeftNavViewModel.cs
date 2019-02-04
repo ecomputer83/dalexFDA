@@ -16,6 +16,7 @@ namespace dalexFDA
         internal readonly IAppService AppService;
         internal readonly Acr.UserDialogs.IUserDialogs Dialog;
         internal readonly ISetting Setting;
+        readonly ISession SessionService;
 
         public bool IsMakeDepositOpen { get; set; }
         public string UserFullName { get; set; }
@@ -32,7 +33,8 @@ namespace dalexFDA
         public Command MyProfile { get; private set; }
         public Command Logout { get; private set; }
 
-        public LeftNavViewModel(IErrorManager ErrorManager, IAppService AppService, Acr.UserDialogs.IUserDialogs Dialog, ISetting setting)
+        public LeftNavViewModel(IErrorManager ErrorManager, IAppService AppService, Acr.UserDialogs.IUserDialogs Dialog, ISetting setting,
+                                ISession SessionService)
         {
             //setup default services
             this.ErrorManager = ErrorManager;
@@ -41,6 +43,7 @@ namespace dalexFDA
             this.AppService = AppService;
             this.Dialog = Dialog;
             this.Setting = setting;
+            this.SessionService = SessionService;
 
             //setup commands
             MakeDeposit = new Command(async () => await ExecuteMakeDeposit());
@@ -54,8 +57,6 @@ namespace dalexFDA
             Feedback = new Command(async () => await ExecuteFeedback());
             MyProfile = new Command(async () => await ExecuteMyProfile());
             Logout = new Command(async () => await ExecuteLogout());
-
-            Setup();
         }
 
         public async override void Init(object initData)
@@ -64,7 +65,7 @@ namespace dalexFDA
 
             try
             {
-                UserFullName = this.Setting.User_fullName;
+                UserFullName = SessionService.CurrentUser.FullName;
                 IsMakeDepositOpen = false;
             }
             catch (Exception ex)

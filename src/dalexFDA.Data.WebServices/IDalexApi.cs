@@ -27,7 +27,9 @@ namespace dalexFDA.Data.WebServices
         Task<AuthorizedAccount> Login([Body(BodySerializationMethod.UrlEncoded)]LoginRequest request);
 
         #endregion
-        #region Authorized
+
+        #region Authorization
+
         [Get("/api/Account/GetUser")]
         Task<UserAccount> GetUser();
 
@@ -45,6 +47,7 @@ namespace dalexFDA.Data.WebServices
 
         [Post("/api/Investment/EDeposit")]
         Task<bool> EDeposit([Body(BodySerializationMethod.Json)]InvestmentEDeposit request);
+
         #endregion
 
     }

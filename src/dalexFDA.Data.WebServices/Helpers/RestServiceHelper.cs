@@ -23,12 +23,12 @@ namespace dalexFDA.Data.WebServices
                 throw new InvalidOperationException(message);
             }
 
-            ISetting sessionService = FreshMvvm.FreshIOC.Container.Resolve<ISetting>();
+            ISession sessionService = FreshMvvm.FreshIOC.Container.Resolve<ISession>();
 
-            if (!string.IsNullOrEmpty(sessionService?.UserToken))
+            if (!string.IsNullOrEmpty(sessionService?.Token))
             {
-                Debug.WriteLine("token: {0}", sessionService?.UserToken);
-                client.DefaultRequestHeaders.Add("Authorization", sessionService?.UserToken);
+                Debug.WriteLine("token: {0}", sessionService?.Token);
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {sessionService?.Token}");
             }
 
             return (T)Activator.CreateInstance(generatedType, client, requestBuilder);

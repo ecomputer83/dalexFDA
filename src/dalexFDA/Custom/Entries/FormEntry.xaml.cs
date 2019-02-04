@@ -373,10 +373,16 @@ namespace dalexFDA
                     model.Validate.Execute(nav);
                 }
 
-                if (this.BindingContext is LoginViewModel loginModel)
+                if (this.BindingContext is NewUserSignupViewModel newUserSignupViewModel)
+                {
+                    var nav = new NewUserSignupViewModel.CommandNav { Name = Name };
+                    newUserSignupViewModel.Validate.Execute(nav);
+                }
+
+                if (this.BindingContext is LoginViewModel loginViewModel)
                 {
                     var nav = new LoginViewModel.CommandNav { Name = Name };
-                    loginModel.Validate.Execute(nav);
+                    loginViewModel.Validate.Execute(nav);
                 }
             }
             catch (Exception ex)
