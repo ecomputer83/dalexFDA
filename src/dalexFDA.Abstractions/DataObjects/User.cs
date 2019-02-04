@@ -23,4 +23,9 @@ namespace dalexFDA.Abstractions
         public Guid Id { get; set; }
         public string UserName { get; set; }
     }
+
+    public class AuthorizedAccount
+    {
+        public string access_token { get; set; }
+    }
 }

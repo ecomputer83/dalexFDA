@@ -9,12 +9,12 @@
     <Compile Remove="DTO\Signup\SignupRequest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
     <Folder Include="DTO\" />
     <Folder Include="Helpers\" />
     <Folder Include="DTO\Signup\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FreshMvvm" Version="2.2.4" />
     <PackageReference Include="Refit" Version="4.6.58" />
   </ItemGroup>
   <ItemGroup>

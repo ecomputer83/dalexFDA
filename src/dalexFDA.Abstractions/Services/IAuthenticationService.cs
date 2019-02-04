@@ -5,6 +5,6 @@ namespace dalexFDA.Abstractions
 {
     public interface IAuthenticationService
     {
-        Task<object> Authenticate(LoginRequest request);
+        Task<AuthorizedAccount> Authenticate(LoginRequest request);
     }
 }

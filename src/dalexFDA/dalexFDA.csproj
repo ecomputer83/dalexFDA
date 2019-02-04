@@ -75,12 +75,6 @@
     <Reference Include="XamSvg.XamForms">
       <HintPath>..\..\lib\XamSvgForms-2.1.0\lib\mobile\XamSvg.XamForms.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.XamarinForms.Chart">
-      <HintPath>..\..\lib\Telerik\Xamarin\Portable\Telerik.XamarinForms.Chart.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.Common">
-      <HintPath>..\..\lib\Telerik\Xamarin\Portable\Telerik.XamarinForms.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Effects\Effects.csproj" />

@@ -13,12 +13,12 @@
         <StackLayout Padding="0">
             <StackLayout Spacing="10" Padding="24" VerticalOptions="Start" BackgroundColor="{StaticResource PalmLeaf}">
                 <Label Text="Total Investment Balance" TextColor="#FFF" FontSize="14" HorizontalOptions="Start"  Margin="0" />
-                <Label Text="{Binding TotalAmount}" TextColor="#FFF" FontSize="24" FontAttributes="Bold" HorizontalOptions="Start" Margin="0,0,0,6" />
+                <Label Text="{Binding Account.TotalBalance}" TextColor="#FFF" FontSize="24" FontAttributes="Bold" HorizontalOptions="Start" Margin="0,0,0,6" />
                 <StackLayout Spacing="10" BackgroundColor="{StaticResource Avocado}" Padding="16,8">
                     <Label TextColor="#FFF" FontSize="20" HorizontalOptions="Start"  Margin="0,0,0,0">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="4" FontSize="20" />
+                                <Span Text="{Binding Account.ActiveInvestments}" FontSize="20" />
                                 <Span Text="  " />
                                 <Span Text="active investments" FontSize="14" />
                             </FormattedString>
@@ -27,7 +27,7 @@
                     <Label TextColor="#FFF" FontSize="20" HorizontalOptions="Start"  Margin="0,0,0,0">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="1" FontSize="20" />
+                                <Span Text="{Binding Account.InvestmentNearMaturity}" FontSize="20" />
                                 <Span Text="  " />
                                 <Span Text="investment nearing maturity in 2 weeks" FontSize="14" />
                             </FormattedString>

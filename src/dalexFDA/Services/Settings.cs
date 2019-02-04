@@ -30,6 +30,9 @@ namespace dalexFDA
         private const string AppIDKey = "app_id";
         private static readonly string AppIDDefault = null;
 
+        private const string UserTokenKey = "user_token";
+        private static readonly string UserTokenDefault = null;
+
         private const string PushNotificationIDKey = "push_notification_id";
         private static readonly string PushNotificationIDDefault = null;
 
@@ -44,6 +47,74 @@ namespace dalexFDA
             set
             {
                 AppSettings.AddOrUpdateValue(AppIDKey, value);
+            }
+        }
+
+        public string UserToken
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(UserTokenKey, UserTokenDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(UserTokenKey, value);
+            }
+        }
+
+        public string User_firstName {
+            get
+            {
+                return AppSettings.GetValueOrDefault("firstname", UserTokenDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("firstname", value);
+            }
+        }
+    
+        public string User_lastName
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("lastname", UserTokenDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("lastname", value);
+            }
+        }
+        public string User_fullName
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("fullname", UserTokenDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("fullname", value);
+            }
+        }
+        public string User_email
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("email", UserTokenDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("email", value);
+            }
+        }
+        public string User_phoneNmuber
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("phonenumber", UserTokenDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("phonenumber", value);
             }
         }
 

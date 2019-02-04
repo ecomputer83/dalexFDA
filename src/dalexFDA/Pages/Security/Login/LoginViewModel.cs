@@ -13,7 +13,9 @@ namespace dalexFDA
         readonly IErrorManager ErrorManager;
         readonly IAppService AppService;
         readonly IAuthenticationService AuthService;
+        readonly IAccountService AccountService;
         readonly IUserDialogs Dialog;
+        ISetting Setting;
 
         //commands
         public Command Login { get; private set; }
@@ -46,12 +48,16 @@ namespace dalexFDA
         private const string phone_number_error_message = "Please enter a phone number.";
         private const string pin_error_message = "Please enter a PIN.";
 
-        public LoginViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog, IAuthenticationService AuthService)
+        public LoginViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog,
+            IAuthenticationService AuthService, IAccountService AccountService,
+            ISetting setting)
         {
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
             this.Dialog = Dialog;
             this.AuthService = AuthService;
+            this.AccountService = AccountService;
+            this.Setting = setting;
 
             Login = new Command(async () => await ExecuteLogin());
             Back = new Command(async () => await ExecuteBack());
@@ -72,8 +78,22 @@ namespace dalexFDA
                     password = PIN
                 };
                 var response = await AuthService.Authenticate(request);
+                if(response != null)
+                {
+                    Setting.UserToken = response.access_token;
+                    var useraccount = await AccountService.GetUser();
+                    if(useraccount != null){
+                        Setting.User_firstName = useraccount.firstName;
+                        Setting.User_lastName = useraccount.lastName;
+                        Setting.User_email = useraccount.email;
+                        Setting.User_phoneNmuber = useraccount.phoneNumber;
+                        Setting.User_fullName = useraccount.fullName;
 
-                AppService.StartMainFlow();
+                        AppService.StartMainFlow();
+                    }
+                }
+
+               
             }
             catch (Exception ex)
             {

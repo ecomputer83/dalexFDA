@@ -15,9 +15,10 @@ namespace dalexFDA
         //other services
         internal readonly IAppService AppService;
         internal readonly Acr.UserDialogs.IUserDialogs Dialog;
+        internal readonly ISetting Setting;
 
         public bool IsMakeDepositOpen { get; set; }
-
+        public string UserFullName { get; set; }
         //commands
         public Command MakeDeposit { get; private set; }
         public Command ElectronicFundTransfer { get; private set; }
@@ -31,7 +32,7 @@ namespace dalexFDA
         public Command MyProfile { get; private set; }
         public Command Logout { get; private set; }
 
-        public LeftNavViewModel(IErrorManager ErrorManager, IAppService AppService, Acr.UserDialogs.IUserDialogs Dialog)
+        public LeftNavViewModel(IErrorManager ErrorManager, IAppService AppService, Acr.UserDialogs.IUserDialogs Dialog, ISetting setting)
         {
             //setup default services
             this.ErrorManager = ErrorManager;
@@ -39,6 +40,7 @@ namespace dalexFDA
             //setup other services
             this.AppService = AppService;
             this.Dialog = Dialog;
+            this.Setting = setting;
 
             //setup commands
             MakeDeposit = new Command(async () => await ExecuteMakeDeposit());
@@ -62,6 +64,7 @@ namespace dalexFDA
 
             try
             {
+                UserFullName = this.Setting.User_fullName;
                 IsMakeDepositOpen = false;
             }
             catch (Exception ex)

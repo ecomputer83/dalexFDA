@@ -13,7 +13,7 @@ namespace dalexFDA.Data.WebServices
             Config = configurationService.Current;
         }
 
-        public async Task<object> Authenticate(LoginRequest request)
+        public async Task<AuthorizedAccount> Authenticate(LoginRequest request)
         {
             try
             {

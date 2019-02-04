@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net.Http;
+using dalexFDA.Abstractions;
 using Refit;
 
 namespace dalexFDA.Data.WebServices
@@ -22,13 +23,13 @@ namespace dalexFDA.Data.WebServices
                 throw new InvalidOperationException(message);
             }
 
-            //ISession sessionService = FreshMvvm.FreshIOC.Container.Resolve<ISession>();
+            ISetting sessionService = FreshMvvm.FreshIOC.Container.Resolve<ISetting>();
 
-            //if (!string.IsNullOrEmpty(sessionService?.CurrentUser?.Token))
-            //{
-            //    Debug.WriteLine("token: {0}", sessionService?.CurrentUser?.Token);
-            //    client.DefaultRequestHeaders.Add("Authorization", sessionService?.CurrentUser?.Token);
-            //}
+            if (!string.IsNullOrEmpty(sessionService?.UserToken))
+            {
+                Debug.WriteLine("token: {0}", sessionService?.UserToken);
+                client.DefaultRequestHeaders.Add("Authorization", sessionService?.UserToken);
+            }
 
             return (T)Activator.CreateInstance(generatedType, client, requestBuilder);
         }
