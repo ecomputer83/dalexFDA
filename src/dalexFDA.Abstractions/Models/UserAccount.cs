@@ -11,5 +11,7 @@ namespace dalexFDA.Abstractions
         public string fullName { get; set; }
         public string email { get; set; }
         public string phoneNumber { get; set; }
+        public string securityQuestion { get; set; }
+        public string securityAnswer { get; set; }
     }
 }

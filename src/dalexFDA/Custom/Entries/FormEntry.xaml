@@ -7,13 +7,14 @@
              xmlns:effects="clr-namespace:dalexFDA;assembly=dalexFDA">
     <ContentView.Content>
         <StackLayout Spacing="2">
-            <Label x:Name="name" IsVisible="false" />
+            <Label x:Name="label" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="0,0,0,6" />
             <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}">
                 <StackLayout x:Name="innerContainer" BackgroundColor="{StaticResource White}" Margin="1">
-                    <local:CustomEntry x:Name="data" Text="" Margin="6,0" TextColor="{StaticResource Liver}" Unfocused="Handle_Unfocused"
-                            VerticalOptions="CenterAndExpand" PlaceholderColor="{StaticResource Manatee}" FontSize="16" TextChanged="Handle_TextChanged">
+                    <local:CustomEntry x:Name="data" Text="" Margin="8,0" TextColor="{StaticResource Liver}" Unfocused="Handle_Unfocused"
+                            VerticalOptions="CenterAndExpand" PlaceholderColor="{StaticResource Manatee}" FontSize="16" TextChanged="Handle_TextChanged"
+                            Focused="Handle_Focused">
                         <local:CustomEntry.HeightRequest>
-                            <OnPlatform x:TypeArguments="x:Double" iOS="42" Android="34" />
+                            <OnPlatform x:TypeArguments="x:Double" iOS="42" Android="38" />
                         </local:CustomEntry.HeightRequest>
                         <local:CustomEntry.Behaviors>
                             <behaviors:NumericValidationBehavior x:Name="numericBehavior" IsNumeric="false"  />

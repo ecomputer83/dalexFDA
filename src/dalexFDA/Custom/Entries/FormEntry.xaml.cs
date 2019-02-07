@@ -42,7 +42,27 @@ namespace dalexFDA
         {
             try
             {
-                name.Text = Name;
+            }
+            catch { }
+        }
+
+        #endregion
+
+        #region Label
+
+        public static readonly BindableProperty LabelProperty = BindableProperty.Create("Label", typeof(string), typeof(FormEntry), default(string));
+
+        public string Label
+        {
+            get { return (string)GetValue(LabelProperty); }
+            set { SetValue(LabelProperty, value); }
+        }
+
+        private void SetLabel()
+        {
+            try
+            {
+                label.Text = Label;
             }
             catch { }
         }
@@ -233,6 +253,27 @@ namespace dalexFDA
 
         #endregion
 
+        #region ShouldFormat
+
+        public static readonly BindableProperty ShouldFormatProperty = BindableProperty.Create("ShouldFormat", typeof(bool), typeof(FormEntry), false);
+
+        public bool ShouldFormat
+        {
+            get { return (bool)GetValue(ShouldFormatProperty); }
+            set { SetValue(ShouldFormatProperty, value); }
+        }
+
+        private void SetShouldFormat()
+        {
+            try
+            {
+
+            }
+            catch { }
+        }
+
+        #endregion
+
         #region MaxLength
 
         public static readonly BindableProperty MaxLengthProperty = BindableProperty.Create("MaxLength", typeof(int), typeof(FormEntry), 0);
@@ -305,6 +346,11 @@ namespace dalexFDA
                 SetText();
             }
 
+            if (propertyName == LabelProperty.PropertyName)
+            {
+                SetLabel();
+            }
+
             if (propertyName == IsPasswordProperty.PropertyName)
             {
                 SetIsPassword();
@@ -355,6 +401,11 @@ namespace dalexFDA
                 SetIsNumeric();
             }
 
+            if (propertyName == ShouldFormatProperty.PropertyName)
+            {
+                SetShouldFormat();
+            }
+
             if (propertyName == MaxLengthProperty.PropertyName)
             {
                 SetMaxLength();
@@ -384,6 +435,29 @@ namespace dalexFDA
                     var nav = new LoginViewModel.CommandNav { Name = Name };
                     loginViewModel.Validate.Execute(nav);
                 }
+
+                if (this.BindingContext is RedemptionRequestViewModel redemptionRequestViewModel)
+                {
+                    var nav = new RedemptionRequestViewModel.CommandNav { Name = Name };
+                    redemptionRequestViewModel.Validate.Execute(nav);
+                }
+
+                if (this.BindingContext is RolloverRequestViewModel rolloverRequestViewModel)
+                {
+                    var nav = new RolloverRequestViewModel.CommandNav { Name = Name };
+                    rolloverRequestViewModel.Validate.Execute(nav);
+                }
+
+                if (ShouldFormat)
+                {
+                    if (sender is Entry entry)
+                    {
+                        var text = NumberFormatter.ExtractNumber(entry.Text);
+                        double.TryParse(text, out double amount);
+
+                        this.Text = amount.ToString();
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -401,6 +475,17 @@ namespace dalexFDA
             catch { }
         }
 
+        void Handle_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (ShouldFormat)
+            {
+                if (sender is Entry entry)
+                {
+                    entry.Text = NumberFormatter.ExtractNumber(entry.Text);
+                }
+            }
+        }
+
         void Handle_Unfocused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
             if (Name == "PhoneExtension" || Name == "PhoneNumber")
@@ -409,6 +494,15 @@ namespace dalexFDA
                 if (this.BindingContext is ExistingUserSignupViewModel model)
                 {
                     model.GetUserDetailsFromPhoneNumber.Execute(null);
+                }
+            }
+
+            if (ShouldFormat)
+            {
+                if (sender is Entry entry)
+                {
+                    var retVal = NumberFormatter.FormatToCurrency(entry.Text);
+                    data.Text = retVal;
                 }
             }
         }

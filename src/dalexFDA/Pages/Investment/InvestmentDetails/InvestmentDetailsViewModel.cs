@@ -11,11 +11,13 @@ namespace dalexFDA
     public class InvestmentDetailsViewModel : BaseViewModel
     {
         readonly IErrorManager ErrorManager;
+        readonly ISession SessionService;
 
         public InvestmentItem Investment { get; set; }
         public Xamarin.Forms.Color StatusColor { get; set; }
         public Color RolloverButtonColor { get; set; }
         public bool IsStatusActive { get { return Investment?.Status == "Active"; } }
+        public string AccountName { get; set; }
 
         public Command ViewCertificate { get; set; }
         public Command RedeemInvestment { get; set; }
@@ -27,9 +29,10 @@ namespace dalexFDA
             public InvestmentItem Investment { get; set; }
         }
 
-        public InvestmentDetailsViewModel(IErrorManager ErrorManager)
+        public InvestmentDetailsViewModel(IErrorManager ErrorManager, ISession SessionService)
         {
             this.ErrorManager = ErrorManager;
+            this.SessionService = SessionService;
 
             ViewCertificate = new Command(async () => await ExecuteViewCertificate());
             RedeemInvestment = new Command(async () => await ExecuteRedeemInvestment());
@@ -52,6 +55,8 @@ namespace dalexFDA
                     RolloverButtonColor = IsStatusActive ? (Color)Application.Current.Resources["SpaceGray"]
                                                                     : (Color)Application.Current.Resources["PalmLeaf"];
                 }
+
+                AccountName = SessionService?.CurrentUser?.FullName;
             }
             catch (Exception ex)
             {

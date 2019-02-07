@@ -72,14 +72,14 @@ namespace dalexFDA
                     return;
                 }
 
+
                 using (Dialog.Loading("Registering..."))
                 {
                     var response = await AccountService.ConfirmAccount(Phone, Token);
-
                     if (response)
-                    {
                         AppService.Logout();
-                    }
+                    else
+                        await CoreMethods.DisplayAlert("Oops", "The code you entered is incorrect. Please try again", "Ok");
                 }
             }
             catch (Exception ex)

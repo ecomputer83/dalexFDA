@@ -7,32 +7,33 @@
              Title="Make Deposit - Fund Transfer">
     <ContentPage.Content>
         <StackLayout Spacing="0">
-            <ContentView BackgroundColor="{StaticResource OffWhite3}" Margin="0" IsVisible="{Binding IsNotSuccesful}">
+            <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0" IsVisible="{Binding IsNotSuccesful}">
                 <Label Text="Investment Details" TextColor="{StaticResource Liver}" FontSize="22" FontAttributes="Bold" 
                        Margin="16,24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
             </ContentView>
             <ScrollView IsVisible="{Binding IsNotSuccesful}">
                 <StackLayout Spacing="8">
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
-                        <Label Text="Form Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
                     
-                    <Label Text="Transaction Date" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <ContentView BackgroundColor="{StaticResource PalmLeaf}" Margin="32,0,32,6" HeightRequest="42">
-                        <StackLayout Spacing="0" BackgroundColor="{StaticResource GrayBoro}" Margin="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <DatePicker Format="dd-MMM-yyyy" Margin="8,0" HorizontalOptions="FillAndExpand" IsEnabled="false" />
-                            <svg:SvgImage Svg="res:images.icon-down-arrow" HorizontalOptions="End" WidthRequest="10" Margin="0,0,8,0" InputTransparent="true" />
-                        </StackLayout>
-                    </ContentView>
+                    <local:FormDatePicker Label="Transaction Date" Date="{Binding TransactionDate}" Name="TransactionDate" IsEnabled="false"
+                            HasError="{Binding TransactionDateHasError}" ErrorMessage="{Binding TransactionDateErrorMessage}" Margin="32,0,32,6"
+                            PickerColor="{StaticResource GrayBoro}"
+                        />
                     
-                    <Label Text="Transaction Reference Number" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="ADC123456" Margin="32,0,32,6" />
+                    <local:FormEntry Text="{Binding RefNumber}" HasError="{Binding RefNumberHasError}" ErrorMessage="{Binding RefNumberErrorMessage}" 
+                            Margin="32,0,32,6" Name="RefNumber" Placeholder="ADC123456" Label="Transaction Reference Number"
+                        />
                     
-                    <Label Text="Proposed Investment Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="22,000.00" HorizontalTextAlignment="End" Margin="32,0,32,6" />
+                    <local:FormEntry Label="Proposed Investment Amount [GHS]" Text="{Binding InvestmentAmount}" HasError="{Binding InvestmentAmountHasError}" 
+                            ErrorMessage="{Binding InvestmentAmountErrorMessage}" HorizontalTextAlignment="End" Margin="32,0,32,6" Name="InvestmentAmount" 
+                            ShouldFormat="true"
+                        />
                     
-                    <Label Text="Proposed Investment Duration [Days]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="182" HorizontalTextAlignment="End" Margin="32,0,32,6" />
+                    <local:FormEntry Text="{Binding Duration}" HasError="{Binding DurationHasError}" ErrorMessage="{Binding DurationErrorMessage}" 
+                            HorizontalTextAlignment="End" Margin="32,0,32,6" IsNumeric="true" Name="Duration" Label="Proposed Investment Duration [Days]"
+                        />
                 </StackLayout>
             </ScrollView>
             

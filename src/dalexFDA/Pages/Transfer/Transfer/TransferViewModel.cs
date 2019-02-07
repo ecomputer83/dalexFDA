@@ -71,13 +71,13 @@ namespace  dalexFDA
         {
             Banks = new ObservableCollection<Bank>
             {
-                new Bank { BankCode=020, BankName="Heritage Bank"},
-                new Bank { BankCode=011, BankName="Guarantee Trust Bank"},
-                new Bank { BankCode=100, BankName="Diamond Bank"},
-                new Bank { BankCode=065, BankName="Sterling Bank"},
-                new Bank { BankCode=098, BankName="First Bank"},
-                new Bank { BankCode=008, BankName="United Bank"},
-                new Bank { BankCode=007, BankName="Union Bank of Africa"}
+                new Bank { Code=020, Name="Heritage Bank"},
+                new Bank { Code=011, Name="Guarantee Trust Bank"},
+                new Bank { Code=100, Name="Diamond Bank"},
+                new Bank { Code=065, Name="Sterling Bank"},
+                new Bank { Code=098, Name="First Bank"},
+                new Bank { Code=008, Name="United Bank"},
+                new Bank { Code=007, Name="Union Bank of Africa"}
             };
         }
 
@@ -197,8 +197,8 @@ namespace  dalexFDA
             {
                 var response = await BankPopupDialog.ShowDialog(CurrentNavigation, Banks);
                 var accountItem = response.Item as Bank;
-                BankName = accountItem.BankName;
-                BankCode = accountItem.BankCode;
+                BankName = accountItem.Name;
+                BankCode = accountItem.Code;
             }
             catch (Exception ex)
             {

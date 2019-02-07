@@ -4,6 +4,8 @@ using Xamarin.Forms;
 using dalexFDA.Abstractions;
 using PropertyChanged;
 using Acr.UserDialogs;
+using Refit;
+using System.Diagnostics;
 
 namespace dalexFDA
 {
@@ -68,6 +70,10 @@ namespace dalexFDA
             SignUpExistingUser = new Command(async () => await ExecuteSignUpExistingUser());
             SignUpNewUser = new Command(async () => await ExecuteSignUpNewUser());
             Validate = new Command<CommandNav>(async (obj) => await ExecuteValidate(obj));
+
+            PhoneExtension = "234";
+            PhoneNumber = "7037509734";
+            Password = "1234";
         }
 
         private async Task ExecuteLogin()
@@ -93,15 +99,20 @@ namespace dalexFDA
                         if (user != null)
                         {
                             SessionService.CurrentUser = user;
-
                             AppService.StartMainFlow();
                         }
                     }
                 }
             }
+            catch(ApiException ex)
+            {
+                await CoreMethods.DisplayAlert("Oops", "Invalid Phone number or password. Please try again.", "Ok");
+                Debug.WriteLine($"{ex.Message}");
+            }
             catch (Exception ex)
             {
-                await ErrorManager.DisplayErrorMessageAsync(ex);
+                await CoreMethods.DisplayAlert("Oops", "Invalid Phone number or password. Please try again.", "Ok");
+                Debug.WriteLine($"{ex.Message}");
             }
         }
 

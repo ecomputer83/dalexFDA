@@ -7,7 +7,7 @@ namespace dalexFDA.Abstractions
         {
         }
 
-        public int BankCode { get; set; }
-        public string BankName { get; set; }
+        public int Code { get; set; }
+        public string Name { get; set; }
     }
 }

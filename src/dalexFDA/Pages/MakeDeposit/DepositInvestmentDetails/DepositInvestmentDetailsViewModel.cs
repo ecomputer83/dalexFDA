@@ -15,6 +15,8 @@ namespace dalexFDA
         public bool IsSuccessful { get; set; }
         public bool IsNotSuccesful { get { return !IsSuccessful; } }
 
+        public DateTime TransactionDate { get; set; }
+
         public Command Negotiate { get; set; }
         public Command Done { get; set; }
 

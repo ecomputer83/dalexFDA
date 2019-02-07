@@ -6,6 +6,6 @@ namespace dalexFDA.Abstractions
 {
     public interface IDepositService
     {
-        Task<List<Bank>> GetBanksAsync();
+        Task<IEnumerable<Bank>> GetBanks();
     }
 }

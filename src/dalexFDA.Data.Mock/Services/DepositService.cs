@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using dalexFDA.Abstractions;
 
@@ -11,15 +12,15 @@ namespace dalexFDA.Data.Mock
         {
         }
 
-        public Task<List<Bank>> GetBanksAsync()
+        public Task<IEnumerable<Bank>> GetBanks()
         {
             var bankList = new List<Bank>
             {
-                new Bank{ BankName="Access Bank", BankCode=303 },
-                new Bank{ BankName="Zenith",BankCode=058 },
-                new Bank{ BankName="First Bank", BankCode=014 }
+                new Bank{ Name="Access Bank", Code=303 },
+                new Bank{ Name="Zenith",Code=058 },
+                new Bank{ Name="First Bank", Code=014 }
             };
-            return Task.FromResult(bankList);
+            return Task.FromResult(bankList.OrderBy(x => x.Name).AsEnumerable());
         }
     }
 }

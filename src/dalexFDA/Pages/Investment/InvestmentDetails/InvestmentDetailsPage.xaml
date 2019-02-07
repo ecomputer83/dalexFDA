@@ -27,11 +27,11 @@
                     
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Account Name" TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.AccountName}" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="{Binding AccountName}" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                 </StackLayout>
                 
-                <ContentView Grid.Row="2" BackgroundColor="{StaticResource Isabelline}">
+                <ContentView Grid.Row="2" BackgroundColor="{StaticResource White}">
                 </ContentView>
                 
                 <ContentView Grid.Row="1" Grid.RowSpan="2" BackgroundColor="{Binding StatusColor}" Margin="0,2" HorizontalOptions="Center" HeightRequest="60">
@@ -42,14 +42,14 @@
             </Grid>
             
             <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
-                <Label Text="More Info" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                <Label Text="More Info" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
             </ContentView>
             
             <ScrollView>
                 <StackLayout Spacing="12" Padding="12">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Principal" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.Principal}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="{Binding Investment.Principal, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
@@ -64,32 +64,32 @@
                     
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Start Date" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.StartDate, StringFormat='{0:d MMMM yyyy}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="{Binding Investment.StartDate, StringFormat='{0:d, MMMM yyyy}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Maturity Date" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.MaturityDate, StringFormat='{0:d MMMM yyyy}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="{Binding Investment.MaturityDate, StringFormat='{0:d, MMMM yyyy}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Interest Amount" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.InterestAmount}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="{Binding Investment.InterestAmount, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Int. Earned" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.InterestEarned}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="{Binding Investment.InterestEarned, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Redemption Value" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.Redemption}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="{Binding Investment.Redemption, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Maturity Value" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.Maturity}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="{Binding Investment.Maturity, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

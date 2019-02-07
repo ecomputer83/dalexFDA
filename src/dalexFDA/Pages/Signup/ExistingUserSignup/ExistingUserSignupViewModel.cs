@@ -234,7 +234,7 @@ namespace dalexFDA
                     EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
                     EmailAddressErrorMessage = email_address_error_message;
                     EmailAddressHasError = !EmailAddressHasError ? !ValidateEmail(EmailAddress) : EmailAddressHasError;
-                    EmailAddressErrorMessage = !EmailAddressHasError && !ValidateEmail(EmailAddress) ? invalid_email_address_error_message : string.Empty;
+                    EmailAddressErrorMessage = !EmailAddressHasError && !ValidateEmail(EmailAddress) ? "" : invalid_email_address_error_message;
                     break;
                 case "SecurityQuestion":
                     SecurityQuestionHasError = string.IsNullOrEmpty(SecurityQuestion);
@@ -272,7 +272,7 @@ namespace dalexFDA
             EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
             EmailAddressErrorMessage = email_address_error_message;
             EmailAddressHasError = !EmailAddressHasError ? !isValidEmail : EmailAddressHasError;
-            EmailAddressErrorMessage = !EmailAddressHasError && !isValidEmail ? invalid_email_address_error_message : string.Empty;
+            EmailAddressErrorMessage = !EmailAddressHasError && !isValidEmail ? "" : invalid_email_address_error_message;
 
             SecurityQuestionHasError = string.IsNullOrEmpty(SecurityQuestion);
             SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
@@ -282,9 +282,12 @@ namespace dalexFDA
             PinErrorMessage = pin_error_message;
             ConfirmPinHasError = string.IsNullOrEmpty(ConfirmPIN);
             ConfirmPinErrorMessage = confirmpin_error_message;
-            PinHasError = ConfirmPinHasError = !PinHasError && !ConfirmPinHasError;
-            PinErrorMessage = inconsistent_pin_error_message;
-            ConfirmPinErrorMessage = string.Empty;
+            if(!PinHasError && !ConfirmPinHasError)
+            {
+                PinHasError = ConfirmPinHasError = PIN != ConfirmPIN;
+                PinErrorMessage = inconsistent_pin_error_message;
+                ConfirmPinErrorMessage = string.Empty;
+            }
 
             return PhoneHasError || FirstNameHasError || LastNameHasError || EmailAddressHasError || SecurityQuestionHasError || SecurityAnswerHasError ||
                 PinHasError || ConfirmPinHasError;

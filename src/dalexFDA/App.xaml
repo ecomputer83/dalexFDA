@@ -4,7 +4,6 @@
              x:Class="dalexFDA.App">
   <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="White">#FFFFFF</Color>
             <Color x:Key="SmokeyBlack">#0D0D0D</Color>
             <Color x:Key="Liver">#4E4F50</Color>
             <Color x:Key="Manatee">#979797</Color>
@@ -15,7 +14,13 @@
             <Color x:Key="Red">#DC0A0F</Color>
             <Color x:Key="Kucrimson">#e70000</Color>
             <Color x:Key="SpaceGray">#494A4B</Color>
-            <Color x:Key="OffWhite3">#f8f8f8</Color>
+            
+            <Color x:Key="White">#FFFFFF</Color>
+            <Color x:Key="OffWhite1">#f9f9f9</Color>
+            <Color x:Key="OffWhite2">#f3f4f4</Color>
+            <Color x:Key="OffWhite3">#F1F2F2</Color>
+            <Color x:Key="OffWhite4">#e6e7e8</Color>
+            
             <Color x:Key="Green">#46A173</Color>
             <Color x:Key="Rosewood">#580001</Color>
 

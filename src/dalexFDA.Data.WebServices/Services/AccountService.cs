@@ -33,7 +33,9 @@ namespace dalexFDA.Data.WebServices
                 {
                     FullName = response.fullName,
                     Email = response.email,
-                    PhoneNumber = response.phoneNumber
+                    PhoneNumber = response.phoneNumber,
+                    SecurityQuestion = response.securityQuestion,
+                    SecurityAnswer = response.securityAnswer
                 };
                 return user;
             }
