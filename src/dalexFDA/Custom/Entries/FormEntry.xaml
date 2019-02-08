@@ -19,6 +19,7 @@
                         <local:CustomEntry.Behaviors>
                             <behaviors:NumericValidationBehavior x:Name="numericBehavior" IsNumeric="false"  />
                             <behaviors:EntryLengthValidatorBehavior x:Name="maxLengthBehavior" MaxLength="0"  />
+                            <behaviors:MaskedBehavior x:Name="maskedBehavior" Mask="" />
                         </local:CustomEntry.Behaviors>
                     </local:CustomEntry>
                 </StackLayout>

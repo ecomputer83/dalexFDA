@@ -24,7 +24,8 @@
                     </ContentView>
                     
                     <local:FormEntry Label="Beneficiary Account Name" Text="{Binding Beneficiary}" HasError="{Binding BeneficiaryHasError}" 
-                            ErrorMessage="{Binding BeneficiaryErrorMessage}" Margin="32,0,32,6" Name="Beneficiary" IsEnabled="false" EntryColor="{StaticResource GrayBoro}"
+                            ErrorMessage="{Binding BeneficiaryErrorMessage}" Margin="32,0,32,6" Name="Beneficiary" IsEnabled="false" 
+                            EntryColor="{StaticResource GrayBoro}"
                         />
                     
                     <local:FormEntry Label="Payment Purpose" Text="{Binding PaymentPurpose}" HasError="{Binding PaymentPurposeHasError}" 

@@ -52,14 +52,14 @@ namespace dalexFDA
         {
             Page page;
 
-            //if (EnvironmentHelper.Configuration.IsInScreenUnitTestingMode)
-            //{
-               // page = FreshPageModelResolver.ResolvePageModel<UnitTestsViewModel>();
-            //}
-            //else
-            //{
-            page = FreshPageModelResolver.ResolvePageModel<LoginViewModel>();
-            //}
+            if (Config.Mock.DisplayUnitTests)
+            {
+                page = FreshPageModelResolver.ResolvePageModel<UnitTestsViewModel>();
+            }
+            else
+            {
+                page = FreshPageModelResolver.ResolvePageModel<LoginViewModel>();
+            }
 
 
             var container = new CustomFreshNavigationContainer(page);
@@ -114,14 +114,6 @@ namespace dalexFDA
             var menu = FreshIOC.Container.Resolve<IFreshNavigationService>(CustomNav.Name) as MasterDetailPage;
             menu.Detail = container;
             menu.IsPresented = false;
-
-            //if (EnvironmentHelper.Configuration.IsInScreenUnitTestingMode)
-            //{
-            //    MainPage = container;
-            //}
-            //else
-            //{
-            //}
         }
 
         #endregion

@@ -18,24 +18,26 @@
                             HasError="{Binding TransactionDateHasError}" ErrorMessage="{Binding TransactionDateErrorMessage}" Margin="32,0,32,6"
                         />
                     
-                    <local:FormEntry Label="Deposit Amount [GHS]" Text="{Binding Deposit}" HasError="{Binding DepositHasError}" 
+                    <local:FormEntry Label="Deposit Amount [GHS]" Amount="{Binding Deposit}" Placeholder="0.00" HasError="{Binding DepositHasError}" Keyboard="Numeric"
                             ErrorMessage="{Binding DepositErrorMessage}" HorizontalTextAlignment="End" Margin="32,0,32,6" Name="Deposit" ShouldFormat="true"
                         />
                     
-                    <local:FormPicker Label="Bank" Placeholder="Bank Name" ItemsSource="{Binding Banks}" SelectedIndex="{Binding SelectedBankIndex}"
-                            HasError="{Binding BankHasError}" ErrorMessage="{Binding BankErrorMessage}" Margin="32,0,32,6" Name="Bank"
+                    <local:FormPicker Label="Bank" ItemsSource="{Binding Banks}" SelectedIndex="{Binding SelectedBankIndex}" Name="Bank" Placeholder="Bank Name"
+                            HasError="{Binding BankHasError}" ErrorMessage="{Binding BankErrorMessage}" Margin="32,0,32,6"
                         />
                         
-                    <local:FormEntry Text="{Binding TellerNumber}" HasError="{Binding TellerNumberHasError}" ErrorMessage="{Binding TellerNumberErrorMessage}" 
-                            Margin="32,0,32,6" Name="TellerNumber" Placeholder="ADC123221" Label="Teller/Cheque Number"
+                    <local:FormEntry Label="Teller/Cheque Number" Text="{Binding TellerNumber}" Name="TellerNumber" Placeholder="ADC123221"
+                             HasError="{Binding TellerNumberHasError}" ErrorMessage="{Binding TellerNumberErrorMessage}" Margin="32,0,32,6" 
                         />
                     
-                    <local:FormEntry Text="{Binding InvestmentAmount}" HasError="{Binding InvestmentAmountHasError}" ErrorMessage="{Binding InvestmentAmountErrorMessage}" 
-                            HorizontalTextAlignment="End" Margin="32,0,32,6" ShouldFormat="true" Name="InvestmentAmount" Label="Proposed Investment Amount [GHS]"
+                    <local:FormEntry Label="Proposed Investment Amount [GHS]" Amount="{Binding InvestmentAmount}" Name="InvestmentAmount" 
+                            ShouldFormat="true" Keyboard="Numeric" HorizontalTextAlignment="End" Margin="32,0,32,6" Placeholder="0.00"
+                            HasError="{Binding InvestmentAmountHasError}" ErrorMessage="{Binding InvestmentAmountErrorMessage}" 
                         />
                     
                     <local:FormEntry Text="{Binding Duration}" HasError="{Binding DurationHasError}" ErrorMessage="{Binding DurationErrorMessage}" 
                             HorizontalTextAlignment="End" Margin="32,0,32,6" IsNumeric="true" Name="Duration" Label="Proposed Investment Duration [Days]"
+                            Keyboard="Numeric"
                         />
                     
                     

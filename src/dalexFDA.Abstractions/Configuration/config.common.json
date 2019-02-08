@@ -12,6 +12,6 @@
     },
     "Mock": {
         "enabled": "false",
-        "displayUnitTests": "false"
+        "displayUnitTests": "true"
     }
 }

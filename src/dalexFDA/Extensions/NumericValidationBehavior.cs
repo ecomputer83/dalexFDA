@@ -36,7 +36,7 @@ namespace dalexFDA
 
             if (!string.IsNullOrWhiteSpace(args.NewTextValue))
             {
-                bool isValid = args.NewTextValue.ToCharArray().All(x => char.IsDigit(x)) || args.NewTextValue.ToCharArray().All(x => x == '.'); //Make sure all characters are numbers
+                bool isValid = args.NewTextValue.ToCharArray().All(x => char.IsDigit(x) || char.IsWhiteSpace(x) || char.IsSymbol(x)); //Make sure all characters are numbers
 
                 ((Entry)sender).Text = isValid ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
             }

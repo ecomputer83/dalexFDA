@@ -90,6 +90,39 @@ namespace dalexFDA
 
         #endregion
 
+        #region Property - Amount
+
+        public const string AmountPropertyName = "Amount";
+
+        public double Amount
+        {
+            get
+            {
+                return (double)GetValue(AmountProperty);
+            }
+            set
+            {
+                SetValue(AmountProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty AmountProperty = BindableProperty.Create(
+            AmountPropertyName,
+               typeof(double),
+               typeof(FormEntry),
+                0.00,
+            BindingMode.TwoWay, propertyChanging: (bindable, oldValue, newValue) =>
+            {
+                var control = (FormEntry)bindable;
+                if (control != null && newValue != null)
+                {
+                    control.Amount = (double)newValue;
+                }
+            }
+        );
+
+        #endregion
+
         #region Placeholder
 
         public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create("Placeholder", typeof(string), typeof(FormEntry), default(string));
@@ -295,6 +328,27 @@ namespace dalexFDA
 
         #endregion
 
+        #region Mask
+
+        public static readonly BindableProperty MaskProperty = BindableProperty.Create("Mask", typeof(string), typeof(FormEntry), default(string));
+
+        public string Mask
+        {
+            get { return (string)GetValue(MaskProperty); }
+            set { SetValue(MaskProperty, value); }
+        }
+
+        private void SetMask()
+        {
+            try
+            {
+                maskedBehavior.Mask = Mask;
+            }
+            catch { }
+        }
+
+        #endregion
+
         #region Keyboard
 
         public static readonly BindableProperty KeyboardProperty = BindableProperty.Create("Keyboard", typeof(Keyboard), typeof(FormEntry), default(Keyboard));
@@ -410,6 +464,11 @@ namespace dalexFDA
             {
                 SetMaxLength();
             }
+
+            if (propertyName == MaskProperty.PropertyName)
+            {
+                SetMask();
+            }
         }
 
         void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
@@ -455,7 +514,7 @@ namespace dalexFDA
                         var text = NumberFormatter.ExtractNumber(entry.Text);
                         double.TryParse(text, out double amount);
 
-                        this.Text = amount.ToString();
+                        this.Amount = amount;
                     }
                 }
             }
@@ -490,7 +549,6 @@ namespace dalexFDA
         {
             if (Name == "PhoneExtension" || Name == "PhoneNumber")
             {
-
                 if (this.BindingContext is ExistingUserSignupViewModel model)
                 {
                     model.GetUserDetailsFromPhoneNumber.Execute(null);
@@ -501,8 +559,9 @@ namespace dalexFDA
             {
                 if (sender is Entry entry)
                 {
-                    var retVal = NumberFormatter.FormatToCurrency(entry.Text);
-                    data.Text = retVal;
+                    var amount = !string.IsNullOrEmpty(entry.Text) ? entry.Text : "0";
+                    var retVal = NumberFormatter.FormatToCurrency(amount);
+                    entry.Text = retVal;
                 }
             }
         }
