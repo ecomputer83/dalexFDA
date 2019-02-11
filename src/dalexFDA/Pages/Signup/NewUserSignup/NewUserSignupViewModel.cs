@@ -36,9 +36,28 @@ namespace dalexFDA
         public string FirstName { get; set; }
         public bool FirstNameHasError { get; set; }
         public string FirstNameErrorMessage { get; set; }
+        public Color FirstNameEntryColor
+        {
+            get
+            {
+                return IsFirstNameEnabled ? (Color)Application.Current.Resources["White"] :
+                                (Color)Application.Current.Resources["GrayBoro"];
+            }
+        }
+        public bool IsFirstNameEnabled { get; set; }
+
         public string LastName { get; set; }
         public bool LastNameHasError { get; set; }
         public string LastNameErrorMessage { get; set; }
+        public Color LastNameEntryColor
+        {
+            get
+            {
+                return IsLastNameEnabled ? (Color)Application.Current.Resources["White"] :
+                                (Color)Application.Current.Resources["GrayBoro"];
+            }
+        }
+        public bool IsLastNameEnabled { get; set; }
 
         public string FullPhoneNumber { get { return PhoneExtension.Replace("+", "") + PhoneNumber; } }
         public string PhoneNumber { get; set; }
@@ -51,9 +70,29 @@ namespace dalexFDA
         public string EmailAddress { get; set; }
         public bool EmailAddressHasError { get; set; }
         public string EmailAddressErrorMessage { get; set; }
+        public Color EmailAddressEntryColor
+        {
+            get
+            {
+                return IsEmailAddressEnabled ? (Color)Application.Current.Resources["White"] :
+                                (Color)Application.Current.Resources["GrayBoro"];
+            }
+        }
+        public bool IsEmailAddressEnabled { get; set; }
+
         public string SecurityQuestion { get; set; }
         public bool SecurityQuestionHasError { get; set; }
         public string SecurityQuestionErrorMessage { get; set; }
+        public Color SecurityQuestionEntryColor
+        {
+            get
+            {
+                return IsSecurityQuestionEnabled ? (Color)Application.Current.Resources["White"] :
+                                (Color)Application.Current.Resources["GrayBoro"];
+            }
+        }
+        public bool IsSecurityQuestionEnabled { get; set; }
+
         public string SecurityAnswer { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
@@ -64,16 +103,14 @@ namespace dalexFDA
         public bool ConfirmPinHasError { get; set; }
         public string ConfirmPinErrorMessage { get; set; }
 
+        public User User { get; set; }
+
         //commands
         public Command Register { get; private set; }
         public Command Cancel { get; private set; }
         public Command Agree { get; private set; }
         public Command Validate { get; private set; }
-
-        public class CommandNav
-        {
-            public string Name { get; set; }
-        }
+        public Command GetUserWithPhoneNumber { get; private set; }
 
         private const string first_name_error_message = "Please enter your first name.";
         private const string last_name_error_message = "Please enter your last name.";
@@ -100,7 +137,22 @@ namespace dalexFDA
             Register = new Command(async () => await ExecuteRegister());
             Cancel = new Command(async () => await ExecuteCancel());
             Agree = new Command(async () => await ExecuteAgree());
-            Validate = new Command<CommandNav>(async (obj) => await ExecuteValidate(obj));
+            GetUserWithPhoneNumber = new Command(async () => await ExecuteGetUserWithPhoneNumber());
+            Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
+        }
+
+        public async  override void Init(object initData)
+        {
+            base.Init(initData);
+
+            try
+            {
+                IsFirstNameEnabled = IsLastNameEnabled = IsEmailAddressEnabled = IsSecurityQuestionEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
         }
 
         private async Task ExecuteAgree()
@@ -167,7 +219,49 @@ namespace dalexFDA
             }
         }
 
-        private async Task ExecuteValidate(CommandNav obj)
+        private async Task ExecuteGetUserWithPhoneNumber()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(PhoneExtension) && !string.IsNullOrEmpty(PhoneNumber))
+                {
+                    using (Dialog.Loading("Fetching details..."))
+                    {
+                        var phoneExtension = NumberFormatter.ExtractNumber(PhoneExtension);
+                        var phoneNumber = NumberFormatter.ExtractNumber(PhoneNumber);
+                        User = await AccountService.GetUserByPhoneNumberExternal(PhoneExtension, phoneNumber);
+
+                        if (User != null)
+                        {
+                            FirstName = User.FirstName;
+                            IsFirstNameEnabled = !string.IsNullOrEmpty(FirstName);
+                            LastName = User.LastName;
+                            IsLastNameEnabled = !string.IsNullOrEmpty(LastName);
+                            EmailAddress = User.Email;
+                            IsEmailAddressEnabled = !string.IsNullOrEmpty(EmailAddress);
+                            SecurityQuestion = User.SecurityQuestion;
+                            IsSecurityQuestionEnabled = !string.IsNullOrEmpty(SecurityQuestion);
+                        }
+                        else
+                        {
+                            FirstName = LastName = EmailAddress = SecurityQuestion = "";
+                            IsFirstNameEnabled = IsLastNameEnabled = IsEmailAddressEnabled = IsSecurityQuestionEnabled = true;
+                        }
+                    }
+                }
+            }
+            catch (ApiException ex)
+            {
+                await CoreMethods.DisplayAlert("Oops", "An error occured. Please try again later.", "Ok");
+                Debug.WriteLine($"=======ApiException: {ex.Content}=======");
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private async Task ExecuteValidate(ValidationCommandNav obj)
         {
             try
             {

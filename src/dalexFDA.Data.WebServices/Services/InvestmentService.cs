@@ -15,7 +15,7 @@ namespace dalexFDA.Data.WebServices
             Config = configurationService.Current;
         }
 
-        public async Task<bool> DepositEInvestment(InvestmentEDeposit request)
+        public async Task<bool> DepositEInvestment(ETransferRequest request)
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
             var response = await service.EDeposit(request);

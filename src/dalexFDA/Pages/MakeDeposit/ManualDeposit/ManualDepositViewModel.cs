@@ -62,6 +62,8 @@ namespace dalexFDA
             public string Name { get; set; }
         }
 
+        private const string bank_error_message = "Please select a bank.";
+        private const string teller_number_error_message = "Please enter a teller / cheque number.";
         private const string duration_error_message = "Please enter a valid number of days.";
         private const string security_answer_error_message = "Please enter the answer to the question.";
         private const string wrong_security_answer_error_message = "Incorrect answer. Please try again";
@@ -86,7 +88,6 @@ namespace dalexFDA
             try
             {
                 var banks = await DepositService.GetBanks();
-
                 Banks = banks.ToList();
 
                 Duration = "0";
@@ -166,10 +167,7 @@ namespace dalexFDA
                     break;
             }
         }
-
-        private const string bank_error_message = "Please select a bank.";
-        private const string teller_number_error_message = "Please enter a teller / cheque number.";
-
+        
         public bool PerformValidation()
         {
             BankHasError = SelectedBank == null;

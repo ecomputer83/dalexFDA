@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using dalexFDA.Abstractions;
@@ -53,6 +54,19 @@ namespace dalexFDA.Data.WebServices
             var response = await service.GetUserByPhoneNumber(phoneNumber);
 
             return response;
+        }
+
+        public async Task<User> GetUserByPhoneNumberExternal(string phoneExtension, string phoneNumber)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.GetUserByPhoneNumber(phoneNumber);
+
+            return response;
+        }
+
+        public Task<List<User>> GetUsers()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<SignupResponse> Signup(SignupRequest data)

@@ -21,16 +21,13 @@
                             HasError="{Binding TransactionDateHasError}" ErrorMessage="{Binding TransactionDateErrorMessage}" Margin="32,0,32,6"
                             PickerColor="{StaticResource GrayBoro}"
                         />
-                    
                     <local:FormEntry Text="{Binding RefNumber}" HasError="{Binding RefNumberHasError}" ErrorMessage="{Binding RefNumberErrorMessage}" 
                             Margin="32,0,32,6" Name="RefNumber" Placeholder="ADC123456" Label="Transaction Reference Number"
                         />
-                    
                     <local:FormEntry Label="Proposed Investment Amount [GHS]" Text="{Binding InvestmentAmount}" HasError="{Binding InvestmentAmountHasError}" 
                             ErrorMessage="{Binding InvestmentAmountErrorMessage}" HorizontalTextAlignment="End" Margin="32,0,32,6" Name="InvestmentAmount" 
-                            ShouldFormat="true"
+                            ShouldFormat="true" Keyboard="Numeric" Placeholder="0.00" 
                         />
-                    
                     <local:FormEntry Text="{Binding Duration}" HasError="{Binding DurationHasError}" ErrorMessage="{Binding DurationErrorMessage}" 
                             HorizontalTextAlignment="End" Margin="32,0,32,6" IsNumeric="true" Name="Duration" Label="Proposed Investment Duration [Days]"
                         />
@@ -38,16 +35,22 @@
             </ScrollView>
             
             <StackLayout IsVisible="{Binding IsSuccessful}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-                <svg:SvgImage Svg="res:images.icon-success" ColorMapping="000000=6D9B36" WidthRequest="70" HorizontalOptions="Center" /> 
+                <svg:SvgImage Svg="res:images.icon-success" ColorMapping="000000=6D9B36" WidthRequest="70" HorizontalOptions="Center" />
                 <Label Text="Transaction Successful!" TextColor="{StaticResource PalmLeaf}" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                
-                <Button Text="DONE" Style="{StaticResource PrimaryButton}" Command="{Binding Done}" Margin="16" />
+
+                <Label TextColor="{StaticResource PalmLeaf}" Margin="16" HorizontalOptions="Center" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Done" FontSize="16" TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Done}" />
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
-            
-            <Button IsVisible="{Binding IsNotSuccesful}" Text="NEGOTIATE TRANSACTION" Style="{StaticResource PrimaryButton}" Command="{Binding Negotiate}" Margin="16" 
-                    VerticalOptions="EndAndExpand" 
-                />
-            
+
+            <Button IsVisible="{Binding IsNotSuccesful}" Text="NEGOTIATE TRANSACTION" Style="{StaticResource PrimaryButton}" Command="{Binding Negotiate}" Margin="16" VerticalOptions="EndAndExpand"  />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

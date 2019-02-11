@@ -22,22 +22,22 @@
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
                         <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
-                    
-                    <local:FormEntry Label="Beneficiary Account Name" Text="{Binding Beneficiary}" HasError="{Binding BeneficiaryHasError}" 
-                            ErrorMessage="{Binding BeneficiaryErrorMessage}" Margin="32,0,32,6" Name="Beneficiary" IsEnabled="false" 
-                            EntryColor="{StaticResource GrayBoro}"
+
+                    <local:FormEntry Label="Beneficiary Account Name" Text="{Binding Beneficiary}"
+                            HasError="{Binding BeneficiaryHasError}" ErrorMessage="{Binding BeneficiaryErrorMessage}" 
+                            Margin="32,0,32,6" Name="Beneficiary" IsEnabled="false" EntryColor="{StaticResource GrayBoro}"
                         />
                     
                     <local:FormEntry Label="Payment Purpose" Text="{Binding PaymentPurpose}" HasError="{Binding PaymentPurposeHasError}" 
-                            ErrorMessage="{Binding PaymentPurposeErrorMessage}" Margin="32,0,32,6" Name="PaymentPurpose"
+                            ErrorMessage="{Binding PaymentPurposeErrorMessage}" Margin="32,0,32,6" Name="PaymentPurpose" 
                         />
-                    
-                    <local:FormEntry Label="Deposit Amount [GHS]" Text="{Binding Deposit}" HasError="{Binding DepositHasError}" ShouldFormat="true"
-                            ErrorMessage="{Binding DepositErrorMessage}" Margin="32,0,32,6" HorizontalTextAlignment="End" Name="Deposit"
+
+                    <local:FormEntry Label="Deposit Amount [GHS]" Amount="{Binding Deposit}" Placeholder="0.00" HasError="{Binding DepositHasError}" ShouldFormat="true"
+                            ErrorMessage="{Binding DepositErrorMessage}" Margin="32,0,32,6" HorizontalTextAlignment="End" Name="Deposit" Keyboard="Numeric"
                         />
-                    
-                    <local:FormEntry Label="Transaction Fee" Text="{Binding TransactionFee}" HasError="{Binding TransactionFeeHasError}" ShouldFormat="true"
-                            ErrorMessage="{Binding TransactionFeeErrorMessage}" Margin="32,0,32,6" HorizontalTextAlignment="End" Name="TransactionFee"
+
+                    <local:FormEntry Label="Transaction Fee" Amount="{Binding TransactionFee}" Placeholder="0.00" HasError="{Binding TransactionFeeHasError}" ShouldFormat="true"
+                            ErrorMessage="{Binding TransactionFeeErrorMessage}" Margin="32,0,32,6" HorizontalTextAlignment="End" Name="TransactionFee" Keyboard="Numeric"
                         />
                     
                     <Label Text="Payment Method" TextColor="{StaticResource Liver}"  FontSize="16" FontAttributes="Bold" Margin="32,0" />
@@ -77,10 +77,7 @@
                 </StackLayout>
             </ScrollView>
             
-            <Button Text="CONTINUE" Style="{StaticResource PrimaryButton}" Command="{Binding Continue}" Margin="16" 
-                    VerticalOptions="EndAndExpand" 
-                />
-            
+            <Button Text="CONTINUE" Style="{StaticResource PrimaryButton}" Command="{Binding Continue}" Margin="16" VerticalOptions="EndAndExpand" />            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

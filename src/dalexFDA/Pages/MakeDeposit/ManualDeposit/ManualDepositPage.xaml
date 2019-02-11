@@ -16,30 +16,24 @@
                     
                     <local:FormDatePicker Label="Transaction Date" Date="{Binding TransactionDate}" Name="TransactionDate"
                             HasError="{Binding TransactionDateHasError}" ErrorMessage="{Binding TransactionDateErrorMessage}" Margin="32,0,32,6"
-                        />
-                    
+                        />                    
                     <local:FormEntry Label="Deposit Amount [GHS]" Amount="{Binding Deposit}" Placeholder="0.00" HasError="{Binding DepositHasError}" Keyboard="Numeric"
                             ErrorMessage="{Binding DepositErrorMessage}" HorizontalTextAlignment="End" Margin="32,0,32,6" Name="Deposit" ShouldFormat="true"
-                        />
-                    
+                        />                    
                     <local:FormPicker Label="Bank" ItemsSource="{Binding Banks}" SelectedIndex="{Binding SelectedBankIndex}" Name="Bank" Placeholder="Bank Name"
                             HasError="{Binding BankHasError}" ErrorMessage="{Binding BankErrorMessage}" Margin="32,0,32,6"
-                        />
-                        
+                        />                        
                     <local:FormEntry Label="Teller/Cheque Number" Text="{Binding TellerNumber}" Name="TellerNumber" Placeholder="ADC123221"
                              HasError="{Binding TellerNumberHasError}" ErrorMessage="{Binding TellerNumberErrorMessage}" Margin="32,0,32,6" 
-                        />
-                    
+                        />                    
                     <local:FormEntry Label="Proposed Investment Amount [GHS]" Amount="{Binding InvestmentAmount}" Name="InvestmentAmount" 
                             ShouldFormat="true" Keyboard="Numeric" HorizontalTextAlignment="End" Margin="32,0,32,6" Placeholder="0.00"
                             HasError="{Binding InvestmentAmountHasError}" ErrorMessage="{Binding InvestmentAmountErrorMessage}" 
-                        />
-                    
+                        />                    
                     <local:FormEntry Text="{Binding Duration}" HasError="{Binding DurationHasError}" ErrorMessage="{Binding DurationErrorMessage}" 
                             HorizontalTextAlignment="End" Margin="32,0,32,6" IsNumeric="true" Name="Duration" Label="Proposed Investment Duration [Days]"
                             Keyboard="Numeric"
-                        />
-                    
+                        />                    
                     
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
                         <Label Text="Security Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
