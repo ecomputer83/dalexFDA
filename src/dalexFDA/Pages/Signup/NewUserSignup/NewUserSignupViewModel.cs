@@ -33,31 +33,18 @@ namespace dalexFDA
             }
         }
 
-        public string FirstName { get; set; }
-        public bool FirstNameHasError { get; set; }
-        public string FirstNameErrorMessage { get; set; }
-        public Color FirstNameEntryColor
+        public string FullName { get; set; }
+        public bool FullNameHasError { get; set; }
+        public string FullNameErrorMessage { get; set; }
+        public Color FullNameEntryColor
         {
             get
             {
-                return IsFirstNameEnabled ? (Color)Application.Current.Resources["White"] :
+                return IsFullEnabled ? (Color)Application.Current.Resources["White"] :
                                 (Color)Application.Current.Resources["GrayBoro"];
             }
         }
-        public bool IsFirstNameEnabled { get; set; }
-
-        public string LastName { get; set; }
-        public bool LastNameHasError { get; set; }
-        public string LastNameErrorMessage { get; set; }
-        public Color LastNameEntryColor
-        {
-            get
-            {
-                return IsLastNameEnabled ? (Color)Application.Current.Resources["White"] :
-                                (Color)Application.Current.Resources["GrayBoro"];
-            }
-        }
-        public bool IsLastNameEnabled { get; set; }
+        public bool IsFullEnabled { get; set; }
 
         public string FullPhoneNumber { get { return PhoneExtension.Replace("+", "") + PhoneNumber; } }
         public string PhoneNumber { get; set; }
@@ -112,8 +99,7 @@ namespace dalexFDA
         public Command Validate { get; private set; }
         public Command GetUserWithPhoneNumber { get; private set; }
 
-        private const string first_name_error_message = "Please enter your first name.";
-        private const string last_name_error_message = "Please enter your last name.";
+        private const string full_name_error_message = "Please enter your full name.";
         private const string phone_number_error_message = "Please enter your phone number.";
         private const string email_address_error_message = "Please enter an email address.";
         private const string invalid_email_address_error_message = "Please enter a valid email address.";
@@ -147,7 +133,7 @@ namespace dalexFDA
 
             try
             {
-                IsFirstNameEnabled = IsLastNameEnabled = IsEmailAddressEnabled = IsSecurityQuestionEnabled = true;
+                IsFullEnabled = IsEmailAddressEnabled = IsSecurityQuestionEnabled = true;
             }
             catch (Exception ex)
             {
@@ -178,8 +164,7 @@ namespace dalexFDA
                 {
                     var request = new SignupRequest
                     {
-                        FirstName = FirstName,
-                        LastName = LastName,
+                        Name = FullName,
                         Email = EmailAddress,
                         Password = PIN,
                         ConfirmPassword = PIN,
@@ -229,14 +214,12 @@ namespace dalexFDA
                     {
                         var phoneExtension = NumberFormatter.ExtractNumber(PhoneExtension);
                         var phoneNumber = NumberFormatter.ExtractNumber(PhoneNumber);
-                        User = await AccountService.GetUserByPhoneNumberExternal(PhoneExtension, phoneNumber);
+                        User = await AccountService.GetKYCAccountByPhoneNumber(PhoneExtension, phoneNumber);
 
                         if (User != null)
                         {
-                            FirstName = User.FirstName;
-                            IsFirstNameEnabled = !string.IsNullOrEmpty(FirstName);
-                            LastName = User.LastName;
-                            IsLastNameEnabled = !string.IsNullOrEmpty(LastName);
+                            FullName = User.Name;
+                            IsFullEnabled = !string.IsNullOrEmpty(FullName);
                             EmailAddress = User.Email;
                             IsEmailAddressEnabled = !string.IsNullOrEmpty(EmailAddress);
                             SecurityQuestion = User.SecurityQuestion;
@@ -244,8 +227,8 @@ namespace dalexFDA
                         }
                         else
                         {
-                            FirstName = LastName = EmailAddress = SecurityQuestion = "";
-                            IsFirstNameEnabled = IsLastNameEnabled = IsEmailAddressEnabled = IsSecurityQuestionEnabled = true;
+                            FullName = EmailAddress = SecurityQuestion = "";
+                            IsFullEnabled = IsEmailAddressEnabled = IsSecurityQuestionEnabled = true;
                         }
                     }
                 }
@@ -285,13 +268,9 @@ namespace dalexFDA
                     PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
                     PhoneNumberErrorMessage = phone_number_error_message;
                     break;
-                case "FirstName":
-                    FirstNameHasError = string.IsNullOrEmpty(FirstName);
-                    FirstNameErrorMessage = first_name_error_message;
-                    break;
-                case "LastName":
-                    LastNameHasError = string.IsNullOrEmpty(LastName);
-                    LastNameErrorMessage = last_name_error_message;
+                case "FullName":
+                    FullNameHasError = string.IsNullOrEmpty(FullName);
+                    FullNameErrorMessage = full_name_error_message;
                     break;
                 case "EmailAddress":
                     EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
@@ -330,10 +309,8 @@ namespace dalexFDA
             PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
             PhoneNumberErrorMessage = phone_number_error_message;
 
-            FirstNameHasError = string.IsNullOrEmpty(FirstName);
-            FirstNameErrorMessage = first_name_error_message;
-            LastNameHasError = string.IsNullOrEmpty(LastName);
-            LastNameErrorMessage = last_name_error_message;
+            FullNameHasError = string.IsNullOrEmpty(FullName);
+            FullNameErrorMessage = full_name_error_message;
 
             EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
             EmailAddressErrorMessage = email_address_error_message;
@@ -355,7 +332,7 @@ namespace dalexFDA
                 ConfirmPinErrorMessage = string.Empty;
             }
 
-            return PhoneHasError || FirstNameHasError || LastNameHasError || EmailAddressHasError || SecurityQuestionHasError || SecurityAnswerHasError ||
+            return PhoneHasError || FullNameHasError || EmailAddressHasError || SecurityQuestionHasError || SecurityAnswerHasError ||
                 PinHasError || ConfirmPinHasError;
         }
 
@@ -368,7 +345,7 @@ namespace dalexFDA
 
         private void ClearErrors()
         {
-            FirstNameHasError = LastNameHasError = PhoneExtensionHasError = PhoneNumberHasError = EmailAddressHasError = SecurityQuestionHasError 
+            FullNameHasError = PhoneExtensionHasError = PhoneNumberHasError = EmailAddressHasError = SecurityQuestionHasError 
             = SecurityAnswerHasError = PinHasError = ConfirmPinHasError = false;
         }
     }

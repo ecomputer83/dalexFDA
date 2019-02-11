@@ -32,7 +32,7 @@ namespace dalexFDA.Data.WebServices
             {
                 User user = new User
                 {
-                    FullName = response.fullName,
+                    Name = response.fullName,
                     Email = response.email,
                     PhoneNumber = response.phoneNumber,
                     SecurityQuestion = response.securityQuestion,
@@ -44,8 +44,6 @@ namespace dalexFDA.Data.WebServices
             {
                 return null;
             }
-
-
         }
 
         public async Task<User> GetUserByPhoneNumber(string phoneNumber)
@@ -56,10 +54,10 @@ namespace dalexFDA.Data.WebServices
             return response;
         }
 
-        public async Task<User> GetUserByPhoneNumberExternal(string phoneExtension, string phoneNumber)
+        public async Task<User> GetKYCAccountByPhoneNumber(string phoneExtension, string phoneNumber)
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
-            var response = await service.GetUserByPhoneNumber(phoneNumber);
+            var response = await service.GetKYCUserByPhoneNumber(phoneNumber, phoneExtension);
 
             return response;
         }

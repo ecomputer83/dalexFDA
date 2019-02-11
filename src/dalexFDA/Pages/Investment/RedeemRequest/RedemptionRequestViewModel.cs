@@ -79,7 +79,7 @@ namespace dalexFDA
                 {
                     Investment = Data.Investment;
                 }
-                AccountName = SessionService?.CurrentUser?.FullName;
+                AccountName = SessionService?.CurrentUser?.Name;
                 NewDuration = "0";
                 RedemptionAmount = 0;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();

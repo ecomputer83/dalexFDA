@@ -65,7 +65,7 @@ namespace dalexFDA
 
             try
             {
-                UserFullName = SessionService.CurrentUser.FullName;
+                UserFullName = SessionService.CurrentUser.Name;
                 IsMakeDepositOpen = false;
             }
             catch (Exception ex)
@@ -126,7 +126,7 @@ namespace dalexFDA
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("Transfer History", "Coming Soon", "OK");
+                AppService.StartTransferHistory();
             }
             catch (Exception ex)
             {

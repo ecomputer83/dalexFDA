@@ -72,7 +72,7 @@ namespace dalexFDA
                 {
                     Investment = Data.Investment;
                 }
-                AccountName = SessionService?.CurrentUser?.FullName;
+                AccountName = SessionService?.CurrentUser?.Name;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
             }
             catch (Exception ex)

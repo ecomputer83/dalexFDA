@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using dalexFDA.Abstractions;
 using Xamarin.Forms;
 
 namespace dalexFDA
@@ -485,7 +486,7 @@ namespace dalexFDA
 
                 if (this.BindingContext is NewUserSignupViewModel newUserSignupViewModel)
                 {
-                    var nav = new NewUserSignupViewModel.CommandNav { Name = Name };
+                    var nav = new ValidationCommandNav { Name = Name };
                     newUserSignupViewModel.Validate.Execute(nav);
                 }
 

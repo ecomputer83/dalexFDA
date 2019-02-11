@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="dalexFDA.TransactionHistoryPage"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             BackgroundColor="{StaticResource OffWhite2}"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <Grid RowSpacing="0" ColumnSpacing="0" Padding="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="74" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <ContentView Grid.Row="0" Padding="16,20,16,0" BackgroundColor="{StaticResource PalmLeaf}">
+                <Label Text="{Binding Title}" TextColor="#FFF" FontSize="22" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+            </ContentView>
+
+            <ContentView Grid.Row="1" BackgroundColor="{StaticResource PalmLeaf}" Padding="16,0,16,8">
+                <Grid ColumnSpacing="0" BackgroundColor="#FFF" VerticalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ContentView Grid.Column="0" Style="{StaticResource ActiveTab}" Margin="1">
+                        <svg:SvgImage Svg="res:images.icon-travel" WidthRequest="30" ColorMapping="000000=6D9B36" HorizontalOptions="Center" />
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewActive}" />
+                        </ContentView.GestureRecognizers>
+                    </ContentView>
+
+                    <ContentView Grid.Column="1" Style="{StaticResource InactiveTab}" Margin="1">
+                        <svg:SvgImage Svg="res:images.icon-settings" WidthRequest="30" ColorMapping="000000=FFFFFF" HorizontalOptions="Center" />
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewPast}" />
+                        </ContentView.GestureRecognizers>
+                    </ContentView>
+                    
+                    <ContentView Grid.Column="2" Style="{StaticResource InactiveTab}" Margin="1">
+                        <svg:SvgImage Svg="res:images.icon-replay" WidthRequest="30" ColorMapping="000000=FFFFFF" HorizontalOptions="Center" />
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewPast}" />
+                        </ContentView.GestureRecognizers>
+                    </ContentView>
+                    
+                    <ContentView Grid.Column="3" Style="{StaticResource InactiveTab}" Margin="1">
+                        <svg:SvgImage Svg="res:images.icon-location" WidthRequest="30" ColorMapping="000000=FFFFFF" HorizontalOptions="Center" />
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewPast}" />
+                        </ContentView.GestureRecognizers>
+                    </ContentView>
+                </Grid>
+            </ContentView>
+
+            <ListView x:Name="list" Grid.Row="2" ItemsSource="{Binding Orders}" CachingStrategy="RecycleElement" 
+                    SeparatorVisibility="None" HasUnevenRows="true" ItemTapped="Handle_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <!--<local:OrderItemView Margin="8,4" Product="{Binding Order.Product}" Terminal="{Binding Order.Terminal}" 
+                                    TerminalDetail="{Binding Order.TerminalDetail}" Destination="{Binding Order.Destination}" 
+                                    DestinationDetail="{Binding Order.DestinationDetail}" OrderNumber="{Binding Order.OrderNumber}" 
+                                    Status="{Binding Order.Status}" StatusColor="{Binding Order.OrderType, Converter={StaticResource OrderTypeColor}}"
+                                />-->
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

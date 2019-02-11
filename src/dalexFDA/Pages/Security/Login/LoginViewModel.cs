@@ -114,6 +114,10 @@ namespace dalexFDA
                             AppService.StartMainFlow();
                         }
                     }
+                    else
+                    {
+                        await CoreMethods.DisplayAlert("Oops", "Invalid Phone number or password. Please try again.", "Ok");
+                    }
                 }
             }
             catch(ApiException ex)

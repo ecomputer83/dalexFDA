@@ -56,7 +56,7 @@ namespace dalexFDA
                                                                     : (Color)Application.Current.Resources["PalmLeaf"];
                 }
 
-                AccountName = SessionService?.CurrentUser?.FullName;
+                AccountName = SessionService?.CurrentUser?.Name;
             }
             catch (Exception ex)
             {

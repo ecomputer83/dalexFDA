@@ -22,6 +22,9 @@ namespace dalexFDA.Data.WebServices
         [Get("/api/Account/GetAccount")]
         Task<User> GetUserByPhoneNumber(string PhoneNumber);
 
+        [Get("/api/Account/GetKYCAccount")]
+        Task<User> GetKYCUserByPhoneNumber(string PhoneNumber, string ext);
+
         [Post("/token")]
         [Headers("Content-Type: application/x-www-form-urlencoded; charset=UTF-8")]
         Task<AuthorizedAccount> Login([Body(BodySerializationMethod.UrlEncoded)]LoginRequest request);

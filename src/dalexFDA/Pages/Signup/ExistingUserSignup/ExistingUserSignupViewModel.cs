@@ -27,12 +27,9 @@ namespace dalexFDA
         public Style RegisterButtonStyle { get { return IsAgreementSelected ? (Style)Application.Current.Resources["PrimaryButton"]
                                                                         : (Style)Application.Current.Resources["DisabledButton"]; } }
 
-        public string FirstName { get; set; }
-        public bool FirstNameHasError { get; set; }
-        public string FirstNameErrorMessage { get; set; }
-        public string LastName { get; set; }
-        public bool LastNameHasError { get; set; }
-        public string LastNameErrorMessage { get; set; }
+        public string FullName { get; set; }
+        public bool FullNameHasError { get; set; }
+        public string FullNameErrorMessage { get; set; }
 
         public string FullPhoneNumber { get { return PhoneExtension?.Replace("+", "") + PhoneNumber; } }
         public string PhoneNumber { get; set; }
@@ -122,17 +119,13 @@ namespace dalexFDA
 
                         if (User != null)
                         {
-                            FirstName = User.FirstName;
-                            LastName = User.LastName;
+                            FullName = User.Name;
                             EmailAddress = User.Email;
                             SecurityQuestion = User.SecurityQuestion;
                         }
                         else
                         {
-                            FirstName = "";
-                            LastName = "";
-                            EmailAddress = "";
-                            SecurityQuestion = "";
+                            FullName = EmailAddress = SecurityQuestion = "";
                         }
                     }
                 }
@@ -171,8 +164,7 @@ namespace dalexFDA
                 {
                     var request = new SignupRequest
                     {
-                        FirstName = FirstName,
-                        LastName = LastName,
+                        Name = FullName,
                         Email = EmailAddress,
                         Password = PIN,
                         ConfirmPassword = PIN,
@@ -224,11 +216,8 @@ namespace dalexFDA
                     PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
                     PhoneNumberErrorMessage = phone_number_error_message;
                     break;
-                case "FirstName":
-                    FirstNameHasError = string.IsNullOrEmpty(FirstName);
-                    break;
-                case "LastName":
-                    LastNameHasError = string.IsNullOrEmpty(LastName);
+                case "FullName":
+                    FullNameHasError = string.IsNullOrEmpty(FullName);
                     break;
                 case "EmailAddress":
                     EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
@@ -266,8 +255,7 @@ namespace dalexFDA
             PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
             PhoneNumberErrorMessage = phone_number_error_message;
 
-            FirstNameHasError = string.IsNullOrEmpty(FirstName);
-            LastNameHasError = string.IsNullOrEmpty(LastName);
+            FullNameHasError = string.IsNullOrEmpty(FullName);
 
             EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
             EmailAddressErrorMessage = email_address_error_message;
@@ -289,7 +277,7 @@ namespace dalexFDA
                 ConfirmPinErrorMessage = string.Empty;
             }
 
-            return PhoneHasError || FirstNameHasError || LastNameHasError || EmailAddressHasError || SecurityQuestionHasError || SecurityAnswerHasError ||
+            return PhoneHasError || FullNameHasError || EmailAddressHasError || SecurityQuestionHasError || SecurityAnswerHasError ||
                 PinHasError || ConfirmPinHasError;
         }
 
@@ -302,7 +290,7 @@ namespace dalexFDA
 
         private void ClearErrors()
         {
-            FirstNameHasError = LastNameHasError = PhoneExtensionHasError = PhoneNumberHasError = EmailAddressHasError = SecurityQuestionHasError
+            FullNameHasError = PhoneExtensionHasError = PhoneNumberHasError = EmailAddressHasError = SecurityQuestionHasError
             = SecurityAnswerHasError = PinHasError = ConfirmPinHasError = false;
         }
     }
