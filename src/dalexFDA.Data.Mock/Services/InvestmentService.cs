@@ -11,15 +11,12 @@ namespace dalexFDA.Data.Mock
         ISession SessionService;
         List<InvestmentAccount> investmentAccounts = new List<InvestmentAccount>();
         TransactionHistory transactionHistory = new TransactionHistory();
-        List<Deposit> deposits = new List<Deposit>();
-        List<Rollover> rollovers = new List<Rollover>();
-        List<Consolidation> consolidations = new List<Consolidation>();
-        List<Redemption> redemptions = new List<Redemption>();
 
         public InvestmentService(ISession sessionService)
         {
             SessionService = sessionService;
             SetupInvestmentAccounts();
+            SetupTransactionHistory();
         }
 
         public async Task<bool> DepositEInvestment(ETransferRequest request)
@@ -41,9 +38,9 @@ namespace dalexFDA.Data.Mock
             return await Task.FromResult(account);
         }
 
-        public Task<TransactionHistory> GetTransactionHistory()
+        public async Task<TransactionHistory> GetTransactionHistory()
         {
-            throw new NotImplementedException();
+            return await Task.FromResult(transactionHistory);
         }
 
         public async Task<bool> RedeemInvestment(RedeemInvestmentRequest request)
@@ -71,6 +68,26 @@ namespace dalexFDA.Data.Mock
                     new InvestmentItem { Id = "INV000012", AccountName = "", CertificateNumber = "DFC010928", Status = "Active", Principal = 423000, Rate = "17.5% p.a", StartDate = new DateTime(2019,11,5), Maturity = 12000, MaturityDate = new DateTime(2020,3,11), InterestAmount = 3452, InterestEarned = 1232, Redemption = 1920, Days = "0" }
                 } }
             });
+        }
+
+        void SetupTransactionHistory()
+        {
+            transactionHistory = new TransactionHistory
+            {
+                Deposits = SetupDeposits()
+            };
+        }
+
+        List<Deposit> SetupDeposits()
+        {
+            return new List<Deposit>
+            {
+                new Deposit { No = "DFDDN00800", PaymentType = "Reinvest Deposit", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Money Order", Amount = 20024.10959, BankAccountNo = "", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") },
+                new Deposit { No = "DFDDN00800", PaymentType = "Reinvest Deposit", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Money Order", Amount = 120207.12329, BankAccountNo = "", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") },
+                new Deposit { No = "DFDDN00800", PaymentType = "Payment", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Money Order", Amount = 120000, BankAccountNo = "ECB002", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") },
+                new Deposit { No = "DFDDN00800", PaymentType = "Payment", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Deposit Slip", Amount = 150000, BankAccountNo = "ACB002", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") },
+                new Deposit { No = "DFDDN00800", PaymentType = "Payment", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Deposit Slip", Amount = 10548.49, BankAccountNo = "GCB001", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") }
+            };
         }
     }
 }

@@ -1,0 +1,97 @@
+﻿{
+    "Deposits": [
+        {
+            "No": "DFDDN00800",
+            "PaymentType": "Reinvest Deposit",
+            "DocumentDate": "2019-02-10T00:00:00Z",
+            "PostingDate": "2019-02-10T00:00:00Z",
+            "DocumentType": "Money Order",
+            "Amount": 30808.49202,
+            "BankAccountNo": "",
+            "PaymentConfirmedDate": "2019-02-10T00:00:00Z"
+        },
+        {
+            "No": "DFDDN00799",
+            "PaymentType": "Reinvest Deposit",
+            "DocumentDate": "2019-02-10T00:00:00Z",
+            "PostingDate": "2019-02-10T00:00:00Z",
+            "DocumentType": "Money Order",
+            "Amount": 20024.10959,
+            "BankAccountNo": "",
+            "PaymentConfirmedDate": "2019-02-11T00:00:00Z"
+        },
+        {
+            "No": "DFDDN00798",
+            "PaymentType": "Reinvest Deposit",
+            "DocumentDate": "2019-02-10T00:00:00Z",
+            "PostingDate": "2019-02-10T00:00:00Z",
+            "DocumentType": "Money Order",
+            "Amount": 120207.12329,
+            "BankAccountNo": "",
+            "PaymentConfirmedDate": "2019-02-11T00:00:00Z"
+        },
+        {
+            "No": "DFDDN00796",
+            "PaymentType": "Payment",
+            "DocumentDate": "2019-02-10T00:00:00Z",
+            "PostingDate": "2019-02-07T00:00:00Z",
+            "DocumentType": "Deposit Slip",
+            "Amount": 120000,
+            "BankAccountNo": "ECB002",
+            "PaymentConfirmedDate": "2019-02-07T00:00:00Z"
+        },
+        {
+            "No": "DFDDN00795",
+            "PaymentType": "Payment",
+            "DocumentDate": "2019-02-10T00:00:00Z",
+            "PostingDate": "2019-02-08T00:00:00Z",
+            "DocumentType": "Deposit Slip",
+            "Amount": 150000,
+            "BankAccountNo": "ACB002",
+            "PaymentConfirmedDate": "2019-02-08T00:00:00Z"
+        },
+        {
+            "No": "DFDDN00039",
+            "PaymentType": "Payment",
+            "DocumentDate": "2019-01-09T00:00:00Z",
+            "PostingDate": "2019-01-02T00:00:00Z",
+            "DocumentType": "Deposit Slip",
+            "Amount": 10548.49,
+            "BankAccountNo": "GCB001",
+            "PaymentConfirmedDate": "2019-01-02T00:00:00Z"
+        }
+    ],
+    "Consolidations": [
+        {
+            "TransactionNo": "DFDTN00008",
+            "TransactionType": "Consolidation",
+            "PrincipalAmount": 30572.59959,
+            "InterestEarned": 235.89243,
+            "ConsolidatedAmount": 30808.49202,
+            "NewInterestRate": 23
+        }
+    ],
+    "Redemptions": [
+        {
+            "TransactionNo": "DFDTN00007",
+            "TransactionType": "Redemption",
+            "CertificateNo": "DFDC00571",
+            "Duration": 2,
+            "RetireAmount": 20000,
+            "StartDate": "2019-02-08T00:00:00Z",
+            "EndDate": "2019-02-10T00:00:00Z",
+            "RetireDate": "2019-02-10T00:00:00Z"
+        }
+    ],
+    "Rollovers": [
+        {
+            "TransactionNo": "DFDTN00006",
+            "TransactionType": "Rollover",
+            "CertificateNo": "DFDC00569",
+            "InvestmentNo": "DFDIN00644",
+            "NewDuration": 31,
+            "RolloverAmount": 120207.12329,
+            "ApprovalStatus": "Approved"
+        }
+    ]
+}

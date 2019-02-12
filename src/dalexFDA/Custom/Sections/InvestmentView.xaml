@@ -34,7 +34,6 @@
                 />
                 <Label x:Name="startDate" FontSize="16" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Liver}"  VerticalOptions="Start" />
             </StackLayout>
-            
         </StackLayout>
     </ContentView.Content>
 </ContentView>

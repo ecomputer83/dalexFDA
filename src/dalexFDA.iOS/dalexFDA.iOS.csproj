@@ -89,6 +89,7 @@
     <Compile Include="Renderers\CustomDatePickerRenderer.cs" />
     <Compile Include="Services\iOSFileStorageService.cs" />
     <Compile Include="Helpers\ContainerConfig.cs" />
+    <Compile Include="Effects\GradientEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using dalexFDA.Abstractions;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -24,21 +25,23 @@ namespace dalexFDA
         public TransactionHistory TransactionHistory { get; set; }
 
         public ObservableCollection<TransactionHistoryItemViewModel> HistoryItems { get; set; }
+        public List<Deposit> Deposits { get; set; }
+        public TransactionHistoryTab ActiveTab { get; set; }
 
         public bool IsDepositActive { get; set; }
         public bool IsRolloverActive { get; set; }
         public bool IsRedemptionActive { get; set; }
         public bool IsConsolidationActive { get; set; }
 
-        public string DepositSvgColor { get { return IsDepositActive ? "000000=FFFFF" : "000000=e6e7e8"; } }
-        public string RolloverSvgColor { get { return IsRolloverActive ? "000000=FFFFF" : "000000=e6e7e8"; } }
-        public string RedemptionSvgColor { get { return IsRedemptionActive ? "000000=FFFFF" : "000000=e6e7e8"; } }
-        public string ConsolidationSvgColor { get { return IsConsolidationActive ? "000000=FFFFF" : "000000=e6e7e8"; } }
+        public string DepositSvgColor { get { return IsDepositActive ? "000000=FFFFFF" : "000000=e6e7e8"; } }
+        public string RolloverSvgColor { get { return IsRolloverActive ? "000000=FFFFFF" : "000000=e6e7e8"; } }
+        public string RedemptionSvgColor { get { return IsRedemptionActive ? "000000=FFFFFF" : "000000=e6e7e8"; } }
+        public string ConsolidationSvgColor { get { return IsConsolidationActive ? "000000=FFFFFF" : "000000=e6e7e8"; } }
 
-        public Color DepositLineColor { get { return IsDepositActive ? Color.FromHex("FFFFF") : Color.FromHex("6D9B36"); } }
-        public Color RolloverLineColor { get { return IsRolloverActive ? Color.FromHex("FFFFF") : Color.FromHex("6D9B36"); } }
-        public Color RedemptionLineColor { get { return IsRedemptionActive ? Color.FromHex("FFFFF") : Color.FromHex("6D9B36"); } }
-        public Color ConsolidationLineColor { get { return IsConsolidationActive ? Color.FromHex("FFFFF") : Color.FromHex("6D9B36"); } }
+        public Color DepositLineColor { get { return IsDepositActive ? Color.FromHex("FFFFFF") : Color.FromHex("6D9B36"); } }
+        public Color RolloverLineColor { get { return IsRolloverActive ? Color.FromHex("FFFFFF") : Color.FromHex("6D9B36"); } }
+        public Color RedemptionLineColor { get { return IsRedemptionActive ? Color.FromHex("FFFFFF") : Color.FromHex("6D9B36"); } }
+        public Color ConsolidationLineColor { get { return IsConsolidationActive ? Color.FromHex("FFFFFF") : Color.FromHex("6D9B36"); } }
 
         public Command ViewDeposit { get; set; }
         public Command ViewRollover { get; set; }
@@ -68,7 +71,12 @@ namespace dalexFDA
 
             try
             {
-
+                using (Dialog.Loading("Loading..."))
+                {
+                    ActiveTab = TransactionHistoryTab.Deposit;
+                    IsDepositActive = true;
+                    HistoryItems = await SetupHistoryItems();
+                }
             }
             catch (Exception ex)
             {
@@ -76,11 +84,39 @@ namespace dalexFDA
             }
         }
 
+        public async Task<ObservableCollection<TransactionHistoryItemViewModel>> SetupHistoryItems()
+        {
+            try
+            {
+                var list = new List<TransactionHistoryItemViewModel>();
+
+                TransactionHistory = await IInvestmentService.GetTransactionHistory();
+
+                if (TransactionHistory != null)
+                    Deposits = TransactionHistory.Deposits;
+
+                foreach (var item in Deposits)
+                {
+                    list.Add(new TransactionHistoryItemViewModel(this, item, ActiveTab));
+                }
+
+                var data = new ObservableCollection<TransactionHistoryItemViewModel>(list);
+                return await Task.FromResult(data);
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+                return null;
+            }
+        }
+
         private async Task ExecuteViewDeposit()
         {
             try
             {
-                
+                ActiveTab = TransactionHistoryTab.Deposit;
+                IsRolloverActive = IsRedemptionActive = IsConsolidationActive = false;
+                IsDepositActive = true;
             }
             catch (Exception ex)
             {
@@ -92,7 +128,8 @@ namespace dalexFDA
         {
             try
             {
-
+                IsDepositActive = IsRedemptionActive = IsConsolidationActive = false;
+                IsRolloverActive = true;
             }
             catch (Exception ex)
             {
@@ -104,7 +141,8 @@ namespace dalexFDA
         {
             try
             {
-
+                IsDepositActive = IsRolloverActive = IsConsolidationActive = false;
+                IsRedemptionActive = true;
             }
             catch (Exception ex)
             {
@@ -116,7 +154,8 @@ namespace dalexFDA
         {
             try
             {
-
+                IsDepositActive = IsRolloverActive = IsRedemptionActive = false;
+                IsConsolidationActive = true;
             }
             catch (Exception ex)
             {
