@@ -8,28 +8,6 @@ using PropertyChanged;
 
 namespace dalexFDA
 {
-    public class CategoricalData
-    {
-        public object Category { get; set; }
-        public double Value { get; set; }
-    }
-
-    public class MonthDemand
-    {
-
-        public MonthDemand(string text, double value)
-        {
-            this.Value = value;
-
-            this.Text = text;
-        }
-
-        public string Text { get; set; }
-
-        public double Value { get; set; }
-
-    }
-
     [AddINotifyPropertyChangedInterface]
     public class DashboardViewModel : BaseViewModel
     {

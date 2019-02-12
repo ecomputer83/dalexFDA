@@ -1,69 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Project SchemaVersion="1" Namespace="dalexFDA">
   <Pages>
-
-    <Page Name="Activate" Folder="Account">
-      <Commands>
-        <Command Name="Back" />
-        <Command Name="DebitCard" />
-        <Command Name="HardwareToken" />
-        <Command Name="OpenAccount" />
-        <Command Name="QuickAccess" />
-        <Command Name="RegisterNewDevice" />
-        <Command Name="TermsAndConditions" />
-      </Commands>
-      <Properties>
-        <Property Name="AccountNumber" TypeName="string" />
-      </Properties>
-    </Page>
-
-    <Page Name="ActivateAccount" Folder="Account">
-      <Commands>
-        <Command Name="Activate" />
-        <Command Name="Back" />
-        <Command Name="Swipe" />
-      </Commands>
-      <Properties>
-        <Property Name="AccountNumber" TypeName="string" />
-        <Property Name="BVN" TypeName="string" />
-      </Properties>
-    </Page>
-
     <Page Name="ComingSoon" Folder="General">
       
     </Page>
-
-    
-    
-    
-
-    <Page Name="Transfer" Folder="Transfer">
-      <Commands>
-        <Command Name="Continue" />
-        <Command Name="OpenBeneficiary" />
-        <Command Name="OpenAccount" />
-        <Command Name="OpenBank" />
-        <Command Name="TextChanged" />
-        <Command Name="Done" />
-        <Command Name="Back" />
-      </Commands>
-      <Properties>
-        <Property Name="TransferType" TypeName="ObservableCollection&lt;dalexFDA.Abstractions.TransferType&gt;" />
-        <Property Name="FromBeneficiary" TypeName="List&lt;dalexFDA.Abstractions.Beneficiary&gt;" />
-        <Property Name="FromAccount" TypeName="ObservableCollection&lt;dalexFDA.Abstractions.DashboardAccountItem&gt;" />
-        <Property Name="Amount" TypeName="string" />
-        <Property Name="Description" TypeName="string" />
-        <Property Name="BankName" TypeName="string" />
-        <Property Name="BankAccount" TypeName="string" />
-        <Property Name="AccountName" TypeName="string" />
-        <Property Name="Pin" TypeName="string" />
-      </Properties>
-            <Services>
-        <Service Name="IAppService" />
-        <Service Name="IUserDialogs" />
-      </Services>
-    </Page>
-
   </Pages>
   
   <Services>

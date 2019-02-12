@@ -10,6 +10,11 @@ namespace dalexFDA.Data.Mock
     {
         ISession SessionService;
         List<InvestmentAccount> investmentAccounts = new List<InvestmentAccount>();
+        TransactionHistory transactionHistory = new TransactionHistory();
+        List<Deposit> deposits = new List<Deposit>();
+        List<Rollover> rollovers = new List<Rollover>();
+        List<Consolidation> consolidations = new List<Consolidation>();
+        List<Redemption> redemptions = new List<Redemption>();
 
         public InvestmentService(ISession sessionService)
         {
@@ -34,6 +39,11 @@ namespace dalexFDA.Data.Mock
             await Task.Delay(1000);
             var account = investmentAccounts[0];
             return await Task.FromResult(account);
+        }
+
+        public Task<TransactionHistory> GetTransactionHistory()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<bool> RedeemInvestment(RedeemInvestmentRequest request)

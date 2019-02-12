@@ -29,7 +29,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Custom\" />
     <Folder Include="Helpers\" />
     <Folder Include="Images\" />
     <Folder Include="Pages\" />
@@ -48,7 +47,6 @@
     <Folder Include="Pages\Security\Login\" />
     <Folder Include="Pages\General\" />
     <Folder Include="Pages\General\Dashboard\" />
-    <Folder Include="Custom\Sections\" />
     <Folder Include="Pages\General\LeftNav\" />
     <Folder Include="Custom\Pages\" />
     <Folder Include="Helpers\Behaviour\" />

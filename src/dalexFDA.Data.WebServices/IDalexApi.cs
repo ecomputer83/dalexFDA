@@ -17,13 +17,11 @@ namespace dalexFDA.Data.WebServices
         Task<SignupResponse> SignupExistingUser([Body(BodySerializationMethod.Json)]SignupRequest data);
 
         [Post("/api/Account/VerifySmsToken")]
-        Task<bool> ConfirmAccount(string PhoneNumber, string token);
+        Task<bool> ConfirmAccount(string PhoneNumber, string token);        
 
-        [Get("/api/Account/GetAccount")]
-        Task<User> GetUserByPhoneNumber(string PhoneNumber);
+        #endregion
 
-        [Get("/api/Account/GetKYCAccount")]
-        Task<User> GetKYCUserByPhoneNumber(string PhoneNumber, string ext);
+        #region Authorization
 
         [Post("/token")]
         [Headers("Content-Type: application/x-www-form-urlencoded; charset=UTF-8")]
@@ -31,13 +29,26 @@ namespace dalexFDA.Data.WebServices
 
         #endregion
 
-        #region Authorization
+        #region Account
 
         [Get("/api/Account/GetUser")]
         Task<UserAccount> GetUser();
 
+        [Get("/api/Account/GetAccount")]
+        Task<User> GetUserByPhoneNumber(string PhoneNumber);
+
+        [Get("/api/Account/GetKYCAccount")]
+        Task<User> GetKYCUserByPhoneNumber(string PhoneNumber, string ext);
+
+        #endregion
+
+        #region Investment
+
         [Get("/api/Investment/GetAccount")]
         Task<InvestmentAccount> GetAccount();
+
+        [Get("/api/Investment/GetHistory")]
+        Task<TransactionHistory> GetHistory();
 
         [Post("/api/Investment/Redeem")]
         Task<bool> Redeem([Body(BodySerializationMethod.Json)]RedeemInvestmentRequest request);

@@ -17,44 +17,39 @@
                 <Label Text="{Binding Title}" TextColor="#FFF" FontSize="22" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
             </ContentView>
 
-            <ContentView Grid.Row="1" BackgroundColor="{StaticResource PalmLeaf}" Padding="16,0,16,8">
-                <Grid ColumnSpacing="0" BackgroundColor="#FFF" VerticalOptions="EndAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+            <Grid  Grid.Row="1" ColumnSpacing="0" BackgroundColor="{StaticResource PalmLeaf}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5" />
+                </Grid.RowDefinitions>
 
-                    <ContentView Grid.Column="0" Style="{StaticResource ActiveTab}" Margin="1">
-                        <svg:SvgImage Svg="res:images.icon-travel" WidthRequest="30" ColorMapping="000000=6D9B36" HorizontalOptions="Center" />
-                        <ContentView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewActive}" />
-                        </ContentView.GestureRecognizers>
-                    </ContentView>
 
-                    <ContentView Grid.Column="1" Style="{StaticResource InactiveTab}" Margin="1">
-                        <svg:SvgImage Svg="res:images.icon-settings" WidthRequest="30" ColorMapping="000000=FFFFFF" HorizontalOptions="Center" />
-                        <ContentView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewPast}" />
-                        </ContentView.GestureRecognizers>
-                    </ContentView>
-                    
-                    <ContentView Grid.Column="2" Style="{StaticResource InactiveTab}" Margin="1">
-                        <svg:SvgImage Svg="res:images.icon-replay" WidthRequest="30" ColorMapping="000000=FFFFFF" HorizontalOptions="Center" />
-                        <ContentView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewPast}" />
-                        </ContentView.GestureRecognizers>
-                    </ContentView>
-                    
-                    <ContentView Grid.Column="3" Style="{StaticResource InactiveTab}" Margin="1">
-                        <svg:SvgImage Svg="res:images.icon-location" WidthRequest="30" ColorMapping="000000=FFFFFF" HorizontalOptions="Center" />
-                        <ContentView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewPast}" />
-                        </ContentView.GestureRecognizers>
-                    </ContentView>
-                </Grid>
-            </ContentView>
+                <svg:SvgImage Grid.Row="0" Grid.Column="0" Svg="res:images.icon-travel" WidthRequest="30" HorizontalOptions="Center"
+                        VerticalOptions="Center" ColorMapping="{Binding DepositSvgColor}" Command="{Binding ViewDeposit}"
+                    />
+                <BoxView Grid.Row="1" Grid.Column="0" Color="{Binding DepositLineColor}" HeightRequest="4" VerticalOptions="End" />
+
+                <svg:SvgImage Grid.Row="0" Grid.Column="1" Svg="res:images.icon-settings" WidthRequest="30" HorizontalOptions="Center"
+                        VerticalOptions="Center" ColorMapping="{Binding RolloverSvgColor}" Command="{Binding ViewRollover}"
+                    />
+                <BoxView Grid.Row="1" Grid.Column="1" Color="{Binding RolloverLineColor}" HeightRequest="4" VerticalOptions="End" />
+
+                <svg:SvgImage Grid.Row="0" Grid.Column="2" Svg="res:images.icon-replay" WidthRequest="30" HorizontalOptions="Center"
+                        VerticalOptions="Center" ColorMapping="{Binding RedemptionSvgColor}" Command="{Binding ViewRedemption}"
+                    />
+                <BoxView Grid.Row="1" Grid.Column="2" Color="{Binding RedemptionLineColor}" HeightRequest="4" VerticalOptions="End" />
+
+                <svg:SvgImage Grid.Row="0" Grid.Column="3" Svg="res:images.icon-location" WidthRequest="30" HorizontalOptions="Center"
+                        VerticalOptions="Center" ColorMapping="{Binding ConsolidationSvgColor}" Command="{Binding ViewConsolidation}"
+                    />
+                <BoxView Grid.Row="1" Grid.Column="3" Color="{Binding ConsolidationLineColor}" HeightRequest="4" VerticalOptions="End" />
+            </Grid>
 
             <ListView x:Name="list" Grid.Row="2" ItemsSource="{Binding Orders}" CachingStrategy="RecycleElement" 
                     SeparatorVisibility="None" HasUnevenRows="true" ItemTapped="Handle_ItemTapped">
