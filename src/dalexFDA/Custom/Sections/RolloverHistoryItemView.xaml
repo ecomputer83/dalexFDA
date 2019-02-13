@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="dalexFDA.RolloverHistoryItemView"
+             xmlns:effects="clr-namespace:dalexFDA;assembly=dalexFDA">
+    <ContentView.Content>
+        <Frame Padding="32,16" BackgroundColor="#A8C08D" CornerRadius="12" HasShadow="false">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width=".3*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Spacing="8">
+                    <Label x:Name="number" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource White}" Margin="0,0,0,8" />                    
+                    <Label x:Name="type" FontSize="16" TextColor="{StaticResource OffWhite2}" />
+
+                    <StackLayout Orientation="Horizontal">
+                        <Label x:Name="status" FontSize="14" TextColor="{StaticResource White}" />
+                        <Label x:Name="amount" FontSize="14" TextColor="{StaticResource OffWhite2}" />
+                    </StackLayout>
+                </StackLayout>
+                <Label x:Name="duration" Grid.Column="1" TextColor="{StaticResource White}" FontSize="16" VerticalOptions="Center" VerticalTextAlignment="Center" />
+            </Grid>            
+        </Frame>
+    </ContentView.Content>
+</ContentView>

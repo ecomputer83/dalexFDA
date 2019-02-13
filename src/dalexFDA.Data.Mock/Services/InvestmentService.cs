@@ -72,21 +72,36 @@ namespace dalexFDA.Data.Mock
 
         void SetupTransactionHistory()
         {
-            transactionHistory = new TransactionHistory
-            {
-                Deposits = SetupDeposits()
-            };
-        }
-
-        List<Deposit> SetupDeposits()
-        {
-            return new List<Deposit>
+            var deposits = new List<Deposit>
             {
                 new Deposit { No = "DFDDN00800", PaymentType = "Reinvest Deposit", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Money Order", Amount = 20024.10959, BankAccountNo = "", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") },
                 new Deposit { No = "DFDDN00800", PaymentType = "Reinvest Deposit", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Money Order", Amount = 120207.12329, BankAccountNo = "", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") },
                 new Deposit { No = "DFDDN00800", PaymentType = "Payment", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Money Order", Amount = 120000, BankAccountNo = "ECB002", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") },
                 new Deposit { No = "DFDDN00800", PaymentType = "Payment", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Deposit Slip", Amount = 150000, BankAccountNo = "ACB002", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") },
                 new Deposit { No = "DFDDN00800", PaymentType = "Payment", DocumentDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), PostingDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z"), DocumentType = "Deposit Slip", Amount = 10548.49, BankAccountNo = "GCB001", PaymentConfirmedDate = DateTimeOffset.Parse("2019-02-10T00:00:00Z") }
+            };
+            var rollovers = new List<Rollover>
+            {
+                new Rollover { TransactionNo = "DFDTN00006", TransactionType = "Rollover", CertificateNo = "DFDC00569", InvestmentNo = "DFDIN00644", NewDuration = 31, RolloverAmount = 120207.12329, ApprovalStatus = "Approved" },
+                new Rollover { TransactionNo = "DFDTN09096", TransactionType = "Rollover", CertificateNo = "DFDC01323", InvestmentNo = "DFDIN12901", NewDuration = 12, RolloverAmount = 34132, ApprovalStatus = "Not Approved" }
+            };
+            var redemptions = new List<Redemption>
+            {
+                new Redemption { TransactionNo = "DFDTN00008", TransactionType = "Redemption", CertificateNo = "DFDC00571", Duration = 2, RetireAmount = 20000, StartDate = DateTimeOffset.Parse("2019-02-08T00:00:00Z"), EndDate = DateTimeOffset.Parse("2019-02-08T00:00:00Z"), RetireDate = DateTimeOffset.Parse("2019-02-08T00:00:00Z") },
+                new Redemption { TransactionNo = "DFDTN00007", TransactionType = "Redemption", CertificateNo = "DFDC00524", Duration = 15, RetireAmount = 62430, StartDate = DateTimeOffset.Parse("2019-02-08T00:00:00Z"), EndDate = DateTimeOffset.Parse("2019-02-08T00:00:00Z"), RetireDate = DateTimeOffset.Parse("2019-02-08T00:00:00Z") },
+                new Redemption { TransactionNo = "DFDTN00009", TransactionType = "Redemption", CertificateNo = "DFDC00643", Duration = 8, RetireAmount = 546400, StartDate = DateTimeOffset.Parse("2019-02-08T00:00:00Z"), EndDate = DateTimeOffset.Parse("2019-02-08T00:00:00Z"), RetireDate = DateTimeOffset.Parse("2019-02-08T00:00:00Z") }
+            };
+            var consolidations = new List<Consolidation>
+            {
+                new Consolidation { TransactionNo = "DFDTN00008", TransactionType = "Consolidation", PrincipalAmount = 30572.59959, InterestEarned = 235.89243, ConsolidatedAmount = 30808.49202, NewInterestRate = 23 }
+            };
+
+            transactionHistory = new TransactionHistory
+            {
+                Deposits = deposits,
+                Rollovers = rollovers,
+                Redemptions = redemptions,
+                Consolidations = consolidations
             };
         }
     }

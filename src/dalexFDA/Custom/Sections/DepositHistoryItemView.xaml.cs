@@ -37,7 +37,6 @@ namespace dalexFDA
 
         #endregion
 
-
         #region PaymentType
 
         public static readonly BindableProperty PaymentTypeProperty = BindableProperty.Create("PaymentType", typeof(string), typeof(DepositHistoryItemView), default(string));
@@ -88,11 +87,11 @@ namespace dalexFDA
 
         #region Amount
 
-        public static readonly BindableProperty AmountProperty = BindableProperty.Create("Amount", typeof(string), typeof(DepositHistoryItemView), default(string));
+        public static readonly BindableProperty AmountProperty = BindableProperty.Create("Amount", typeof(double), typeof(DepositHistoryItemView), default(double));
 
-        public string Amount
+        public double Amount
         {
-            get { return (string)GetValue(AmountProperty); }
+            get { return (double)GetValue(AmountProperty); }
             set { SetValue(AmountProperty, value); }
         }
 
@@ -100,7 +99,7 @@ namespace dalexFDA
         {
             try
             {
-                amount.Text = $"Amount: {Amount}";
+                amount.Text = $"Amount: GHS {NumberFormatter.FormatAmount(Amount.ToString())}";
             }
             catch (Exception ex)
             {

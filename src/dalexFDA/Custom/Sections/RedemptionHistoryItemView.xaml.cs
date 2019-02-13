@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace dalexFDA
 {
-	public partial class TransactionHistoryItem : ContentView
+	public partial class RedemptionHistoryItemView : ContentView
 	{
-		public TransactionHistoryItem ()
+		public RedemptionHistoryItemView ()
 		{
 			InitializeComponent ();
 		}

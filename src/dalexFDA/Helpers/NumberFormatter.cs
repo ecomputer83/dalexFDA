@@ -34,7 +34,7 @@ namespace dalexFDA
             return phoneNum;
         }
 
-        public static string FormatToCurrency(string amount)
+        public static string FormatAmount(string amount)
         {
             if (!decimal.TryParse(amount, out decimal value))
                 return amount;

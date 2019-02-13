@@ -561,7 +561,7 @@ namespace dalexFDA
                 if (sender is Entry entry)
                 {
                     var amount = !string.IsNullOrEmpty(entry.Text) ? entry.Text : "0";
-                    var retVal = NumberFormatter.FormatToCurrency(amount);
+                    var retVal = NumberFormatter.FormatAmount(amount);
                     entry.Text = retVal;
                 }
             }
