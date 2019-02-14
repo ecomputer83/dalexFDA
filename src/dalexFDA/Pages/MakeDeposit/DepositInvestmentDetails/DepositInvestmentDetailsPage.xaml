@@ -4,6 +4,7 @@
              x:Class="dalexFDA.DepositInvestmentDetailsPage"
              xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              Title="Make Deposit - Fund Transfer">
     <ContentPage.Content>
         <StackLayout Spacing="0">
@@ -18,8 +19,9 @@
                     </ContentView>
                     
                     <local:FormDatePicker Label="Transaction Date" Date="{Binding TransactionDate}" Name="TransactionDate" IsEnabled="false"
-                            Margin="32,0,32,6" PickerColor="{StaticResource GrayBoro}" 
+                            Margin="32,0,32,6" PickerColor="{StaticResource GrayBoro}"
                         />
+
                     <local:FormEntry Text="{Binding RefNumber}" IsEnabled="false" EntryColor="{StaticResource GrayBoro}"
                             Margin="32,0,32,6" Name="RefNumber" Label="Transaction Reference Number"
                         />

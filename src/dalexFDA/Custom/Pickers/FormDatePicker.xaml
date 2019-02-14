@@ -2,8 +2,8 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="dalexFDA.FormDatePicker"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
-             xmlns:behaviors="clr-namespace:dalexFDA;assembly=dalexFDA"
              xmlns:effects="clr-namespace:dalexFDA;assembly=dalexFDA"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
     <ContentView.Content>
@@ -11,11 +11,8 @@
             <Label x:Name="label" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="0,0,0,6" />
             <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}">
                 <StackLayout x:Name="innerContainer" BackgroundColor="{StaticResource White}" Orientation="Horizontal" Margin="1">
-                    <DatePicker x:Name="datePicker" Format="dd-MMM-yyyy" Margin="8,0" TextColor="{StaticResource Liver}" 
+                    <DatePicker x:Name="datePicker" Date="{x:Static system:DateTime.Today}" Format="dd-MMM-yyyy" Margin="8,0" TextColor="{StaticResource Liver}" 
                             HorizontalOptions="FillAndExpand" DateSelected="Handle_DateSelected">
-                        <DatePicker.Effects>
-                            <effects:RemoveBorderEffect />
-                        </DatePicker.Effects>
                         <DatePicker.HeightRequest>
                             <OnPlatform x:TypeArguments="x:Double" iOS="42" Android="38" />
                         </DatePicker.HeightRequest>

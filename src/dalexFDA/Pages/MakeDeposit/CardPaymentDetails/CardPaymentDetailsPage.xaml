@@ -17,9 +17,8 @@
                         <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
                     
-                    <local:FormEntry Label="Debit Amount [GHS]" Amount="{Binding DebitAmount}" Placeholder="0.00"  HasError="{Binding DebitAmountHasError}" ShouldFormat="true"
-                            ErrorMessage="{Binding DebitAmountErrorMessage}" Margin="32,0,32,6" Name="DebitAmount" HorizontalTextAlignment="End"
-                            Keyboard="Numeric"
+                    <local:FormEntry Label="Debit Amount [GHS]" Text="{Binding DebitAmount}" Placeholder="0.00" Margin="32,0,32,6" Name="DebitAmount" HorizontalTextAlignment="End"
+                            Keyboard="Numeric" IsEnabled="false" EntryColor="{StaticResource GrayBoro}"
                         />
                     
                     <local:FormEntry Label="Card Number]" Placeholder="5321 XXXX XXXX 9017" Text="{Binding CardNumber}" HasError="{Binding CardNumberHasError}" 

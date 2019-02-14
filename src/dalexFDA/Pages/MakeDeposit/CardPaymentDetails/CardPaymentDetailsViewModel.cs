@@ -13,7 +13,7 @@ namespace dalexFDA
         readonly IErrorManager ErrorManager;
         readonly IUserDialogs Dialog;
 
-        public double DebitAmount { get; set; }
+        public string DebitAmount { get; set; }
         public bool DebitAmountHasError { get; set; }
         public string DebitAmountErrorMessage { get; set; }
 
@@ -74,6 +74,7 @@ namespace dalexFDA
                 if (Data != null)
                 {
                     ETransferRequest = Data.ETransferRequest;
+                    DebitAmount = NumberFormatter.FormatAmount(ETransferRequest.DepositAmount.ToString());
                 }                
             }
             catch (Exception ex)
@@ -143,9 +144,6 @@ namespace dalexFDA
 
         public bool PerformValidation()
         {
-            DebitAmountHasError = DebitAmount <= 0;
-            DebitAmountErrorMessage = debit_amount_error_message;
-
             CardNumberHasError = string.IsNullOrEmpty(CardNumber);
             CardNumberErrorMessage = card_number_error_message;
 
@@ -161,7 +159,7 @@ namespace dalexFDA
             PINHasError = string.IsNullOrEmpty(PIN);
             PINErrorMessage = pin_error_message;
 
-            return DebitAmountHasError || CardNumberHasError || CardHolderNameHasError || ExpiryDateHasError || CVVHasError || PINHasError;
+            return CardNumberHasError || CardHolderNameHasError || ExpiryDateHasError || CVVHasError || PINHasError;
         }
     }
 }

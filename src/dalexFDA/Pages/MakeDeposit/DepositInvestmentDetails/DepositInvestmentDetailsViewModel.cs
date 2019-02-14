@@ -98,7 +98,22 @@ namespace dalexFDA
         {
             try
             {
-                IsSuccessful = true;
+                if (PerformValidation()) return;
+
+                using (Dialog.Loading("Loading..."))
+                {
+                    ETransferRequest.DepositDate = TransactionDate;
+                    ETransferRequest.InvestmentAmount = InvestmentAmount;
+                    ETransferRequest.Duration = Convert.ToInt32(Duration);
+                    ETransferRequest.SecurityAnswer = SecurityAnswer;
+
+                    bool response = await IInvestmentService.DepositEInvestment(ETransferRequest);
+
+                    if (response)
+                        IsSuccessful = true;
+                    else
+                        await CoreMethods.DisplayAlert("Oops", "Operation failed. Please try again", "Ok");
+                }
             }
             catch (Exception ex)
             {
@@ -110,20 +125,9 @@ namespace dalexFDA
         {
             try
             {
-                if (PerformValidation()) return;
-
                 using (Dialog.Loading("Loading..."))
                 {
-                    ETransferRequest.DepositDate = TransactionDate;
-                    ETransferRequest.InvestmentAmount = InvestmentAmount;
-                    ETransferRequest.Duration = Convert.ToInt32(Duration);
-
-                    bool response = await IInvestmentService.DepositEInvestment(ETransferRequest);
-
-                    if (response)
-                        AppService.StartMainFlow();
-                    else
-                        await CoreMethods.DisplayAlert("Oops", "Operation failed. Please try again", "Ok");
+                    AppService.StartMainFlow();
                 }
             }
             catch (Exception ex)
