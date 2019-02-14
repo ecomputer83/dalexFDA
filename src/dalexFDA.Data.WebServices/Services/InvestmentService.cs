@@ -39,9 +39,12 @@ namespace dalexFDA.Data.WebServices
             return response;
         }
 
-        public Task<TransactionHistory> GetTransactionHistory()
+        public async Task<TransactionHistory> GetTransactionHistory()
         {
-            throw new NotImplementedException();
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.GetHistory();
+
+            return response;
         }
 
         public async Task<bool> RedeemInvestment(RedeemInvestmentRequest request)

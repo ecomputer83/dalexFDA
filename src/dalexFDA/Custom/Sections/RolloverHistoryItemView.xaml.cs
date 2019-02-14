@@ -116,12 +116,12 @@ namespace dalexFDA
 
         #region Duration
 
-        public static readonly BindableProperty DurationProperty = BindableProperty.Create("Duration", typeof(int), typeof(RolloverHistoryItemView), default(int));
+        public static readonly BindableProperty DurationProperty = BindableProperty.Create("Duration", typeof(int), typeof(RolloverHistoryItemView), 0);
 
         public int Duration
         {
-            get { return (int)GetValue(AmountProperty); }
-            set { SetValue(AmountProperty, value); }
+            get { return (int)GetValue(DurationProperty); }
+            set { SetValue(DurationProperty, value); }
         }
 
         private void SetDuration()

@@ -85,7 +85,7 @@ namespace dalexFDA.iOS
 
             layer.Frame = new CGRect(0, 0, width, height);
             layer.Colors = new CGColor[] { start, end };
-            layer.StartPoint = new CGPoint(0, 0.58);
+            layer.StartPoint = new CGPoint(0, 0);
             layer.EndPoint = new CGPoint(0, 1);
 
             return layer;

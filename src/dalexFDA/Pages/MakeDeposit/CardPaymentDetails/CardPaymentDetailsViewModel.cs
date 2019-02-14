@@ -90,6 +90,8 @@ namespace dalexFDA
 
                 using (Dialog.Loading("Loading..."))
                 {
+                    ETransferRequest.PaymentReference = "MC-1520443531487";
+
                     var nav = new DepositInvestmentDetailsViewModel.Nav { ETransferRequest = this.ETransferRequest };
                     await CoreMethods.PushPageModel<DepositInvestmentDetailsViewModel>(nav);
                 }                

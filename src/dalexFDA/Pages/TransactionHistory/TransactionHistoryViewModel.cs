@@ -26,6 +26,10 @@ namespace dalexFDA
 
         public ObservableCollection<TransactionHistoryItemViewModel> HistoryItems { get; set; }
         public List<Deposit> Deposits { get; set; }
+        public List<Rollover> Rollovers { get; set; }
+        public List<Redemption> Redemptions { get; set; }
+        public List<Consolidation> Consolidations { get; set; }
+
         public TransactionHistoryTab ActiveTab { get; set; }
 
         public bool IsDepositActive { get; set; }
@@ -74,7 +78,8 @@ namespace dalexFDA
                 using (Dialog.Loading("Loading..."))
                 {
                     ActiveTab = TransactionHistoryTab.Deposit;
-                    IsDepositActive = true;
+                    SetActiveTab(ActiveTab);
+                    TransactionHistory = await IInvestmentService.GetTransactionHistory();
                     HistoryItems = await SetupHistoryItems();
                 }
             }
@@ -90,14 +95,32 @@ namespace dalexFDA
             {
                 var list = new List<TransactionHistoryItemViewModel>();
 
-                TransactionHistory = await IInvestmentService.GetTransactionHistory();
+                if (TransactionHistory == null)
+                    return null;
 
-                if (TransactionHistory != null)
-                    Deposits = TransactionHistory.Deposits;
-
-                foreach (var item in Deposits)
+                if (ActiveTab == TransactionHistoryTab.Deposit)
                 {
-                    list.Add(new TransactionHistoryItemViewModel(this, item, ActiveTab));
+                    Deposits = TransactionHistory.Deposits;
+                    foreach (var item in Deposits)
+                        list.Add(new TransactionHistoryItemViewModel(this, item));
+                }
+                else if (ActiveTab == TransactionHistoryTab.Rollover)
+                {
+                    Rollovers = TransactionHistory.Rollovers;
+                    foreach (var item in Rollovers)
+                        list.Add(new TransactionHistoryItemViewModel(this, item));
+                }
+                else if (ActiveTab == TransactionHistoryTab.Redemption)
+                {
+                    Redemptions = TransactionHistory.Redemptions;
+                    foreach (var item in Redemptions)
+                        list.Add(new TransactionHistoryItemViewModel(this, item));
+                }
+                else if (ActiveTab == TransactionHistoryTab.Consolidation)
+                {
+                    Consolidations = TransactionHistory.Consolidations;
+                    foreach (var item in Consolidations)
+                        list.Add(new TransactionHistoryItemViewModel(this, item));
                 }
 
                 var data = new ObservableCollection<TransactionHistoryItemViewModel>(list);
@@ -114,9 +137,12 @@ namespace dalexFDA
         {
             try
             {
-                ActiveTab = TransactionHistoryTab.Deposit;
-                IsRolloverActive = IsRedemptionActive = IsConsolidationActive = false;
-                IsDepositActive = true;
+                using (Dialog.Loading("Loading..."))
+                {
+                    ActiveTab = TransactionHistoryTab.Deposit;
+                    SetActiveTab(ActiveTab);
+                    HistoryItems = await SetupHistoryItems();
+                }
             }
             catch (Exception ex)
             {
@@ -128,8 +154,12 @@ namespace dalexFDA
         {
             try
             {
-                IsDepositActive = IsRedemptionActive = IsConsolidationActive = false;
-                IsRolloverActive = true;
+                using (Dialog.Loading("Loading..."))
+                {
+                    ActiveTab = TransactionHistoryTab.Rollover;
+                    SetActiveTab(ActiveTab);
+                    HistoryItems = await SetupHistoryItems();
+                }
             }
             catch (Exception ex)
             {
@@ -141,8 +171,12 @@ namespace dalexFDA
         {
             try
             {
-                IsDepositActive = IsRolloverActive = IsConsolidationActive = false;
-                IsRedemptionActive = true;
+                using (Dialog.Loading("Loading..."))
+                {
+                    ActiveTab = TransactionHistoryTab.Redemption;
+                    SetActiveTab(ActiveTab);
+                    HistoryItems = await SetupHistoryItems();
+                }
             }
             catch (Exception ex)
             {
@@ -154,12 +188,48 @@ namespace dalexFDA
         {
             try
             {
-                IsDepositActive = IsRolloverActive = IsRedemptionActive = false;
-                IsConsolidationActive = true;
+                using (Dialog.Loading("Loading..."))
+                {
+                    ActiveTab = TransactionHistoryTab.Consolidation;
+                    SetActiveTab(ActiveTab);
+                    HistoryItems = await SetupHistoryItems();
+                }
             }
             catch (Exception ex)
             {
                 await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private void SetActiveTab(TransactionHistoryTab activeTab)
+        {
+            switch(activeTab)
+            {
+                case TransactionHistoryTab.Deposit:
+                    IsRolloverActive = IsRedemptionActive = IsConsolidationActive = false;
+                    IsDepositActive = true;
+                    Title = deposit_title;
+                    break;
+                case TransactionHistoryTab.Rollover:
+                    IsDepositActive = IsRedemptionActive = IsConsolidationActive = false;
+                    IsRolloverActive = true;
+                    Title = rollover_title;
+                    break;
+                case TransactionHistoryTab.Redemption:
+                    IsDepositActive = IsRolloverActive = IsConsolidationActive = false;
+                    IsRedemptionActive = true;
+                    Title = redemption_title;
+                    break;
+                case TransactionHistoryTab.Consolidation:
+                    IsDepositActive = IsRolloverActive = IsRedemptionActive = false;
+                    IsConsolidationActive = true;
+                    Title = consolidation_title;
+                    break;
+                default:
+                    IsRolloverActive = IsRedemptionActive = IsConsolidationActive = false;
+                    IsDepositActive = true;
+                    Title = deposit_title;
+                    break;
             }
         }
     }

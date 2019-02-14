@@ -3,23 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="dalexFDA.DepositHistoryItemView"
              xmlns:effects="clr-namespace:dalexFDA;assembly=dalexFDA"
-             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
-             effects:GradientEffect.GradientColor="#6D9B36">
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
     <ContentView.Content>
-        <Frame Padding="32,16" BackgroundColor="#A8C08D" CornerRadius="12" HasShadow="false">
-            <StackLayout Spacing="8">
-                <Label x:Name="number" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource White}" Margin="0,0,0,8" />
-                
-                <Label x:Name="paymentType" FontSize="16" TextColor="{StaticResource OffWhite2}" />
-                
-                <StackLayout Orientation="Horizontal">
-                    <Label x:Name="documentType" FontSize="14" TextColor="{StaticResource White}" />
-                    <Label x:Name="amount" FontSize="14" TextColor="{StaticResource OffWhite2}" />
-                </StackLayout>
-                <StackLayout.Effects>
-                    <effects:GradientEffect />
-                </StackLayout.Effects>
+        <StackLayout Padding="32,16" Spacing="8" BackgroundColor="{StaticResource OffWhite4}">
+            <Label x:Name="number" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource Liver}" Margin="0,0,0,8" />
+            
+            <Label x:Name="paymentType" FontSize="16" TextColor="{StaticResource Liver}" />
+            
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="documentType" FontSize="14" TextColor="{StaticResource Manatee}" />
+                <Label x:Name="amount" FontSize="14" TextColor="{StaticResource Manatee}" />
             </StackLayout>
-        </Frame>
+        </StackLayout>
     </ContentView.Content>
 </ContentView>

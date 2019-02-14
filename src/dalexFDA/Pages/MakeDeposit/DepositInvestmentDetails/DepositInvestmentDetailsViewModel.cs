@@ -14,6 +14,7 @@ namespace dalexFDA
         readonly IAppService AppService;
         readonly IUserDialogs Dialog;
         readonly IInvestmentService IInvestmentService;
+        readonly ISession SessionService;
 
         public bool IsSuccessful { get; set; }
         public bool IsNotSuccesful { get { return !IsSuccessful; } }
@@ -34,6 +35,12 @@ namespace dalexFDA
         public bool DurationHasError { get; set; }
         public string DurationErrorMessage { get; set; }
 
+        public string SecurityQuestion { get; set; }
+
+        public string SecurityAnswer { get; set; }
+        public bool SecurityAnswerHasError { get; set; }
+        public string SecurityAnswerErrorMessage { get; set; }
+
         public ETransferRequest ETransferRequest { get; set; }
 
         public Command Negotiate { get; set; }
@@ -49,14 +56,17 @@ namespace dalexFDA
         private const string ref_number_error_message = "Please enter a payment reference number.";
         private const string investment_amount_error_message = "Please enter an amount.";
         private const string duration_error_message = "Please enter a valid number of days.";
-        
+        private const string security_answer_error_message = "Please enter the answer to the question.";
+        private const string wrong_security_answer_error_message = "Incorrect answer. Please try again";
+
         public DepositInvestmentDetailsViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog,
-                                                IInvestmentService IInvestmentService)
+                                                IInvestmentService IInvestmentService, ISession SessionService)
         {
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
             this.Dialog = Dialog;
             this.IInvestmentService = IInvestmentService;
+            this.SessionService = SessionService;
             
             Negotiate = new Command(async () => await ExecuteNegotiate());
             Done = new Command(async () => await ExecuteDone());
@@ -73,8 +83,10 @@ namespace dalexFDA
                 if(Data != null)
                 {
                     ETransferRequest = Data.ETransferRequest;
+                    RefNumber = ETransferRequest.PaymentReference;
                 }
-                TransactionDate = DateTime.Now;
+                TransactionDate = DateTime.Today;
+                SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
             }
             catch (Exception ex)
             {
@@ -102,8 +114,7 @@ namespace dalexFDA
 
                 using (Dialog.Loading("Loading..."))
                 {
-                    ETransferRequest.TransactionDate = TransactionDate;
-                    ETransferRequest.RefNumber = RefNumber;
+                    ETransferRequest.DepositDate = TransactionDate;
                     ETransferRequest.InvestmentAmount = InvestmentAmount;
                     ETransferRequest.Duration = Convert.ToInt32(Duration);
 
@@ -149,6 +160,10 @@ namespace dalexFDA
                     DurationHasError = string.IsNullOrEmpty(Duration) || Convert.ToInt32(Duration) <= 0;
                     DurationErrorMessage = duration_error_message;
                     break;
+                case "SecurityAnswer":
+                    SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
+                    SecurityAnswerErrorMessage = security_answer_error_message;
+                    break;
             }
         }
 
@@ -163,7 +178,19 @@ namespace dalexFDA
             DurationHasError = string.IsNullOrEmpty(Duration) || Convert.ToInt32(Duration) <= 0;
             DurationErrorMessage = duration_error_message;
 
-            return RefNumberHasError || InvestmentAmountHasError || DurationHasError;
+            SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
+            SecurityAnswerErrorMessage = security_answer_error_message;
+
+            if (!SecurityAnswerHasError)
+            {
+                if (SecurityAnswer.ToLower() != SessionService?.CurrentUser?.SecurityAnswer.ToLower())
+                {
+                    SecurityAnswerHasError = true;
+                    SecurityAnswerErrorMessage = wrong_security_answer_error_message;
+                }
+            }
+
+            return RefNumberHasError || InvestmentAmountHasError || DurationHasError || SecurityAnswerHasError;
         }
     }
 }

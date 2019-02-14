@@ -16,11 +16,12 @@ namespace dalexFDA
 
         public Command ViewDetail { get; private set; }
 
-        public TransactionHistoryItemViewModel(TransactionHistoryViewModel Parent, object item, TransactionHistoryTab activeTab)
+        public TransactionHistoryItemViewModel(TransactionHistoryViewModel Parent, object item)
         {
             this.Parent = Parent;
+            this.ActiveTab = Parent.ActiveTab;
 
-            switch (activeTab)
+            switch (ActiveTab)
             {
                 case TransactionHistoryTab.Deposit:
                     Deposit = item as Deposit;
