@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dalexFDA.Abstractions", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dalexFDA.Data.Mock", "src\dalexFDA.Data.Mock\dalexFDA.Data.Mock.csproj", "{D1DE67A1-DEC1-418E-8716-A7E2D289FE8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dalexFDA", "src\dalexFDA\dalexFDA.csproj", "{B1080B86-0D06-4DDE-B3FD-D9B090FE4C29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dalexFDA", "src\dalexFDA\dalexFDA.csproj", "{B1080B86-0D06-4DDE-B3FD-D9B090FE4C29}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dalexFDA.Data.WebServices", "src\dalexFDA.Data.WebServices\dalexFDA.Data.WebServices.csproj", "{2573A242-7EE4-497D-8B4B-AE5985830CFB}"
 EndProject

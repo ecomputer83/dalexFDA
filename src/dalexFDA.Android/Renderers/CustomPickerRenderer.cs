@@ -33,7 +33,7 @@ namespace dalexFDA.Droid
             if (Control != null)
             {
                 var picker = sender as CustomPicker;
-                Control.TextSize = picker?.FontSize ?? 14;
+                Control.TextSize = (float)(picker?.FontSize ?? 14);
                 Control.SetBackground(null);
                 Control.SetPadding(0, 0, 0, 0);
             }
