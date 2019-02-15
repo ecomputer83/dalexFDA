@@ -248,7 +248,7 @@ namespace dalexFDA
         private bool PerformValidation()
         {
             ClearErrors();
-            bool isValidEmail = ValidateEmail(EmailAddress);
+            bool isValidEmail = !string.IsNullOrEmpty(EmailAddress) ? ValidateEmail(EmailAddress) : false;
 
             PhoneExtensionHasError = string.IsNullOrEmpty(PhoneExtension);
             PhoneNumberErrorMessage = phone_number_error_message;

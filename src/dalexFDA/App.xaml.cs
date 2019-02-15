@@ -8,6 +8,10 @@ using Xamarin.Forms.Xaml;
 using dalexFDA.Abstractions;
 using dalexFDA.Data.Mock;
 using dalexFDA.Data.WebServices;
+using Plugin.Settings.Abstractions;
+using Plugin.Settings;
+using Plugin.DeviceInfo.Abstractions;
+using Plugin.DeviceInfo;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace dalexFDA
@@ -19,15 +23,14 @@ namespace dalexFDA
 
         public App()
         {
-            ISetting Settings = FreshIOC.Container.Resolve<ISetting>();
-
             var configurationService = FreshIOC.Container.Resolve<IConfigurationService>();
             Config = configurationService.Current;
 
+            ISetting Settings = FreshIOC.Container.Resolve<ISetting>();
             Settings.StoreAndGenerateAppID();
 
-            InitializeComponent();
             RegisterServices();
+            InitializeComponent();
             StartApp();
         }
 
@@ -122,8 +125,8 @@ namespace dalexFDA
         {
             FreshIOC.Container.Register<IAppService>(this);
             FreshIOC.Container.Register<IErrorManager, ErrorManager>();
-            FreshIOC.Container.Register<Acr.UserDialogs.IUserDialogs>(Acr.UserDialogs.UserDialogs.Instance);
-            FreshIOC.Container.Register<ISession, SessionService>();
+            FreshIOC.Container.Register<Acr.UserDialogs.IUserDialogs>(Acr.UserDialogs.UserDialogs.Instance); 
+            FreshIOC.Container.Register<IDeviceInfo>(CrossDeviceInfo.Current);
 
             if (Config.Mock.Enabled)
             {

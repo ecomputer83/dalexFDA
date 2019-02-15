@@ -6,8 +6,8 @@
              xmlns:behaviors="clr-namespace:dalexFDA;assembly=dalexFDA"
              xmlns:effects="clr-namespace:dalexFDA;assembly=dalexFDA">
     <ContentView.Content>
-        <StackLayout Spacing="2">
-            <Label x:Name="label" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="0,0,0,6" />
+        <StackLayout Spacing="2" Padding="0" Margin="0">
+            <Label x:Name="label" IsVisible="false" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="0,0,0,6" />
             <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}">
                 <StackLayout x:Name="innerContainer" BackgroundColor="{StaticResource White}" Margin="1">
                     <local:CustomEntry x:Name="data" Text="" Margin="8,0" TextColor="{StaticResource Liver}" Unfocused="Handle_Unfocused"

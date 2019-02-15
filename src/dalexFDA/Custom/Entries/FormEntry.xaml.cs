@@ -64,6 +64,7 @@ namespace dalexFDA
             try
             {
                 label.Text = Label;
+                label.IsVisible = !string.IsNullOrEmpty(Label);
             }
             catch { }
         }
@@ -239,6 +240,7 @@ namespace dalexFDA
             try
             {
                 caption.Text = ErrorMessage;
+                caption.IsVisible = !string.IsNullOrEmpty(ErrorMessage);
             }
             catch { }
         }

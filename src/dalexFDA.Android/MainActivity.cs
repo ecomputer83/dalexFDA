@@ -6,12 +6,16 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using dalexFDA.Abstractions;
+using FreshMvvm;
 
 namespace dalexFDA.Droid
 {
     [Activity(Label = "Dalex", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        IEnvironmentConfiguration Config;
+
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -19,28 +23,30 @@ namespace dalexFDA.Droid
 
             base.OnCreate(bundle);
 
-            Bootstrap_Init();
+            ContainerConfig.Load();
 
-            Rg.Plugins.Popup.Popup.Init(this, bundle);
+            var configService = FreshIOC.Container.Resolve<IConfigurationService>();
+            var config = configService.Load();
+            Config = config;
 
-
+            Bootstrap_Init(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }
 
-        void Bootstrap_Init()
+        void Bootstrap_Init(Bundle bundle)
         {
             //needs to be called before registering services on android because of acr dialog
-            InitComponents();
-
+            InitComponents(bundle);
             RegisterServices();
         }
 
-        private void InitComponents()
+        private void InitComponents(Bundle bundle)
         {
             Acr.UserDialogs.UserDialogs.Init(this);
             XamSvg.XamForms.Droid.SvgImageRenderer.InitializeForms();
+            Rg.Plugins.Popup.Popup.Init(this, bundle);
         }
 
         public void RegisterServices()
