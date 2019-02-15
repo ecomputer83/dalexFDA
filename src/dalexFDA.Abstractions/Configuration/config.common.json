@@ -11,7 +11,7 @@
         "key": "AIzaSyC_nnpVP-I-bCP1x0Z2l9fbmVfJmfZiRZ4"
     },
     "Mock": {
-        "enabled": "true",
+        "enabled": "false",
         "displayUnitTests": "false"
     }
 }
