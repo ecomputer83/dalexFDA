@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="dalexFDA.ConsolidationHistoryItemView">
+    <ContentView.Content>
+        <StackLayout Padding="32,16" BackgroundColor="{StaticResource OffWhite4}">
+            <StackLayout Spacing="8">
+                <Label x:Name="number" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource Liver}" Margin="0,0,0,8" />
+
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="principal" FontSize="14" TextColor="{StaticResource Manatee}" />
+                    <Label x:Name="interest" FontSize="14" TextColor="{StaticResource Manatee}" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="consolidatedAmount" FontSize="14" TextColor="{StaticResource Manatee}" />
+                    <Label x:Name="rate" FontSize="14" TextColor="{StaticResource Manatee}" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

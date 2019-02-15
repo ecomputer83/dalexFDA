@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using dalexFDA.Abstractions;
 using Xamarin.Forms;
 
 namespace dalexFDA
@@ -42,7 +43,27 @@ namespace dalexFDA
         {
             try
             {
-                name.Text = Name;
+            }
+            catch { }
+        }
+
+        #endregion
+
+        #region Label
+
+        public static readonly BindableProperty LabelProperty = BindableProperty.Create("Label", typeof(string), typeof(FormEntry), default(string));
+
+        public string Label
+        {
+            get { return (string)GetValue(LabelProperty); }
+            set { SetValue(LabelProperty, value); }
+        }
+
+        private void SetLabel()
+        {
+            try
+            {
+                label.Text = Label;
             }
             catch { }
         }
@@ -67,6 +88,39 @@ namespace dalexFDA
             }
             catch { }
         }
+
+        #endregion
+
+        #region Property - Amount
+
+        public const string AmountPropertyName = "Amount";
+
+        public double Amount
+        {
+            get
+            {
+                return (double)GetValue(AmountProperty);
+            }
+            set
+            {
+                SetValue(AmountProperty, value);
+            }
+        }
+
+        public static readonly BindableProperty AmountProperty = BindableProperty.Create(
+            AmountPropertyName,
+               typeof(double),
+               typeof(FormEntry),
+                0.00,
+            BindingMode.TwoWay, propertyChanging: (bindable, oldValue, newValue) =>
+            {
+                var control = (FormEntry)bindable;
+                if (control != null && newValue != null)
+                {
+                    control.Amount = (double)newValue;
+                }
+            }
+        );
 
         #endregion
 
@@ -233,6 +287,27 @@ namespace dalexFDA
 
         #endregion
 
+        #region ShouldFormat
+
+        public static readonly BindableProperty ShouldFormatProperty = BindableProperty.Create("ShouldFormat", typeof(bool), typeof(FormEntry), false);
+
+        public bool ShouldFormat
+        {
+            get { return (bool)GetValue(ShouldFormatProperty); }
+            set { SetValue(ShouldFormatProperty, value); }
+        }
+
+        private void SetShouldFormat()
+        {
+            try
+            {
+
+            }
+            catch { }
+        }
+
+        #endregion
+
         #region MaxLength
 
         public static readonly BindableProperty MaxLengthProperty = BindableProperty.Create("MaxLength", typeof(int), typeof(FormEntry), 0);
@@ -248,6 +323,27 @@ namespace dalexFDA
             try
             {
                 maxLengthBehavior.MaxLength = MaxLength;
+            }
+            catch { }
+        }
+
+        #endregion
+
+        #region Mask
+
+        public static readonly BindableProperty MaskProperty = BindableProperty.Create("Mask", typeof(string), typeof(FormEntry), default(string));
+
+        public string Mask
+        {
+            get { return (string)GetValue(MaskProperty); }
+            set { SetValue(MaskProperty, value); }
+        }
+
+        private void SetMask()
+        {
+            try
+            {
+                maskedBehavior.Mask = Mask;
             }
             catch { }
         }
@@ -305,6 +401,11 @@ namespace dalexFDA
                 SetText();
             }
 
+            if (propertyName == LabelProperty.PropertyName)
+            {
+                SetLabel();
+            }
+
             if (propertyName == IsPasswordProperty.PropertyName)
             {
                 SetIsPassword();
@@ -355,9 +456,19 @@ namespace dalexFDA
                 SetIsNumeric();
             }
 
+            if (propertyName == ShouldFormatProperty.PropertyName)
+            {
+                SetShouldFormat();
+            }
+
             if (propertyName == MaxLengthProperty.PropertyName)
             {
                 SetMaxLength();
+            }
+
+            if (propertyName == MaskProperty.PropertyName)
+            {
+                SetMask();
             }
         }
 
@@ -373,10 +484,39 @@ namespace dalexFDA
                     model.Validate.Execute(nav);
                 }
 
-                if (this.BindingContext is LoginViewModel loginModel)
+                if (this.BindingContext is NewUserSignupViewModel newUserSignupViewModel)
+                {
+                    var nav = new ValidationCommandNav { Name = Name };
+                    newUserSignupViewModel.Validate.Execute(nav);
+                }
+
+                if (this.BindingContext is LoginViewModel loginViewModel)
                 {
                     var nav = new LoginViewModel.CommandNav { Name = Name };
-                    loginModel.Validate.Execute(nav);
+                    loginViewModel.Validate.Execute(nav);
+                }
+
+                if (this.BindingContext is RedemptionRequestViewModel redemptionRequestViewModel)
+                {
+                    var nav = new RedemptionRequestViewModel.CommandNav { Name = Name };
+                    redemptionRequestViewModel.Validate.Execute(nav);
+                }
+
+                if (this.BindingContext is RolloverRequestViewModel rolloverRequestViewModel)
+                {
+                    var nav = new RolloverRequestViewModel.CommandNav { Name = Name };
+                    rolloverRequestViewModel.Validate.Execute(nav);
+                }
+
+                if (ShouldFormat)
+                {
+                    if (sender is Entry entry)
+                    {
+                        var text = NumberFormatter.ExtractNumber(entry.Text);
+                        double.TryParse(text, out double amount);
+
+                        this.Amount = amount;
+                    }
                 }
             }
             catch (Exception ex)
@@ -395,14 +535,34 @@ namespace dalexFDA
             catch { }
         }
 
+        void Handle_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (ShouldFormat)
+            {
+                if (sender is Entry entry)
+                {
+                    entry.Text = NumberFormatter.ExtractNumber(entry.Text);
+                }
+            }
+        }
+
         void Handle_Unfocused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
             if (Name == "PhoneExtension" || Name == "PhoneNumber")
             {
-
                 if (this.BindingContext is ExistingUserSignupViewModel model)
                 {
                     model.GetUserDetailsFromPhoneNumber.Execute(null);
+                }
+            }
+
+            if (ShouldFormat)
+            {
+                if (sender is Entry entry)
+                {
+                    var amount = !string.IsNullOrEmpty(entry.Text) ? entry.Text : "0";
+                    var retVal = NumberFormatter.FormatAmount(amount);
+                    entry.Text = retVal;
                 }
             }
         }

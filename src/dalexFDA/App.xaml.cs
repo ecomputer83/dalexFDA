@@ -52,14 +52,14 @@ namespace dalexFDA
         {
             Page page;
 
-            //if (EnvironmentHelper.Configuration.IsInScreenUnitTestingMode)
-            //{
-               // page = FreshPageModelResolver.ResolvePageModel<UnitTestsViewModel>();
-            //}
-            //else
-            //{
-            page = FreshPageModelResolver.ResolvePageModel<LoginViewModel>();
-            //}
+            if (Config.Mock.DisplayUnitTests)
+            {
+                page = FreshPageModelResolver.ResolvePageModel<UnitTestsViewModel>();
+            }
+            else
+            {
+                page = FreshPageModelResolver.ResolvePageModel<LoginViewModel>();
+            }
 
 
             var container = new CustomFreshNavigationContainer(page);
@@ -97,7 +97,7 @@ namespace dalexFDA
 
         public void StartTransferHistory()
         {
-            var page = FreshPageModelResolver.ResolvePageModel<DashboardViewModel>();
+            var page = FreshPageModelResolver.ResolvePageModel<TransactionHistoryViewModel>();
             StartFlow(page);
         }
 
@@ -114,14 +114,6 @@ namespace dalexFDA
             var menu = FreshIOC.Container.Resolve<IFreshNavigationService>(CustomNav.Name) as MasterDetailPage;
             menu.Detail = container;
             menu.IsPresented = false;
-
-            //if (EnvironmentHelper.Configuration.IsInScreenUnitTestingMode)
-            //{
-            //    MainPage = container;
-            //}
-            //else
-            //{
-            //}
         }
 
         #endregion
@@ -131,16 +123,21 @@ namespace dalexFDA
             FreshIOC.Container.Register<IAppService>(this);
             FreshIOC.Container.Register<IErrorManager, ErrorManager>();
             FreshIOC.Container.Register<Acr.UserDialogs.IUserDialogs>(Acr.UserDialogs.UserDialogs.Instance);
+            FreshIOC.Container.Register<ISession, SessionService>();
 
             if (Config.Mock.Enabled)
             {
                 FreshIOC.Container.Register<IDepositService, DepositService>();
+                FreshIOC.Container.Register<IAccountService, Data.Mock.AccountService>();
+                FreshIOC.Container.Register<IInvestmentService, Data.Mock.InvestmentService>();
+                FreshIOC.Container.Register<IAuthenticationService, Data.Mock.AuthenticationService>();
             }
             else
             {
                 FreshIOC.Container.Register<IDepositService, DepositService>();
-                FreshIOC.Container.Register<IAccountService, AccountService>();
-                FreshIOC.Container.Register<IAuthenticationService, AuthenticationService>();
+                FreshIOC.Container.Register<IAccountService, Data.WebServices.AccountService>();
+                FreshIOC.Container.Register<IInvestmentService, Data.WebServices.InvestmentService>();
+                FreshIOC.Container.Register<IAuthenticationService, Data.WebServices.AuthenticationService>();
             }
 
             var assembly = typeof(App).GetTypeInfo().Assembly;

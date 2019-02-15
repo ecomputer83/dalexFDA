@@ -1,11 +1,10 @@
 ﻿using dalexFDA.Abstractions;
-using dalexFDA.Abstractions.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dalexFDA.Data.WebServices.Services
+namespace dalexFDA.Data.WebServices
 {
     public class InvestmentService : IInvestmentService
     {
@@ -16,7 +15,7 @@ namespace dalexFDA.Data.WebServices.Services
             Config = configurationService.Current;
         }
 
-        public async Task<bool> DepositEInvestment(InvestmentEDeposit request)
+        public async Task<bool> DepositEInvestment(ETransferRequest request)
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
             var response = await service.EDeposit(request);
@@ -40,14 +39,28 @@ namespace dalexFDA.Data.WebServices.Services
             return response;
         }
 
-        public Task<bool> RedeemInvestment(RedeemInvestmentRequest request)
+        public async Task<TransactionHistory> GetTransactionHistory()
         {
-            throw new NotImplementedException();
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.GetHistory();
+
+            return response;
         }
 
-        public Task<bool> RolloverInvestment(RolloverInvestmentRequest request)
+        public async Task<bool> RedeemInvestment(RedeemInvestmentRequest request)
         {
-            throw new NotImplementedException();
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.Redeem(request);
+
+            return response;
+        }
+
+        public async Task<bool> RolloverInvestment(RolloverInvestmentRequest request)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.Rollover(request);
+
+            return response;
         }
     }
 }

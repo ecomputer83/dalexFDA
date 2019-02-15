@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using dalexFDA.Abstractions;
@@ -22,12 +23,27 @@ namespace dalexFDA.Data.WebServices
             return response;
         }
 
-        public async Task<UserAccount> GetUser()
+        public async Task<User> GetUser()
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
             var response = await service.GetUser();
 
-            return response;
+            if (response != null)
+            {
+                User user = new User
+                {
+                    Name = response.fullName,
+                    Email = response.email,
+                    PhoneNumber = response.phoneNumber,
+                    SecurityQuestion = response.securityQuestion,
+                    SecurityAnswer = response.securityAnswer
+                };
+                return user;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public async Task<User> GetUserByPhoneNumber(string phoneNumber)
@@ -36,6 +52,19 @@ namespace dalexFDA.Data.WebServices
             var response = await service.GetUserByPhoneNumber(phoneNumber);
 
             return response;
+        }
+
+        public async Task<User> GetKYCAccountByPhoneNumber(string phoneExtension, string phoneNumber)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.GetKYCUserByPhoneNumber(phoneNumber, phoneExtension);
+
+            return response;
+        }
+
+        public Task<List<User>> GetUsers()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<SignupResponse> Signup(SignupRequest data)

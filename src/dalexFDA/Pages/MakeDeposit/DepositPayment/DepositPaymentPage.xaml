@@ -20,24 +20,27 @@
             <ScrollView>
                 <StackLayout Spacing="8">
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
-                        <Label Text="Form Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
-                    
-                    <Label Text="Beneficiary Account Name" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="DALEX FINANCE &amp; LEASING COMPANY LIMITED" Margin="32,0,32,6"
-                            IsEnabled="false" BackgroundColor="{StaticResource GrayBoro}"
+
+                    <local:FormEntry Label="Beneficiary Account Name" Text="DALEX FINANCE &amp; LEASING COMPANY LIMITED"
+                            Margin="32,0,32,6" IsEnabled="false" EntryColor="{StaticResource GrayBoro}" Name="BenAccName"
                         />
                     
-                    <Label Text="Payment Purpose" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="Payment for New FDA Investment" Margin="32,0,32,6" />
                     
-                    <Label Text="Deposit Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="22,000.00" HorizontalTextAlignment="End" Margin="32,0,32,6" />
-                    
-                    <Label Text="Transaction Fee" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="22.00" HorizontalTextAlignment="End" Margin="32,0,32,6" BackgroundColor="{StaticResource GrayBoro}" />
-                    
-                    <Label Text="Payment Method" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <local:FormEntry Label="Payment Purpose" Text="Payment for new FDA Investment" Margin="32,0,32,6"
+                             IsEnabled="false" EntryColor="{StaticResource GrayBoro}" Name="PaymentPurpose"
+                        />
+
+                    <local:FormEntry Label="Deposit Amount [GHS]" Amount="{Binding Deposit}" Placeholder="0.00" HasError="{Binding DepositHasError}" ShouldFormat="true"
+                            ErrorMessage="{Binding DepositErrorMessage}" Margin="32,0,32,6" HorizontalTextAlignment="End" Name="Deposit" Keyboard="Numeric"
+                        />
+
+                    <local:FormEntry Label="Transaction Fee" Text="{Binding TransactionFee}"
+                            Margin="32,0,32,6" HorizontalTextAlignment="End" Name="TransactionFee" Keyboard="Numeric"
+                            IsEnabled="false" EntryColor="{StaticResource GrayBoro}"
+                        />
+                    <Label Text="Payment Method" TextColor="{StaticResource Liver}"  FontSize="16" FontAttributes="Bold" Margin="32,0" />
                     <StackLayout Orientation="Horizontal" Padding="32,6" Spacing="20">
                         <StackLayout Orientation="Horizontal">
                             <svg:SvgImage 
@@ -74,10 +77,7 @@
                 </StackLayout>
             </ScrollView>
             
-            <Button Text="CONTINUE" Style="{StaticResource PrimaryButton}" Command="{Binding Continue}" Margin="16" 
-                    VerticalOptions="EndAndExpand" 
-                />
-            
+            <Button Text="CONTINUE" Style="{StaticResource PrimaryButton}" Command="{Binding Continue}" Margin="16" VerticalOptions="EndAndExpand" />            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

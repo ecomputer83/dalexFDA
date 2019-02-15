@@ -51,9 +51,7 @@ namespace dalexFDA.iOS
 
         void Bootstrap_Init()
         {
-            Effects.iOS.Effects.Init();
             Rg.Plugins.Popup.Popup.Init();
-
             RegisterServices();
         }
 

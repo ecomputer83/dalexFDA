@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Profile\**" />
+    <EmbeddedResource Remove="Pages\Profile\**" />
+    <None Remove="Pages\Profile\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
     <PackageReference Include="FreshMvvm" Version="2.2.4" />
     <PackageReference Include="PropertyChanged.Fody" Version="2.5.13" />
@@ -23,7 +29,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Custom\" />
     <Folder Include="Helpers\" />
     <Folder Include="Images\" />
     <Folder Include="Pages\" />
@@ -33,8 +38,6 @@
     <Folder Include="Helpers\PageTestRunner\UnitTests\" />
     <Folder Include="Helpers\PageTestRunner\UnitTestScenarios\" />
     <Folder Include="Pages\Security\" />
-    <Folder Include="Pages\Account\" />
-    <Folder Include="Pages\Account\ActivateAccount\" />
     <Folder Include="Custom\Entries\" />
     <Folder Include="Custom\Navigation\" />
     <Folder Include="Custom\Effects\" />
@@ -42,13 +45,9 @@
     <Folder Include="Custom\Label\" />
     <Folder Include="Pages\Signup\" />
     <Folder Include="Pages\Security\Login\" />
-    <Folder Include="Pages\Account\Activate\" />
     <Folder Include="Pages\General\" />
     <Folder Include="Pages\General\Dashboard\" />
-    <Folder Include="Custom\Sections\" />
     <Folder Include="Pages\General\LeftNav\" />
-    <Folder Include="Pages\Transfer\" />
-    <Folder Include="Pages\Transfer\Transfer\" />
     <Folder Include="Custom\Pages\" />
     <Folder Include="Helpers\Behaviour\" />
     <Folder Include="Pages\Signup\NewUserSignup\" />
@@ -64,9 +63,9 @@
     <Folder Include="Pages\MakeDeposit\DepositPayment\" />
     <Folder Include="Pages\MakeDeposit\DepositInvestmentDetails\" />
     <Folder Include="Pages\MakeDeposit\CardPaymentDetails\" />
-    <Folder Include="Pages\Profile\" />
     <Folder Include="Pages\Signup\ConfirmAccount\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Pages\TransactionHistory\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XamSvg.Shared">
@@ -77,7 +76,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Effects\Effects.csproj" />
     <ProjectReference Include="..\dalexFDA.Abstractions\dalexFDA.Abstractions.csproj" />
     <ProjectReference Include="..\dalexFDA.Data.Mock\dalexFDA.Data.Mock.csproj" />
     <ProjectReference Include="..\dalexFDA.Data.WebServices\dalexFDA.Data.WebServices.csproj" />
@@ -151,20 +149,11 @@
     <Compile Remove="Custom\Modal\MyAccountPopupDialog.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Account\Activate\ActivatePage.xaml.cs">
-      <DependentUpon>ActivatePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Account\ActivateAccount\ActivateAccountPage.xaml.cs">
-      <DependentUpon>ActivateAccountPage.xaml</DependentUpon>
-    </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\General\Dashboard\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Security\Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\Transfer\Transfer\TransferPage.xaml.cs">
-      <DependentUpon>TransferPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Custom\Pages\MyAccountPopupDialog.xaml.cs">
       <DependentUpon>MyAccountPopupDialog.xaml</DependentUpon>

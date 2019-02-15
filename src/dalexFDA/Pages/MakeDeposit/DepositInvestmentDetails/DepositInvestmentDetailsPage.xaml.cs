@@ -11,5 +11,10 @@ namespace dalexFDA
         {
             InitializeComponent();
         }
+
+        void Handle_DateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

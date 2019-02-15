@@ -12,6 +12,18 @@ namespace dalexFDA.Droid
         protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
         {
             base.OnElementChanged(e);
+
+            Control?.SetBackgroundColor(Android.Graphics.Color.Transparent);
+            Control?.SetPadding(0, 0, 0, 0);
+            if (e.OldElement != null || e.NewElement != null)
+            {
+                var customPicker = e.NewElement as CustomPicker;
+                if (customPicker != null)
+                {
+
+                    Control.SetHintTextColor(Android.Graphics.Color.ParseColor(customPicker.PlaceholderColor));
+                }
+            }
         }
 
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -21,7 +33,7 @@ namespace dalexFDA.Droid
             if (Control != null)
             {
                 var picker = sender as CustomPicker;
-                Control.TextSize = picker?.FontSize ?? 14;
+                Control.TextSize = (float)(picker?.FontSize ?? 14);
                 Control.SetBackground(null);
                 Control.SetPadding(0, 0, 0, 0);
             }

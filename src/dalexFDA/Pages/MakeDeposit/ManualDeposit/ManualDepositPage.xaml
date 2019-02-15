@@ -11,56 +11,40 @@
             <ScrollView IsVisible="{Binding IsNotSuccesful}">
                 <StackLayout Spacing="8">
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
-                        <Label Text="Form Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
                     
-                    <Label Text="Transaction Date" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <ContentView BackgroundColor="{StaticResource PalmLeaf}" Margin="32,0,32,6" HeightRequest="42">
-                        <StackLayout Spacing="0" BackgroundColor="White" Margin="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <DatePicker x:Name="datePicker" Format="dd-MMM-yyyy" Margin="8,0" HorizontalOptions="FillAndExpand" DateSelected="OnDateSelected">
-                                <DatePicker.Effects>
-                                    <effects:RemoveBorderEffect />
-                                </DatePicker.Effects>
-                            </DatePicker>
-                            <svg:SvgImage Svg="res:images.icon-down-arrow" HorizontalOptions="End" WidthRequest="10" Margin="0,0,8,0" InputTransparent="true" />
-                        </StackLayout>
-                    </ContentView>
-                    
-                    
-                    <Label Text="Deposit Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="22,000.00" HorizontalTextAlignment="End" Margin="32,0,32,6" />
-                    
-                    <Label Text="Bank" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <ContentView BackgroundColor="{StaticResource PalmLeaf}" Margin="32,0,32,6" HeightRequest="42">
-                        <StackLayout Spacing="0" BackgroundColor="White" Margin="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <local:CustomPicker  ItemsSource="{Binding Banks}" SelectedItem="{Binding BankName}" HorizontalOptions="FillAndExpand"
-                                    Title="Bank Name" SelectedIndexChanged="Handle_SelectedIndexChanged" TextColor="Black" Margin="8,0"
-                                    HeightRequest="42"
-                                />
-                            <svg:SvgImage Svg="res:images.icon-down-arrow" HorizontalOptions="End" WidthRequest="10" Margin="0,0,8,0" InputTransparent="true" />
-                        </StackLayout>
-                    </ContentView>
-                        
-                    <Label Text="Teller/Cheque Number" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="" Placeholder="ADC123221" Margin="32,0,32,6" />
-                    
-                    <Label Text="Proposed Investment Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="22,000.00" HorizontalTextAlignment="End" Margin="32,0,32,6" />
-                    
-                    <Label Text="Proposed Investment Duration [Days]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="182" HorizontalTextAlignment="End" Margin="32,0,32,6" />
-                    
+                    <local:FormDatePicker Label="Transaction Date" Date="{Binding TransactionDate}" Name="TransactionDate"
+                            HasError="{Binding TransactionDateHasError}" ErrorMessage="{Binding TransactionDateErrorMessage}" Margin="32,0,32,6"
+                        />                    
+                    <local:FormEntry Label="Deposit Amount [GHS]" Amount="{Binding Deposit}" Placeholder="0.00" HasError="{Binding DepositHasError}" Keyboard="Numeric"
+                            ErrorMessage="{Binding DepositErrorMessage}" HorizontalTextAlignment="End" Margin="32,0,32,6" Name="Deposit" ShouldFormat="true"
+                        />                    
+                    <local:FormPicker Label="Bank" ItemsSource="{Binding Banks}" SelectedIndex="{Binding SelectedBankIndex}" Name="Bank" Placeholder="Bank Name"
+                            HasError="{Binding BankHasError}" ErrorMessage="{Binding BankErrorMessage}" Margin="32,0,32,6"
+                        />                        
+                    <local:FormEntry Label="Teller/Cheque Number" Text="{Binding TellerNumber}" Name="TellerNumber" Placeholder="ADC123221"
+                             HasError="{Binding TellerNumberHasError}" ErrorMessage="{Binding TellerNumberErrorMessage}" Margin="32,0,32,6" 
+                        />                    
+                    <local:FormEntry Label="Proposed Investment Amount [GHS]" Amount="{Binding InvestmentAmount}" Name="InvestmentAmount" 
+                            ShouldFormat="true" Keyboard="Numeric" HorizontalTextAlignment="End" Margin="32,0,32,6" Placeholder="0.00"
+                            HasError="{Binding InvestmentAmountHasError}" ErrorMessage="{Binding InvestmentAmountErrorMessage}" 
+                        />                    
+                    <local:FormEntry Text="{Binding Duration}" HasError="{Binding DurationHasError}" ErrorMessage="{Binding DurationErrorMessage}" 
+                            HorizontalTextAlignment="End" Margin="32,0,32,6" IsNumeric="true" Name="Duration" Label="Proposed Investment Duration [Days]"
+                            Keyboard="Numeric"
+                        />                    
                     
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
-                        <Label Text="Security Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                        <Label Text="Security Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
                     
-                    <Label Text="Security Question" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <Label Text="WHAT IS YOUR NAME" FontSize="16" Margin="32,0,32,6"  />
+                    <Label Text="Security Question" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="32,0" />
+                    <Label Text="{Binding SecurityQuestion}" TextColor="{StaticResource Liver}" FontSize="16" Margin="32,0,32,6"  />
                     
-                    <Label Text="Answer" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="{Binding Answer}" Margin="32,0" />
-                    
+                    <local:FormEntry Text="{Binding SecurityAnswer}" HasError="{Binding SecurityAnswerHasError}" ErrorMessage="{Binding SecurityAnswerErrorMessage}" 
+                            Margin="32,0" Name="SecurityAnswer" Label="Answer"
+                        />
                     <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" Margin="32,0" />
                 </StackLayout>
             </ScrollView>
@@ -73,7 +57,6 @@
             <Button IsVisible="{Binding IsNotSuccesful}" Text="NEGOTIATE TRANSACTION" Style="{StaticResource PrimaryButton}" Command="{Binding Negotiate}" Margin="16" 
                     VerticalOptions="EndAndExpand" 
                 />
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

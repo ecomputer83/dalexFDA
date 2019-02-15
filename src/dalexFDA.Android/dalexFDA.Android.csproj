@@ -15,7 +15,7 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
@@ -104,6 +104,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Effects\RemoveBorderEffect.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -169,16 +170,6 @@
     <ProjectReference Include="..\dalexFDA.Abstractions\dalexFDA.Abstractions.csproj">
       <Project>{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}</Project>
       <Name>dalexFDA.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Effects\Effects.csproj">
-      <Project>{9BBE4704-4E61-4F51-836C-FD4CE5FC93D0}</Project>
-      <Name>Effects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Effects.Android\Effects.Android.csproj">
-      <IsAppExtension>true</IsAppExtension>
-      <Project>{B73D523F-CA61-4B2D-86D9-CC467A3E55F7}</Project>
-      <Name>Effects.Android</Name>
-      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

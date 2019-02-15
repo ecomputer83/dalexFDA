@@ -8,22 +8,27 @@
         <StackLayout Spacing="0">
             <ContentView BackgroundColor="{StaticResource OffWhite3}" Margin="0">
                 <Label Text="Card Payment Details" TextColor="{StaticResource Liver}" FontSize="22" FontAttributes="Bold" 
-                       Margin="16,24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                       Margin="16,24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" 
+                    />
             </ContentView>
             <ScrollView>
                 <StackLayout Spacing="8">
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
-                        <Label Text="Form Section" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
                     
-                    <Label Text="Debit Amount [GHS]" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="22,000.00" HorizontalTextAlignment="End" Margin="32,0,32,6" />
+                    <local:FormEntry Label="Debit Amount [GHS]" Text="{Binding DebitAmount}" Placeholder="0.00" Margin="32,0,32,6" Name="DebitAmount" HorizontalTextAlignment="End"
+                            Keyboard="Numeric" IsEnabled="false" EntryColor="{StaticResource GrayBoro}"
+                        />
                     
-                    <Label Text="Card Number" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="" Placeholder="5321 XXXX XXXX 9017" Margin="32,0,32,6" />
+                    <local:FormEntry Label="Card Number]" Placeholder="5321 XXXX XXXX 9017" Text="{Binding CardNumber}" HasError="{Binding CardNumberHasError}" 
+                            ErrorMessage="{Binding CardNumberErrorMessage}" Margin="32,0,32,6" Name="CardNumber" IsNumeric="true" Mask="XXXX XXXX XXXX XXXX"
+                            Keyboard="Numeric" 
+                        />
                     
-                    <Label Text="Card Holder Name" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="" Placeholder="Papa Godwin Hanson" Margin="32,0,32,6" />
+                    <local:FormEntry Label="Card Holder Name" Text="{Binding CardHolderName}" HasError="{Binding CardHolderNameHasError}" 
+                            ErrorMessage="{Binding CardHolderNameErrorMessage}" Margin="32,0,32,6" Name="CardHolderName" 
+                        />
                     
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -31,27 +36,27 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         
-                        <StackLayout Spacing="8" Grid.Column="0">
-                            <Label Text="Expiry Date" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                            <local:FormEntry Text="" Placeholder="MM/YYYY" Margin="32,0,32,6" />
-                        </StackLayout>
+                        <local:FormEntry Grid.Column="0" Label="Expiry Date" Text="{Binding ExpiryDate}" Placeholder="MM/YYYY" HasError="{Binding ExpiryDateHasError}" 
+                                ErrorMessage="{Binding ExpiryDateErrorMessage}" Margin="32,0,32,6" Name="ExpiryDate" EntryWidth="150" Mask="XX/XXXX"
+                                Keyboard="Numeric" MaxLength="7"
+                            />
                         
-                        <StackLayout Spacing="8" Grid.Column="1">
-                            <Label Text="CVV" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                            <local:FormEntry Text="" IsPassword="true" Placeholder="XXX" WidthRequest="100" HorizontalOptions="Start" Margin="32,0,32,6" />
-                        </StackLayout>
+                        <local:FormEntry Grid.Column="1" Label="CVV" Text="{Binding CVV}" Placeholder="XXX" HasError="{Binding CVVHasError}" EntryWidth="100" HorizontalOptions="Start"
+                                ErrorMessage="{Binding CVVErrorMessage}" Margin="32,0,32,6" Name="CVV" IsPassword="true" IsNumeric="true" MaxLength="3"
+                                Keyboard="Numeric"
+                            />
                     </Grid>
                     
-                    <Label Text="PIN" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <local:FormEntry Text="" IsPassword="true" Placeholder="XXXX" WidthRequest="100" HorizontalOptions="Start" Margin="32,0,32,6" />
-                    
+                    <local:FormEntry Label="PIN" Text="{Binding PIN}" Placeholder="XXXX" HasError="{Binding PINHasError}" EntryWidth="100" HorizontalOptions="Start"
+                            ErrorMessage="{Binding PINErrorMessage}" Margin="32,0,32,6" Name="PIN" IsPassword="true" IsNumeric="true" MaxLength="4"
+                            Keyboard="Numeric"
+                        />
                 </StackLayout>
             </ScrollView>
             
             <Button Text="PAY" Style="{StaticResource PrimaryButton}" Command="{Binding Pay}" Margin="16" 
                     VerticalOptions="EndAndExpand" 
-                />
-            
+                />            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

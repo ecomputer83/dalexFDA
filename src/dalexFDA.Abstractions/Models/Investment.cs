@@ -6,7 +6,7 @@ namespace dalexFDA.Abstractions
 {
     public class RedeemInvestmentRequest
     {
-        public int InvestmentId { get; set; }
+        public string InvestmentId { get; set; }
         public double RedemptionAmount { get; set; }
         public double ReinvestmentAmount { get; set; }
         public int Duration { get; set; }
@@ -15,7 +15,7 @@ namespace dalexFDA.Abstractions
 
     public class RolloverInvestmentRequest
     {
-        public int InvestmentId { get; set; }
+        public string InvestmentId { get; set; }
         public double ReinvestmentAmount { get; set; }
         public int Duration { get; set; }
         public string SecurityAnswer { get; set; }

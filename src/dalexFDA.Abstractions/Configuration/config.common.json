@@ -1,5 +1,5 @@
 ﻿{
-    "Api": "http://192.168.1.101/dalexFDA/", 
+    "Api": "http://40.115.57.160/DalexFDAApi",
     "AppCenter": {
         "iOS": "a69ceaa0-edc5-4d2a-b3d0-0ff7d4eed8ad",
         "Droid": "65f4e4fc-6ad1-4986-9863-7307e64df684"

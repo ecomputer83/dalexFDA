@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="dalexFDA.TransactionHistoryPage"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             xmlns:local="clr-namespace:dalexFDA"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource OffWhite2}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="DepositHistoryTemplate">
+                <ViewCell>
+                   <local:DepositHistoryItemView Margin="8,4" Id="{Binding Deposit.No}" PaymentType="{Binding Deposit.PaymentType}" 
+                            DocumentType="{Binding Deposit.DocumentType}" Amount="{Binding Deposit.Amount}" 
+                        />
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="RolloverHistoryTemplate">
+                <ViewCell>
+                   <local:RolloverHistoryItemView Margin="8,4"
+                            Id="{Binding Rollover.TransactionNo}" Type="{Binding Rollover.TransactionType}" Duration="{Binding Rollover.NewDuration}" 
+                            Amount="{Binding Rollover.RolloverAmount}" Status="{Binding Rollover.ApprovalStatus}"
+                        />
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="RedemptionHistoryTemplate">
+                <ViewCell>
+                   <local:RedemptionHistoryItemView Margin="8,4"
+                            Id="{Binding Redemption.TransactionNo}" Type="{Binding Redemption.TransactionType}" Duration="{Binding Redemption.Duration}" 
+                            Amount="{Binding Redemption.RetireAmount}" RetireDate="{Binding Redemption.RetireDate}"
+                        />
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="ConsolidationHistoryTemplate">
+                <ViewCell>
+                   <local:ConsolidationHistoryItemView Margin="16,8"
+                            Id="{Binding Consolidation.TransactionNo}" Principal="{Binding Consolidation.PrincipalAmount}"
+                            ConsolidatedAmount="{Binding Consolidation.ConsolidatedAmount}" InterestEarned="{Binding Consolidation.InterestEarned}" 
+                            InterestRate="{Binding Consolidation.NewInterestRate}" 
+                        />
+                </ViewCell>
+            </DataTemplate>
+            <local:TransactionHistoryDataTemplateSelector x:Key="transactionHistoryDataTemplateSelector"
+                    DepositTemplate="{StaticResource DepositHistoryTemplate}" RolloverTemplate="{StaticResource RolloverHistoryTemplate}"
+                    RedemptionTemplate="{StaticResource RedemptionHistoryTemplate}" ConsolidationTemplate="{StaticResource ConsolidationHistoryTemplate}"
+                />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="0" ColumnSpacing="0" Padding="0" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid  Grid.Row="0" ColumnSpacing="0" BackgroundColor="{StaticResource PalmLeaf}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5" />
+                </Grid.RowDefinitions>
+
+                <svg:SvgImage Grid.Row="0" Grid.Column="0" Svg="res:images.icon-travel" WidthRequest="30" HorizontalOptions="Center"
+                        VerticalOptions="End" ColorMapping="{Binding DepositSvgColor}" Command="{Binding ViewDeposit}"
+                    />
+                <BoxView Grid.Row="1" Grid.Column="0" Color="{Binding DepositLineColor}" HeightRequest="5" VerticalOptions="End" />
+
+                <svg:SvgImage Grid.Row="0" Grid.Column="1" Svg="res:images.icon-settings" WidthRequest="30" HorizontalOptions="Center"
+                        VerticalOptions="End" ColorMapping="{Binding RolloverSvgColor}" Command="{Binding ViewRollover}"
+                    />
+                <BoxView Grid.Row="1" Grid.Column="1" Color="{Binding RolloverLineColor}" HeightRequest="5" VerticalOptions="End" />
+
+                <svg:SvgImage Grid.Row="0" Grid.Column="2" Svg="res:images.icon-replay" WidthRequest="30" HorizontalOptions="Center"
+                        VerticalOptions="End" ColorMapping="{Binding RedemptionSvgColor}" Command="{Binding ViewRedemption}"
+                    />
+                <BoxView Grid.Row="1" Grid.Column="2" Color="{Binding RedemptionLineColor}" HeightRequest="5" VerticalOptions="End" />
+
+                <svg:SvgImage Grid.Row="0" Grid.Column="3" Svg="res:images.icon-location" WidthRequest="30" HorizontalOptions="Center"
+                        VerticalOptions="End" ColorMapping="{Binding ConsolidationSvgColor}" Command="{Binding ViewConsolidation}"
+                    />
+                <BoxView Grid.Row="1" Grid.Column="3" Color="{Binding ConsolidationLineColor}" HeightRequest="5" VerticalOptions="End" />
+            </Grid>
+
+            <ListView x:Name="list" Grid.Row="1" ItemsSource="{Binding HistoryItems}" CachingStrategy="RecycleElement" 
+                    SeparatorVisibility="None" HasUnevenRows="true" ItemTapped="Handle_ItemTapped" 
+                    ItemTemplate="{StaticResource transactionHistoryDataTemplateSelector}"
+                />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

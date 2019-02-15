@@ -4,6 +4,8 @@ using Xamarin.Forms;
 using dalexFDA.Abstractions;
 using PropertyChanged;
 using Acr.UserDialogs;
+using Refit;
+using System.Diagnostics;
 
 namespace dalexFDA
 {
@@ -15,6 +17,7 @@ namespace dalexFDA
         readonly IAuthenticationService AuthService;
         readonly IAccountService AccountService;
         readonly IUserDialogs Dialog;
+        readonly ISession SessionService;
         ISetting Setting;
 
         //commands
@@ -28,7 +31,7 @@ namespace dalexFDA
         public string AccountNumber { get; set; }
         public string Password { get; set; }
 
-        public string FullPhoneNumber { get { return PhoneExtension?.Replace("+", "") + PhoneNumber; } }
+        public string FullPhoneNumber { get { return NumberFormatter.ExtractNumber(PhoneExtension + PhoneNumber); } }
         public string PhoneNumber { get; set; }
         public bool PhoneNumberHasError { get; set; }
         public string PhoneNumberErrorMessage { get; set; }
@@ -40,6 +43,8 @@ namespace dalexFDA
         public bool PinHasError { get; set; }
         public string PinErrorMessage { get; set; }
 
+        public User User { get; set; }
+
         public class CommandNav
         {
             public string Name { get; set; }
@@ -49,7 +54,7 @@ namespace dalexFDA
         private const string pin_error_message = "Please enter a PIN.";
 
         public LoginViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog,
-            IAuthenticationService AuthService, IAccountService AccountService,
+            IAuthenticationService AuthService, IAccountService AccountService, ISession SessionService,
             ISetting setting)
         {
             this.ErrorManager = ErrorManager;
@@ -57,6 +62,7 @@ namespace dalexFDA
             this.Dialog = Dialog;
             this.AuthService = AuthService;
             this.AccountService = AccountService;
+            this.SessionService = SessionService;
             this.Setting = setting;
 
             Login = new Command(async () => await ExecuteLogin());
@@ -66,38 +72,63 @@ namespace dalexFDA
             Validate = new Command<CommandNav>(async (obj) => await ExecuteValidate(obj));
         }
 
+        public async override void Init(object initData)
+        {
+            base.Init(initData);
+
+            try
+            {
+                //PhoneExtension = "+234";
+                //PhoneNumber = "7037509734";
+                //PIN = "1234";
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
         private async Task ExecuteLogin()
         {
             try
             {
                 if (PerformValidation()) return;
 
-                var request = new LoginRequest
+                using (Dialog.Loading("Authenticating..."))
                 {
-                    username = FullPhoneNumber,
-                    password = PIN
-                };
-                var response = await AuthService.Authenticate(request);
-                if(response != null)
-                {
-                    Setting.UserToken = response.access_token;
-                    var useraccount = await AccountService.GetUser();
-                    if(useraccount != null){
-                        Setting.User_firstName = useraccount.firstName;
-                        Setting.User_lastName = useraccount.lastName;
-                        Setting.User_email = useraccount.email;
-                        Setting.User_phoneNmuber = useraccount.phoneNumber;
-                        Setting.User_fullName = useraccount.fullName;
+                    var request = new LoginRequest
+                    {
+                        username = FullPhoneNumber,
+                        password = PIN
+                    };
+                    var response = await AuthService.Authenticate(request);
 
-                        AppService.StartMainFlow();
+                    if (response != null)
+                    {
+                        SessionService.Token = response.access_token;
+
+                        var user = await AccountService.GetUser();
+                        if (user != null)
+                        {
+                            SessionService.CurrentUser = user;
+                            AppService.StartMainFlow();
+                        }
+                    }
+                    else
+                    {
+                        await CoreMethods.DisplayAlert("Oops", "Invalid Phone number or password. Please try again.", "Ok");
                     }
                 }
-
-               
+            }
+            catch(ApiException ex)
+            {
+                await CoreMethods.DisplayAlert("Oops", "Invalid Phone number or password. Please try again.", "Ok");
+                Debug.WriteLine($"{ex.Message}");
             }
             catch (Exception ex)
             {
-                await ErrorManager.DisplayErrorMessageAsync(ex);
+                await CoreMethods.DisplayAlert("Oops", "Invalid Phone number or password. Please try again.", "Ok");
+                Debug.WriteLine($"{ex.Message}");
             }
         }
 

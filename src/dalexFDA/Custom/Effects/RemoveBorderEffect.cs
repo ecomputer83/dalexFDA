@@ -5,7 +5,7 @@ namespace dalexFDA
 {
     public class RemoveBorderEffect : RoutingEffect
     {
-        public RemoveBorderEffect() : base("dalexFDA.GradientEffect")
+        public RemoveBorderEffect() : base("dalexFDA.RemoveBorderEffect")
         {
         }
     }

@@ -123,7 +123,7 @@ namespace dalexFDA
         {
             try
             {
-                //sdate.Text = StartDate;
+                startDate.Text = StartDate;
             }
             catch (Exception ex)
             {
@@ -195,7 +195,6 @@ namespace dalexFDA
 
             if (propertyName == StartDateProperty.PropertyName)
                 SetStartDate();
-
         }
 
         void Handle_Tapped(object sender, System.EventArgs e)
