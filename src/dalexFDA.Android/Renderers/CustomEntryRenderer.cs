@@ -5,6 +5,7 @@ using dalexFDA;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using dalexFDA.Droid;
+using Android.Views;
 
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
 namespace dalexFDA.Droid
@@ -19,6 +20,7 @@ namespace dalexFDA.Droid
 
             this.Control.Background = new ColorDrawable(Color.Transparent.ToAndroid());
             this.Control.SetPadding(padding, padding, padding, padding);
+            this.Control.Gravity = GravityFlags.CenterVertical;
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)

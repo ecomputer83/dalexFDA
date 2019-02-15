@@ -9,7 +9,6 @@ namespace dalexFDA.iOS
 
         public static void Load()
         {
-
             FreshIOC.Container.Register<IFileStorageService, iOSFileStorageService>();
 
             dalexFDA.ContainerConfig.Load();

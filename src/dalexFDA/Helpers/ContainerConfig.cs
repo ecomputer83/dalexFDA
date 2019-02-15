@@ -13,10 +13,8 @@ namespace dalexFDA
     {
         public static void Load()
         {
-            FreshIOC.Container.Register<IUserDialogs>(UserDialogs.Instance);
-            FreshIOC.Container.Register<ISettings>(CrossSettings.Current);
             FreshIOC.Container.Register<IConfigurationService, ConfigurationService>();
-            FreshIOC.Container.Register<IDeviceInfo>(CrossDeviceInfo.Current);
+            FreshIOC.Container.Register<ISession, SessionService>();
             FreshIOC.Container.Register<ISetting, Settings>();
         }
     }

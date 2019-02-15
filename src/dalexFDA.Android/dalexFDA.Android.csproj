@@ -112,6 +112,8 @@
     <Compile Include="Renderers\CustomPickerRenderer.cs" />
     <Compile Include="Renderers\CustomDatePickerRenderer.cs" />
     <Compile Include="Services\AndroidFileStorageService.cs" />
+    <Compile Include="Effects\GradientEffect.cs" />
+    <Compile Include="Helpers\ContainerConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -159,6 +161,7 @@
     <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -170,6 +173,23 @@
       <Project>{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}</Project>
       <Name>dalexFDA.Abstractions</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="..\dalexFDA.Abstractions\Configuration\config.common.json">
+      <Link>Assets\config.common.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\dalexFDA.Abstractions\Configuration\config.common.test.json">
+      <Link>Assets\config.common.test.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\dalexFDA.Abstractions\Configuration\config.common.dev.json">
+      <Link>Assets\config.common.dev.json</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\dalexFDA.Abstractions\Configuration\config.common.mock.json">
+      <Link>Assets\config.common.mock.json</Link>
+    </AndroidAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
