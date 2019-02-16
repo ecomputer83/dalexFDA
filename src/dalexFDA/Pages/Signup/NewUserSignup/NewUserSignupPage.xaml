@@ -30,7 +30,7 @@
                     <Label Text="Phone Number" FontSize="16" FontAttributes="Bold" />
                     <StackLayout Spacing="8" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <local:FormEntry Text="{Binding PhoneExtension}" Placeholder="+233" WidthRequest="120" Name="PhoneExtension"
-                                HasError="{Binding PhoneExtensionHasError}" Keyboard="Telephone" IsNumeric="true" MaxLength="3" Mask="+XXX"
+                                HasError="{Binding PhoneExtensionHasError}" Keyboard="Telephone" IsNumeric="true" MaxLength="4" Mask="+XXX"
                             />
                         <local:FormEntry Text="{Binding PhoneNumber}" HorizontalOptions="FillAndExpand" Name="PhoneNumber"
                                 HasError="{Binding PhoneNumberHasError}" Keyboard="Telephone" IsNumeric="true" Mask="XXX XXXX XXX"

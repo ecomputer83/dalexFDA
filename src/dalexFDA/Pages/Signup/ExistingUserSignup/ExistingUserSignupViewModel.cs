@@ -31,7 +31,7 @@ namespace dalexFDA
         public bool FullNameHasError { get; set; }
         public string FullNameErrorMessage { get; set; }
 
-        public string FullPhoneNumber { get { return PhoneExtension?.Replace("+", "") + PhoneNumber; } }
+        public string FullPhoneNumber { get { return PhoneExtension?.Replace("+", "") + PhoneNumber?.Replace(" ",""); } }
         public string PhoneNumber { get; set; }
         public bool PhoneNumberHasError { get; set; }
         public string PhoneNumberErrorMessage { get; set; }

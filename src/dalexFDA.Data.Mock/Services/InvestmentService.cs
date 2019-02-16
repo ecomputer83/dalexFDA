@@ -31,6 +31,13 @@ namespace dalexFDA.Data.Mock
             return await Task.FromResult(true);
         }
 
+        public async Task<InvestmentItem> GetInvestment(string Id)
+        {
+            await Task.Delay(1000);
+            var account = investmentAccounts[0];
+            return await Task.FromResult(account.Investments[0]);
+        }
+
         public async Task<InvestmentAccount> GetInvestmentAccount()
         {
             await Task.Delay(1000);
