@@ -7,7 +7,7 @@ using Xamarin.Forms.Platform.Android;
 using dalexFDA.Droid;
 using Android.Views;
 
-[assembly: ExportRenderer(typeof(CustomEntryRenderer), typeof(CustomEntry))]
+[assembly: ExportRenderer(typeof(CustomEntryRenderer), typeof(dalexFDA.CustomEntry))]
 namespace dalexFDA.Droid
 {
     public class CustomEntryRenderer : EntryRenderer
