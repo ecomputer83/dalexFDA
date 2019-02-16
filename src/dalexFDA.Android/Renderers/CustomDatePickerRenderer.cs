@@ -4,7 +4,7 @@ using Xamarin.Forms.Platform.Android;
 using dalexFDA;
 using dalexFDA.Droid;
 
-[assembly: ExportRenderer(typeof(DatePicker), typeof(CustomDatePickerRenderer))]
+[assembly: ExportRenderer(typeof(CustomDatePickerRenderer), typeof(DatePicker))]
 namespace dalexFDA.Droid
 {
     public class CustomDatePickerRenderer : DatePickerRenderer
