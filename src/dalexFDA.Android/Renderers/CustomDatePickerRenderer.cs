@@ -9,6 +9,10 @@ namespace dalexFDA.Droid
 {
     public class CustomDatePickerRenderer : DatePickerRenderer
     {
+        public CustomDatePickerRenderer(Android.Content.Context context) : base(context)
+        {
+
+        }
         public static void Init() { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<DatePicker> e)
