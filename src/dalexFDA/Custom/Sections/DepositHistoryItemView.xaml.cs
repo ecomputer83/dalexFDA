@@ -51,7 +51,7 @@ namespace dalexFDA
         {
             try
             {
-                paymentType.Text = PaymentType?.ToUpper();
+                paymentType.Text = PaymentType;
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace dalexFDA
         {
             try
             {
-                documentType.Text = $"Type: {DocumentType}"; ;
+                documentType.Text = DocumentType;
             }
             catch (Exception ex)
             {
@@ -99,11 +99,35 @@ namespace dalexFDA
         {
             try
             {
-                amount.Text = $"Amount: GHS {NumberFormatter.FormatAmount(Amount.ToString())}";
+                amount.Text = $"GHS {NumberFormatter.FormatAmount(Amount.ToString())}";
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"=======Amount=====\n{ex.Message}");
+            }
+        }
+
+        #endregion
+
+        #region PaymentConfirmedDate
+
+        public static readonly BindableProperty PaymentConfirmedDateProperty = BindableProperty.Create("PaymentConfirmedDate", typeof(DateTimeOffset), typeof(DepositHistoryItemView), default(DateTimeOffset));
+
+        public DateTimeOffset PaymentConfirmedDate
+        {
+            get { return (DateTimeOffset)GetValue(PaymentConfirmedDateProperty); }
+            set { SetValue(PaymentConfirmedDateProperty, value); }
+        }
+
+        private void SetPaymentConfirmedDate()
+        {
+            try
+            {
+                confirmedDate.Text = $"{PaymentConfirmedDate.ToString("dd/MM/yyyy")}";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"=======PaymentConfirmedDate=====\n{ex.Message}");
             }
         }
 
@@ -124,6 +148,9 @@ namespace dalexFDA
 
             if (propertyName == AmountProperty.PropertyName)
                 SetAmount();
+
+            if (propertyName == PaymentConfirmedDateProperty.PropertyName)
+                SetPaymentConfirmedDate();
         }
     }
 }

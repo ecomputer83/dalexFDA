@@ -31,7 +31,7 @@ namespace dalexFDA
         public bool FullNameHasError { get; set; }
         public string FullNameErrorMessage { get; set; }
 
-        public string FullPhoneNumber { get { return PhoneExtension?.Replace("+", "") + PhoneNumber; } }
+        public string FullPhoneNumber { get { return NumberFormatter.ExtractNumber(PhoneExtension + PhoneNumber); } }
         public string PhoneNumber { get; set; }
         public bool PhoneNumberHasError { get; set; }
         public string PhoneNumberErrorMessage { get; set; }
@@ -64,19 +64,17 @@ namespace dalexFDA
         public Command Agree { get; private set; }
         public Command Validate { get; private set; }
 
-        public class CommandNav
-        {
-            public string Name { get; set; }
-        }
-
+        private const string fullname_error_message = "Your fullname is required.";
         private const string phone_number_error_message = "Please enter a phone number.";
         private const string email_address_error_message = "Please enter an email address.";
         private const string invalid_email_address_error_message = "Please enter a valid email address.";
+        private const string security_question_error_message = "Your security question is required.";
         private const string security_answer_error_message = "Please provide an answer to the question.";
         private const string incorrect_security_answer_error_message = "The answer you provided is incorrect.";
         private const string pin_error_message = "Please enter a PIN.";
         private const string confirmpin_error_message = "Please re-enter your PIN.";
         private const string inconsistent_pin_error_message = "The PINs do not match.";
+        private const string empty_string = "";
 
         public ExistingUserSignupViewModel(IErrorManager ErrorManager, IAppService AppService, IAccountService AccountService, ISetting Settings,
                                         IDeviceInfo DeviceInfo, IUserDialogs Dialog)
@@ -92,7 +90,7 @@ namespace dalexFDA
             Cancel = new Command(async () => await ExecuteCancel());
             Agree = new Command(async () => await ExecuteAgree());
             GetUserDetailsFromPhoneNumber = new Command(async () => await ExecuteGetUserDetailsFromPhoneNumber());
-            Validate = new Command<CommandNav>(async (obj) => await ExecuteValidate(obj));
+            Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
         }
 
         private async Task ExecuteAgree()
@@ -141,7 +139,7 @@ namespace dalexFDA
             }
         }
 
-        private async Task ExecuteValidate(CommandNav obj)
+        private async Task ExecuteValidate(ValidationCommandNav obj)
         {
             try
             {
@@ -160,7 +158,7 @@ namespace dalexFDA
                 if (!IsAgreementSelected) return;
                 if (PerformValidation()) return;
 
-                using (Dialog.Loading("Registering..."))
+                using (Dialog.Loading("Please wait..."))
                 {
                     var request = new SignupRequest
                     {
@@ -210,14 +208,15 @@ namespace dalexFDA
             {
                 case "PhoneExtension":
                     PhoneExtensionHasError = string.IsNullOrEmpty(PhoneExtension);
-                    PhoneNumberErrorMessage = phone_number_error_message;
+                    PhoneNumberErrorMessage = PhoneExtensionHasError ? phone_number_error_message : empty_string;
                     break;
                 case "PhoneNumber":
                     PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
-                    PhoneNumberErrorMessage = phone_number_error_message;
+                    PhoneNumberErrorMessage = PhoneNumberHasError ? phone_number_error_message : empty_string;
                     break;
                 case "FullName":
                     FullNameHasError = string.IsNullOrEmpty(FullName);
+                    FullNameErrorMessage = FullNameHasError ? fullname_error_message : empty_string;
                     break;
                 case "EmailAddress":
                     EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
@@ -227,18 +226,19 @@ namespace dalexFDA
                     break;
                 case "SecurityQuestion":
                     SecurityQuestionHasError = string.IsNullOrEmpty(SecurityQuestion);
+                    SecurityQuestionErrorMessage = SecurityQuestionHasError ? security_question_error_message : empty_string;
                     break;
                 case "SecurityAnswer":
                     SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
-                    SecurityAnswerErrorMessage = security_answer_error_message;
+                    SecurityAnswerErrorMessage = SecurityAnswerHasError ? security_answer_error_message : empty_string;
                     break;
                 case "PIN":
                     PinHasError = string.IsNullOrEmpty(PIN);
-                    PinErrorMessage = pin_error_message;
+                    PinErrorMessage = PinHasError ? pin_error_message : empty_string;
                     break;
                 case "ConfirmPIN":
                     ConfirmPinHasError = string.IsNullOrEmpty(ConfirmPIN);
-                    ConfirmPinErrorMessage = confirmpin_error_message;
+                    ConfirmPinErrorMessage = ConfirmPinHasError ? confirmpin_error_message : empty_string;
                     break;
                 default:
                     break;
@@ -251,30 +251,32 @@ namespace dalexFDA
             bool isValidEmail = !string.IsNullOrEmpty(EmailAddress) ? ValidateEmail(EmailAddress) : false;
 
             PhoneExtensionHasError = string.IsNullOrEmpty(PhoneExtension);
-            PhoneNumberErrorMessage = phone_number_error_message;
+            PhoneNumberErrorMessage = PhoneExtensionHasError ? phone_number_error_message : empty_string;
             PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
-            PhoneNumberErrorMessage = phone_number_error_message;
+            PhoneNumberErrorMessage = PhoneNumberHasError ? phone_number_error_message : empty_string;
 
             FullNameHasError = string.IsNullOrEmpty(FullName);
+            FullNameErrorMessage = FullNameHasError ? fullname_error_message : empty_string;
 
             EmailAddressHasError = string.IsNullOrEmpty(EmailAddress);
             EmailAddressErrorMessage = email_address_error_message;
             EmailAddressHasError = !EmailAddressHasError ? !isValidEmail : EmailAddressHasError;
-            EmailAddressErrorMessage = !EmailAddressHasError && !isValidEmail ? "" : invalid_email_address_error_message;
+            EmailAddressErrorMessage = !EmailAddressHasError && !isValidEmail ? empty_string : invalid_email_address_error_message;
 
             SecurityQuestionHasError = string.IsNullOrEmpty(SecurityQuestion);
+            SecurityQuestionErrorMessage = SecurityQuestionHasError ? security_question_error_message : empty_string;
             SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
-            SecurityAnswerErrorMessage = security_answer_error_message;
+            SecurityAnswerErrorMessage = SecurityAnswerHasError ? security_answer_error_message : empty_string;
 
             PinHasError = string.IsNullOrEmpty(PIN);
-            PinErrorMessage = pin_error_message;
+            PinErrorMessage = PinHasError ? pin_error_message : empty_string;
             ConfirmPinHasError = string.IsNullOrEmpty(ConfirmPIN);
-            ConfirmPinErrorMessage = confirmpin_error_message;
-            if(!PinHasError && !ConfirmPinHasError)
+            ConfirmPinErrorMessage = ConfirmPinHasError ? confirmpin_error_message : empty_string;
+            if (!PinHasError && !ConfirmPinHasError)
             {
                 PinHasError = ConfirmPinHasError = PIN != ConfirmPIN;
-                PinErrorMessage = inconsistent_pin_error_message;
-                ConfirmPinErrorMessage = string.Empty;
+                PinErrorMessage = PinHasError ? inconsistent_pin_error_message : empty_string;
+                ConfirmPinErrorMessage = empty_string;
             }
 
             return PhoneHasError || FullNameHasError || EmailAddressHasError || SecurityQuestionHasError || SecurityAnswerHasError ||

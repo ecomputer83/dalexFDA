@@ -22,12 +22,15 @@ namespace dalexFDA
 
         public Command Confirm { get; private set; }
         public Command Cancel { get; private set; }
+        public Command Validate { get; private set; }
 
         Nav Data;
         public class Nav
         {
             public string Phone { get; set; }
         }
+
+        private const string token_error_message = "Please enter the code in the SMS sent to you.";
 
         public ConfirmAccountViewModel(IErrorManager ErrorManager, IAppService AppService, IAccountService AccountService, IUserDialogs Dialog)
         {
@@ -38,6 +41,7 @@ namespace dalexFDA
 
             Confirm = new Command(async () => await ExecuteConfirm());
             Cancel = new Command(async () => await ExecuteCancel());
+            Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
         }
 
         public async override void Init(object initData)
@@ -68,12 +72,11 @@ namespace dalexFDA
                 if (string.IsNullOrEmpty(Token))
                 {
                     TokenHasError = true;
-                    TokenErrorMessage = "Please enter the code in the SMS sent to you.";
+                    TokenErrorMessage = token_error_message;
                     return;
                 }
 
-
-                using (Dialog.Loading("Registering..."))
+                using (Dialog.Loading("Verifying..."))
                 {
                     var response = await AccountService.ConfirmAccount(Phone, Token);
                     if (response)
@@ -88,15 +91,38 @@ namespace dalexFDA
             }
         }
 
+        private async Task ExecuteValidate(ValidationCommandNav obj)
+        {
+            try
+            {
+                ValidateControls(obj?.Name);
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
         private async Task ExecuteCancel()
         {
             try
-            {               
+            {
                 AppService.Logout();
             }
             catch (Exception ex)
             {
                 await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private void ValidateControls(string name)
+        {
+            switch (name)
+            {
+                case "Token":
+                    TokenHasError = string.IsNullOrEmpty(Token);
+                    TokenErrorMessage = TokenHasError ? token_error_message : "";
+                    break;
             }
         }
     }

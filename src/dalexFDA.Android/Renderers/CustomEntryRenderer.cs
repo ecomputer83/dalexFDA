@@ -6,15 +6,21 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using dalexFDA.Droid;
 using Android.Views;
+using Android.Content;
+using Android.Text;
 
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
 namespace dalexFDA.Droid
 {
     public class CustomEntryRenderer : EntryRenderer
     {
+        public CustomEntryRenderer(Context context) : base(context)
+        {
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
-            base.OnElementChanged(e);
+            base.OnElementChanged(e);            
 
             var padding = 0;
 

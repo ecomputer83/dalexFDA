@@ -28,7 +28,7 @@ namespace dalexFDA
         public double Redemption { get; set; }
         public double ReinvestmentAmount { get { return Investment?.Redemption > 0 ? (Investment.Redemption - RedemptionAmount) : 0; } }
 
-        public string NewDuration { get; set; }
+        public int NewDuration { get; set; }
         public bool NewDurationHasError { get; set; }
         public string NewDurationErrorMessage { get; set; }
 
@@ -37,6 +37,8 @@ namespace dalexFDA
         public string SecurityAnswer { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
+
+        public bool IsNotFirstRun { get; set; }
 
         public Command Negotiate { get; set; }
         public Command Validate { get; private set; }
@@ -80,9 +82,9 @@ namespace dalexFDA
                     Investment = Data.Investment;
                 }
                 AccountName = SessionService?.CurrentUser?.Name;
-                NewDuration = "0";
                 RedemptionAmount = 0;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
+                IsNotFirstRun = true;
             }
             catch (Exception ex)
             {
@@ -136,10 +138,13 @@ namespace dalexFDA
 
         private void ValidateControls(string name)
         {
+            if (!IsNotFirstRun)
+                return;
+
             switch (name)
             {
                 case "NewDuration":
-                    NewDurationHasError = string.IsNullOrEmpty(NewDuration);
+                    NewDurationHasError = NewDuration <= 0;
                     NewDurationErrorMessage = new_duration_error_message;
                     break;
                 case "SecurityAnswer":
@@ -151,7 +156,7 @@ namespace dalexFDA
 
         public bool PerformValidation()
         {
-            NewDurationHasError = string.IsNullOrEmpty(NewDuration) || Convert.ToInt32(NewDuration) <= 0;
+            NewDurationHasError = NewDuration <= 0;
             NewDurationErrorMessage = new_duration_error_message;
 
             SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);

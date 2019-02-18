@@ -21,7 +21,12 @@ namespace dalexFDA.Data.Mock
         public async Task<bool> ConfirmAccount(string phoneNumber, string code)
         {
             await Task.Delay(500);
-            return await Task.FromResult(true);
+            var user = users.FirstOrDefault(x => x.PhoneNumber == phoneNumber);
+            if (user != null)
+                user.PhoneNumberConfirmed = true;
+
+            var retVal = code == "0000";
+            return await Task.FromResult(retVal);
         }
 
         public async Task<List<User>> GetUsers()
@@ -47,7 +52,7 @@ namespace dalexFDA.Data.Mock
         public async Task<User> GetKYCAccountByPhoneNumber(string phoneExtension, string phoneNumber)
         {
             await Task.Delay(700);
-            var user = users.FirstOrDefault(x => x.PhoneNumber == phoneNumber);
+            var user = users.FirstOrDefault(x => x.PhoneNumber == $"{phoneExtension}{phoneNumber}");
             return await Task.FromResult(user);
         }
 
@@ -55,6 +60,7 @@ namespace dalexFDA.Data.Mock
         {
             await Task.Delay(1000);
             var retVal = new SignupResponse();
+            CreateUser(data);
             return await Task.FromResult(retVal);
         }
 
@@ -62,7 +68,34 @@ namespace dalexFDA.Data.Mock
         {
             await Task.Delay(800);
             var retVal = new SignupResponse();
+            CreateUser(data);
             return await Task.FromResult(retVal);
+        }
+
+        void CreateUser(SignupRequest data)
+        {
+            User user = new User
+            {
+                Name = data.Name,
+                Password = data.Password,
+                Email = data.Email,
+                EmailConfirmed = false,
+                SecurityQuestion = data.SecurityQuestion,
+                SecurityAnswer = data.SecurityAnswer,
+                PhoneNumber = data.PhoneNumber,
+                PhoneNumberConfirmed = false,
+                Id = Guid.NewGuid()
+            };
+            var existingUser = users.FirstOrDefault(x => x.PhoneNumber == data.PhoneNumber);
+
+            if (existingUser != null)
+            {
+                existingUser = user;
+            }
+            else
+            {                
+                users.Add(user);
+            }
         }
 
         void SetupUsers()

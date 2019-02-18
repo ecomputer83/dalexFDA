@@ -56,7 +56,7 @@ namespace dalexFDA
         {
             try
             {
-                type.Text = Type?.ToUpper();
+                type.Text = Type;
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace dalexFDA
         {
             try
             {
-                retire.Text = $"Retired On: {RetireDate.ToString("dd/MM/yyyy")}";
+                retire.Text = $"{RetireDate.ToString("dd/MM/yyyy")}";
             }
             catch (Exception ex)
             {
@@ -104,7 +104,7 @@ namespace dalexFDA
         {
             try
             {
-                amount.Text = $"Amount: GHS {NumberFormatter.FormatAmount(Amount.ToString())}";
+                amount.Text = $"GHS {NumberFormatter.FormatAmount(Amount.ToString())}";
             }
             catch (Exception ex)
             {

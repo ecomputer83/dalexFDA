@@ -11,7 +11,7 @@
             <DataTemplate x:Key="DepositHistoryTemplate">
                 <ViewCell>
                    <local:DepositHistoryItemView Margin="8,4" Id="{Binding Deposit.No}" PaymentType="{Binding Deposit.PaymentType}" 
-                            DocumentType="{Binding Deposit.DocumentType}" Amount="{Binding Deposit.Amount}" 
+                            DocumentType="{Binding Deposit.DocumentType}" Amount="{Binding Deposit.Amount}" PaymentConfirmedDate="{Binding Deposit.PaymentConfirmedDate}" 
                         />
                 </ViewCell>
             </DataTemplate>
@@ -87,7 +87,7 @@
             </Grid>
 
             <ListView x:Name="list" Grid.Row="1" ItemsSource="{Binding HistoryItems}" CachingStrategy="RecycleElement" 
-                    SeparatorVisibility="None" HasUnevenRows="true" ItemTapped="Handle_ItemTapped" 
+                    SeparatorVisibility="None" HasUnevenRows="true" ItemTapped="Handle_ItemTapped" BackgroundColor="{StaticResource OffWhite3}"
                     ItemTemplate="{StaticResource transactionHistoryDataTemplateSelector}"
                 />
         </Grid>

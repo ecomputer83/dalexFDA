@@ -29,13 +29,23 @@
             <Color x:Key="AndroidGreen">#AACE44</Color>
             <Color x:Key="MintGreen">#BEEFCA</Color>
             <Color x:Key="Avocado">#417505</Color>
+            
+            <!--FONTS-->
+
+            <OnPlatform x:Key="Roboto-Light" x:TypeArguments="x:String" iOS="Roboto-Light" Android="Fonts/Roboto-Light.ttf#Roboto-Light" />
+            <OnPlatform x:Key="Roboto-Regular" x:TypeArguments="x:String" iOS="Roboto-Regular" Android="Fonts/Roboto-Regular.ttf#Roboto-Regular" />
+            <OnPlatform x:Key="Roboto-Medium" x:TypeArguments="x:String" iOS="Roboto-Medium" Android="Fonts/Roboto-Medium.ttf#Roboto-Medium" />
+            <OnPlatform x:Key="Roboto-Bold" x:TypeArguments="x:String" iOS="Roboto-Bold" Android="Fonts/Roboto-Bold.ttf#Roboto-Bold" />
+            <OnPlatform x:Key="RobotoCondensed-Bold" x:TypeArguments="x:String" iOS="RobotoCondensed-Bold" Android="Fonts/RobotoCondensed-Bold.ttf#RobotoCondensed-Bold" />           
+            
+            <!--FONTS-->
 
             <Style x:Key="PrimaryButton" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="FontFamily" Value="{StaticResource Roboto-Bold}" />
                 <Setter Property="BackgroundColor" Value="{StaticResource PalmLeaf}" />
-                <Setter Property="HeightRequest" Value="52" />
+                <Setter Property="HeightRequest" Value="{OnPlatform Android=50, iOS=60}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="BorderRadius" Value="0" />
                 <Setter Property="CornerRadius" Value="0" />
@@ -43,10 +53,10 @@
 
             <Style x:Key="DangerButton" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="FontFamily" Value="{StaticResource Roboto-Bold}" />
                 <Setter Property="BackgroundColor" Value="{StaticResource Kucrimson}" />
-                <Setter Property="HeightRequest" Value="52" />
+                <Setter Property="HeightRequest" Value="{OnPlatform Android=50, iOS=60}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="BorderRadius" Value="0" />
                 <Setter Property="CornerRadius" Value="0" />
@@ -54,10 +64,10 @@
 
             <Style x:Key="DisabledButton" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="{StaticResource Roboto-Bold}" />
                 <Setter Property="TextColor" Value="#FFF" />
                 <Setter Property="BackgroundColor" Value="{StaticResource JetGray}" />
-                <Setter Property="HeightRequest" Value="52" />
+                <Setter Property="HeightRequest" Value="{OnPlatform Android=50, iOS=60}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="BorderRadius" Value="0" />
                 <Setter Property="CornerRadius" Value="0" />
@@ -65,9 +75,9 @@
 
             <Style x:Key="SecondaryButton" TargetType="Button">
                 <Setter Property="FontSize" Value="16" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="{StaticResource Roboto-Bold}" />
                 <Setter Property="TextColor" Value="#FFF" />
-                <Setter Property="HeightRequest" Value="52" />
+                <Setter Property="HeightRequest" Value="{OnPlatform Android=50, iOS=60}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="BorderRadius" Value="0" />
                 <Setter Property="CornerRadius" Value="0" />

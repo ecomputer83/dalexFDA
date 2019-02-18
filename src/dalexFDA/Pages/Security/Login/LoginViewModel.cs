@@ -69,7 +69,7 @@ namespace dalexFDA
             Back = new Command(async () => await ExecuteBack());
             SignUpExistingUser = new Command(async () => await ExecuteSignUpExistingUser());
             SignUpNewUser = new Command(async () => await ExecuteSignUpNewUser());
-            Validate = new Command<CommandNav>(async (obj) => await ExecuteValidate(obj));
+            Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
         }
 
         public async override void Init(object initData)
@@ -168,7 +168,7 @@ namespace dalexFDA
             }
         }
 
-        private async Task ExecuteValidate(CommandNav obj)
+        private async Task ExecuteValidate(ValidationCommandNav obj)
         {
             try
             {
@@ -186,15 +186,15 @@ namespace dalexFDA
             {
                 case "PhoneExtension":
                     PhoneExtensionHasError = string.IsNullOrEmpty(PhoneExtension);
-                    PhoneNumberErrorMessage = phone_number_error_message;
+                    PhoneNumberErrorMessage = PhoneExtensionHasError ? phone_number_error_message : "";
                     break;
                 case "PhoneNumber":
                     PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
-                    PhoneNumberErrorMessage = phone_number_error_message;
+                    PhoneNumberErrorMessage = PhoneNumberHasError ? phone_number_error_message : "";
                     break;
                 case "PIN":
                     PinHasError = string.IsNullOrEmpty(PIN);
-                    PinErrorMessage = pin_error_message;
+                    PinErrorMessage = PinHasError ? pin_error_message : "";
                     break;
             }
         }
@@ -204,12 +204,13 @@ namespace dalexFDA
             PhoneNumberHasError = PhoneExtensionHasError = PinHasError = false;
 
             PhoneExtensionHasError = string.IsNullOrEmpty(PhoneExtension);
-            PhoneNumberErrorMessage = phone_number_error_message;
+            PhoneNumberErrorMessage = PhoneExtensionHasError ? phone_number_error_message : "";
+
             PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
-            PhoneNumberErrorMessage = phone_number_error_message;
+            PhoneNumberErrorMessage = PhoneNumberHasError ? phone_number_error_message : "";
 
             PinHasError = string.IsNullOrEmpty(PIN);
-            PinErrorMessage = pin_error_message;
+            PinErrorMessage = PinHasError ? pin_error_message : "";
 
             return PhoneHasError || PinHasError;
         }

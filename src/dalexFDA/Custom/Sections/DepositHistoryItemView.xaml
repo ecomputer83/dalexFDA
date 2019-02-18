@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="dalexFDA.DepositHistoryItemView"
-             xmlns:effects="clr-namespace:dalexFDA;assembly=dalexFDA"
-             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+             x:Class="dalexFDA.DepositHistoryItemView">
     <ContentView.Content>
-        <StackLayout Padding="32,16" Spacing="8" BackgroundColor="{StaticResource OffWhite4}">
-            <Label x:Name="number" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource Liver}" Margin="0,0,0,8" />
-            
-            <Label x:Name="paymentType" FontSize="16" TextColor="{StaticResource Liver}" />
-            
-            <StackLayout Orientation="Horizontal">
-                <Label x:Name="documentType" FontSize="14" TextColor="{StaticResource Manatee}" />
-                <Label x:Name="amount" FontSize="14" TextColor="{StaticResource Manatee}" />
-            </StackLayout>
-        </StackLayout>
+        <Grid Padding="16" BackgroundColor="#FFF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="14" />
+                <RowDefinition Height="22" />
+                <RowDefinition Height="2" />
+                <RowDefinition Height="18" />
+                <RowDefinition Height="16" />
+            </Grid.RowDefinitions>
+
+            <Label x:Name="number" Grid.Row="0" Grid.Column="0" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" TextDecorations="Underline" TextColor="{StaticResource PalmLeaf}" />
+
+            <Label FontSize="14" Grid.Row="1" Grid.Column="0" FontFamily="{StaticResource Roboto-Regular}" Text="Amount" TextColor="{StaticResource Manatee}" HorizontalOptions="Start" VerticalOptions="Start" />
+            <Label x:Name="amount" Grid.Row="2" Grid.Column="0" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" TextColor="{StaticResource Liver}" VerticalOptions="Start" />
+
+            <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1.5" BackgroundColor="{StaticResource OffWhite4}" Margin="8,0" />
+
+            <Label Grid.Row="4" Grid.Column="0" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Text="Conf. Date" TextColor="{StaticResource Manatee}" VerticalOptions="End" />
+            <Label Grid.Row="5" Grid.Column="0" x:Name="confirmedDate" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" TextColor="{StaticResource Liver}" HorizontalTextAlignment="Start" VerticalOptions="Start" />
+
+            <Label Grid.Row="1" Grid.Column="1" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Text="Payment Type" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Manatee}" VerticalOptions="Start" />
+            <Label Grid.Row="2" Grid.Column="1" x:Name="paymentType" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Liver}"  VerticalOptions="Start" />
+
+            <Label Grid.Row="4" Grid.Column="1" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Text="Document Type" HorizontalOptions="End" TextColor="{StaticResource Manatee}" VerticalOptions="End" />
+            <Label Grid.Row="5" Grid.Column="1" x:Name="documentType" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="End" TextColor="{StaticResource Liver}"  VerticalOptions="Start" />
+        </Grid>
     </ContentView.Content>
 </ContentView>

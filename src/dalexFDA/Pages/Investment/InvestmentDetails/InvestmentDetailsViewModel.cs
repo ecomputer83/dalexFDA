@@ -14,9 +14,24 @@ namespace dalexFDA
         readonly ISession SessionService;
 
         public InvestmentItem Investment { get; set; }
-        public Xamarin.Forms.Color StatusColor { get; set; }
-        public Color RolloverButtonColor { get; set; }
-        public bool IsStatusActive { get { return Investment?.Status == "Active"; } }
+        public Color StatusColor
+        {
+            get
+            {
+                return IsStatusActive ? (Color)Application.Current.Resources["PalmLeaf"]
+                                            : (Color)Application.Current.Resources["Red"];
+            }
+        }            
+        public Style RolloverButtonStyle
+        {
+            get
+            {
+                return IsStatusActive ? (Style)Application.Current.Resources["DisabledButton"] 
+                                            : (Style)Application.Current.Resources["PrimaryButton"];
+            }
+        }
+            
+        public bool IsStatusActive { get { return Investment?.Days != "0"; } }
         public string AccountName { get; set; }
 
         public Command ViewCertificate { get; set; }
@@ -46,16 +61,10 @@ namespace dalexFDA
             try
             {
                 Data = initData as Nav;
-
                 if (Data != null)
                 {
                     Investment = Data.Investment; 
-                    StatusColor = IsStatusActive ? (Color)Application.Current.Resources["PalmLeaf"] 
-                                                                    : (Color)Application.Current.Resources["Red"];
-                    RolloverButtonColor = IsStatusActive ? (Color)Application.Current.Resources["SpaceGray"]
-                                                                    : (Color)Application.Current.Resources["PalmLeaf"];
                 }
-
                 AccountName = SessionService?.CurrentUser?.Name;
             }
             catch (Exception ex)
@@ -104,7 +113,5 @@ namespace dalexFDA
                 await ErrorManager.DisplayErrorMessageAsync(ex);
             }
         }
-
-
     }
 }

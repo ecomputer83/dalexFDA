@@ -17,7 +17,6 @@ namespace dalexFDA
 
         public bool IsOverviewTab { get; set; }
         public string LastSession { get; set; }
-        public string TotalAmount { get; set; }
 
         public ObservableCollection<DashboardItemViewModel> InvestmentItemsSource { get; set; }
         public InvestmentAccount Account { get; set; }
@@ -40,7 +39,6 @@ namespace dalexFDA
                 {
                     LastSession = DateTime.Now.ToUniversalTime().ToString();
                     IsOverviewTab = true;
-                    SetupTransactions();
                     InvestmentItemsSource = await SetupHistoryItems();
                 }
             }
@@ -48,11 +46,6 @@ namespace dalexFDA
             {
                 await ErrorManager.DisplayErrorMessageAsync(ex);
             }
-        }
-
-        public void SetupTransactions()
-        {
-            TotalAmount = "GHC 999,999,000.00";
         }
 
         public async Task<ObservableCollection<DashboardItemViewModel>> SetupHistoryItems()

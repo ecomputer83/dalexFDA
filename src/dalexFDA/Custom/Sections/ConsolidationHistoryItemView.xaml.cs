@@ -56,7 +56,7 @@ namespace dalexFDA
         {
             try
             {
-                principal.Text = $"Principal: GHS {NumberFormatter.FormatAmount(Principal)}";
+                principal.Text = $"GHS {NumberFormatter.FormatAmount(Principal)}";
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace dalexFDA
         {
             try
             {
-                consolidatedAmount.Text = $"Consolidated: GHS {NumberFormatter.FormatAmount(ConsolidatedAmount)}"; ;
+                consolidatedAmount.Text = $"GHS {NumberFormatter.FormatAmount(ConsolidatedAmount)}"; ;
             }
             catch (Exception ex)
             {
@@ -104,7 +104,7 @@ namespace dalexFDA
         {
             try
             {
-                interest.Text = $"Interest: GHS {NumberFormatter.FormatAmount(InterestEarned.ToString())}";
+                interest.Text = $"GHS {NumberFormatter.FormatAmount(InterestEarned.ToString())}";
             }
             catch (Exception ex)
             {
@@ -128,7 +128,7 @@ namespace dalexFDA
         {
             try
             {
-                rate.Text = $"Rate: {InterestRate} %";
+                rate.Text = $"{InterestRate} %";
             }
             catch (Exception ex)
             {

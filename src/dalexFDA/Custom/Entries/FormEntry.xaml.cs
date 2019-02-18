@@ -203,22 +203,14 @@ namespace dalexFDA
             try
             {
                 Color color;
-                Color textColor;
-                bool isVisible;
 
                 if (HasError)
-                {
                     color = (Color)Application.Current.Resources["Kucrimson"];
-                    isVisible = true;
-                }
                 else
-                {
                     color = (Color)Application.Current.Resources["PalmLeaf"];
-                    isVisible = false;
-                }
 
                 container.BackgroundColor = color;
-                caption.IsVisible = isVisible;
+                caption.IsVisible = HasError;
             }
             catch { }
         }
@@ -240,7 +232,7 @@ namespace dalexFDA
             try
             {
                 caption.Text = ErrorMessage;
-                caption.IsVisible = !string.IsNullOrEmpty(ErrorMessage);
+                //caption.IsVisible = !string.IsNullOrEmpty(ErrorMessage);
             }
             catch { }
         }
@@ -397,81 +389,51 @@ namespace dalexFDA
         protected override void OnPropertyChanged(string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
-
+            
             if (propertyName == TextProperty.PropertyName)
-            {
                 SetText();
-            }
 
             if (propertyName == LabelProperty.PropertyName)
-            {
                 SetLabel();
-            }
 
             if (propertyName == IsPasswordProperty.PropertyName)
-            {
                 SetIsPassword();
-            }
 
             if (propertyName == KeyboardProperty.PropertyName)
-            {
                 SetKeyboard();
-            }
 
             if (propertyName == HasErrorProperty.PropertyName)
-            {
                 SetHasError();
-            }
 
             if (propertyName == ErrorMessageProperty.PropertyName)
-            {
                 SetErrorMessage();
-            }
 
             if (propertyName == PlaceholderProperty.PropertyName)
-            {
                 SetPlaceholder();
-            }
 
             if (propertyName == HorizontalTextAlignmentProperty.PropertyName)
-            {
                 SetHorizontalTextAlignment();
-            }
 
             if (propertyName == EntryWidthProperty.PropertyName)
-            {
                 SetEntryWidth();
-            }
 
             if (propertyName == NameProperty.PropertyName)
-            {
                 SetName();
-            }
 
             if (propertyName == EntryColorProperty.PropertyName)
-            {
                 SetEntryColor();
-            }
 
             if (propertyName == IsNumericProperty.PropertyName)
-            {
                 SetIsNumeric();
-            }
 
             if (propertyName == ShouldFormatProperty.PropertyName)
-            {
                 SetShouldFormat();
-            }
 
             if (propertyName == MaxLengthProperty.PropertyName)
-            {
                 SetMaxLength();
-            }
 
             if (propertyName == MaskProperty.PropertyName)
-            {
                 SetMask();
-            }
         }
 
         void Handle_TextChanged(object sender, Xamarin.Forms.TextChangedEventArgs e)
@@ -482,7 +444,7 @@ namespace dalexFDA
 
                 if (this.BindingContext is ExistingUserSignupViewModel model)
                 {
-                    var nav = new ExistingUserSignupViewModel.CommandNav { Name = Name };
+                    var nav = new ValidationCommandNav { Name = Name };
                     model.Validate.Execute(nav);
                 }
 
@@ -494,7 +456,7 @@ namespace dalexFDA
 
                 if (this.BindingContext is LoginViewModel loginViewModel)
                 {
-                    var nav = new LoginViewModel.CommandNav { Name = Name };
+                    var nav = new ValidationCommandNav { Name = Name };
                     loginViewModel.Validate.Execute(nav);
                 }
 
@@ -550,14 +512,6 @@ namespace dalexFDA
 
         void Handle_Unfocused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            if (Name == "PhoneExtension" || Name == "PhoneNumber")
-            {
-                if (this.BindingContext is ExistingUserSignupViewModel model)
-                {
-                    model.GetUserDetailsFromPhoneNumber.Execute(null);
-                }
-            }
-
             if (ShouldFormat)
             {
                 if (sender is Entry entry)

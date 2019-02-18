@@ -3,12 +3,17 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using dalexFDA;
 using dalexFDA.Droid;
+using Android.Content;
 
 [assembly: ExportRenderer(typeof(DatePicker), typeof(CustomDatePickerRenderer))]
 namespace dalexFDA.Droid
 {
     public class CustomDatePickerRenderer : DatePickerRenderer
     {
+        public CustomDatePickerRenderer(Context context) : base(context)
+        {
+        }
+
         public static void Init() { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<DatePicker> e)

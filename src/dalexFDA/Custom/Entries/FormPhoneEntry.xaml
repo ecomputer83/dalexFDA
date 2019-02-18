@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="dalexFDA.FormPhoneEntry"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
+             xmlns:behaviors="clr-namespace:dalexFDA;assembly=dalexFDA">
+    <ContentView.Content>
+        <StackLayout Spacing="2" Padding="0" Margin="0">
+            <Label x:Name="label" IsVisible="false" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="0,0,0,6" />
+            <Grid ColumnSpacing="8" Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" x:Name="extContainer" BackgroundColor="{StaticResource PalmLeaf}">
+                    <StackLayout BackgroundColor="{StaticResource White}" Margin="1">
+                        <local:CustomEntry x:Name="phoneExt" Text="" Margin="8,0" TextColor="{StaticResource Liver}" Unfocused="Handle_Unfocused"
+                            VerticalOptions="CenterAndExpand" Placeholder="+233" PlaceholderColor="{StaticResource Manatee}" TextChanged="PhoneExt_TextChanged"
+                            HeightRequest="{OnPlatform Android=38, iOS=42}" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" Keyboard="Telephone">
+                            <local:CustomEntry.Behaviors>
+                                <behaviors:NumericValidationBehavior IsNumeric="true" />
+                                <behaviors:MaskedBehavior Mask="+XXX" />
+                            </local:CustomEntry.Behaviors>
+                        </local:CustomEntry>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" x:Name="numContainer" BackgroundColor="{StaticResource PalmLeaf}">
+                    <StackLayout BackgroundColor="{StaticResource White}" Margin="1">
+                        <local:CustomEntry x:Name="phoneNum" Text="" Margin="8,0" TextColor="{StaticResource Liver}" Unfocused="Handle_Unfocused"
+                            VerticalOptions="CenterAndExpand" TextChanged="PhoneNum_TextChanged"
+                            HeightRequest="{OnPlatform Android=38, iOS=42}" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" Keyboard="Telephone">
+                            <local:CustomEntry.Behaviors>
+                                <behaviors:NumericValidationBehavior IsNumeric="true" />
+                                <behaviors:MaskedBehavior Mask="XXX XXXX XXX" />
+                            </local:CustomEntry.Behaviors>
+                        </local:CustomEntry>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <Label x:Name="caption" IsVisible="false" TextColor="{StaticResource Kucrimson}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="4,0" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
