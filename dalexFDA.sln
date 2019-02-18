@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dalexFDA.Abstractions", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dalexFDA.Data.Mock", "src\dalexFDA.Data.Mock\dalexFDA.Data.Mock.csproj", "{D1DE67A1-DEC1-418E-8716-A7E2D289FE8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dalexFDA", "src\dalexFDA\dalexFDA.csproj", "{B1080B86-0D06-4DDE-B3FD-D9B090FE4C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dalexFDA", "src\dalexFDA\dalexFDA.csproj", "{B1080B86-0D06-4DDE-B3FD-D9B090FE4C29}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dalexFDA.Data.WebServices", "src\dalexFDA.Data.WebServices\dalexFDA.Data.WebServices.csproj", "{2573A242-7EE4-497D-8B4B-AE5985830CFB}"
 EndProject
@@ -79,6 +79,7 @@ Global
 		{A821CDD5-7986-4FF6-B6D1-16BD7647765A}.Debug-Mock|iPhoneSimulator.Deploy.0 = Debug|Any CPU
 		{A821CDD5-7986-4FF6-B6D1-16BD7647765A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A821CDD5-7986-4FF6-B6D1-16BD7647765A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A821CDD5-7986-4FF6-B6D1-16BD7647765A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{A821CDD5-7986-4FF6-B6D1-16BD7647765A}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{A821CDD5-7986-4FF6-B6D1-16BD7647765A}.Release|iPhone.Build.0 = Release|Any CPU
 		{A821CDD5-7986-4FF6-B6D1-16BD7647765A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
@@ -95,6 +96,7 @@ Global
 		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
 		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
 		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.Debug|iPhone.Build.0 = Debug|iPhone
 		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
@@ -111,7 +113,6 @@ Global
 		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.Release|iPhone.Build.0 = Release|iPhone
 		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{7E999E15-E6FE-45B8-B7DD-2A6C4079584C}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
 		{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
 		{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU

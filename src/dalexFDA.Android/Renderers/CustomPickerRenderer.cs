@@ -4,7 +4,7 @@ using Xamarin.Forms.Platform.Android;
 using dalexFDA;
 using dalexFDA.Droid;
 
-[assembly: ExportRenderer(typeof(CustomPickerRenderer), typeof(dalexFDA.CustomPicker))]
+[assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]
 namespace dalexFDA.Droid
 {
     public class CustomPickerRenderer : PickerRenderer

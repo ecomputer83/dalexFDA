@@ -27,8 +27,8 @@
                     </AbsoluteLayout>
                     <StackLayout Spacing="4" VerticalOptions="CenterAndExpand">
                         <Label Text="{Binding UserFullName}" TextColor="{StaticResource Liver}" FontSize="16" />
-                        <Label Text="Adabraka, North Accra, GH" TextColor="{StaticResource Liver}" FontSize="16" />
-                        <Label Text="Client ID: 2345670001DLX" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="{Binding UserAddress}" TextColor="{StaticResource Liver}" FontSize="16" />
+                        <Label Text="{Binding ClientID}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" />
                     </StackLayout>
                 </StackLayout>
                 <ScrollView Grid.Row="1" Padding="0">

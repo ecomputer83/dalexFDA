@@ -20,6 +20,8 @@ namespace dalexFDA
 
         public bool IsMakeDepositOpen { get; set; }
         public string UserFullName { get; set; }
+        public string ClientID { get; set; }
+        public string UserAddress { get; set; }
         //commands
         public Command MakeDeposit { get; private set; }
         public Command ElectronicFundTransfer { get; private set; }
@@ -66,6 +68,8 @@ namespace dalexFDA
             try
             {
                 UserFullName = SessionService.CurrentUser.Name;
+                ClientID = "Client ID: " + SessionService.CurrentUser.ClientNo;
+                UserAddress = SessionService.CurrentUser.Address;
                 IsMakeDepositOpen = false;
             }
             catch (Exception ex)

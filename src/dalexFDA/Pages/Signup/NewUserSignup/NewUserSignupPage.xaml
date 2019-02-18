@@ -60,7 +60,7 @@
                 </StackLayout>
             </ScrollView>
                 
-            <StackLayout Orientation="Horizontal" Padding="16">
+            <StackLayout Orientation="Horizontal" Padding="8">
                 <svg:SvgImage 
                         Svg="{Binding IsAgreementSelected, Converter={StaticResource CheckBoxImage}"
                         ColorMapping="{Binding IsAgreementSelected, Converter={StaticResource CheckBoxColor}"
@@ -69,7 +69,7 @@
                         VerticalOptions="Start"
                         Margin="0,8,0,0"
                     />
-                <Label FontSize="16" FontAttributes="Bold" TextColor="{StaticResource AndroidGreen}" HorizontalOptions="Center" VerticalOptions="Start"
+                <Label FontSize="12" FontAttributes="Bold" TextColor="{StaticResource AndroidGreen}" HorizontalOptions="Center" VerticalOptions="Start"
                        VerticalTextAlignment="Start" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
