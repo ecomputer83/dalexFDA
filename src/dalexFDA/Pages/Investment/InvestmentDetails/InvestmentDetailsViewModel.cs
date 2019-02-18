@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using dalexFDA.Abstractions;
 using PropertyChanged;
 using Xamarin.Forms;
@@ -12,6 +13,8 @@ namespace dalexFDA
     {
         readonly IErrorManager ErrorManager;
         readonly ISession SessionService;
+        readonly IInvestmentService IInvestmentService;
+        readonly IUserDialogs Dialog;
 
         public InvestmentItem Investment { get; set; }
         public Color StatusColor
@@ -44,10 +47,13 @@ namespace dalexFDA
             public InvestmentItem Investment { get; set; }
         }
 
-        public InvestmentDetailsViewModel(IErrorManager ErrorManager, ISession SessionService)
+        public InvestmentDetailsViewModel(IErrorManager ErrorManager, ISession SessionService, IUserDialogs Dialog,
+            IInvestmentService investmentService)
         {
             this.ErrorManager = ErrorManager;
             this.SessionService = SessionService;
+            this.IInvestmentService = investmentService;
+            this.Dialog = Dialog;
 
             ViewCertificate = new Command(async () => await ExecuteViewCertificate());
             RedeemInvestment = new Command(async () => await ExecuteRedeemInvestment());
@@ -63,7 +69,11 @@ namespace dalexFDA
                 Data = initData as Nav;
                 if (Data != null)
                 {
-                    Investment = Data.Investment; 
+                    Investment = await GetInvestment();
+                    if (Investment == null)
+                    {
+                        Investment = Data.Investment;
+                    }
                 }
                 AccountName = SessionService?.CurrentUser?.Name;
             }
@@ -95,6 +105,23 @@ namespace dalexFDA
             catch (Exception ex)
             {
                 await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        public async Task<InvestmentItem> GetInvestment()
+        {
+            try
+            {
+                using (Dialog.Loading("Loading..."))
+                {
+                    var data = await IInvestmentService.GetInvestment(Data.Investment.Id);
+                    return await Task.FromResult(data);
+                }
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+                return null;
             }
         }
 

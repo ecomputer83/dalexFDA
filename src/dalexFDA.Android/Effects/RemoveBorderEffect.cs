@@ -3,7 +3,7 @@ using dalexFDA;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportEffect(typeof(RemoveBorderEffect), "RemoveBorderEffect")]
+[assembly: ExportEffect(typeof(dalexFDA.Droid.RemoveBorderEffect), "RemoveBorderEffect")]
 namespace dalexFDA.Droid
 {
     public class RemoveBorderEffect : PlatformEffect

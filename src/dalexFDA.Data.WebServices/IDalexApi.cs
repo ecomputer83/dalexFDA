@@ -47,6 +47,9 @@ namespace dalexFDA.Data.WebServices
         [Get("/api/Investment/GetAccount")]
         Task<InvestmentAccount> GetAccount();
 
+        [Get("/api/Investment/GetInvestment")]
+        Task<InvestmentItem> GetInvestment(string Id);
+
         [Get("/api/Investment/GetHistory")]
         Task<TransactionHistory> GetHistory();
 

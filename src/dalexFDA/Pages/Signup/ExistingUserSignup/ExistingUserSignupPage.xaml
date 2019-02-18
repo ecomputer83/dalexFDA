@@ -64,8 +64,8 @@
                         VerticalOptions="Start"
                         Margin="0,8,0,0" 
                     />
-                <Label FontSize="15" FontFamily="{StaticResource Roboto-Medium}" TextColor="{StaticResource AndroidGreen}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"
-                       VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
+                <Label FontSize="12" FontAttributes="Bold" TextColor="{StaticResource AndroidGreen}" HorizontalOptions="Center" VerticalOptions="Start"
+                       VerticalTextAlignment="Start" HorizontalTextAlignment="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="I agree to the " />

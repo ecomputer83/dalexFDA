@@ -39,6 +39,14 @@ namespace dalexFDA.Data.WebServices
             return response;
         }
 
+        public async Task<InvestmentItem> GetInvestment(string Id)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.GetInvestment(Id);
+
+            return response;
+        }
+
         public async Task<TransactionHistory> GetTransactionHistory()
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);

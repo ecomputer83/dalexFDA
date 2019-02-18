@@ -9,6 +9,10 @@ namespace dalexFDA.Droid
 {
     public class CustomPickerRenderer : PickerRenderer
     {
+        public CustomPickerRenderer(Android.Content.Context context): base(context)
+        {
+
+        }
         protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
         {
             base.OnElementChanged(e);

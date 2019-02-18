@@ -8,6 +8,7 @@ namespace dalexFDA.Abstractions
     public interface IInvestmentService
     {
         Task<InvestmentAccount> GetInvestmentAccount();
+        Task<InvestmentItem> GetInvestment(string Id);
         Task<bool> RedeemInvestment(RedeemInvestmentRequest request);
         Task<bool> RolloverInvestment(RolloverInvestmentRequest request);
         Task<bool> DepositManualInvestment(InvestmentManualDeposit request);
