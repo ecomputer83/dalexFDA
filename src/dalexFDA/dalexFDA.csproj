@@ -31,7 +31,6 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Images\" />
-    <Folder Include="Pages\" />
     <Folder Include="Scenarios\" />
     <Folder Include="Services\" />
     <Folder Include="Helpers\PageTestRunner\" />
@@ -41,9 +40,7 @@
     <Folder Include="Custom\Navigation\" />
     <Folder Include="Custom\Effects\" />
     <Folder Include="Custom\Menu\" />
-    <Folder Include="Pages\Signup\" />
     <Folder Include="Pages\Security\Login\" />
-    <Folder Include="Pages\General\" />
     <Folder Include="Pages\General\Dashboard\" />
     <Folder Include="Pages\General\LeftNav\" />
     <Folder Include="Custom\Pages\" />
@@ -162,6 +159,11 @@
     <Compile Update="Custom\Pages\BeneficiaryPopupDialog.xaml.cs">
       <DependentUpon>BeneficiaryPopupDialog.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\General\MoreDetails\MoreDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

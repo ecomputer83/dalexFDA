@@ -21,7 +21,7 @@
                         <circle:CircleImage Aspect="AspectFill" FillColor="{StaticResource AndroidGreen}" HeightRequest="60" 
                                 HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="60" 
                             />
-                        <svg:SvgImage Svg="res:images.icon-profile" ColorMapping="950503=FFFFFF" AbsoluteLayout.LayoutBounds="0,14,60,30"
+                        <svg:SvgImage Svg="res:images.icon-profile" ColorMapping="000000=FFFFFF" AbsoluteLayout.LayoutBounds="0,14,60,30"
                                 WidthRequest="18"
                            />
                     </AbsoluteLayout>
@@ -33,18 +33,18 @@
                 </StackLayout>
                 <ScrollView Grid.Row="1" Padding="0">
                     <StackLayout>
-                        <local:MenuItem Text="Make Deposit" HasSubItem="true" IsOpen="{Binding IsMakeDepositOpen}" Command="{Binding MakeDeposit}" Icon="res:images.icon-copy" />
+                        <local:MenuItem Text="Make Deposit" HasSubItem="true" IsOpen="{Binding IsMakeDepositOpen}" Command="{Binding MakeDeposit}" Icon="res:images.icon-payment" />
                         <local:SubMenuItem Text="Electronic Fund Transfer" IsVisible="{Binding IsMakeDepositOpen}" Command="{Binding ElectronicFundTransfer}" Icon="res:images.icon-payment" />
                         <local:SubMenuItem Text="Manual Bank Deposit" IsVisible="{Binding IsMakeDepositOpen}" Command="{Binding ManualBankDeposit}" Icon="res:images.icon-transfer" />
                         
-                        <local:MenuItem Text="Account Statements" Command="{Binding AccountStatements}" Icon="res:images.icon-transfer" />
+                        <local:MenuItem Text="Account Statements" Command="{Binding AccountStatements}" Icon="res:images.icon-copy" />
                         <local:MenuItem Text="Transaction History" Command="{Binding TransactionHistory}" Icon="res:images.icon-airtime" />
-                        <local:MenuItem Text="Notifications" Command="{Binding Notifications}" Icon="res:images.icon-payment" />
+                        <local:MenuItem Text="Notifications" Command="{Binding Notifications}" Icon="res:images.icon-envelope" />
                         <local:MenuItem Text="Update Contact Info" Command="{Binding UpdateContactInfo}" Icon="res:images.icon-replay" />
                         <local:MenuItem Text="Enquiries" Command="{Binding Enquiries}" Icon="res:images.icon-card" />
                         <local:MenuItem Text="Feedback and Complaints" Command="{Binding Feedback}" Icon="res:images.icon-travel" />
-                        <local:MenuItem Text="My Profile" Command="{Binding MyProfile}" Icon="res:images.icon-envelope" />
-                        <local:MenuItem Text="My Relationship Officer" Command="{Binding Settings}" Icon="res:images.icon-settings" />
+                        <local:MenuItem Text="My Profile" Command="{Binding MyProfile}" Icon="res:images.icon-profile" />
+                        <local:MenuItem Text="My Relationship Officer" Command="{Binding Settings}" Icon="res:images.icon-transfer" />
                         <local:MenuItem Text="Logout" Command="{Binding Logout}" Icon="res:images.icon-logout" />
                     </StackLayout>
                 </ScrollView>

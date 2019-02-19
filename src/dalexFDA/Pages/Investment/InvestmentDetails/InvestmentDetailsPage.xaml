@@ -17,21 +17,21 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0" Grid.RowSpan="2" Spacing="{OnPlatform Android=6, iOS=8}" Padding="{OnPlatform Android='32,8,32,32' ,iOS='32,16,32,46'}" BackgroundColor="{StaticResource PalmLeaf}">
-                    <Label Text="{Binding Investment.Id}" TextColor="{StaticResource White}" FontSize="18" FontAttributes="Bold" />
+                    <Label Text="{Binding Investment.Id}" TextColor="{StaticResource White}" FontSize="18" FontFamily="{StaticResource Roboto-Bold}" />
 
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Certificate No." TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.CertificateNumber}" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Certificate No." TextColor="{StaticResource OffWhite3}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.CertificateNumber}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Status" TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.Status}" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Status" TextColor="{StaticResource OffWhite3}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.Status}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Account Name" TextColor="{StaticResource OffWhite3}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding AccountName}" TextColor="{StaticResource White}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Account Name" TextColor="{StaticResource OffWhite3}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding AccountName}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                 </StackLayout>
 
@@ -48,48 +48,48 @@
             <ScrollView>
                 <StackLayout Spacing="12" Padding="12">
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Principal" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.Principal, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Principal" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.Principal, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Term" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.Days, StringFormat='{0:F0} Days'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Term" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.Days, StringFormat='{0:F0} Days'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Rate P.A." TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.Rate}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Rate P.A." TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.Rate}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Start Date" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.StartDate, StringFormat='{0:d, MMMM yyyy}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Start Date" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.StartDate, StringFormat='{0:d, MMMM yyyy}'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Maturity Date" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.MaturityDate, StringFormat='{0:d, MMMM yyyy}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Maturity Date" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.MaturityDate, StringFormat='{0:d, MMMM yyyy}'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Interest Amount" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.InterestAmount, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Interest Amount" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.InterestAmount, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Int. Earned" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.InterestEarned, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Int. Earned" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.InterestEarned, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Redemption Value" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.Redemption, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Redemption Value" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.Redemption, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                     
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Maturity Value" TextColor="{StaticResource Manatee}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Investment.Maturity, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+                        <Label Text="Maturity Value" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding Investment.Maturity, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
 
                     <StackLayout Padding="4,6">

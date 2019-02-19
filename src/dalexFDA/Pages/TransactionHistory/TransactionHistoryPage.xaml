@@ -33,7 +33,7 @@
             </DataTemplate>
             <DataTemplate x:Key="ConsolidationHistoryTemplate">
                 <ViewCell>
-                   <local:ConsolidationHistoryItemView Margin="16,8"
+                   <local:ConsolidationHistoryItemView Margin="8,4"
                             Id="{Binding Consolidation.TransactionNo}" Principal="{Binding Consolidation.PrincipalAmount}"
                             ConsolidatedAmount="{Binding Consolidation.ConsolidatedAmount}" InterestEarned="{Binding Consolidation.InterestEarned}" 
                             InterestRate="{Binding Consolidation.NewInterestRate}" 
@@ -49,7 +49,7 @@
     <ContentPage.Content>
         <Grid RowSpacing="0" ColumnSpacing="0" Padding="0" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="64" />
+                <RowDefinition Height="42" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 

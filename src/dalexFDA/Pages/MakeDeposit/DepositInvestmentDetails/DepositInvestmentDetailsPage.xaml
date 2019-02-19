@@ -3,19 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="dalexFDA.DepositInvestmentDetailsPage"
              xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
-             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
-             xmlns:system="clr-namespace:System;assembly=mscorlib"
-             Title="Make Deposit - Fund Transfer">
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Make Deposit - Fund Transfer" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0" IsVisible="{Binding IsNotSuccesful}">
-                <Label Text="Investment Details" TextColor="{StaticResource Liver}" FontSize="22" FontAttributes="Bold" 
-                       Margin="16,24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                <Label Text="Investment Details" TextColor="{StaticResource Liver}" FontSize="22" FontFamily="{StaticResource Roboto-Bold}"
+                       Margin="16,24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                    />
             </ContentView>
             <ScrollView IsVisible="{Binding IsNotSuccesful}">
                 <StackLayout Spacing="8">
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
-                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
                     
                     <local:FormDatePicker Label="Transaction Date" Date="{Binding TransactionDate}" Name="TransactionDate" IsEnabled="false"
@@ -34,33 +38,27 @@
                         />
                     
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
-                        <Label Text="Security Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                        <Label Text="Security Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
-                    
-                    <Label Text="Security Question" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" Margin="32,0" />
-                    <Label Text="{Binding SecurityQuestion}" TextColor="{StaticResource Liver}" FontSize="16" Margin="32,0,32,6"  />
+
+                    <Label Text="Security Question" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="32,0" />
+                    <Label Text="{Binding SecurityQuestion}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" Margin="32,0,32,6" />
                     
                     <local:FormEntry Text="{Binding SecurityAnswer}" HasError="{Binding SecurityAnswerHasError}" ErrorMessage="{Binding SecurityAnswerErrorMessage}" 
                             Margin="32,0" Name="SecurityAnswer" Label="Answer"
                         />
-                    <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" Margin="32,0" />
+                    <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
                 </StackLayout>
             </ScrollView>
             
             <StackLayout IsVisible="{Binding IsSuccessful}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
                 <svg:SvgImage Svg="res:images.icon-success" ColorMapping="000000=6D9B36" WidthRequest="70" HorizontalOptions="Center" />
-                <Label Text="Transaction Successful!" TextColor="{StaticResource PalmLeaf}" FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                <Label Text="Transaction Successful!" TextColor="{StaticResource PalmLeaf}" FontSize="20" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
 
-                <Label TextColor="{StaticResource PalmLeaf}" Margin="16" HorizontalOptions="Center" HorizontalTextAlignment="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Done" FontSize="16" TextDecorations="Underline" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Done}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <Button Text="DONE" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" 
+                        WidthRequest="68" HeightRequest="26" BorderColor="{StaticResource PalmLeaf}" BorderWidth="1" BorderRadius="0"
+                        BackgroundColor="Transparent" Command="{Binding Done}" HorizontalOptions="Center" Margin="16"
+                    />
             </StackLayout>
 
             <Button IsVisible="{Binding IsNotSuccesful}" Text="NEGOTIATE TRANSACTION" Style="{StaticResource PrimaryButton}" Command="{Binding Negotiate}" Margin="16" VerticalOptions="EndAndExpand"  />

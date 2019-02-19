@@ -15,15 +15,10 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <AndroidKeyStore>true</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Users\hp\AppData\Local\Xamarin\Mono for Android\Keystore\codeware\codeware.keystore</AndroidSigningKeyStore>
-    <AndroidSigningStorePass>password</AndroidSigningStorePass>
-    <AndroidSigningKeyAlias>codeware</AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass>password</AndroidSigningKeyPass>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,12 +30,9 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
@@ -48,12 +40,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <AndroidLinkMode>None</AndroidLinkMode>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
-    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+    <AndroidLinkMode>Full</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -129,9 +116,38 @@
     <Compile Include="Helpers\ContainerConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\Fonts\Roboto-Black.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-BlackItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-Bold.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-BoldItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-Italic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-Light.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-LightItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-Medium.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-MediumItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-Regular.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-Thin.ttf" />
+    <AndroidAsset Include="Assets\Fonts\Roboto-ThinItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoCondensed-Bold.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoCondensed-BoldItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoCondensed-Italic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoCondensed-Light.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoCondensed-LightItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoCondensed-Regular.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-Bold.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-BoldItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-Italic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-Light.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-LightItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-Medium.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-MediumItalic.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-Regular.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-Thin.ttf" />
+    <AndroidAsset Include="Assets\Fonts\RobotoMono-ThinItalic.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Fonts\Roboto-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
@@ -176,9 +192,7 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\splash_background.xml" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\dalexFDA\dalexFDA.csproj">
       <Project>{B1080B86-0D06-4DDE-B3FD-D9B090FE4C29}</Project>
@@ -189,9 +203,7 @@
       <Name>dalexFDA.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\splash.png" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidAsset Include="..\dalexFDA.Abstractions\Configuration\config.common.json">
       <Link>Assets\config.common.json</Link>

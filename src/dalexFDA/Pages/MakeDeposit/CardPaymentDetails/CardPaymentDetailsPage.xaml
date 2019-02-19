@@ -2,19 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="dalexFDA.CardPaymentDetailsPage"
-             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
-             Title="Make Deposit - Fund Transfer">
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Make Deposit - Fund Transfer" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <ContentView BackgroundColor="{StaticResource OffWhite3}" Margin="0">
-                <Label Text="Card Payment Details" TextColor="{StaticResource Liver}" FontSize="22" FontAttributes="Bold" 
+                <Label Text="Card Payment Details" TextColor="{StaticResource Liver}" FontSize="22" FontFamily="{StaticResource Roboto-Bold}"
                        Margin="16,24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" 
                     />
             </ContentView>
             <ScrollView>
                 <StackLayout Spacing="8">
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
-                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Bold}" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
                     
                     <local:FormEntry Label="Debit Amount [GHS]" Text="{Binding DebitAmount}" Placeholder="0.00" Margin="32,0,32,6" Name="DebitAmount" HorizontalTextAlignment="End"

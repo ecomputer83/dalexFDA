@@ -130,14 +130,14 @@ namespace dalexFDA
 
             if (Config.Mock.Enabled)
             {
-                FreshIOC.Container.Register<IDepositService, DepositService>();
+                FreshIOC.Container.Register<ILookupService, LookupService>();
                 FreshIOC.Container.Register<IAccountService, Data.Mock.AccountService>();
                 FreshIOC.Container.Register<IInvestmentService, Data.Mock.InvestmentService>();
                 FreshIOC.Container.Register<IAuthenticationService, Data.Mock.AuthenticationService>();
             }
             else
             {
-                FreshIOC.Container.Register<IDepositService, DepositService>();
+                FreshIOC.Container.Register<ILookupService, LookupService>();
                 FreshIOC.Container.Register<IAccountService, Data.WebServices.AccountService>();
                 FreshIOC.Container.Register<IInvestmentService, Data.WebServices.InvestmentService>();
                 FreshIOC.Container.Register<IAuthenticationService, Data.WebServices.AuthenticationService>();

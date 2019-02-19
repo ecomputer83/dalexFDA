@@ -103,7 +103,9 @@ namespace dalexFDA
         {
             switch (name)
             {
-                default:
+                case "Deposit":
+                    DepositHasError = false;
+                    DepositErrorMessage = DepositHasError ? deposit_amount_error_message : "";
                     break;
             }
         }

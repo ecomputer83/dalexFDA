@@ -69,11 +69,12 @@ namespace dalexFDA
                 Data = initData as Nav;
                 if (Data != null)
                 {
-                    Investment = await GetInvestment();
-                    if (Investment == null)
-                    {
-                        Investment = Data.Investment;
-                    }
+                    Investment = Data.Investment;
+                    //Investment = await GetInvestment();
+                    //if (Investment == null)
+                    //{
+                        
+                    //}
                 }
                 AccountName = SessionService?.CurrentUser?.Name;
             }

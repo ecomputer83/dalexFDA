@@ -3,8 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="dalexFDA.DepositPaymentPage"
              xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
-             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
-             Title="Electronic Fund Transfer">
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Electronic Fund Transfer" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:RadioButtonImageConverter x:Key="RadioButtonImage" /> 
@@ -14,20 +18,18 @@
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <ContentView BackgroundColor="{StaticResource OffWhite3}" Margin="0">
-                <Label Text="GHIPSS Payment Engine" TextColor="{StaticResource Liver}" FontSize="22" FontAttributes="Bold" 
+                <Label Text="GHIPSS Payment Engine" TextColor="{StaticResource Liver}" FontSize="22" FontFamily="{StaticResource Roboto-Bold}"
                        Margin="16,24" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
             </ContentView>
             <ScrollView>
                 <StackLayout Spacing="8">
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
-                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontAttributes="Bold" Margin="16,8" VerticalOptions="Center" />
+                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
 
                     <local:FormEntry Label="Beneficiary Account Name" Text="DALEX FINANCE &amp; LEASING COMPANY LIMITED"
                             Margin="32,0,32,6" IsEnabled="false" EntryColor="{StaticResource GrayBoro}" Name="BenAccName"
-                        />
-                    
-                    
+                        />                    
                     <local:FormEntry Label="Payment Purpose" Text="Payment for new FDA Investment" Margin="32,0,32,6"
                              IsEnabled="false" EntryColor="{StaticResource GrayBoro}" Name="PaymentPurpose"
                         />
@@ -40,7 +42,8 @@
                             Margin="32,0,32,6" HorizontalTextAlignment="End" Name="TransactionFee" Keyboard="Numeric"
                             IsEnabled="false" EntryColor="{StaticResource GrayBoro}"
                         />
-                    <Label Text="Payment Method" TextColor="{StaticResource Liver}"  FontSize="16" FontAttributes="Bold" Margin="32,0" />
+
+                    <Label Text="Payment Method" TextColor="{StaticResource Liver}"  FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="32,0" />
                     <StackLayout Orientation="Horizontal" Padding="32,6" Spacing="20">
                         <StackLayout Orientation="Horizontal">
                             <svg:SvgImage 
@@ -50,7 +53,7 @@
                                     WidthRequest="25"
                                     VerticalOptions="Center"
                                 />
-                            <Label Text="Bank Direct Debit" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource Liver}" 
+                            <Label Text="Bank Direct Debit" FontSize="16" TextColor="{StaticResource Liver}" FontFamily="{StaticResource Roboto-Regular}"
                                    VerticalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Center" 
                                 />
                             <StackLayout.GestureRecognizers>
@@ -66,7 +69,7 @@
                                     WidthRequest="25"
                                     VerticalOptions="Center"
                                 />
-                            <Label Text="Payment Card" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource Liver}" 
+                            <Label Text="Payment Card" FontSize="16"  TextColor="{StaticResource Liver}" FontFamily="{StaticResource Roboto-Regular}"
                                    VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Center" 
                                 />
                             <StackLayout.GestureRecognizers>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="dalexFDA.MoreDetailsPage">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+            <Button BackgroundColor="Transparent" Text="Close" TextColor="#FFF" FontSize="14" FontFamily="{StaticResource Roboto-Bold}" 
+                    Command="{Binding Close}" WidthRequest="{OnPlatform Android=68, iOS=50}" HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                />
+            <Label Text="{Binding Title}" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="24,16">
+                <Label Text="{Binding Message}" TextColor="{StaticResource PalmLeaf}" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+            </StackLayout>
+        </ScrollView>        
+    </ContentPage.Content>
+</ContentPage>

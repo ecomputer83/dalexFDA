@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dalexFDA.Abstractions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -240,7 +241,7 @@ namespace dalexFDA
 
                 if (this.BindingContext is ManualDepositViewModel manualDeposit)
                 {
-                    var nav = new ManualDepositViewModel.CommandNav { Name = Name };
+                    var nav = new ValidationCommandNav { Name = Name };
                     manualDeposit.Validate.Execute(nav);
                 }
             }

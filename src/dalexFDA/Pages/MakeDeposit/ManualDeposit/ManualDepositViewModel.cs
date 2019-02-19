@@ -17,7 +17,7 @@ namespace dalexFDA
         readonly IInvestmentService IInvestmentService;
         readonly IUserDialogs Dialog;
 
-        readonly IDepositService DepositService;
+        readonly ILookupService DepositService;
 
         public bool IsSuccessful { get; set; }
         public bool IsNotSuccesful { get { return !IsSuccessful; } }
@@ -56,19 +56,14 @@ namespace dalexFDA
 
         public Command Negotiate { get; set; }
         public Command Validate { get; private set; }
-
-        public class CommandNav
-        {
-            public string Name { get; set; }
-        }
-
+        
         private const string bank_error_message = "Please select a bank.";
         private const string teller_number_error_message = "Please enter a teller / cheque number.";
         private const string duration_error_message = "Please enter a valid number of days.";
         private const string security_answer_error_message = "Please enter the answer to the question.";
         private const string wrong_security_answer_error_message = "Incorrect answer. Please try again";
 
-        public ManualDepositViewModel(IErrorManager ErrorManager, IDepositService DepositService, ISession SessionService, IInvestmentService IInvestmentService, 
+        public ManualDepositViewModel(IErrorManager ErrorManager, ILookupService DepositService, ISession SessionService, IInvestmentService IInvestmentService, 
                                     IUserDialogs Dialog)
         {
             this.ErrorManager = ErrorManager;
@@ -78,7 +73,7 @@ namespace dalexFDA
             this.DepositService = DepositService;
 
             Negotiate = new Command(async () => await ExecuteNegotiate());
-            Validate = new Command<CommandNav>(async (obj) => await ExecuteValidate(obj));
+            Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
         }
 
         public async override void Init(object initData)
@@ -133,7 +128,7 @@ namespace dalexFDA
             }
         }
 
-        private async Task ExecuteValidate(CommandNav obj)
+        private async Task ExecuteValidate(ValidationCommandNav obj)
         {
             try
             {

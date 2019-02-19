@@ -49,11 +49,6 @@ namespace dalexFDA
             public InvestmentItem Investment { get; set; }
         }
 
-        public class CommandNav
-        {
-            public string Name { get; set; }
-        }
-
         private const string redemption_amount_error_message = "";
         private const string new_duration_error_message = "Please enter a valid number of days.";
         private const string security_answer_error_message = "Please enter the answer to the question.";
@@ -67,7 +62,7 @@ namespace dalexFDA
             this.Dialog = Dialog;
 
             Negotiate = new Command(async () => await ExecuteNegotiate());
-            Validate = new Command<CommandNav>(async (obj) => await ExecuteValidate(obj));
+            Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
         }
 
         public async override void Init(object initData)
@@ -124,7 +119,7 @@ namespace dalexFDA
             }
         }
 
-        private async Task ExecuteValidate(CommandNav obj)
+        private async Task ExecuteValidate(ValidationCommandNav obj)
         {
             try
             {
@@ -138,14 +133,11 @@ namespace dalexFDA
 
         private void ValidateControls(string name)
         {
-            if (!IsNotFirstRun)
-                return;
-
             switch (name)
             {
                 case "NewDuration":
-                    NewDurationHasError = NewDuration <= 0;
-                    NewDurationErrorMessage = new_duration_error_message;
+                    NewDurationHasError = false;
+                    NewDurationErrorMessage = "";
                     break;
                 case "SecurityAnswer":
                     SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);

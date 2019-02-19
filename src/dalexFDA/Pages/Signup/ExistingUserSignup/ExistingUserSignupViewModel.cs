@@ -21,6 +21,7 @@ namespace dalexFDA
         readonly ISetting Settings;
         readonly IDeviceInfo DeviceInfo;
         readonly IUserDialogs Dialog;
+        readonly ILookupService LookupService;
 
         public bool IsAgreementSelected { get; set; }
         public bool IsRegisterEnabled { get { return !IsAgreementSelected; } }
@@ -55,6 +56,9 @@ namespace dalexFDA
         public bool ConfirmPinHasError { get; set; }
         public string ConfirmPinErrorMessage { get; set; }
 
+        public string TermsText { get; set; }
+        public string PrivacyPolicyText { get; set; }
+
         public User User { get; set; }
 
         //commands
@@ -63,6 +67,8 @@ namespace dalexFDA
         public Command Cancel { get; private set; }
         public Command Agree { get; private set; }
         public Command Validate { get; private set; }
+        public Command Terms { get; private set; }
+        public Command PrivacyPolicy { get; private set; }
 
         private const string fullname_error_message = "Your fullname is required.";
         private const string phone_number_error_message = "Please enter a phone number.";
@@ -77,7 +83,7 @@ namespace dalexFDA
         private const string empty_string = "";
 
         public ExistingUserSignupViewModel(IErrorManager ErrorManager, IAppService AppService, IAccountService AccountService, ISetting Settings,
-                                        IDeviceInfo DeviceInfo, IUserDialogs Dialog)
+                                        IDeviceInfo DeviceInfo, IUserDialogs Dialog, ILookupService LookupService)
         {
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
@@ -85,12 +91,33 @@ namespace dalexFDA
             this.Settings = Settings;
             this.DeviceInfo = DeviceInfo;
             this.Dialog = Dialog;
+            this.LookupService = LookupService;
 
             Register = new Command(async () => await ExecuteRegister());
             Cancel = new Command(async () => await ExecuteCancel());
             Agree = new Command(async () => await ExecuteAgree());
             GetUserDetailsFromPhoneNumber = new Command(async () => await ExecuteGetUserDetailsFromPhoneNumber());
             Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
+            Terms = new Command(async () => await ExecuteTerms());
+            PrivacyPolicy = new Command(async () => await ExecutePrivacyPolicy());
+        }
+
+        public async override void Init(object initData)
+        {
+            base.Init(initData);
+
+            try
+            {
+                using (Dialog.Loading())
+                {
+                    TermsText = await LookupService.GetTermsAndConditions();
+                    PrivacyPolicyText = await LookupService.GetPrivacyPolicy();
+                }
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
         }
 
         private async Task ExecuteAgree()
@@ -195,6 +222,32 @@ namespace dalexFDA
             try
             {
                 await CoreMethods.PopPageModel();
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private async Task ExecuteTerms()
+        {
+            try
+            {
+                var nav = new MoreDetailsViewModel.Nav { Message = TermsText, Title = "Terms and Conditions" };
+                await CoreMethods.PushPageModel<MoreDetailsViewModel>(nav, true);
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private async Task ExecutePrivacyPolicy()
+        {
+            try
+            {
+                var nav = new MoreDetailsViewModel.Nav { Message = PrivacyPolicyText, Title = "Privacy Policy" };
+                await CoreMethods.PushPageModel<MoreDetailsViewModel>(nav, true);
             }
             catch (Exception ex)
             {

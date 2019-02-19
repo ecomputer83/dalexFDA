@@ -31,7 +31,7 @@ namespace dalexFDA
         public bool InvestmentAmountHasError { get; set; }
         public string InvestmentAmountErrorMessage { get; set; }
 
-        public string Duration { get; set; }
+        public int Duration { get; set; }
         public bool DurationHasError { get; set; }
         public string DurationErrorMessage { get; set; }
 
@@ -161,7 +161,7 @@ namespace dalexFDA
                     InvestmentAmountErrorMessage = investment_amount_error_message;
                     break;
                 case "Duration":
-                    DurationHasError = string.IsNullOrEmpty(Duration) || Convert.ToInt32(Duration) <= 0;
+                    DurationHasError = string.IsNullOrEmpty(Duration.ToString());
                     DurationErrorMessage = duration_error_message;
                     break;
                 case "SecurityAnswer":
@@ -179,7 +179,7 @@ namespace dalexFDA
             InvestmentAmountHasError = InvestmentAmount <= 0;
             InvestmentAmountErrorMessage = investment_amount_error_message;
 
-            DurationHasError = string.IsNullOrEmpty(Duration) || Convert.ToInt32(Duration) <= 0;
+            DurationHasError = Duration <= 0;
             DurationErrorMessage = duration_error_message;
 
             SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);

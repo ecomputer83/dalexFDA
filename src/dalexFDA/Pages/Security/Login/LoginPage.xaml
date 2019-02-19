@@ -26,7 +26,7 @@
                             />
 
                         <Button Text="LOG IN" Style="{StaticResource PrimaryButton}" Command="{Binding Login}" Margin="0,16,0,8" />
-                        <Label Text="Forgot Password" TextColor="{StaticResource PalmLeaf}" HorizontalOptions="Center" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Margin="0,0,0,16" />
+                        <Label Text="RESET PIN" TextColor="{StaticResource PalmLeaf}" HorizontalOptions="Center" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Margin="0,0,0,16" />
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

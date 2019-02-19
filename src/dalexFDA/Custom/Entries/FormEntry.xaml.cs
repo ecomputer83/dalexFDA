@@ -442,35 +442,33 @@ namespace dalexFDA
             {
                 this.Text = e.NewTextValue;
 
-                if (this.BindingContext is ExistingUserSignupViewModel model)
-                {
-                    var nav = new ValidationCommandNav { Name = Name };
-                    model.Validate.Execute(nav);
-                }
+                var nav = new ValidationCommandNav { Name = Name };
+                if (this.BindingContext is ExistingUserSignupViewModel existingUserSignupViewModel)
+                    existingUserSignupViewModel.Validate.Execute(nav);
 
                 if (this.BindingContext is NewUserSignupViewModel newUserSignupViewModel)
-                {
-                    var nav = new ValidationCommandNav { Name = Name };
                     newUserSignupViewModel.Validate.Execute(nav);
-                }
 
                 if (this.BindingContext is LoginViewModel loginViewModel)
-                {
-                    var nav = new ValidationCommandNav { Name = Name };
                     loginViewModel.Validate.Execute(nav);
-                }
 
                 if (this.BindingContext is RedemptionRequestViewModel redemptionRequestViewModel)
-                {
-                    var nav = new RedemptionRequestViewModel.CommandNav { Name = Name };
                     redemptionRequestViewModel.Validate.Execute(nav);
-                }
 
                 if (this.BindingContext is RolloverRequestViewModel rolloverRequestViewModel)
-                {
-                    var nav = new RolloverRequestViewModel.CommandNav { Name = Name };
                     rolloverRequestViewModel.Validate.Execute(nav);
-                }
+
+                if (this.BindingContext is ManualDepositViewModel manualDepositViewModel)
+                    manualDepositViewModel.Validate.Execute(nav);
+
+                if (this.BindingContext is DepositPaymentViewModel depositPaymentViewModel)
+                    depositPaymentViewModel.Validate.Execute(nav);
+
+                if (this.BindingContext is CardPaymentDetailsViewModel cardPaymentDetailsViewModel)
+                    cardPaymentDetailsViewModel.Validate.Execute(nav);
+
+                if (this.BindingContext is DepositInvestmentDetailsViewModel depositInvestmentDetailsViewModel)
+                    depositInvestmentDetailsViewModel.Validate.Execute(nav);
 
                 if (ShouldFormat)
                 {

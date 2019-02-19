@@ -4,8 +4,10 @@ using System.Threading.Tasks;
 
 namespace dalexFDA.Abstractions
 {
-    public interface IDepositService
+    public interface ILookupService
     {
         Task<IEnumerable<Bank>> GetBanks();
+        Task<string> GetTermsAndConditions();
+        Task<string> GetPrivacyPolicy();
     }
 }
