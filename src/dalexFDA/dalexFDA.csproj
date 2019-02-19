@@ -31,16 +31,21 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
     <Folder Include="Images\" />
+    <Folder Include="Pages\" />
     <Folder Include="Scenarios\" />
     <Folder Include="Services\" />
     <Folder Include="Helpers\PageTestRunner\" />
     <Folder Include="Helpers\PageTestRunner\UnitTests\" />
     <Folder Include="Helpers\PageTestRunner\UnitTestScenarios\" />
     <Folder Include="Pages\Security\" />
+    <Folder Include="Custom\Entries\" />
     <Folder Include="Custom\Navigation\" />
     <Folder Include="Custom\Effects\" />
     <Folder Include="Custom\Menu\" />
+    <Folder Include="Custom\Label\" />
+    <Folder Include="Pages\Signup\" />
     <Folder Include="Pages\Security\Login\" />
+    <Folder Include="Pages\General\" />
     <Folder Include="Pages\General\Dashboard\" />
     <Folder Include="Pages\General\LeftNav\" />
     <Folder Include="Custom\Pages\" />
@@ -144,9 +149,6 @@
     <Compile Remove="Custom\Modal\MyAccountPopupDialog.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Custom\Entries\FormPhoneEntry.xaml.cs">
-      <DependentUpon>FormPhoneEntry.xaml</DependentUpon>
-    </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\General\Dashboard\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
@@ -159,11 +161,6 @@
     <Compile Update="Custom\Pages\BeneficiaryPopupDialog.xaml.cs">
       <DependentUpon>BeneficiaryPopupDialog.xaml</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Pages\General\MoreDetails\MoreDetailsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
