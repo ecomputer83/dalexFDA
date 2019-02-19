@@ -15,5 +15,16 @@ namespace dalexFDA
 		{
 			InitializeComponent ();
 		}
+
+        private void Handle_Close(object sender, EventArgs e)
+        {
+            var palmLeaf = (Color)Application.Current.Resources["PalmLeaf"];
+            var white = Color.FromHex("#FFF");
+            closeButton.TextColor = palmLeaf;
+            closeButton.BackgroundColor = white;
+
+            var model = this.BindingContext as MoreDetailsViewModel;
+            model.Close.Execute(null);
+        }
 	}
 }

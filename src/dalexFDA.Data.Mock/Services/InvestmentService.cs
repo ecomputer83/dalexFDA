@@ -21,7 +21,7 @@ namespace dalexFDA.Data.Mock
 
         public async Task<bool> DepositEInvestment(ETransferRequest request)
         {
-            await Task.Delay(25000);
+            await Task.Delay(2500);
             return await Task.FromResult(true);
         }
 

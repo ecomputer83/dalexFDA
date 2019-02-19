@@ -4,11 +4,8 @@
              x:Class="dalexFDA.MoreDetailsPage">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center" Orientation="Horizontal">
-            <Button BackgroundColor="Transparent" Text="Close" TextColor="#FFF" FontSize="14" FontFamily="{StaticResource Roboto-Bold}" 
-                    Command="{Binding Close}" WidthRequest="{OnPlatform Android=68, iOS=50}" HorizontalOptions="Start"
-                    VerticalOptions="Center"
-                />
-            <Label Text="{Binding Title}" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+            <Label Text="{Binding Title}" Style="{StaticResource TitleLabel}" />
+            <Button x:Name="closeButton" Text="Close" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Style="{StaticResource OutlineWhiteButton}" Margin="16,0" Clicked="Handle_Close" />
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>

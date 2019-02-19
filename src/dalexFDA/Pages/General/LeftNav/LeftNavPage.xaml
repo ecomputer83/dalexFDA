@@ -26,9 +26,9 @@
                            />
                     </AbsoluteLayout>
                     <StackLayout Spacing="4" VerticalOptions="CenterAndExpand">
-                        <Label Text="{Binding UserFullName}" TextColor="{StaticResource Liver}" FontSize="16" />
-                        <Label Text="{Binding UserAddress}" TextColor="{StaticResource Liver}" FontSize="16" />
-                        <Label Text="{Binding ClientID}" TextColor="{StaticResource Liver}" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="{Binding UserFullName}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" />
+                        <Label Text="{Binding UserAddress}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" />
+                        <Label Text="{Binding ClientID}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
                     </StackLayout>
                 </StackLayout>
                 <ScrollView Grid.Row="1" Padding="0">

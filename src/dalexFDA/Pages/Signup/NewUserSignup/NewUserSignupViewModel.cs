@@ -143,7 +143,12 @@ namespace dalexFDA
 
             try
             {
-                IsFullNameEnabled = IsEmailAddressEnabled = IsSecurityQuestionEnabled = true;
+                using (Dialog.Loading())
+                {
+                    IsFullNameEnabled = IsEmailAddressEnabled = IsSecurityQuestionEnabled = true;
+                    TermsText = await LookupService.GetTermsAndConditions();
+                    PrivacyPolicyText = await LookupService.GetPrivacyPolicy();
+                }
             }
             catch (Exception ex)
             {

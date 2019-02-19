@@ -55,10 +55,7 @@
                 <svg:SvgImage Svg="res:images.icon-success" ColorMapping="000000=6D9B36" WidthRequest="70" HorizontalOptions="Center" />
                 <Label Text="Transaction Successful!" TextColor="{StaticResource PalmLeaf}" FontSize="20" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
 
-                <Button Text="DONE" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" 
-                        WidthRequest="68" HeightRequest="26" BorderColor="{StaticResource PalmLeaf}" BorderWidth="1" BorderRadius="0"
-                        BackgroundColor="Transparent" Command="{Binding Done}" HorizontalOptions="Center" Margin="16"
-                    />
+                <Button Text="DONE" TextColor="{StaticResource PalmLeaf}" Style="{StaticResource OutlinePrimaryButton}" HorizontalOptions="Center" Command="{Binding Done}" Margin="16" />
             </StackLayout>
 
             <Button IsVisible="{Binding IsNotSuccesful}" Text="NEGOTIATE TRANSACTION" Style="{StaticResource PrimaryButton}" Command="{Binding Negotiate}" Margin="16" VerticalOptions="EndAndExpand"  />

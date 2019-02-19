@@ -55,7 +55,7 @@
                 </StackLayout>
             </ScrollView>
                 
-            <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='8', iOS='16'}" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='16,8', iOS='16'}" VerticalOptions="FillAndExpand">
                 <svg:SvgImage 
                         Svg="{Binding IsAgreementSelected, Converter={StaticResource CheckBoxImage}}"
                         ColorMapping="{Binding IsAgreementSelected, Converter={StaticResource CheckBoxColor}}"

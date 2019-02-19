@@ -68,8 +68,8 @@ namespace dalexFDA
             try
             {
                 UserFullName = SessionService.CurrentUser.Name;
-                ClientID = "Client ID: " + SessionService.CurrentUser.ClientNo;
                 UserAddress = SessionService.CurrentUser.Address;
+                ClientID = "Client ID: " + SessionService.CurrentUser.ClientNo;
                 IsMakeDepositOpen = false;
             }
             catch (Exception ex)
