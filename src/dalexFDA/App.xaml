@@ -43,7 +43,7 @@
             <!--LABELS-->
 
             <Style x:Key="TitleLabel" TargetType="Label">
-                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontSize" Value="22" />
                 <Setter Property="FontFamily" Value="{StaticResource Roboto-Bold}" />
                 <Setter Property="TextColor" Value="#FFF" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />

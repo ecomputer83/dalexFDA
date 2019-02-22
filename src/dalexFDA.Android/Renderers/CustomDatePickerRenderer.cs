@@ -5,7 +5,7 @@ using dalexFDA;
 using dalexFDA.Droid;
 using Android.Content;
 
-[assembly: ExportRenderer(typeof(DatePicker), typeof(CustomDatePickerRenderer))]
+[assembly: ExportRenderer(typeof(CustomDatePicker), typeof(CustomDatePickerRenderer))]
 namespace dalexFDA.Droid
 {
     public class CustomDatePickerRenderer : DatePickerRenderer
@@ -29,6 +29,20 @@ namespace dalexFDA.Droid
                 Control.LayoutParameters = layoutParams;
                 Control.SetPadding(0, 0, 0, 0);
                 SetPadding(0, 0, 0, 0);
+
+                CustomDatePicker element = Element as CustomDatePicker;
+
+                if (!string.IsNullOrWhiteSpace(element.Placeholder))
+                {
+                    Control.Text = element.Placeholder;
+                }
+                this.Control.TextChanged += (sender, arg) => {
+                    var selectedDate = arg.Text.ToString();
+                    if (selectedDate == element.Placeholder)
+                    {
+                        Control.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                    }
+                };
             }
         }
     }

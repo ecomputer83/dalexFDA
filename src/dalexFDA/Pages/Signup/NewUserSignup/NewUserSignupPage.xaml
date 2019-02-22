@@ -5,7 +5,7 @@
              xmlns:local="clr-namespace:dalexFDA"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
              xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             BackgroundColor="White">
+             BackgroundColor="{StaticResource OffWhite2}">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
             <Label Text="Sign Up - New Customer" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />

@@ -3,19 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="dalexFDA.FormDatePicker"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:dalexFDA"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
     <ContentView.Content>
         <StackLayout Spacing="2">
             <Label x:Name="label" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="0,0,0,6" />
             <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}">
                 <StackLayout x:Name="innerContainer" BackgroundColor="{StaticResource White}" Orientation="Horizontal" Margin="1">
-                    <DatePicker x:Name="datePicker" Date="{x:Static system:DateTime.Today}" Format="dd-MMM-yyyy" Margin="8,0" TextColor="{StaticResource Liver}" 
+                    <local:CustomDatePicker x:Name="datePicker" Date="{x:Static system:DateTime.Today}" Placeholder="Select a date"  Format="dd-MMM-yyyy" Margin="8,0" TextColor="{StaticResource Liver}" 
                             HorizontalOptions="FillAndExpand" DateSelected="Handle_DateSelected" FontFamily="{StaticResource Roboto-Regular}"
                             HeightRequest="{OnPlatform Android=38, iOS=42}"
                         />
-                    <svg:SvgImage Svg="res:images.icon-down-arrow" HorizontalOptions="EndAndExpand"
-                            WidthRequest="12" Margin="0,0,8,0" InputTransparent="true" 
-                        />
+                    <svg:SvgImage Svg="res:images.icon-down-arrow" HorizontalOptions="EndAndExpand" WidthRequest="12" Margin="0,0,8,0" InputTransparent="true" />
                 </StackLayout>
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Handle_Tapped" />
