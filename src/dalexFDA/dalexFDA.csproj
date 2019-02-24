@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
     <PackageReference Include="FreshMvvm" Version="2.2.4" />
     <PackageReference Include="PropertyChanged.Fody" Version="2.5.13" />
@@ -29,7 +30,6 @@
     <Folder Include="Helpers\PageTestRunner\" />
     <Folder Include="Helpers\PageTestRunner\UnitTests\" />
     <Folder Include="Helpers\PageTestRunner\UnitTestScenarios\" />
-    <Folder Include="Pages\Security\" />
     <Folder Include="Custom\Entries\" />
     <Folder Include="Custom\Navigation\" />
     <Folder Include="Custom\Effects\" />
@@ -73,6 +73,8 @@
   <ItemGroup>
     <None Remove="Images\icon-down-arrow.svg" />
     <None Remove="Images\icon-add.svg" />
+    <None Remove="Images\icon-success-circle.svg" />
+    <None Remove="Images\icon-success.svg" />
     <None Remove="Images\icon-up-arrow.svg" />
     <None Remove="Images\icon-question.svg" />
     <None Remove="Images\icon-phone.svg" />
@@ -99,13 +101,13 @@
     <None Remove="Images\icon-checkbox-selected.svg" />
     <None Remove="Images\icon-unselected.svg" />
     <None Remove="Images\icons_selected.svg" />
-    <None Remove="Images\icon-success.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Custom\Modal\MyAccountPopupDialog.xaml" />
     <EmbeddedResource Remove="Pages\Signup\AuthenticationWelcome\AuthenticationWelcomePage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\icon-success.svg" />
     <EmbeddedResource Include="Images\icon-down-arrow.svg" />
     <EmbeddedResource Include="Images\icon-add.svg" />
     <EmbeddedResource Include="Images\icon-up-arrow.svg" />
@@ -132,7 +134,7 @@
     <EmbeddedResource Include="Images\icon-checkbox-selected.svg" />
     <EmbeddedResource Include="Images\icon-unselected.svg" />
     <EmbeddedResource Include="Images\icon-selected.svg" />
-    <EmbeddedResource Include="Images\icon-success.svg" />
+    <EmbeddedResource Include="Images\icon-success-circle.svg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Custom\Modal\BeneficiaryPopUpDialog.xaml.cs" />
@@ -141,6 +143,9 @@
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\General\Dashboard\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Profile\UpdateKYCAccount\UpdateKYCAccountPage.xaml.cs">
+      <DependentUpon>UpdateKYCAccountPage.xaml</DependentUpon>
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\Security\Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -156,7 +161,10 @@
     <EmbeddedResource Update="Custom\Buttons\CustomButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Profile\UpdateProfile\UpdateProfilePage.xaml">
+    <EmbeddedResource Update="Pages\Profile\UpdateKYCAccount\UpdateKYCAccountPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Security\ResetPin\ResetPinPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

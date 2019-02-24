@@ -6,6 +6,7 @@ namespace dalexFDA.Abstractions
 {
     public interface IAccountService
     {
+        Task<bool> ResetPin(ResetPinRequest request);
         Task<SignupResponse> Signup(SignupRequest data);
         Task<SignupResponse> SignupExistingUser(SignupRequest data);
         Task<bool> ConfirmAccount(string phoneNumber, string code);
@@ -13,5 +14,7 @@ namespace dalexFDA.Abstractions
         Task<User> GetKYCAccountByPhoneNumber(string phoneExtension, string phoneNumber);
         Task<User> GetUser();
         Task<List<User>> GetUsers();
+        Task<string> AddDocument(DocumentRequest request);
+        Task<bool> UpdateKYCAccount(KYCProfileRequest request);
     }
 }

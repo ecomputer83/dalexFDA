@@ -8,20 +8,22 @@ namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public class LeftNavViewModel: BaseViewModel
-    {
-        //default services
-        internal readonly IErrorManager ErrorManager;
-
-        //other services
-        internal readonly IAppService AppService;
-        internal readonly Acr.UserDialogs.IUserDialogs Dialog;
-        internal readonly ISetting Setting;
+    {        
+        readonly IErrorManager ErrorManager;                
+        readonly IAppService AppService;
+        readonly Acr.UserDialogs.IUserDialogs Dialog;
+        readonly ISetting Setting;
         readonly ISession SessionService;
 
+        public bool IsPhotoAvailable { get { return !string.IsNullOrEmpty(PhotoSource); } }
+        public bool IsPhotoNotAvailable { get { return !IsPhotoAvailable; } }
+        public string PhotoSource { get; set; }
+        public bool IsUserAccountActive { get; set; }
         public bool IsMakeDepositOpen { get; set; }
         public string UserFullName { get; set; }
         public string ClientID { get; set; }
         public string UserAddress { get; set; }
+
         //commands
         public Command MakeDeposit { get; private set; }
         public Command ElectronicFundTransfer { get; private set; }
@@ -70,7 +72,9 @@ namespace dalexFDA
                 UserFullName = SessionService.CurrentUser.Name;
                 UserAddress = SessionService.CurrentUser.Address;
                 ClientID = "Client ID: " + SessionService.CurrentUser.ClientNo;
+                IsUserAccountActive = SessionService.CurrentUser.Status == UserAccountStatus.Active;
                 IsMakeDepositOpen = false;
+                PhotoSource = SessionService.CurrentUser?.PhotoUrl;
             }
             catch (Exception ex)
             {

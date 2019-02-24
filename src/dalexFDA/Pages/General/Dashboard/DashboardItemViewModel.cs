@@ -36,6 +36,5 @@ namespace dalexFDA
                 await ErrorManager.DisplayErrorMessageAsync(ex);
             }
         }
-
     }
 }

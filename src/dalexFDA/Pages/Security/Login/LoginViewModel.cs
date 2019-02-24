@@ -18,10 +18,10 @@ namespace dalexFDA
         readonly IAccountService AccountService;
         readonly IUserDialogs Dialog;
         readonly ISession SessionService;
-        ISetting Setting;
 
         //commands
         public Command Login { get; private set; }
+        public Command ResetPin { get; private set; }
         public Command Back { get; private set; }
         public Command SignUpExistingUser { get; private set; }
         public Command SignUpNewUser { get; private set; }
@@ -54,8 +54,7 @@ namespace dalexFDA
         private const string pin_error_message = "Please enter a PIN.";
 
         public LoginViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog,
-            IAuthenticationService AuthService, IAccountService AccountService, ISession SessionService,
-            ISetting setting)
+            IAuthenticationService AuthService, IAccountService AccountService, ISession SessionService)
         {
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
@@ -63,9 +62,9 @@ namespace dalexFDA
             this.AuthService = AuthService;
             this.AccountService = AccountService;
             this.SessionService = SessionService;
-            this.Setting = setting;
 
             Login = new Command(async () => await ExecuteLogin());
+            ResetPin = new Command(async () => await ExecuteResetPin());
             Back = new Command(async () => await ExecuteBack());
             SignUpExistingUser = new Command(async () => await ExecuteSignUpExistingUser());
             SignUpNewUser = new Command(async () => await ExecuteSignUpNewUser());
@@ -129,6 +128,18 @@ namespace dalexFDA
             {
                 await CoreMethods.DisplayAlert("Oops", "Invalid Phone number or password. Please try again.", "Ok");
                 Debug.WriteLine($"{ex.Message}");
+            }
+        }
+
+        private async Task ExecuteResetPin()
+        {
+            try
+            {
+                await CoreMethods.PushPageModel<ResetPinViewModel>();
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
             }
         }
 

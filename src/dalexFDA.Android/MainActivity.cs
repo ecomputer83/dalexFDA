@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using dalexFDA.Abstractions;
 using FreshMvvm;
+using Plugin.CurrentActivity;
 
 namespace dalexFDA.Droid
 {
@@ -35,6 +36,11 @@ namespace dalexFDA.Droid
             LoadApplication(new App());
         }
 
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
+        {
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
         void Bootstrap_Init(Bundle bundle)
         {
             //needs to be called before registering services on android because of acr dialog
@@ -47,6 +53,7 @@ namespace dalexFDA.Droid
             Acr.UserDialogs.UserDialogs.Init(this);
             XamSvg.XamForms.Droid.SvgImageRenderer.InitializeForms();
             Rg.Plugins.Popup.Popup.Init(this, bundle);
+            CrossCurrentActivity.Current.Init(this, bundle);
         }
 
         public void RegisterServices()

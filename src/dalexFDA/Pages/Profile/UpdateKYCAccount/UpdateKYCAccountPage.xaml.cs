@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace dalexFDA
 {
-	public partial class UpdateProfilePage : ContentPage
+	public partial class UpdateKYCAccountPage : ContentPage
 	{
-		public UpdateProfilePage ()
+		public UpdateKYCAccountPage()
 		{
 			InitializeComponent ();
 		}

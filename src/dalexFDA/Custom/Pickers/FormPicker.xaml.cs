@@ -255,7 +255,7 @@ namespace dalexFDA
         {
             try
             {
-                picker.Focus();
+                
             }
             catch (Exception ex)
             {

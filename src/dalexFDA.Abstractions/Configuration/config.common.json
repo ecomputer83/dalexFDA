@@ -10,8 +10,8 @@
         "projectId": "718865935004",
         "key": "AIzaSyC_nnpVP-I-bCP1x0Z2l9fbmVfJmfZiRZ4"
     },
-    "Mock": {
-        "enabled": "true",
-        "displayUnitTests": "true"
-    }
+  "Mock": {
+    "enabled": "false",
+    "displayUnitTests": "false"
+  }
 }

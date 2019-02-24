@@ -470,6 +470,12 @@ namespace dalexFDA
                 if (this.BindingContext is DepositInvestmentDetailsViewModel depositInvestmentDetailsViewModel)
                     depositInvestmentDetailsViewModel.Validate.Execute(nav);
 
+                if (this.BindingContext is UpdateKYCAccountViewModel updateProfileViewModel)
+                    updateProfileViewModel.Validate.Execute(nav);
+
+                if (this.BindingContext is ResetPinViewModel resetPinViewModel)
+                    resetPinViewModel.Validate.Execute(nav);
+
                 if (ShouldFormat)
                 {
                     if (sender is Entry entry)

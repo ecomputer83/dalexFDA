@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="dalexFDA.ResetPinPage"
+             xmlns:local="clr-namespace:dalexFDA"
+             BackgroundColor="{StaticResource OffWhite1}">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Reset PIN" Style="{StaticResource TitleLabel}" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Spacing="14" Padding="32,16">
+            <local:FormPhoneEntry Label="PhoneNumber" PhoneExtension="{Binding PhoneExtension}" PhoneNumber="{Binding PhoneNumber}"
+                    Margin="0,0,0,6" ErrorMessage="{Binding PhoneNumberErrorMessage}" IsVisible="{Binding DoesUserNotExist}"
+                    PhoneExtensionHasError="{Binding PhoneExtensionHasError}" PhoneNumberHasError="{Binding PhoneNumberHasError}"
+                />
+            
+            <local:FormEntry Label="PIN" Text="{Binding PIN}" HasError="{Binding PinHasError}" ErrorMessage="{Binding PinErrorMessage}" IsPassword="true"
+                    Keyboard="Numeric" Name="PIN" IsNumeric="true" MaxLength="4" IsVisible="{Binding DoesUserExist}"
+                />
+            <local:FormEntry Label="Confirm PIN" Text="{Binding ConfirmPIN}" HasError="{Binding ConfirmPinHasError}" ErrorMessage="{Binding ConfirmPinErrorMessage}" IsPassword="true"
+                    Keyboard="Numeric" Name="ConfirmPIN" IsNumeric="true" MaxLength="4"  IsVisible="{Binding DoesUserExist}"
+                />
+
+            <Button Text="NEXT" Style="{StaticResource PrimaryButton}" Command="{Binding Next}" Margin="0,16" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

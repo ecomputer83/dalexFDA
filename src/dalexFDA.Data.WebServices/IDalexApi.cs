@@ -17,7 +17,10 @@ namespace dalexFDA.Data.WebServices
         Task<SignupResponse> SignupExistingUser([Body(BodySerializationMethod.Json)]SignupRequest data);
 
         [Post("/api/Account/VerifySmsToken")]
-        Task<bool> ConfirmAccount(string PhoneNumber, string token);        
+        Task<bool> ConfirmAccount(string PhoneNumber, string token);
+
+        [Post("/api/Account/SetPassword")]
+        Task<bool> ResetPassword(ResetPinRequest request);
 
         #endregion
 
@@ -39,6 +42,13 @@ namespace dalexFDA.Data.WebServices
 
         [Get("/api/Account/GetKYCAccount")]
         Task<User> GetKYCUserByPhoneNumber(string PhoneNumber, string ext);
+
+        [Multipart]
+        [Post("/api/Account/AddDocument")]
+        Task<string> AddDocument(DocumentRequest request);
+
+        [Post("/api/Account/UpdateKYC")]
+        Task<bool> UpdateKYCAccount(KYCProfileRequest request);
 
         #endregion
 

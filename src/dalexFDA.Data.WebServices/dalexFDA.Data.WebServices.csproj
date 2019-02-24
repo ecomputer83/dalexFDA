@@ -9,7 +9,6 @@
     <Compile Remove="DTO\Signup\SignupRequest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DTO\" />
     <Folder Include="Helpers\" />
     <Folder Include="DTO\Signup\" />
   </ItemGroup>

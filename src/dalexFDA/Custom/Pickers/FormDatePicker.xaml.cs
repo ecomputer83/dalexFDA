@@ -56,7 +56,7 @@ namespace dalexFDA
 
         #region Date
 
-        public static readonly BindableProperty DateProperty = BindableProperty.Create("Date", typeof(DateTime), typeof(FormDatePicker), default(DateTime), BindingMode.TwoWay);
+        public static readonly BindableProperty DateProperty = BindableProperty.Create("Date", typeof(DateTime), typeof(FormDatePicker), DateTime.Today, BindingMode.TwoWay);
 
         public DateTime Date
         {
@@ -89,7 +89,7 @@ namespace dalexFDA
         {
             try
             {
-
+                datePicker.Placeholder = Placeholder;
             }
             catch (Exception ex)
             {
@@ -182,45 +182,35 @@ namespace dalexFDA
             base.OnPropertyChanged(propertyName);
 
             if (propertyName == NameProperty.PropertyName)
-            {
                 SetName();
-            }
 
             if (propertyName == LabelProperty.PropertyName)
-            {
                 SetLabel();
-            }
 
             if (propertyName == PlaceholderProperty.PropertyName)
-            {
                 SetPlaceholder();
-            }
 
             if (propertyName == HasErrorProperty.PropertyName)
-            {
                 SetHasError();
-            }
 
             if (propertyName == ErrorMessageProperty.PropertyName)
-            {
                 SetErrorMessage();
-            }
 
             if (propertyName == PickerColorProperty.PropertyName)
-            {
                 SetPickerColor();
-            }
         }
 
         void Handle_DateSelected(object sender, Xamarin.Forms.DateChangedEventArgs e)
         {
             this.Date = datePicker.Date;
 
+            var nav = new ValidationCommandNav { Name = Name };
+
             if (this.BindingContext is ManualDepositViewModel manualDeposit)
-            {
-                var nav = new ValidationCommandNav { Name = Name };
                 manualDeposit.Validate.Execute(nav);
-            }
+
+            if (this.BindingContext is UpdateKYCAccountViewModel updateProfileViewModel)
+                updateProfileViewModel.Validate.Execute(nav);
         }
 
         void Handle_Tapped(object sender, System.EventArgs e)

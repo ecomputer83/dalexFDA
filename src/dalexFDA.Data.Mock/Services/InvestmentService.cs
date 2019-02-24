@@ -1,6 +1,7 @@
 ﻿using dalexFDA.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,8 +35,8 @@ namespace dalexFDA.Data.Mock
         public async Task<InvestmentItem> GetInvestment(string Id)
         {
             await Task.Delay(1000);
-            var account = investmentAccounts[0];
-            return await Task.FromResult(account.Investments[0]);
+            var item = investmentAccounts[0].Investments.FirstOrDefault(x => x.Id == Id);
+            return await Task.FromResult(item);
         }
 
         public async Task<InvestmentAccount> GetInvestmentAccount()

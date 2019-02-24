@@ -32,7 +32,7 @@ namespace dalexFDA
                 var customcontrol = cell.View as InvestmentView;
                 var model = cell.BindingContext as DashboardItemViewModel;
 
-                InnerSection.TranslateTo(0, 10, 40, Easing.SinOut);
+                //InnerSection.TranslateTo(0, 10, 40, Easing.SinOut);
 
                 Debug.WriteLine($"Appearing InnerSection.X: {InnerSection.X}");
                 Debug.WriteLine($"Appearing InnerSection.Y: {InnerSection.Y}");

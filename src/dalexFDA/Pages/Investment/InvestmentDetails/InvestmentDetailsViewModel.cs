@@ -13,7 +13,7 @@ namespace dalexFDA
     {
         readonly IErrorManager ErrorManager;
         readonly ISession SessionService;
-        readonly IInvestmentService IInvestmentService;
+        readonly IInvestmentService InvestmentService;
         readonly IUserDialogs Dialog;
 
         public InvestmentItem Investment { get; set; }
@@ -52,7 +52,7 @@ namespace dalexFDA
         {
             this.ErrorManager = ErrorManager;
             this.SessionService = SessionService;
-            this.IInvestmentService = investmentService;
+            this.InvestmentService = investmentService;
             this.Dialog = Dialog;
 
             ViewCertificate = new Command(async () => await ExecuteViewCertificate());
@@ -69,12 +69,12 @@ namespace dalexFDA
                 Data = initData as Nav;
                 if (Data != null)
                 {
-                    Investment = Data.Investment;
-                    //Investment = await GetInvestment();
-                    //if (Investment == null)
-                    //{
-                        
-                    //}
+                    using (Dialog.Loading("Please wait..."))
+                    {
+                        Investment = await InvestmentService.GetInvestment(Data.Investment?.Id);
+                        if (Investment == null)
+                            Investment = Data.Investment;
+                    }
                 }
                 AccountName = SessionService?.CurrentUser?.Name;
             }
@@ -106,23 +106,6 @@ namespace dalexFDA
             catch (Exception ex)
             {
                 await ErrorManager.DisplayErrorMessageAsync(ex);
-            }
-        }
-
-        public async Task<InvestmentItem> GetInvestment()
-        {
-            try
-            {
-                using (Dialog.Loading("Loading..."))
-                {
-                    var data = await IInvestmentService.GetInvestment(Data.Investment.Id);
-                    return await Task.FromResult(data);
-                }
-            }
-            catch (Exception ex)
-            {
-                await ErrorManager.DisplayErrorMessageAsync(ex);
-                return null;
             }
         }
 

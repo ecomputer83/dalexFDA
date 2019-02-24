@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="dalexFDA.UpdateKYCAccountPage"
+             xmlns:local="clr-namespace:dalexFDA"
+             BackgroundColor="{StaticResource OffWhite2}">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Update Profile" FontSize="24" Style="{StaticResource TitleLabel}" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Spacing="0" Padding="0">
+            <ScrollView>
+                <StackLayout Spacing="14" Padding="32,16,32,6">
+                    <local:CustomButton Text="{Binding PassportPhotographButtonText}" IsComplete="{Binding IsPassportComplete}" SelectCommand="{Binding AddPhoto}" />
+                    <local:FormDatePicker Label="Date of Birth" Date="{Binding DOB}" Name="DOB" Placeholder="Please select a date"
+                            HasError="{Binding DOBHasError}" ErrorMessage="{Binding DOBErrorMessage}" IsVisible="{Binding IsPassportComplete}"
+                        />
+                    <local:FormEntry Label="Place of Birth" Text="{Binding POB}" Placeholder="" HasError="{Binding POBHasError}" 
+                            ErrorMessage="{Binding POBErrorMessage}" Name="POB" IsVisible="{Binding IsPassportComplete}"
+                        />
+
+                    <local:CustomButton Text="{Binding EvidenceOfAddressButtonText}" IsComplete="{Binding IsEvidenceOfAddressComplete}" SelectCommand="{Binding AddAddressEvidence}" />
+                    <local:FormEntry Label="Address" Text="{Binding Address}" Placeholder="" HasError="{Binding AddressHasError}" 
+                            ErrorMessage="{Binding AddressErrorMessage}" Name="Address" IsVisible="{Binding IsEvidenceOfAddressComplete}"
+                        />
+                    <local:FormEntry Label="Home Town" Text="{Binding HomeTown}" Placeholder="" HasError="{Binding HomeTownHasError}" 
+                            ErrorMessage="{Binding HomeTownErrorMessage}" Name="HomeTown" IsVisible="{Binding IsEvidenceOfAddressComplete}"
+                        />
+                    <local:FormEntry Label="Postal Address" Text="{Binding PostalAddress}" Placeholder="" HasError="{Binding PostalAddressHasError}" 
+                            ErrorMessage="{Binding PostalAddressErrorMessage}" Name="PostalAddress" IsVisible="{Binding IsEvidenceOfAddressComplete}"
+                        />
+                    <local:FormEntry Label="Nationality" Text="{Binding Nationality}" Placeholder="" HasError="{Binding NationalityHasError}" 
+                            ErrorMessage="{Binding NationalityErrorMessage}" Name="Nationality" IsVisible="{Binding IsEvidenceOfAddressComplete}"
+                        />
+
+                    <local:CustomButton Text="{Binding ValidIdCardButtonText}" IsComplete="{Binding IsValidIDCardComplete}" SelectCommand="{Binding AddValidID}" />
+                    <local:FormDatePicker Label="Expiry Date" Placeholder="Please select a date" Date="{Binding ExpiryDate}" Name="ExpiryDate"  IsVisible="{Binding IsValidIDCardComplete}"
+                            HasError="{Binding ExpiryDateHasError}" ErrorMessage="{Binding ExpiryDateErrorMessage}"
+                        />                    
+                </StackLayout>
+            </ScrollView>
+            <Button Text="NEXT" Style="{Binding NextButtonStyle}" Command="{Binding Next}" Margin="16" VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

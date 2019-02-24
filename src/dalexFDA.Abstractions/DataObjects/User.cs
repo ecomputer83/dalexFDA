@@ -12,6 +12,17 @@ namespace dalexFDA.Abstractions
         public string Email { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
+        public string Status { get; set; }
+
+        public string PostalAddress { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string PhotoUrl { get; set; }
+        public string CopyOfValidId { get; set; }
+        public string ProofOfResUtilityBill { get; set; }
+        public string Nationality { get; set; }
+        public string HomeTown { get; set; }
+        public string PlaceOfBirth { get; set; }
+        public DateTime ExpiryDateOfId { get; set; }
 
         public bool EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }

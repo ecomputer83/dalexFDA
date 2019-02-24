@@ -72,6 +72,31 @@ namespace dalexFDA.Data.Mock
             return await Task.FromResult(retVal);
         }
 
+        public async Task<bool> ResetPin(ResetPinRequest request)
+        {
+            bool retVal = true;
+            var user = users.FirstOrDefault(x => x.PhoneNumber == request.PhoneNumber);
+            if(user != null)
+            {
+                user.Password = request.NewPassword;
+            }
+            return await Task.FromResult(retVal);
+        }
+
+        public async Task<bool> UpdateKYCAccount(KYCProfileRequest request)
+        {
+            bool retVal = true;
+            
+            return await Task.FromResult(retVal);
+        }
+
+        public async Task<string> AddDocument(DocumentRequest request)
+        {
+            await Task.Delay(500);
+            var retVal = "something";
+            return await Task.FromResult(retVal);
+        }
+
         void CreateUser(SignupRequest data)
         {
             User user = new User

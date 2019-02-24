@@ -36,7 +36,19 @@ namespace dalexFDA.Data.WebServices
                     Email = response.email,
                     PhoneNumber = response.phoneNumber,
                     SecurityQuestion = response.securityQuestion,
-                    SecurityAnswer = response.securityAnswer
+                    SecurityAnswer = response.securityAnswer,
+                    Address = response.address,
+                    ClientNo = response.clientNo,
+                    Status = response.status,
+                    PostalAddress = response.PostalAddress,
+                    BirthDate = response.BirthDate,
+                    PlaceOfBirth = response.PlaceOfBirth,
+                    PhotoUrl = response.PhotoUrl,
+                    CopyOfValidId = response.CopyOfValidId,
+                    ProofOfResUtilityBill = response.ProofOfResUtilityBill,
+                    Nationality = response.Nationality,
+                    HomeTown = response.HomeTown,
+                    ExpiryDateOfId = response.ExpiryDateOfId
                 };
                 return user;
             }
@@ -79,6 +91,35 @@ namespace dalexFDA.Data.WebServices
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
             var response = await service.SignupExistingUser(data);
+
+            return response;
+        }
+
+        public async Task<string> AddDocument(Abstractions.DocumentRequest request)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var serviceRequest = new DocumentRequest
+            {
+                File = request.File,
+                FileType = request.FileType
+            };
+            var response = await service.AddDocument(serviceRequest);
+
+            return response;
+        }
+
+        public async Task<bool> UpdateKYCAccount(KYCProfileRequest request)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.UpdateKYCAccount(request);
+
+            return response;
+        }
+
+        public async Task<bool> ResetPin(ResetPinRequest request)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.ResetPassword(request);
 
             return response;
         }

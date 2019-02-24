@@ -85,7 +85,7 @@ namespace dalexFDA
                     ETransferRequest = Data.ETransferRequest;
                     RefNumber = ETransferRequest.PaymentReference;
                 }
-                TransactionDate = DateTime.Today;
+                TransactionDate = DateTime.Now;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
             }
             catch (Exception ex)
