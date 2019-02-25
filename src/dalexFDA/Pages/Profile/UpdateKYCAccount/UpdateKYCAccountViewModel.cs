@@ -202,7 +202,7 @@ namespace dalexFDA
 
                     if (response)
                     {
-                        await CoreMethods.DisplayAlert("KYC Update", "Your request was successful. We will get back to you.", "Ok");
+                        await CoreMethods.DisplayAlert("KYC Update", "Your request submitted successfully. We will get back to you shortly.", "Ok");
                         AppService.StartAccountStatements();
                     }     
                     else
