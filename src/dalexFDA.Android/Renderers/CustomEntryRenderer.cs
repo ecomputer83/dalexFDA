@@ -24,6 +24,20 @@ namespace dalexFDA.Droid
 
             var padding = 0;
 
+            if (((CustomEntry)Element).HorizontalTextAlignment == Xamarin.Forms.TextAlignment.End)
+            {
+                Control.Gravity = GravityFlags.CenterHorizontal;
+                e.NewElement.TextChanged += (a, b) =>
+                {
+                    if (Control == null)
+                    {
+                        return;
+                    }
+
+                    Control.Gravity = GravityFlags.;
+                };
+            }
+
             this.Control.Background = new ColorDrawable(Color.Transparent.ToAndroid());
             this.Control.SetPadding(padding, padding, padding, padding);
             this.Control.Gravity = GravityFlags.CenterVertical;

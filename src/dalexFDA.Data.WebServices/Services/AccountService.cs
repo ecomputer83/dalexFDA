@@ -95,15 +95,10 @@ namespace dalexFDA.Data.WebServices
             return response;
         }
 
-        public async Task<string> AddDocument(Abstractions.DocumentRequest request)
+        public async Task<string> AddDocument(DocumentRequest request)
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
-            var serviceRequest = new DocumentRequest
-            {
-                File = request.File,
-                FileType = request.FileType
-            };
-            var response = await service.AddDocument(serviceRequest);
+            var response = await service.AddDocument(request);
 
             return response;
         }

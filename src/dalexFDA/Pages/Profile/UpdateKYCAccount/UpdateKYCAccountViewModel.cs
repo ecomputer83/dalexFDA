@@ -182,7 +182,7 @@ namespace dalexFDA
             try
             {
                 if (!IsPassportComplete || !IsEvidenceOfAddressComplete || !IsValidIDCardComplete) return;
-                if (!PerformValidation()) return;
+                if (PerformValidation()) return;
 
                 using (Dialog.Loading())
                 {
@@ -204,7 +204,11 @@ namespace dalexFDA
                     {
                         await CoreMethods.DisplayAlert("KYC Update", "Your request was successful. We will get back to you.", "Ok");
                         AppService.StartAccountStatements();
-                    }                    
+                    }     
+                    else
+                    {
+                        await CoreMethods.DisplayAlert("KYC Update", "Unable to update your account. Please try again.", "Ok");
+                    }
                 }
             }
             catch (Exception ex)

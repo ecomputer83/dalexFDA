@@ -157,7 +157,7 @@ namespace dalexFDA
                     RefNumberErrorMessage = ref_number_error_message;
                     break;
                 case "InvestmentAmount":
-                    InvestmentAmountHasError = InvestmentAmount <= 0;
+                    InvestmentAmountHasError = string.IsNullOrEmpty(InvestmentAmount.ToString());
                     InvestmentAmountErrorMessage = investment_amount_error_message;
                     break;
                 case "Duration":

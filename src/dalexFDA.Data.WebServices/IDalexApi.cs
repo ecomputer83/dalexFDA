@@ -42,8 +42,7 @@ namespace dalexFDA.Data.WebServices
 
         [Get("/api/Account/GetKYCAccount")]
         Task<User> GetKYCUserByPhoneNumber(string PhoneNumber, string ext);
-
-        [Multipart]
+        
         [Post("/api/Account/AddDocument")]
         Task<string> AddDocument(DocumentRequest request);
 
