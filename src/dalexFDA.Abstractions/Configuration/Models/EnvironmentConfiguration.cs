@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace dalexFDA.Abstractions.Configuration
+namespace dalexFDA.Abstractions
 {
     public class EnvironmentConfiguration : IEnvironmentConfiguration
     {

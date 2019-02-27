@@ -1,13 +1,8 @@
 ﻿using System;
-using Acr.UserDialogs;
 using dalexFDA.Abstractions;
 using FreshMvvm;
-using Plugin.DeviceInfo;
-using Plugin.DeviceInfo.Abstractions;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
-using Plugin.Settings;
-using Plugin.Settings.Abstractions;
 
 namespace dalexFDA
 {
@@ -15,7 +10,6 @@ namespace dalexFDA
     {
         public static void Load()
         {
-            FreshIOC.Container.Register<IMedia>(CrossMedia.Current);
             FreshIOC.Container.Register<IConfigurationService, ConfigurationService>();
             FreshIOC.Container.Register<ISession, SessionService>();
             FreshIOC.Container.Register<ISetting, Settings>();

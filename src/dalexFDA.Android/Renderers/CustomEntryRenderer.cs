@@ -33,8 +33,6 @@ namespace dalexFDA.Droid
                     {
                         return;
                     }
-
-                    Control.Gravity = GravityFlags.;
                 };
             }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using dalexFDA.Abstractions;
-using dalexFDA.Abstractions.Configuration;
 using Newtonsoft.Json;
 
 namespace dalexFDA
