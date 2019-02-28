@@ -66,6 +66,7 @@ namespace dalexFDA
             try
             {
                 DeliveryModes = await LookupService.GetDeliveryModes();
+                SelectedDeliveryModeIndex = 0;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
             }
             catch (Exception ex)
@@ -82,13 +83,13 @@ namespace dalexFDA
 
                 bool response;
 
-                using (Dialog.Loading("Loading..."))
+                using (Dialog.Loading("Please wait..."))
                 {
-                    var request = new AccountStatementRequest
+                    var request = new StatementRequest
                     {
                         StartDate = StartDate,
                         EndDate = EndDate,
-                        DeliveryMode = SelectedDeliveryMode?.Name,
+                        DeliveryMode = SelectedDeliveryMode?.Code,
                         SecurityAnswer = SecurityAnswer
                     };
                     response = await IInvestmentService.RequestAccountStatement(request);

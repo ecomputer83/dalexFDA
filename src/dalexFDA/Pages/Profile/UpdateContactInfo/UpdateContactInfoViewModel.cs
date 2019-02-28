@@ -18,6 +18,7 @@ namespace dalexFDA
         readonly IInvestmentService IInvestmentService;
         readonly IUserDialogs Dialog;
         readonly ILookupService LookupService;
+        readonly IAppService AppService;
                 
         public List<Lookup> ContactTypes { get; set; }
         public int? SelectedContactTypeIndex { get; set; }
@@ -25,20 +26,16 @@ namespace dalexFDA
         public bool ContactTypeHasError { get; set; }
         public string ContactTypeErrorMessage { get; set; }
 
-        public bool IsPhoneNumber { get; set; }
-        public string CurrentPhoneNumber { get; set; }
-        public string NewPhoneNumber { get; set; }
-        public bool NewPhoneNumberHasError { get; set; }
-        public string NewPhoneNumberErrorMessage { get; set; }
+        public string OldValueLabel { get { return SelectedContactType.Code == RequestType.Phone ? old_phone_number_text : old_email_address_text; } }
+        public string NewValueLabel { get { return SelectedContactType.Code == RequestType.Phone ? new_phone_number_text : new_email_address_text; } }
 
-        public bool IsEmailAddress { get { return !IsPhoneNumber; } }
-        public string CurrentEmailAddress { get; set; }
-        public string NewEmailAddress { get; set; }
-        public bool NewEmailAddressHasError { get; set; }
-        public string NewEmailAddressMessage { get; set; }
+        public string OldValueText { get { return SelectedContactType.Code == RequestType.Phone ? SessionService?.CurrentUser?.PhoneNumber : SessionService?.CurrentUser?.Email; } }
+        public string NewValueText { get; set; }
+
+        public bool NewValueTextHasError { get; set; }
+        public string NewValueTextErrorMessage { get; set; }
 
         public string SecurityQuestion { get; set; }
-
         public string SecurityAnswer { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
@@ -47,24 +44,30 @@ namespace dalexFDA
         public Command Validate { get; private set; }
         public Command ContactTypeChanged { get; set; }
 
+        private const string old_phone_number_text = "Current Phone Number";
+        private const string old_email_address_text = "Current Email Address";
+        private const string new_phone_number_text = "New Phone Number";
+        private const string new_email_address_text = "New Email Address";
+
         private const string contact_type_error_message = "Please select a contact type.";
-        private const string new_phone_error_message = "Please a phone number.";
+        private const string new_phone_error_message = "Please enter a phone number.";
         private const string new_email_error_message = "Please provide a valid email address.";
         private const string security_answer_error_message = "Please enter the answer to the question.";
         private const string wrong_security_answer_error_message = "Incorrect answer. Please try again";
 
         public UpdateContactInfoViewModel(IErrorManager ErrorManager, ILookupService LookupService, ISession SessionService, IInvestmentService IInvestmentService,
-                                    IUserDialogs Dialog)
+                                    IUserDialogs Dialog, IAppService AppService)
         {
             this.ErrorManager = ErrorManager;
             this.SessionService = SessionService;
             this.IInvestmentService = IInvestmentService;
             this.Dialog = Dialog;
             this.LookupService = LookupService;
+            this.AppService = AppService;
 
             Submit = new Command(async () => await ExecuteSubmit());
             Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
-            ContactTypeChanged = new Command<ValidationCommandNav>(async (obj) => await ExecuteContactTypeChanged(obj));
+            ContactTypeChanged = new Command(async () => await ExecuteContactTypeChanged());
         }
 
         public async override void Init(object initData)
@@ -74,9 +77,23 @@ namespace dalexFDA
             try
             {
                 ContactTypes = await LookupService.GetContactTypes();
-                CurrentEmailAddress = SessionService.CurrentUser.Email;
-                CurrentPhoneNumber = SessionService.CurrentUser?.PhoneNumber;
+                SelectedContactTypeIndex = 0;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        public async override void ReverseInit(object returnedData)
+        {
+            base.ReverseInit(returnedData);
+
+            try
+            {
+                var data = returnedData as SuccessMessageViewModel;
+                AppService.StartDashboard();
             }
             catch (Exception ex)
             {
@@ -92,16 +109,16 @@ namespace dalexFDA
 
                 bool response;
 
-                using (Dialog.Loading("Loading..."))
+                using (Dialog.Loading("Please wait..."))
                 {
-                    var request = new AccountStatementRequest
+                    var request = new ContactChangeRequest
                     {
-                        StartDate = StartDate,
-                        EndDate = EndDate,
-                        ContactType = SelectedContactType?.Name,
+                        NewValue = NewValueText,
+                        OldValue = OldValueText,
+                        RequestType = Convert.ToInt16(SelectedContactType.Code),
                         SecurityAnswer = SecurityAnswer
                     };
-                    response = await IInvestmentService.RequestAccountStatement(request);
+                    response = await IInvestmentService.UpdateContact(request);
                 }
 
                 if (response)
@@ -130,6 +147,28 @@ namespace dalexFDA
             }
         }
 
+        private async Task ExecuteContactTypeChanged()
+        {
+            try
+            {
+                if (SelectedContactType != null)
+                {
+                    if (SelectedContactType.Code == RequestType.Phone)
+                    {
+                        NewValueText = "";
+                    }
+                    else
+                    {
+                        NewValueText = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
         private void ValidateControls(string name)
         {
             switch (name)
@@ -138,11 +177,8 @@ namespace dalexFDA
                     ContactTypeHasError = SelectedContactType == null;
                     ContactTypeErrorMessage = contact_type_error_message;
                     break;
-                case "NewPhoneNumber":
-                    NewPhoneNumberHasError = false;
-                    break;
-                case "NewEmailAddress":
-                    NewEmailAddressHasError = false;
+                case "NewValue":
+                    NewValueTextHasError = false;
                     break;
                 case "SecurityAnswer":
                     SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
@@ -156,11 +192,8 @@ namespace dalexFDA
             ContactTypeHasError = SelectedContactType == null;
             ContactTypeErrorMessage = contact_type_error_message;
 
-            NewPhoneNumberHasError = string.IsNullOrEmpty(NewPhoneNumber);
-            NewPhoneNumberErrorMessage = new_phone_error_message;
-
-            NewEmailAddressHasError = string.IsNullOrEmpty(NewEmailAddress);
-            NewEmailAddressMessage = new_email_error_message;
+            NewValueTextHasError = string.IsNullOrEmpty(NewValueText);
+            NewValueTextErrorMessage = SelectedContactType.Code == RequestType.Phone.ToString() ? new_phone_error_message : new_email_error_message;
 
             SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
             SecurityAnswerErrorMessage = security_answer_error_message;
@@ -174,7 +207,7 @@ namespace dalexFDA
                 }
             }
 
-            return NewPhoneNumberHasError  SecurityAnswerHasError || ContactTypeHasError;
+            return NewValueTextHasError || SecurityAnswerHasError || ContactTypeHasError;
         }
     }
 }

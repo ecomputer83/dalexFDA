@@ -9,9 +9,9 @@ namespace dalexFDA.Abstractions
         void StartElectronicFundTransfer();
         void StartManualBankDeposit();
         void StartAccountStatements();
-        void StartDashboard();
         void StartTransferHistory();
         void StartContactChange();
+        void StartMyProfile();
         void Logout();
     }
 }

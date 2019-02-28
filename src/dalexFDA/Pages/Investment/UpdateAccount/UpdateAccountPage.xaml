@@ -21,7 +21,7 @@
                     <local:FormPicker Label="Contact Type" ItemsSource="{Binding RequestType}" SelectedIndex="{Binding SelectedRequestTypeIndex}" Name="RequestType" Placeholder="Request Type"
                             HasError="{Binding RequestTypeHasError}" ErrorMessage="{Binding RequestTypeErrorMessage}" Margin="32,0,32,6">
                         <local:FormPicker.Behaviors>
-                            <behaviors:EventHandlerBehavior  EventName="ItemSelected">
+                            <behaviors:EventHandlerBehavior EventName="ItemSelected">
                                 <behaviors:InvokeCommandAction Command="{Binding PickedChangedCommand}"
                                        Converter="{StaticResource SelectedltemArgsToBinding}" />
                             </behaviors:EventHandlerBehavior>

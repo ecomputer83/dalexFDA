@@ -12,12 +12,14 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="12" Padding="16,0">
-                <AbsoluteLayout WidthRequest="120" HeightRequest="120" HorizontalOptions="Center">
+                <AbsoluteLayout WidthRequest="120" HeightRequest="120" HorizontalOptions="Center" Margin="0,12,0,0">
                     <!--portrait holo -->
                     <circle:CircleImage WidthRequest="120" HeightRequest="120" HorizontalOptions="Center" BorderColor="{StaticResource PalmLeaf}" BorderThickness="1" Aspect="AspectFill" />
                     <!--actual profile picture -->
                     <circle:CircleImage WidthRequest="112" HeightRequest="112" HorizontalOptions="Center" BorderThickness="0" Aspect="AspectFill" Source="{Binding Profile.PhotoUrl}" AbsoluteLayout.LayoutBounds="4,4,112,112" />
                 </AbsoluteLayout>
+
+                <Button Text="Change Picture" HorizontalOptions="Center" Style="{StaticResource PrimaryButton}" Margin="16,0" Command="{Binding ChangePhoto}" />
 
                 <Label  Text="{Binding DisplayName}" TextColor="{StaticResource Liver}" FontFamily="{StaticResource Roboto-Bold}"
 					    FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,-6,0,4"
@@ -83,7 +85,6 @@
                     <Label Text="Term" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
                     <Label Text="{Binding Investment.Days, StringFormat='{0:F0} Days'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
-
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="dalexFDA.SuccessMessagePage"
-             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             BackgroundColor="{StaticResource OffWhite2}">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
             <Button x:Name="closeButton" Text="Close" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Style="{StaticResource OutlineWhiteButton}" Margin="16,0" Clicked="Handle_Close" />
@@ -10,7 +11,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-            <svg:SvgImage Svg="res:images.icon-success" ColorMapping="000000=6D9B36" WidthRequest="70" HorizontalOptions="Center" />
+            <svg:SvgImage Svg="res:images.icon-success-circle" ColorMapping="000000=6D9B36" WidthRequest="70" HorizontalOptions="Center" />
             <Label Text="{Binding Message}" TextColor="{StaticResource PalmLeaf}" FontSize="20" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
         </StackLayout>
     </ContentPage.Content>

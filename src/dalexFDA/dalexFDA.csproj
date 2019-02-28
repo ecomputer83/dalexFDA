@@ -72,6 +72,7 @@
   <ItemGroup>
     <None Remove="Images\icon-down-arrow.svg" />
     <None Remove="Images\icon-add.svg" />
+    <None Remove="Images\icon-home.svg" />
     <None Remove="Images\icon-success-circle.svg" />
     <None Remove="Images\icon-success.svg" />
     <None Remove="Images\icon-up-arrow.svg" />
@@ -106,6 +107,7 @@
     <EmbeddedResource Remove="Pages\Signup\AuthenticationWelcome\AuthenticationWelcomePage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\icon-home.svg" />
     <EmbeddedResource Include="Images\icon-success.svg" />
     <EmbeddedResource Include="Images\icon-down-arrow.svg" />
     <EmbeddedResource Include="Images\icon-add.svg" />

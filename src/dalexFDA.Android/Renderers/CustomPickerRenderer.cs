@@ -24,7 +24,6 @@ namespace dalexFDA.Droid
                 var customPicker = e.NewElement as CustomPicker;
                 if (customPicker != null)
                 {
-
                     Control.SetHintTextColor(Android.Graphics.Color.ParseColor(customPicker.PlaceholderColor));
                 }
             }

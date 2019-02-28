@@ -44,6 +44,19 @@ namespace dalexFDA
             set { SetValue(SelectedIndexProperty, value); }
         }
 
+        private void SetSelectedIndex()
+        {
+            try
+            {
+                if (SelectedIndex != null)
+                    picker.SelectedIndex = SelectedIndex.GetValueOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Placeholder ===== {ex.Message}");
+            }
+        }
+
         #endregion
 
         #region Label
@@ -105,7 +118,7 @@ namespace dalexFDA
         {
             try
             {
-                picker.Title = Placeholder;
+                picker.Title = SelectedIndex != null ? Placeholder : "";
             }
             catch (Exception ex)
             {
@@ -212,6 +225,12 @@ namespace dalexFDA
                 SetItemsSource();
             }
 
+            if (propertyName == SelectedIndexProperty.PropertyName)
+            {
+                SetSelectedIndex();
+            }
+
+
             if (propertyName == PlaceholderProperty.PropertyName)
             {
                 SetPlaceholder();
@@ -243,6 +262,11 @@ namespace dalexFDA
                 {
                     var nav = new ValidationCommandNav { Name = Name };
                     manualDeposit.Validate.Execute(nav);
+                }
+
+                if (this.BindingContext is UpdateContactInfoViewModel updateContactInfoViewModel)
+                {
+                    updateContactInfoViewModel.ContactTypeChanged.Execute(null);
                 }
             }
             catch (Exception ex)

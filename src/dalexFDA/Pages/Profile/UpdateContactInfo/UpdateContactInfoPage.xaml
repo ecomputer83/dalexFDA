@@ -13,22 +13,18 @@
         <StackLayout Spacing="0" Padding="0">
             <ScrollView>
                 <StackLayout Spacing="8" Padding="0">
-                    <local:FormPicker Label="Contact Types" ItemsSource="{Binding ContactTypes}" SelectedIndex="{Binding SelectedContactTypeIndex}" Name="ContactType" Placeholder="Please select a contact type"
-                            HasError="{Binding ContactTypeHasError}" ErrorMessage="{Binding ContactTypeErrorMessage}" Margin="32,0,32,6"
-                        />
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
+                        <Label Text="Request Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+                    <local:FormPicker Label="Contact Type" ItemsSource="{Binding ContactTypes}" SelectedIndex="{Binding SelectedContactTypeIndex}" Name="ContactType" Placeholder="Please select a contact type"
+                            HasError="{Binding ContactTypeHasError}" ErrorMessage="{Binding ContactTypeErrorMessage}" Margin="32,0,32,6">                        
+                    </local:FormPicker>
 
-                    <local:FormEntry Label="Current Phone Number" Text="{Binding CurrentPhoneNumber}" Placeholder=""
+                    <local:FormEntry Label="{Binding OldValueLabel}" Text="{Binding OldValueText}" Margin="32,0,32,6"
                             IsEnabled="false" EntryColor="{StaticResource GrayBoro}" IsVisible="{Binding IsPhoneNumber}"
                         />
-                    <local:FormEntry Label="New Phone Number" Text="{Binding NewPhoneNumber}" Placeholder="" HasError="{Binding NewPhoneNumberHasError}" 
-                            ErrorMessage="{Binding NewPhoneNumberErrorMessage}" Name="NewPhoneNumber" IsVisible="{Binding IsPhoneNumber}"
-                        />
-
-                    <local:FormEntry Label="Current Email Address" Text="{Binding CurrentEmailAddress}" Placeholder=""
-                            IsVisible="{Binding IsEmailAddress}" IsEnabled="false" EntryColor="{StaticResource GrayBoro}"
-                        />
-                    <local:FormEntry Label="New Email Address" Text="{Binding NewEmailAddress}" Placeholder="" HasError="{Binding NewEmailAddressHasError}" 
-                            ErrorMessage="{Binding NewEmailAddressErrorMessage}" Name="NewEmailAddress" IsVisible="{Binding IsEmailAddress}"
+                    <local:FormEntry Label="{Binding NewValueLabel}" Text="{Binding NewValueText}" HasError="{Binding NewValueTextHasError}" 
+                            ErrorMessage="{Binding NewValueTextErrorMessage}" Name="NewValue" Margin="32,0,32,6"
                         />
 
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
@@ -44,7 +40,7 @@
                     <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
                 </StackLayout>
             </ScrollView>
-            <Button Text="SUBMIT REQUEST" Style="{Binding PrimaryButton}" Command="{Binding Submit}" Margin="16" VerticalOptions="EndAndExpand" />
+            <Button Text="SUBMIT REQUEST" Style="{StaticResource PrimaryButton}" Command="{Binding Submit}" Margin="16" VerticalOptions="EndAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

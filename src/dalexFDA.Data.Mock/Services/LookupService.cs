@@ -8,19 +8,30 @@ namespace dalexFDA.Data.Mock
 {
     public class LookupService : ILookupService
     {
+        List<Lookup> banks = new List<Lookup>();
+        List<Lookup> contactTypes = new List<Lookup>();
+        List<Lookup> deliveryModes = new List<Lookup>();
+
         public LookupService()
         {
+            SetupBanks();
+            SetupContactTypes();
+            SetupDeliveryModes();
         }
 
-        public Task<IEnumerable<Bank>> GetBanks()
+        public Task<List<Lookup>> GetBanks()
+        {            
+            return Task.FromResult(banks.OrderBy(x => x.Name).ToList());
+        }
+
+        public Task<List<Lookup>> GetContactTypes()
         {
-            var bankList = new List<Bank>
-            {
-                new Bank{ Name="Access Bank", Code=303 },
-                new Bank{ Name="Zenith",Code=058 },
-                new Bank{ Name="First Bank", Code=014 }
-            };
-            return Task.FromResult(bankList.OrderBy(x => x.Name).AsEnumerable());
+            return Task.FromResult(contactTypes);
+        }
+
+        public Task<List<Lookup>> GetDeliveryModes()
+        {
+            return Task.FromResult(deliveryModes);
         }
 
         public Task<string> GetPrivacyPolicy()
@@ -60,6 +71,33 @@ namespace dalexFDA.Data.Mock
             string retVal = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra porta risus vel hendrerit. Phasellus vitae condimentum lorem. Sed a urna tortor. Donec rhoncus tempor leo, ut ullamcorper mauris. Donec vitae cursus nisi. Pellentesque non nibh quis odio viverra ultrices. Nulla vel ante et ante fermentum porttitor et non est. Nam tincidunt ipsum elit, at pharetra tellus imperdiet a. Duis id orci efficitur, gravida quam vitae, maximus est. Donec laoreet, libero ac volutpat consequat, nulla magna ornare diam, quis placerat magna nunc at orci. Etiam mattis velit ut neque eleifend pharetra. Praesent nec est nunc. In non sem risus. Fusce semper volutpat vulputate. Praesent elementum suscipit laoreet.
                                 Curabitur egestas ultrices interdum. Nulla lobortis tincidunt magna in tincidunt. Vivamus eget eros porttitor, venenatis risus at, posuere arcu. Vivamus mattis nulla sed nulla elementum semper. Fusce vulputate ante sit amet vulputate convallis. Suspendisse imperdiet scelerisque sem feugiat placerat. Aenean dignissim neque velit, a varius risus fringilla nec. Donec rhoncus augue ut tincidunt tincidunt.";
             return Task.FromResult(retVal);
+        }
+
+        void SetupBanks()
+        {
+            banks = new List<Lookup>
+            {
+                new Lookup { Name = "Access Bank", Code= "0" },
+                new Lookup { Name = "Zenith", Code= "1" },
+                new Lookup { Name = "First Bank", Code= "2" }
+            };
+        }
+
+        void SetupContactTypes()
+        {
+            contactTypes = new List<Lookup>
+            {
+                new Lookup { Code = "1", Name = "Phone Number" },
+                new Lookup { Code = "2", Name = "Email Address" }
+            };
+        }
+
+        void SetupDeliveryModes()
+        {
+            deliveryModes = new List<Lookup>
+            {
+                new Lookup { Code = "E-Mail", Name = "Email Address" }
+            };
         }
     }
 }

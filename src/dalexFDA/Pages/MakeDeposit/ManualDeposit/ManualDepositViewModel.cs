@@ -30,9 +30,9 @@ namespace dalexFDA
         public bool DepositHasError { get; set; }
         public string DepositErrorMessage { get; set; }
 
-        public List<Bank> Banks { get; set; }
+        public List<Lookup> Banks { get; set; }
         public int? SelectedBankIndex { get; set; }
-        public Bank SelectedBank => SelectedBankIndex != null ? Banks?.ToList()[SelectedBankIndex.GetValueOrDefault()] : null;
+        public Lookup SelectedBank => SelectedBankIndex != null ? Banks?.ToList()[SelectedBankIndex.GetValueOrDefault()] : null;
         public bool BankHasError { get; set; }
         public string BankErrorMessage { get; set; }
 
@@ -82,8 +82,7 @@ namespace dalexFDA
 
             try
             {
-                var banks = await LookupService.GetBanks();
-                Banks = banks.ToList();
+                Banks = await LookupService.GetBanks();
 
                 Duration = "0";
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();

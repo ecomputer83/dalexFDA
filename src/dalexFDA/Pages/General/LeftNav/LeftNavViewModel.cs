@@ -27,7 +27,6 @@ namespace dalexFDA
         //commands
         public Command Dashboard { get; private set; }
         public Command MakeDeposit { get; private set; }
-        public Command Dashboard { get; private set; }
         public Command ElectronicFundTransfer { get; private set; }
         public Command ManualBankDeposit { get; private set; }
         public Command AccountStatements { get; private set; }
@@ -54,7 +53,6 @@ namespace dalexFDA
             //setup commands
             Dashboard = new Command(async () => await ExecuteDashboard());
             MakeDeposit = new Command(async () => await ExecuteMakeDeposit());
-            Dashboard = new Command(async () => await ExecuteDashboard());
             ElectronicFundTransfer = new Command(async () => await ExecuteElectronicFundTransfer());
             ManualBankDeposit = new Command(async () => await ExecuteManualBankDeposit());
             AccountStatements = new Command(async () => await ExecuteAccountStatements());
@@ -90,7 +88,7 @@ namespace dalexFDA
         {
             try
             {
-                AppService.StartManualBankDeposit();
+                AppService.StartDashboard();
             }
             catch (Exception ex)
             {
@@ -139,18 +137,6 @@ namespace dalexFDA
             try
             {
                 AppService.StartAccountStatements();
-            }
-            catch (Exception ex)
-            {
-                await ErrorManager.DisplayErrorMessageAsync(ex);
-            }
-        }
-
-        private async Task ExecuteDashboard()
-        {
-            try
-            {
-                AppService.StartDashboard();
             }
             catch (Exception ex)
             {
@@ -222,7 +208,7 @@ namespace dalexFDA
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("My Profile", "Coming Soon", "OK");
+                AppService.StartMyProfile();
             }
             catch (Exception ex)
             {

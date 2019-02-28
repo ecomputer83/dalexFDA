@@ -98,7 +98,7 @@ namespace dalexFDA
                         DeliveryMode = SelectedDeliveryMode?.Code,
                         SecurityAnswer = SecurityAnswer
                     };
-                    response = await IInvestmentService.PostStatement(request);
+                    response = await IInvestmentService.RequestAccountStatement(request);
                 }
 
                 if (response)

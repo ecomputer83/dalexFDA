@@ -102,26 +102,26 @@ namespace dalexFDA
 
         public void StartAccountStatements()
         {
-            var page = FreshPageModelResolver.ResolvePageModel<AccountSummaryViewModel>();
+            var page = FreshPageModelResolver.ResolvePageModel<AccountStatementsViewModel>();
             StartFlow(page);
-            StartFlow(page);
-        }
-
-        public void StartDashboard()
-        {
-            var page = FreshPageModelResolver.ResolvePageModel<DashboardViewModel>();
             StartFlow(page);
         }
 
         public void StartContactChange()
         {
-            var page = FreshPageModelResolver.ResolvePageModel<UpdateAccountViewModel>();
+            var page = FreshPageModelResolver.ResolvePageModel<UpdateContactInfoViewModel>();
             StartFlow(page);
         }
 
         public void StartTransferHistory()
         {
             var page = FreshPageModelResolver.ResolvePageModel<TransactionHistoryViewModel>();
+            StartFlow(page);
+        }
+
+        public void StartMyProfile()
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<MyProfileViewModel>();
             StartFlow(page);
         }
 

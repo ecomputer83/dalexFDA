@@ -62,15 +62,22 @@ namespace dalexFDA.Data.Mock
             return await Task.FromResult(true);
         }
 
+        public async Task<bool> RequestAccountStatement(StatementRequest request)
+        {
+            await Task.Delay(3500);
+            return await Task.FromResult(true);
+        }
+
         public async Task<bool> RolloverInvestment(RolloverInvestmentRequest request)
         {
             await Task.Delay(3000);
             return await Task.FromResult(true);
         }
 
-        public Task<bool> UpdateContact(ContactChangeRequest request)
+        public async Task<bool> UpdateContact(ContactChangeRequest request)
         {
-            throw new NotImplementedException();
+            await Task.Delay(3500);
+            return await Task.FromResult(true);
         }
 
         void SetupInvestmentAccounts()
