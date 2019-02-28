@@ -82,6 +82,12 @@ namespace dalexFDA
             MainPage = new CustomNav();
         }
 
+        public void StartDashboard()
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<DashboardViewModel>();
+            StartFlow(page);
+        }
+
         public void StartElectronicFundTransfer()
         {
             var page = FreshPageModelResolver.ResolvePageModel<DepositPaymentViewModel>();
@@ -96,7 +102,7 @@ namespace dalexFDA
 
         public void StartAccountStatements()
         {
-            var page = FreshPageModelResolver.ResolvePageModel<DashboardViewModel>();
+            var page = FreshPageModelResolver.ResolvePageModel<AccountStatementsViewModel>();
             StartFlow(page);
         }
 

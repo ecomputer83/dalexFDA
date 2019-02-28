@@ -25,6 +25,7 @@ namespace dalexFDA
         public string UserAddress { get; set; }
 
         //commands
+        public Command Dashboard { get; private set; }
         public Command MakeDeposit { get; private set; }
         public Command ElectronicFundTransfer { get; private set; }
         public Command ManualBankDeposit { get; private set; }
@@ -50,6 +51,7 @@ namespace dalexFDA
             this.SessionService = SessionService;
 
             //setup commands
+            Dashboard = new Command(async () => await ExecuteDashboard());
             MakeDeposit = new Command(async () => await ExecuteMakeDeposit());
             ElectronicFundTransfer = new Command(async () => await ExecuteElectronicFundTransfer());
             ManualBankDeposit = new Command(async () => await ExecuteManualBankDeposit());
@@ -75,6 +77,18 @@ namespace dalexFDA
                 IsUserAccountActive = SessionService.CurrentUser.Status == UserAccountStatus.Active;
                 IsMakeDepositOpen = false;
                 PhotoSource = SessionService.CurrentUser?.PhotoUrl;
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private async Task ExecuteDashboard()
+        {
+            try
+            {
+                AppService.StartManualBankDeposit();
             }
             catch (Exception ex)
             {

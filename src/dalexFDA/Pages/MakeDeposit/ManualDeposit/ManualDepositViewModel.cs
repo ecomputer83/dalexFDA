@@ -17,7 +17,7 @@ namespace dalexFDA
         readonly IInvestmentService IInvestmentService;
         readonly IUserDialogs Dialog;
 
-        readonly ILookupService DepositService;
+        readonly ILookupService LookupService;
 
         public bool IsSuccessful { get; set; }
         public bool IsNotSuccesful { get { return !IsSuccessful; } }
@@ -63,14 +63,14 @@ namespace dalexFDA
         private const string security_answer_error_message = "Please enter the answer to the question.";
         private const string wrong_security_answer_error_message = "Incorrect answer. Please try again";
 
-        public ManualDepositViewModel(IErrorManager ErrorManager, ILookupService DepositService, ISession SessionService, IInvestmentService IInvestmentService, 
+        public ManualDepositViewModel(IErrorManager ErrorManager, ILookupService LookupService, ISession SessionService, IInvestmentService IInvestmentService, 
                                     IUserDialogs Dialog)
         {
             this.ErrorManager = ErrorManager;
             this.SessionService = SessionService;
             this.IInvestmentService = IInvestmentService;
             this.Dialog = Dialog;
-            this.DepositService = DepositService;
+            this.LookupService = LookupService;
 
             Negotiate = new Command(async () => await ExecuteNegotiate());
             Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
@@ -82,7 +82,7 @@ namespace dalexFDA
 
             try
             {
-                var banks = await DepositService.GetBanks();
+                var banks = await LookupService.GetBanks();
                 Banks = banks.ToList();
 
                 Duration = "0";
@@ -186,7 +186,7 @@ namespace dalexFDA
                 }
             }
 
-            return SecurityAnswerHasError || DurationHasError;
+            return SecurityAnswerHasError || BankHasError || TellerNumberHasError || DurationHasError;
         }
     }
 }

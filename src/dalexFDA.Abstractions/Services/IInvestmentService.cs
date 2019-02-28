@@ -13,6 +13,8 @@ namespace dalexFDA.Abstractions
         Task<bool> RolloverInvestment(RolloverInvestmentRequest request);
         Task<bool> DepositManualInvestment(InvestmentManualDeposit request);
         Task<bool> DepositEInvestment(ETransferRequest request);
+        Task<bool> RequestAccountStatement(AccountStatementRequest request);
+        Task<bool> UpdateContactInfo(ContactRequest request);
         Task<TransactionHistory> GetTransactionHistory();
     }
 }

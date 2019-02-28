@@ -36,6 +36,7 @@
                 </StackLayout>
                 <ScrollView Grid.Row="1" Padding="0">
                     <StackLayout>
+                        <local:MenuItem Text="Dashboard" Command="{Binding Dashboard}" Icon="res:images.icon-copy" />
                         <local:MenuItem Text="Make Deposit" HasSubItem="true" IsVisible="{Binding IsUserAccountActive}" IsOpen="{Binding IsMakeDepositOpen}" Command="{Binding MakeDeposit}" Icon="res:images.icon-payment" />
                         <local:SubMenuItem Text="Electronic Fund Transfer" IsVisible="{Binding IsMakeDepositOpen}" Command="{Binding ElectronicFundTransfer}" Icon="res:images.icon-payment" />
                         <local:SubMenuItem Text="Manual Bank Deposit" IsVisible="{Binding IsMakeDepositOpen}" Command="{Binding ManualBankDeposit}" Icon="res:images.icon-transfer" />
