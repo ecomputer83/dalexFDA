@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="dalexFDA.AccountStatementsPage"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Account Statement Request" Style="{StaticResource TitleLabel}" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <ScrollView IsVisible="{Binding IsNotSuccesful}">
+                <StackLayout Spacing="8">
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
+                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Bold}" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+
+                    <local:FormDatePicker Label="Start Date" Date="{Binding StartDate}" Name="StartDate"
+                            HasError="{Binding StartDateHasError}" ErrorMessage="{Binding StartDateErrorMessage}" Margin="32,0,32,6"
+                        />
+                    <local:FormDatePicker Label="End Date" Date="{Binding EndDate}" Name="EndDate"
+                            HasError="{Binding EndDateHasError}" ErrorMessage="{Binding EndDateErrorMessage}" Margin="32,0,32,6"
+                        />
+                    <local:FormPicker Label="Delivery Mode" ItemsSource="{Binding DeliveryModes}" SelectedIndex="{Binding SelectedDeliveryModeIndex}" Name="DeliveryMode" Placeholder="Please select a delivery mode"
+                            HasError="{Binding DeliveryModeHasError}" ErrorMessage="{Binding DeliveryModeErrorMessage}" Margin="32,0,32,6"
+                        />
+
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
+                        <Label Text="Security Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+
+                    <Label Text="Security Question" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="32,0" />
+                    <Label Text="{Binding SecurityQuestion}" TextColor="{StaticResource Liver}" FontFamily="{StaticResource Roboto-Regular}" FontSize="16" Margin="32,0,32,6"  />
+
+                    <local:FormEntry Text="{Binding SecurityAnswer}" HasError="{Binding SecurityAnswerHasError}" ErrorMessage="{Binding SecurityAnswerErrorMessage}" 
+                            Margin="32,0" Name="SecurityAnswer" Label="Answer"
+                        />
+                    <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
+                </StackLayout>
+            </ScrollView>
+
+            <Button Text="SUBMIT REQUEST" Style="{StaticResource PrimaryButton}" Command="{Binding Submit}" Margin="16" VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -5,6 +5,7 @@ namespace dalexFDA.Abstractions
     {
         object CurrentNavigation { get; set; }
         void StartMainFlow();
+        void StartDashboard();
         void StartElectronicFundTransfer();
         void StartManualBankDeposit();
         void StartAccountStatements();

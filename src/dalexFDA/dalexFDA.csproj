@@ -37,7 +37,6 @@
     <Folder Include="Custom\Menu\" />
     <Folder Include="Pages\Signup\" />
     <Folder Include="Pages\Security\Login\" />
-    <Folder Include="Pages\General\" />
     <Folder Include="Pages\General\Dashboard\" />
     <Folder Include="Pages\General\LeftNav\" />
     <Folder Include="Custom\Pages\" />
@@ -159,6 +158,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Custom\Buttons\CustomButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\General\AccountStatements\AccountStatementsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\General\SuccessMessage\SuccessMessagePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Profile\MyProfile\MyProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Profile\UpdateContactInfo\UpdateContactInfoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Investment\AccountSummary\AccountSummaryPage.xaml">

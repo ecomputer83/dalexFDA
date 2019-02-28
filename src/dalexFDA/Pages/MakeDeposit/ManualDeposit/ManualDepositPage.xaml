@@ -7,7 +7,7 @@
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
-            <Label Text="Manual Deposit" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+            <Label Text="Statement Request" FontSize="20" Style="{StaticResource TitleLabel}" />
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>

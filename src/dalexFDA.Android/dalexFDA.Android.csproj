@@ -19,7 +19,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidKeyStore>true</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Users\hp\AppData\Local\Xamarin\Mono for Android\Keystore\codeware\codeware.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyStore>C:\sandbox\dalexFDA\src\dalexFDA.Android\codeware\codeware.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>password</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>codeware</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>password</AndroidSigningKeyPass>
