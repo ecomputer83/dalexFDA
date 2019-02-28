@@ -21,6 +21,22 @@ namespace dalexFDA.Abstractions
         public string SecurityAnswer { get; set; }
     }
 
+    public class StatementRequest
+    {
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string DeliveryMode { get; set; }
+        public string SecurityAnswer { get; set; }
+    }
+
+    public class ContactChangeRequest
+    {
+        public int RequestType { get; set; }
+        public string NewValue { get; set; }
+        public string OldValue { get; set; }
+        public string SecurityAnswer { get; set; }
+    }
+
     public class InvestmentManualDeposit
     {
         public DateTime DepositDate { get; set; }

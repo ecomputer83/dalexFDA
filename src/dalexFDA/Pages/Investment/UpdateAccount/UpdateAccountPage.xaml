@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="dalexFDA.UpdateAccountPage"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
+             xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="Contact Change Request" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+
+            <ScrollView IsVisible="{Binding IsNotSuccesful}">
+                <StackLayout Spacing="8">
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
+                        <Label Text="Request Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+                    <local:FormPicker Label="Contact Type" ItemsSource="{Binding RequestType}" SelectedIndex="{Binding SelectedRequestTypeIndex}" Name="RequestType" Placeholder="Request Type"
+                            HasError="{Binding RequestTypeHasError}" ErrorMessage="{Binding RequestTypeErrorMessage}" Margin="32,0,32,6">
+                        <local:FormPicker.Behaviors>
+                            <behaviors:EventHandlerBehavior  EventName="ItemSelected">
+                                <behaviors:InvokeCommandAction Command="{Binding PickedChangedCommand}"
+                                       Converter="{StaticResource SelectedltemArgsToBinding}" />
+                            </behaviors:EventHandlerBehavior>
+                        </local:FormPicker.Behaviors>
+                    </local:FormPicker>
+                    <local:FormEntry Label="{Binding OldLabel}" Text="{Binding OldValue}" IsEnabled="false" HorizontalTextAlignment="End" 
+                            EntryColor="{StaticResource GrayBoro}" Margin="32,0,32,6"
+                        />
+                    <local:FormEntry Label="{Binding NewLabel}" Text="{Binding NewValue}" HasError="{Binding NewValueHasError}" ErrorMessage="{Binding NewValueErrorMessage}" 
+                            Margin="32,0,32,6" IsNumeric="true" Name="NewValue"
+                        />
+
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
+                        <Label Text="Security Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+
+                    <Label Text="Security Question" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="32,0" />
+                    <Label Text="{Binding SecurityQuestion}" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" Margin="32,0,32,6" />
+
+                    <local:FormEntry Label="Answer" Text="{Binding SecurityAnswer}" HasError="{Binding SecurityAnswerHasError}" ErrorMessage="{Binding SecurityAnswerErrorMessage}" 
+                            Margin="32,0" Name="SecurityAnswer" 
+                        />
+
+                    <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout IsVisible="{Binding IsSuccessful}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <svg:SvgImage Svg="res:images.icon-success" ColorMapping="000000=6D9B36" WidthRequest="70" HorizontalOptions="Center" />
+                <Label Text="Transaction Successful!" TextColor="{StaticResource PalmLeaf}" FontSize="20" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            </StackLayout>
+
+            <Button IsVisible="{Binding IsNotSuccesful}" Text="NEGOTIATE TRANSACTION" Style="{StaticResource PrimaryButton}" Command="{Binding Negotiate}" Margin="16,2,16,8" 
+                    VerticalOptions="EndAndExpand" 
+                />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

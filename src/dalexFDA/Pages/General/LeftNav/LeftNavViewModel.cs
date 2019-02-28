@@ -26,6 +26,7 @@ namespace dalexFDA
 
         //commands
         public Command MakeDeposit { get; private set; }
+        public Command Dashboard { get; private set; }
         public Command ElectronicFundTransfer { get; private set; }
         public Command ManualBankDeposit { get; private set; }
         public Command AccountStatements { get; private set; }
@@ -51,6 +52,7 @@ namespace dalexFDA
 
             //setup commands
             MakeDeposit = new Command(async () => await ExecuteMakeDeposit());
+            Dashboard = new Command(async () => await ExecuteDashboard());
             ElectronicFundTransfer = new Command(async () => await ExecuteElectronicFundTransfer());
             ManualBankDeposit = new Command(async () => await ExecuteManualBankDeposit());
             AccountStatements = new Command(async () => await ExecuteAccountStatements());
@@ -130,6 +132,18 @@ namespace dalexFDA
             }
         }
 
+        private async Task ExecuteDashboard()
+        {
+            try
+            {
+                AppService.StartDashboard();
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
         private async Task ExecuteTransactionHistory()
         {
             try
@@ -158,7 +172,7 @@ namespace dalexFDA
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("Update Contact Info", "Coming Soon", "OK");
+                AppService.StartContactChange();
             }
             catch (Exception ex)
             {

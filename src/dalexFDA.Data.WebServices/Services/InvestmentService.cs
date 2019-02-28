@@ -70,5 +70,21 @@ namespace dalexFDA.Data.WebServices
 
             return response;
         }
+
+        public async Task<bool> PostStatement(StatementRequest request)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.StatementEntry(request);
+
+            return response;
+        }
+
+        public async Task<bool> UpdateContact(ContactChangeRequest request)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.ContactEntry(request);
+
+            return response;
+        }
     }
 }

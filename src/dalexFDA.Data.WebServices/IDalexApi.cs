@@ -74,6 +74,12 @@ namespace dalexFDA.Data.WebServices
         [Post("/api/Investment/EDeposit")]
         Task<bool> EDeposit([Body(BodySerializationMethod.Json)]ETransferRequest request);
 
+        [Post("/api/Investment/StatementEntry")]
+        Task<bool> StatementEntry([Body(BodySerializationMethod.Json)]StatementRequest request);
+
+        [Post("/api/Investment/ContactEntry")]
+        Task<bool> ContactEntry([Body(BodySerializationMethod.Json)]ContactChangeRequest request);
+
         #endregion
 
     }

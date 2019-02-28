@@ -4,12 +4,12 @@
         "iOS": "a69ceaa0-edc5-4d2a-b3d0-0ff7d4eed8ad",
         "Droid": "65f4e4fc-6ad1-4986-9863-7307e64df684"
     },
-    "Push": {
-        "appId": "sbc-playbook",
-        "permission": "org.second.lead.permission.C2D_MESSAGE",
-        "projectId": "718865935004",
-        "key": "AIzaSyC_nnpVP-I-bCP1x0Z2l9fbmVfJmfZiRZ4"
-    },
+  "Push": {
+    "appId": "sbc-playbook",
+    "permission": "org.second.lead.permission.C2D_MESSAGE",
+    "projectId": "dalexfda",
+    "key": "AIzaSyCXOeukqmSWdVWU4iFtyYtq1kmDnSnN7co"
+  },
   "Mock": {
     "enabled": "false",
     "displayUnitTests": "false"
