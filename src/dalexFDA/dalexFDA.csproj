@@ -70,6 +70,7 @@
     <ProjectReference Include="..\dalexFDA.Data.WebServices\dalexFDA.Data.WebServices.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Images\icon-add-circle.svg" />
     <None Remove="Images\icon-down-arrow.svg" />
     <None Remove="Images\icon-add.svg" />
     <None Remove="Images\icon-home.svg" />
@@ -107,6 +108,7 @@
     <EmbeddedResource Remove="Pages\Signup\AuthenticationWelcome\AuthenticationWelcomePage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\icon-add-circle.svg" />
     <EmbeddedResource Include="Images\icon-home.svg" />
     <EmbeddedResource Include="Images\icon-success.svg" />
     <EmbeddedResource Include="Images\icon-down-arrow.svg" />

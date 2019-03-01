@@ -7,6 +7,7 @@ using System.Linq;
 using Acr.UserDialogs;
 using dalexFDA.Abstractions;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace dalexFDA
 {
@@ -52,6 +53,7 @@ namespace dalexFDA
         private const string contact_type_error_message = "Please select a contact type.";
         private const string new_phone_error_message = "Please enter a phone number.";
         private const string new_email_error_message = "Please provide a valid email address.";
+        private const string invalid_email_address_error_message = "Please enter a valid email address.";
         private const string security_answer_error_message = "Please enter the answer to the question.";
         private const string wrong_security_answer_error_message = "Incorrect answer. Please try again";
 
@@ -191,9 +193,23 @@ namespace dalexFDA
         {
             ContactTypeHasError = SelectedContactType == null;
             ContactTypeErrorMessage = contact_type_error_message;
+            
+            if (SelectedContactType.Code == RequestType.Phone)
+            {
+                NewValueTextHasError = string.IsNullOrEmpty(NewValueText);
+                NewValueTextErrorMessage = new_phone_error_message;
+            }
+            else
+            {
+                NewValueTextHasError = string.IsNullOrEmpty(NewValueText);
+                NewValueTextErrorMessage = new_phone_error_message;
 
-            NewValueTextHasError = string.IsNullOrEmpty(NewValueText);
-            NewValueTextErrorMessage = SelectedContactType.Code == RequestType.Phone.ToString() ? new_phone_error_message : new_email_error_message;
+                if (!NewValueTextHasError)
+                {
+                    NewValueTextHasError = !ValidateEmail(NewValueText);
+                    NewValueTextErrorMessage = invalid_email_address_error_message;
+                }
+            }
 
             SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
             SecurityAnswerErrorMessage = security_answer_error_message;
@@ -208,6 +224,13 @@ namespace dalexFDA
             }
 
             return NewValueTextHasError || SecurityAnswerHasError || ContactTypeHasError;
+        }
+
+        private bool ValidateEmail(string email)
+        {
+            return Regex.IsMatch(email,
+                                         @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
+                                         RegexOptions.IgnoreCase);
         }
     }
 }

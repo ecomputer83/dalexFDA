@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="dalexFDA.MyProfilePage"
 		     xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
              BackgroundColor="{StaticResource OffWhite2}">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
@@ -15,11 +16,13 @@
                 <AbsoluteLayout WidthRequest="120" HeightRequest="120" HorizontalOptions="Center" Margin="0,12,0,0">
                     <!--portrait holo -->
                     <circle:CircleImage WidthRequest="120" HeightRequest="120" HorizontalOptions="Center" BorderColor="{StaticResource PalmLeaf}" BorderThickness="1" Aspect="AspectFill" />
-                    <!--actual profile picture -->
+                    <!--actual profile picture --> 
                     <circle:CircleImage WidthRequest="112" HeightRequest="112" HorizontalOptions="Center" BorderThickness="0" Aspect="AspectFill" Source="{Binding Profile.PhotoUrl}" AbsoluteLayout.LayoutBounds="4,4,112,112" />
+                    <svg:SvgImage Svg="res:images.icon-add-circle" ColorMapping="000000=6D9B36" WidthRequest="20" HorizontalOptions="Center" AbsoluteLayout.LayoutBounds="110,50,20,20" Command="{Binding ChangePhoto}" />
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangePhoto}" />
+                    </AbsoluteLayout.GestureRecognizers>
                 </AbsoluteLayout>
-
-                <Button Text="Change Picture" HorizontalOptions="Center" Style="{StaticResource PrimaryButton}" Margin="16,0" Command="{Binding ChangePhoto}" />
 
                 <Label  Text="{Binding DisplayName}" TextColor="{StaticResource Liver}" FontFamily="{StaticResource Roboto-Bold}"
 					    FontSize="20" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,-6,0,4"
