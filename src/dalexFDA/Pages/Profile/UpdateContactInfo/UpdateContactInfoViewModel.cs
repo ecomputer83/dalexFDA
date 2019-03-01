@@ -178,6 +178,7 @@ namespace dalexFDA
                 case "ContactType":
                     ContactTypeHasError = SelectedContactType == null;
                     ContactTypeErrorMessage = contact_type_error_message;
+                    NewValueTextHasError = false;
                     break;
                 case "NewValue":
                     NewValueTextHasError = false;
@@ -202,7 +203,7 @@ namespace dalexFDA
             else
             {
                 NewValueTextHasError = string.IsNullOrEmpty(NewValueText);
-                NewValueTextErrorMessage = new_phone_error_message;
+                NewValueTextErrorMessage = new_email_error_message;
 
                 if (!NewValueTextHasError)
                 {

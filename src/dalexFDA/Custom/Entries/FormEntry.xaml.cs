@@ -476,6 +476,9 @@ namespace dalexFDA
                 if (this.BindingContext is ResetPinViewModel resetPinViewModel)
                     resetPinViewModel.Validate.Execute(nav);
 
+                if (this.BindingContext is UpdateContactInfoViewModel updateContactInfoViewModel)
+                    updateContactInfoViewModel.Validate.Execute(nav);
+
                 if (ShouldFormat)
                 {
                     if (sender is Entry entry)
