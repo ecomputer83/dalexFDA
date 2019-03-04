@@ -5,7 +5,11 @@
              xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
-            <Label Text="Make Deposit - Fund Transfer" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+            <Label Text="Make Deposit - Fund Transfer" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" >
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="20" />
+                </Label.FontSize>
+            </Label>
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>

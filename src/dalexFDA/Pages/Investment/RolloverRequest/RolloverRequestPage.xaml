@@ -6,7 +6,11 @@
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
-            <Label Text="Rollover Request" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+            <Label Text="Rollover Request" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center">
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="20" />
+                </Label.FontSize>
+            </Label>
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
