@@ -55,6 +55,7 @@
     <Folder Include="Pages\Signup\ConfirmAccount\" />
     <Folder Include="Extensions\" />
     <Folder Include="Pages\TransactionHistory\" />
+    <Folder Include="Pages\Signup\Welcome\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="XamSvg.Shared">
@@ -174,9 +175,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Profile\UpdateContactInfo\UpdateContactInfoPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Investment\AccountSummary\AccountSummaryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Investment\UpdateAccount\UpdateAccountPage.xaml">

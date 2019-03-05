@@ -132,6 +132,21 @@
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
             </Style>
+            
+            <Style x:Key="PagerActiveButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+                <Setter Property="WidthRequest" Value="10" />
+                <Setter Property="HeightRequest" Value="10" />
+                <Setter Property="BorderRadius" Value="5" />
+            </Style>
+            <Style x:Key="PagerInactiveButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="WidthRequest" Value="10" />
+                <Setter Property="HeightRequest" Value="10" />
+                <Setter Property="BorderColor" Value="White" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderRadius" Value="5" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

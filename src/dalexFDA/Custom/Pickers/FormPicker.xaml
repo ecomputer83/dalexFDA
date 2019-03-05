@@ -8,8 +8,8 @@
     <ContentView.Content>
         <StackLayout Spacing="2">
             <Label x:Name="label" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="0,0,0,6" />
-            <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}">
-                <StackLayout x:Name="innerContainer" BackgroundColor="{StaticResource White}" Orientation="Horizontal" Margin="1">
+            <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}" HorizontalOptions="FillAndExpand">
+                <StackLayout x:Name="innerContainer" BackgroundColor="{StaticResource White}" Orientation="Horizontal" Margin="1" HorizontalOptions="FillAndExpand">
                     <local:CustomPicker x:Name="picker" HorizontalOptions="FillAndExpand" SelectedIndexChanged="Handle_SelectedIndexChanged" 
                            FontFamily="{StaticResource Roboto-Regular}" TextColor="{StaticResource Liver}" ItemDisplayBinding="{Binding Name}" Margin="8,0">
                         <local:CustomPicker.HeightRequest>

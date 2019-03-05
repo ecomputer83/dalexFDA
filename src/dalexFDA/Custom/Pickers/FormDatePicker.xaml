@@ -8,7 +8,7 @@
     <ContentView.Content>
         <StackLayout Spacing="2">
             <Label x:Name="label" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="0,0,0,6" />
-            <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}">
+            <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}" HorizontalOptions="FillAndExpand">
                 <StackLayout x:Name="innerContainer" BackgroundColor="{StaticResource White}" Orientation="Horizontal" Margin="1">
                     <local:CustomDatePicker x:Name="datePicker" Date="{x:Static system:DateTime.Today}" Format="dd - MMM - yyyy" Margin="8,0" TextColor="{StaticResource Liver}" 
                             HorizontalOptions="FillAndExpand" DateSelected="Handle_DateSelected" FontFamily="{StaticResource Roboto-Regular}"

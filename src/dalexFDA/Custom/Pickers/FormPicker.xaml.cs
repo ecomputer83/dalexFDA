@@ -269,7 +269,7 @@ namespace dalexFDA
                     updateContactInfoViewModel.ContactTypeChanged.Execute(null);
                 }
 
-                if (this.BindingContext is AccountSummaryViewModel accountSummaryViewModel)
+                if (this.BindingContext is AccountStatementsViewModel accountSummaryViewModel)
                 {
                     accountSummaryViewModel.Validate.Execute(null);
                 }

@@ -68,6 +68,7 @@ namespace dalexFDA
                 DeliveryModes = await LookupService.GetDeliveryModes();
                 SelectedDeliveryModeIndex = 0;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
+                StartDate = EndDate = DateTime.Today;
             }
             catch (Exception ex)
             {

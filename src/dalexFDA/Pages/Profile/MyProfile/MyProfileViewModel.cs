@@ -43,7 +43,7 @@ namespace dalexFDA
 
             try
             {
-                using (Dialog.Loading("Gettng info..."))
+                using (Dialog.Loading("Please wait..."))
                 {
                     Profile = await AccountService.GetUser();
                     DisplayName = Profile != null ? Profile.Name : "";
