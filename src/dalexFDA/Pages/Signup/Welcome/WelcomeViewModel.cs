@@ -72,21 +72,21 @@ namespace dalexFDA
                 {
                     Id=1,
                     Header="Control Your Investments",
-                    Image="logo.png",
+                    Image="CollectInvestment.png",
                     Detail="360 degree view of how your investments are performing along with other useful info"
                 },
                 new WelcomeItem
                 {
                     Id=2,
                     Header="Best Interest Rates",
-                    Image="logo.png",
+                    Image="Report.png",
                     Detail="We offer the best interest rates in Africa. Our portfolio speaks much about it."
                 },
                 new WelcomeItem
                 {
                     Id=3,
                     Header="Real-time Reports",
-                    Image="logo.png",
+                    Image="Realtime.png",
                     Detail="Get instant notification on every update on your investments right on your phone."
                 }
             };

@@ -230,5 +230,8 @@
     <BundleResource Include="Resources\Roboto-Medium.ttf" />
     <BundleResource Include="Resources\Roboto-Regular.ttf" />
     <BundleResource Include="Resources\Roboto-Thin.ttf" />
+    <BundleResource Include="Resources\CollectInvestment.png" />
+    <BundleResource Include="Resources\Realtime.png" />
+    <BundleResource Include="Resources\Report.png" />
   </ItemGroup>
 </Project>

@@ -63,12 +63,14 @@ namespace dalexFDA
             }
             else
             {
-                page = FreshPageModelResolver.ResolvePageModel<LoginViewModel>();
+                page = FreshPageModelResolver.ResolvePageModel<WelcomeViewModel>();
             }
 
 
-            var container = new CustomFreshNavigationContainer(page);
-            container.BarTextColor = Color.White;
+            var container = new CustomFreshNavigationContainer(page)
+            {
+                BarTextColor = Color.White
+            };
 
             CurrentNavigation = container.Navigation;
 

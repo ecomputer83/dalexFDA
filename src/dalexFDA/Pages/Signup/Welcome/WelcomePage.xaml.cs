@@ -25,23 +25,37 @@ namespace dalexFDA
             {
                 if (e.SelectedItem is WelcomeItem item)
                 {
-                    pagerdot1.Style = Application.Current.Resources["PagerInactiveButton"] as Style;
-                    pagerdot2.Style = pagerdot1.Style;
-                    pagerdot3.Style = pagerdot1.Style;
-
                     switch (item.Id)
                     {
                         case 1:
-                            pagerdot1.Style = Application.Current.Resources["PagerActiveButton"] as Style;
+                            pagerdot1.BackgroundColor = Color.White;
+                            pagerdot1.BorderColor = Color.White;
+                            pagerdot2.BackgroundColor = Color.Transparent;
+                            pagerdot2.BorderColor = Color.White;
+                            pagerdot3.BackgroundColor = Color.Transparent;
+                            pagerdot3.BorderColor = Color.White;
                             container.BackgroundColor = (Color)Application.Current.Resources["PalmLeaf"];
+                            skipLabel.Text = "SKIP";
                             break;
                         case 2:
-                            pagerdot2.Style = Application.Current.Resources["PagerActiveButton"] as Style;
+                            pagerdot1.BackgroundColor = Color.White;
+                            pagerdot1.BorderColor = Color.White;
+                            pagerdot2.BackgroundColor = Color.White;
+                            pagerdot2.BorderColor = Color.White;
+                            pagerdot3.BackgroundColor = Color.Transparent;
+                            pagerdot3.BorderColor = Color.White;
                             container.BackgroundColor = Color.FromHex("#3185FC");
+                            skipLabel.Text = "SKIP";
                             break;
                         case 3:
-                            pagerdot3.Style = Application.Current.Resources["PagerActiveButton"] as Style;
+                            pagerdot1.BackgroundColor = Color.White;
+                            pagerdot1.BorderColor = Color.White;
+                            pagerdot2.BackgroundColor = Color.White;
+                            pagerdot2.BorderColor = Color.White;
+                            pagerdot3.BackgroundColor = Color.White;
+                            pagerdot3.BorderColor = Color.White;
                             container.BackgroundColor = Color.FromHex("#F9DC5C");
+                            skipLabel.Text = "NEXT";
                             break;
                     }
                 }
@@ -49,27 +63,6 @@ namespace dalexFDA
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-            }
-        }
-
-        void HandleNext_Tapped(object sender, System.EventArgs e)
-        {
-            try
-            {
-                if (items.Position < 2)
-                {
-                    items.Position++;
-                }
-                model.CancelAutomaticPaging = true;
-                if (items.Position == 2)
-                {
-                    //NextButton.IsVisible = SkipButton.IsVisible = false;
-                    //GetStartedButton.IsVisible = LoginButton.IsVisible = true;
-                }
-            }
-            catch (Exception ex)
-            {
-
             }
         }
 
@@ -152,6 +145,7 @@ namespace dalexFDA
             {
                 items.Position = 2;
                 model.CancelAutomaticPaging = true;
+                model.SkipCommand.Execute(null);
             }
             catch (Exception ex)
             {
