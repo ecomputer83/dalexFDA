@@ -7,7 +7,11 @@
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
-            <Label Text="Statement Request" FontSize="20" Style="{StaticResource TitleLabel}" />
+            <Label Text="Manual Deposit" Style="{StaticResource TitleLabel}">
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="20" />
+                </Label.FontSize>
+            </Label>
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>

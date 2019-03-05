@@ -30,8 +30,16 @@
                     </AbsoluteLayout>
                     <StackLayout Spacing="4" VerticalOptions="CenterAndExpand">
                         <Label Text="{Binding UserFullName}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" />
-                        <Label Text="{Binding UserAddress}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" />
-                        <Label Text="{Binding ClientID}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                        <Label Text="{Binding UserAddress}" TextColor="{StaticResource Liver}" FontFamily="{StaticResource Roboto-Regular}">
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double" Android="12" iOS="16" />
+                            </Label.FontSize>
+                        </Label>
+                        <Label Text="{Binding ClientID}" TextColor="{StaticResource Liver}" FontFamily="{StaticResource Roboto-Medium}" >
+                            <Label.FontSize>
+                                <OnPlatform x:TypeArguments="x:Double" Android="14" iOS="16" />
+                            </Label.FontSize>
+                        </Label>
                     </StackLayout>
                 </StackLayout>
                 <ScrollView Grid.Row="1" Padding="0">

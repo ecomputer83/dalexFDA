@@ -7,7 +7,11 @@
              BackgroundColor="{StaticResource OffWhite2}">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
-            <Label Text="My Profile Information" FontSize="20" Style="{StaticResource TitleLabel}" />
+            <Label Text="My Profile Information" Style="{StaticResource TitleLabel}" >
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="20" />
+                </Label.FontSize>
+            </Label>
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>

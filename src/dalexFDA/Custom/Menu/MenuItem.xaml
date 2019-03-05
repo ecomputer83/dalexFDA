@@ -7,9 +7,13 @@
     <ContentView.Content>
         <StackLayout Spacing="8">
             <StackLayout Padding="32,0,32,0" Orientation="Horizontal" Spacing="22" HeightRequest="40">
-                <svg:SvgImage x:Name="icon" Svg="" WidthRequest="22" HeightRequest="22" VerticalOptions="Center" ColorMapping="000000=FFFFFF"  />
-                <Label x:Name="button" Text="Something" TextColor="#FFF" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" VerticalOptions="Center" BackgroundColor="Transparent"  />
-                <svg:SvgImage x:Name="caret" IsVisible="false" InputTransparent="true" Svg="" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="EndAndExpand" ColorMapping="000000=FFFFFF" />
+                <svg:SvgImage x:Name="icon" Svg="" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" ColorMapping="000000=FFFFFF"  />
+                <Label x:Name="button" Text="Something" TextColor="#FFF" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" VerticalOptions="Center" BackgroundColor="Transparent"  >
+                    <Label.FontSize>
+                        <OnPlatform x:TypeArguments="x:Double" Android="14" iOS="16" />
+                    </Label.FontSize>
+                </Label>
+                <svg:SvgImage x:Name="caret" IsVisible="false" InputTransparent="true" Svg="" WidthRequest="18" VerticalOptions="Center" HorizontalOptions="EndAndExpand" ColorMapping="000000=FFFFFF" />
             </StackLayout>
             <BoxView HeightRequest="1" BackgroundColor="{StaticResource PastelGray}" />
         </StackLayout>

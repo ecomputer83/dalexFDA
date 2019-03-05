@@ -4,7 +4,11 @@
              x:Class="dalexFDA.InvestmentDetailsPage">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">
-            <Label Text="Investment Details" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" />
+            <Label Text="Investment Details" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center" >
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="20" />
+                </Label.FontSize>
+            </Label>
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
