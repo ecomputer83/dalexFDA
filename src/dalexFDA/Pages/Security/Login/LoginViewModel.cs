@@ -18,6 +18,7 @@ namespace dalexFDA
         readonly IAccountService AccountService;
         readonly IUserDialogs Dialog;
         readonly ISession SessionService;
+        readonly ISetting SettingService;
 
         //commands
         public Command Login { get; private set; }
@@ -54,7 +55,7 @@ namespace dalexFDA
         private const string pin_error_message = "Please enter a PIN.";
 
         public LoginViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog,
-            IAuthenticationService AuthService, IAccountService AccountService, ISession SessionService)
+            IAuthenticationService AuthService, IAccountService AccountService, ISession SessionService, ISetting SettingService)
         {
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
@@ -62,6 +63,7 @@ namespace dalexFDA
             this.AuthService = AuthService;
             this.AccountService = AccountService;
             this.SessionService = SessionService;
+            this.SettingService = SettingService;
 
             Login = new Command(async () => await ExecuteLogin());
             ResetPin = new Command(async () => await ExecuteResetPin());
@@ -105,12 +107,20 @@ namespace dalexFDA
                     if (response != null)
                     {
                         SessionService.Token = response.access_token;
-
-                        var user = await AccountService.GetUser();
-                        if (user != null)
+                        if (response.PhoneConfirmation == "0" && response.EmailConfirmation == "0")
                         {
-                            SessionService.CurrentUser = user;
-                            AppService.StartMainFlow();
+                            var nav = new ConfirmAccountViewModel.Nav { Phone = FullPhoneNumber, type = "isToken" };
+                            await CoreMethods.PushPageModel<ConfirmAccountViewModel>(nav, true);
+                        }
+                        else
+                        {
+                            var user = await AccountService.GetUser();
+                            if (user != null)
+                            {
+                                SessionService.CurrentUser = user;
+                                SettingService.isFirstTime = false;
+                                AppService.StartMainFlow();
+                            }
                         }
                     }
                     else

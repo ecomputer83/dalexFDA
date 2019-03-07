@@ -58,6 +58,13 @@ namespace dalexFDA.Data.WebServices
             }
         }
 
+        public async Task<KYCApplication> GetApplication()
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            return await service.GetApplication();
+
+        }
+
         public async Task<User> GetUserByPhoneNumber(string phoneNumber)
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
@@ -111,12 +118,12 @@ namespace dalexFDA.Data.WebServices
             return response;
         }
 
-        public async Task<bool> ResetPin(ResetPinRequest request)
+        public async Task ResetPin(ResetPinRequest request)
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
-            var response = await service.ResetPassword(request);
+            await service.ResetPassword(request);
 
-            return response;
+            //return response;
         }
     }
 }

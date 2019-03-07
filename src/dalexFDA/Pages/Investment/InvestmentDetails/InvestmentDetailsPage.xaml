@@ -44,7 +44,7 @@
 
                 <ContentView Grid.Row="1" Grid.RowSpan="2" BackgroundColor="{Binding StatusColor}" Margin="0,2" HorizontalOptions="Center" HeightRequest="60">
                     <ContentView Margin="2" BackgroundColor="#FFF" Padding="16,8">
-                        <Label Text="{Binding Investment.Days, StringFormat='{0:F0} DAYS MORE'}" TextColor="{Binding StatusColor}" FontSize="24" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                        <Label Text="{Binding Investment.RemainDays, StringFormat='{0:F0} DAYS MORE'}" TextColor="{Binding StatusColor}" FontSize="24" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
                     </ContentView>
                 </ContentView>
             </Grid>

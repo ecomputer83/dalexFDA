@@ -118,6 +118,18 @@ namespace dalexFDA
             }
         }
 
+        public bool isFirstTime
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("isNotFirstTime", true);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("isNotFirstTime", value);
+            }
+        }
+
         public void StoreAndGenerateAppID()
         {
             if (string.IsNullOrEmpty(AppID))

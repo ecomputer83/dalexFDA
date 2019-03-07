@@ -7,8 +7,8 @@ namespace dalexFDA.Abstractions
     public class RedeemInvestmentRequest
     {
         public string InvestmentId { get; set; }
-        public double RedemptionAmount { get; set; }
-        public double ReinvestmentAmount { get; set; }
+        public long RedemptionAmount { get; set; }
+        public long ReinvestmentAmount { get; set; }
         public int Duration { get; set; }
         public string SecurityAnswer { get; set; }
     }
@@ -16,7 +16,7 @@ namespace dalexFDA.Abstractions
     public class RolloverInvestmentRequest
     {
         public string InvestmentId { get; set; }
-        public double ReinvestmentAmount { get; set; }
+        public long ReinvestmentAmount { get; set; }
         public int Duration { get; set; }
         public string SecurityAnswer { get; set; }
     }
@@ -40,10 +40,10 @@ namespace dalexFDA.Abstractions
     public class InvestmentManualDeposit
     {
         public DateTime DepositDate { get; set; }
-        public double DepositAmount { get; set; }
+        public long DepositAmount { get; set; }
         public string BankName { get; set; }
         public string chequeNumber { get; set; }
-        public double InvestmentAmount { get; set; }
+        public long InvestmentAmount { get; set; }
         public int Duration { get; set; }
         public string SecurityAnswer { get; set; }
     }
@@ -51,9 +51,9 @@ namespace dalexFDA.Abstractions
     public class InvestmentEDeposit
     {
         public DateTime DepositDate { get; set; }
-        public double DepositAmount { get; set; }
+        public long DepositAmount { get; set; }
         public string PaymentReference { get; set; }
-        public double InvestmentAmount { get; set; }
+        public long InvestmentAmount { get; set; }
         public int Duration { get; set; }
         public string SecurityAnswer { get; set; }
     }

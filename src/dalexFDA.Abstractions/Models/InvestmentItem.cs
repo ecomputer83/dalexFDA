@@ -11,6 +11,7 @@ namespace dalexFDA.Abstractions
         public DateTime StartDate { get; set; }
         public double Principal { get; set; }
         public string Days { get; set; }
+        public string RemainDays { get; set; }
         public string Rate { get; set; }
         public double Maturity { get; set; }
         public string CertificateNumber { get; set; }

@@ -93,7 +93,7 @@ namespace dalexFDA
                             NewPassword = PIN,
                             ConfirmPassword = PIN
                         };
-                        var response = await AccountService.ResetPin(request);
+                        await AccountService.ResetPin(request);
 
                         var nav = new ConfirmAccountViewModel.Nav { Phone = FullPhoneNumber };
                         await CoreMethods.PushPageModel<ConfirmAccountViewModel>(nav, true);

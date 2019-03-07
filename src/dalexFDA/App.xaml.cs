@@ -33,7 +33,7 @@ namespace dalexFDA
 
             RegisterServices();
             InitializeComponent();
-            StartApp();
+            StartApp(Settings.isFirstTime);
         }
 
         protected override void OnStart()
@@ -53,7 +53,7 @@ namespace dalexFDA
             // Handle when your app resumes
         }
 
-        public void StartApp()
+        public void StartApp(bool firstTime)
         {
             Page page;
 
@@ -63,7 +63,14 @@ namespace dalexFDA
             }
             else
             {
-                page = FreshPageModelResolver.ResolvePageModel<WelcomeViewModel>();
+                if (firstTime)
+                {
+                    page = FreshPageModelResolver.ResolvePageModel<WelcomeViewModel>();
+                }
+                else
+                {
+                    page = FreshPageModelResolver.ResolvePageModel<LoginViewModel>();
+                }
             }
 
 
@@ -129,7 +136,7 @@ namespace dalexFDA
 
         public void Logout()
         {
-            StartApp();
+            StartApp(false);
         }
 
         private void StartFlow(Page page)

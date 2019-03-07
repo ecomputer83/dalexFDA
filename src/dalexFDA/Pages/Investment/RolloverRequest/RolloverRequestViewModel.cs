@@ -89,7 +89,7 @@ namespace dalexFDA
                     var request = new RolloverInvestmentRequest
                     {
                         InvestmentId = Investment.Id,
-                        ReinvestmentAmount = ReinvestmentAmount,
+                        ReinvestmentAmount = (long)ReinvestmentAmount,
                         Duration = Convert.ToInt32(NewDuration),
                         SecurityAnswer = SecurityAnswer
                     };

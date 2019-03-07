@@ -109,7 +109,7 @@ namespace dalexFDA
         {
             try
             {
-                Device.StartTimer(TimeSpan.FromSeconds(3), HandleAutomaticPaging);
+                Device.StartTimer(TimeSpan.FromSeconds(5), HandleAutomaticPaging);
             }
             catch (Exception ex)
             {

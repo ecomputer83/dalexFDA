@@ -34,7 +34,7 @@ namespace dalexFDA
             }
         }
             
-        public bool IsStatusActive { get { return Investment?.Days != "0"; } }
+        public bool IsStatusActive { get { return Investment?.RemainDays != "0"; } }
         public string AccountName { get; set; }
 
         public Command ViewCertificate { get; set; }

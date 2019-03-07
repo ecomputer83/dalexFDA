@@ -39,5 +39,7 @@ namespace dalexFDA.Abstractions
     public class AuthorizedAccount
     {
         public string access_token { get; set; }
+        public string PhoneConfirmation { get; set; }
+        public string EmailConfirmation { get; set; }
     }
 }

@@ -10,11 +10,11 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
-                <RowDefinition Height="14" />
+                <RowDefinition Height="20" />
                 <RowDefinition Height="22" />
                 <RowDefinition Height="2" />
                 <RowDefinition Height="18" />
-                <RowDefinition Height="16" />
+                <RowDefinition Height="22" />
             </Grid.RowDefinitions>
 
             <Label x:Name="number" Grid.Row="0" Grid.Column="0" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" TextDecorations="Underline" TextColor="{StaticResource PalmLeaf}" />

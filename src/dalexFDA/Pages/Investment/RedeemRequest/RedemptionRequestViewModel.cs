@@ -100,8 +100,8 @@ namespace dalexFDA
                     var request = new RedeemInvestmentRequest
                     {
                         InvestmentId = Investment.Id,
-                        RedemptionAmount = RedemptionAmount,
-                        ReinvestmentAmount = ReinvestmentAmount,
+                        RedemptionAmount = (long)RedemptionAmount,
+                        ReinvestmentAmount = (long)ReinvestmentAmount,
                         Duration = Convert.ToInt32(NewDuration),
                         SecurityAnswer = SecurityAnswer
                     };

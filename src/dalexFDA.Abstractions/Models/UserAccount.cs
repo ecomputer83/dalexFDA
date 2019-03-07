@@ -24,4 +24,14 @@ namespace dalexFDA.Abstractions
         public string PlaceOfBirth { get; set; }
         public DateTime ExpiryDateOfId { get; set; }
     }
+
+    public class KYCApplication
+    {
+        public string No { get; set; }
+        public string Name { get; set; }
+        public string Title { get; set; }
+        public string Address { get; set; }
+        public string Phone_No { get; set; }
+        public string Application_Status { get; set; }
+    }
 }

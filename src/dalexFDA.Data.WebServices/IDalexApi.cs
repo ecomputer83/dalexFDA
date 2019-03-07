@@ -20,7 +20,7 @@ namespace dalexFDA.Data.WebServices
         Task<bool> ConfirmAccount(string PhoneNumber, string token);
 
         [Post("/api/Account/SetPassword")]
-        Task<bool> ResetPassword(ResetPinRequest request);
+        Task ResetPassword(ResetPinRequest request);
 
         #endregion
 
@@ -36,6 +36,9 @@ namespace dalexFDA.Data.WebServices
 
         [Get("/api/Account/GetUser")]
         Task<UserAccount> GetUser();
+
+        [Get("/api/Account/GetApplication")]
+        Task<KYCApplication> GetApplication();
 
         [Get("/api/Account/GetAccount")]
         Task<User> GetUserByPhoneNumber(string PhoneNumber);

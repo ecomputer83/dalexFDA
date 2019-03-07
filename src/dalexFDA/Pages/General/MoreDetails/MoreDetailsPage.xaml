@@ -5,7 +5,11 @@
              BackgroundColor="{StaticResource OffWhite2}">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center" Orientation="Horizontal">
-            <Label Text="{Binding Title}" Style="{StaticResource TitleLabel}" />
+            <Label Text="{Binding Title}"  Style="{StaticResource TitleLabel}" >
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="18" />
+                </Label.FontSize>
+            </Label>
             <Button x:Name="closeButton" Text="Close" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Style="{StaticResource OutlineWhiteButton}" Margin="16,0" Clicked="Handle_Close" />
         </StackLayout>
     </NavigationPage.TitleView>

@@ -106,10 +106,10 @@ namespace dalexFDA
                     var request = new InvestmentManualDeposit
                     {
                         DepositDate = TransactionDate,
-                        DepositAmount = Deposit,
+                        DepositAmount = (long)Deposit,
                         BankName = SelectedBank?.Name,
                         chequeNumber = TellerNumber,
-                        InvestmentAmount = InvestmentAmount,
+                        InvestmentAmount = (long)InvestmentAmount,
                         Duration = Convert.ToInt32(Duration),
                         SecurityAnswer = SecurityAnswer
                     };

@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout x:Name="container" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource PalmLeaf}">
             <StackLayout Margin="0,0,0,0" VerticalOptions="CenterAndExpand">
-                <cv:CarouselView ItemsSource="{Binding WelcomeItems}" x:Name="items" HeightRequest="400" VerticalOptions="Center" ItemSelected="Handle_ItemSelected" Margin="16,0">
+                <cv:CarouselView ItemsSource="{Binding WelcomeItems}" x:Name="items" HeightRequest="450" VerticalOptions="Center" ItemSelected="Handle_ItemSelected" Margin="16,0">
                     <cv:CarouselView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Spacing="12">

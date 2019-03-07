@@ -14,6 +14,7 @@ namespace dalexFDA
         readonly IAppService AppService;
         readonly IAccountService AccountService;
         readonly IUserDialogs Dialog;
+        readonly ISession SessionService;
 
         public string Phone { get; set; }
         public string Token { get; set; }
@@ -28,16 +29,18 @@ namespace dalexFDA
         public class Nav
         {
             public string Phone { get; set; }
+            public string type { get; set; }
         }
 
         private const string token_error_message = "Please enter the code in the SMS sent to you.";
 
-        public ConfirmAccountViewModel(IErrorManager ErrorManager, IAppService AppService, IAccountService AccountService, IUserDialogs Dialog)
+        public ConfirmAccountViewModel(IErrorManager ErrorManager, IAppService AppService, IAccountService AccountService, IUserDialogs Dialog, ISession SessionService)
         {
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
             this.AccountService = AccountService;
             this.Dialog = Dialog;
+            this.SessionService = SessionService;
 
             Confirm = new Command(async () => await ExecuteConfirm());
             Cancel = new Command(async () => await ExecuteCancel());
@@ -79,8 +82,23 @@ namespace dalexFDA
                 using (Dialog.Loading("Verifying..."))
                 {
                     var response = await AccountService.ConfirmAccount(Phone, Token);
+
                     if (response)
-                        AppService.Logout();
+                    {
+                        if (string.IsNullOrEmpty(Data.type))
+                        {
+                            AppService.Logout();
+                        }
+                        else
+                        {
+                            var user = await AccountService.GetUser();
+                            if (user != null)
+                            {
+                                SessionService.CurrentUser = user;
+                                AppService.StartMainFlow();
+                            }
+                        }
+                    }
                     else
                         await CoreMethods.DisplayAlert("Oops", "The code you entered is incorrect. Please try again", "Ok");
                 }
