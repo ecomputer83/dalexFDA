@@ -60,6 +60,32 @@ namespace dalexFDA.Droid
         {
             //FreshIOC.Container.Register<IVersion, VersionService>();
         }
+
+        public async override void OnBackPressed()
+        {
+            Acr.UserDialogs.IUserDialogs dialog = FreshIOC.Container.Resolve<Acr.UserDialogs.IUserDialogs>();
+            IAppService app = FreshIOC.Container.Resolve<IAppService>();
+            ISession session = FreshIOC.Container.Resolve<ISession>();
+
+            if (session?.CurrentUser != null)
+            {
+                if(await dialog.ConfirmAsync("Are you sure you want to log out?"))
+                {
+                    base.OnBackPressed();
+                }
+                else
+                {
+                    app.StartMainFlow();
+                }
+                
+            }
+            else
+            {
+                base.OnBackPressed();
+            }
+
+            
+        }
     }
 }
 

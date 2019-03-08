@@ -13,6 +13,17 @@ namespace dalexFDA
         public DashboardPage()
         {
             InitializeComponent();
+            
+        }
+
+        protected void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(e.NewTextValue))
+            {
+                (this.BindingContext as DashboardViewModel).CancelSearchCommand.Execute(null);
+            }
+
+
         }
 
         void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
@@ -34,8 +45,8 @@ namespace dalexFDA
 
                 //InnerSection.TranslateTo(0, 10, 40, Easing.SinOut);
                 
-                Debug.WriteLine($"Appearing InnerSection.X: {InnerSection.X}");
-                Debug.WriteLine($"Appearing InnerSection.Y: {InnerSection.Y}");
+                //Debug.WriteLine($"Appearing InnerSection.X: {InnerSection.X}");
+                //Debug.WriteLine($"Appearing InnerSection.Y: {InnerSection.Y}");
 
                 Debug.WriteLine("Cell {0} is coming onscreen", model.Investment.Id);
             }
@@ -56,8 +67,8 @@ namespace dalexFDA
 
                 //InnerSection.TranslateTo(1, 0, 30, Easing.SinOut);
 
-                Debug.WriteLine($"Disappearing InnerSection.X: {InnerSection.X}");
-                Debug.WriteLine($"Disappearing InnerSection.Y: {InnerSection.Y}");
+               // Debug.WriteLine($"Disappearing InnerSection.X: {InnerSection.X}");
+               // Debug.WriteLine($"Disappearing InnerSection.Y: {InnerSection.Y}");
 
                 Debug.WriteLine("Cell {0} is going offscreen", model.Investment.Id);
             }

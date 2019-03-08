@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using dalexFDA.Abstractions;
 using PropertyChanged;
+using System.Linq;
 
 namespace dalexFDA
 {
@@ -27,6 +28,8 @@ namespace dalexFDA
         public List<InvestmentItem> Investments { get; set; }
 
         public Command UpdateKYCAccount { get; set; }
+        public Command SearchCommand { get; set; }
+        public Command CancelSearchCommand { get; set; }
 
         public DashboardViewModel(dalexFDA.Abstractions.IErrorManager ErrorManager, Acr.UserDialogs.IUserDialogs Dialog,
                                     IInvestmentService InvestmentService, ISession SessionService)
@@ -37,6 +40,8 @@ namespace dalexFDA
             this.SessionService = SessionService;
 
             UpdateKYCAccount = new Command(async () => await ExecuteUpdateKYCAccount());
+            SearchCommand = new Command<string>(async (data) => await ExecuteSearchCommand(data));
+            CancelSearchCommand = new Command(async () => await ExecuteCancelSearchCommand());
         }
 
         public async override void Init(object initData)
@@ -90,6 +95,23 @@ namespace dalexFDA
             }
         }
 
+        public async Task<ObservableCollection<DashboardItemViewModel>> SetupItems(IEnumerable<InvestmentItem> Investments)
+        {
+            try
+            {
+                var list = new List<DashboardItemViewModel>();
+                if (Investments != null) foreach (var item in Investments) list.Add(new DashboardItemViewModel(ErrorManager, this, item));
+
+                var data = new ObservableCollection<DashboardItemViewModel>(list);
+                return await Task.FromResult(data);
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+                return null;
+            }
+        }
+
         private async Task ExecuteUpdateKYCAccount()
         {
             try
@@ -100,6 +122,53 @@ namespace dalexFDA
             {
                 await ErrorManager.DisplayErrorMessageAsync(ex);
             }
+        }
+
+        protected async Task ExecuteSearchCommand(string NewTextValue)
+        {
+
+            try
+            {
+                using (Dialog.Loading("Please wait..."))
+                {
+                    if (String.IsNullOrEmpty(NewTextValue))
+                    {
+                        InvestmentItemsSource = await SetupHistoryItems();
+                    }
+                    else
+                    {
+                        var result = Investments.Where(c =>
+                           ((!String.IsNullOrEmpty(c.AccountName)) &&
+                                   c.AccountName.ToLower().Contains(NewTextValue.ToLower())
+                                   )
+                        );
+
+                        this.InvestmentItemsSource = await SetupItems(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+
+        }
+
+        protected async Task ExecuteCancelSearchCommand()
+        {
+
+            try
+            {
+                using (Dialog.Loading("Please wait..."))
+                {
+                    InvestmentItemsSource = await SetupHistoryItems();
+                }
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+
         }
     }
 }

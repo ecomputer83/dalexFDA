@@ -35,7 +35,7 @@
 
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Account Name" TextColor="{StaticResource OffWhite3}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
-                        <Label Text="{Binding AccountName}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
+                        <Label Text="{Binding Investment.AccountName}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                     </StackLayout>
                 </StackLayout>
 

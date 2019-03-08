@@ -54,6 +54,7 @@ namespace dalexFDA
         private const string new_phone_error_message = "Please enter a phone number.";
         private const string new_email_error_message = "Please provide a valid email address.";
         private const string invalid_email_address_error_message = "Please enter a valid email address.";
+        private const string invalid_phone_address_error_message = "International code 0 is not allowed, Please use 233";
         private const string security_answer_error_message = "Please enter the answer to the question.";
         private const string wrong_security_answer_error_message = "Incorrect answer. Please try again";
 
@@ -199,6 +200,11 @@ namespace dalexFDA
             {
                 NewValueTextHasError = string.IsNullOrEmpty(NewValueText);
                 NewValueTextErrorMessage = new_phone_error_message;
+                if (!NewValueTextHasError)
+                {
+                    NewValueTextHasError = !ValidatePhone(NewValueText);
+                    NewValueTextErrorMessage = invalid_email_address_error_message;
+                }
             }
             else
             {
@@ -208,7 +214,7 @@ namespace dalexFDA
                 if (!NewValueTextHasError)
                 {
                     NewValueTextHasError = !ValidateEmail(NewValueText);
-                    NewValueTextErrorMessage = invalid_email_address_error_message;
+                    NewValueTextErrorMessage = invalid_phone_address_error_message;
                 }
             }
 
@@ -232,6 +238,11 @@ namespace dalexFDA
             return Regex.IsMatch(email,
                                          @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
                                          RegexOptions.IgnoreCase);
+        }
+
+        private bool ValidatePhone(string PhoneNo)
+        {
+            return !PhoneNo.StartsWith("0");
         }
     }
 }

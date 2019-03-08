@@ -33,8 +33,8 @@ namespace dalexFDA
                                             : (Style)Application.Current.Resources["PrimaryButton"];
             }
         }
-            
-        public bool IsStatusActive { get { return Investment?.RemainDays != "0"; } }
+        private bool isStatusActive = false;
+        public bool IsStatusActive { get { return isStatusActive; } set { isStatusActive = value; } }
         public string AccountName { get; set; }
 
         public Command ViewCertificate { get; set; }
@@ -73,7 +73,12 @@ namespace dalexFDA
                     {
                         Investment = await InvestmentService.GetInvestment(Data.Investment?.Id);
                         if (Investment == null)
+                        {
                             Investment = Data.Investment;
+                            
+                        }
+                        this.IsStatusActive = Investment?.RemainDays != "0";
+                        Investment.AccountName = (string.IsNullOrEmpty(Investment.AccountName)) ? "Self" : Investment.AccountName;
                     }
                 }
                 AccountName = SessionService?.CurrentUser?.Name;

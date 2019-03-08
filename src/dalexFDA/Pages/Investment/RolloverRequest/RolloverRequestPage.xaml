@@ -15,6 +15,8 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout Spacing="0">
+            <ScrollView>
+                <StackLayout>
             <StackLayout IsVisible="{Binding IsNotSuccesful}" Spacing="8" Padding="32,16,32,16" BackgroundColor="{StaticResource PalmLeaf}">
                 <Label Text="{Binding Investment.Id}" TextColor="{StaticResource White}" FontSize="20" FontFamily="{StaticResource Roboto-Bold}" />
                 
@@ -30,7 +32,7 @@
                 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Account Name" TextColor="{StaticResource OffWhite3}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
-                    <Label Text="{Binding AccountName}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
+                    <Label Text="{Binding Investment.AccountName}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
                 
                 <StackLayout Orientation="Horizontal">
@@ -39,8 +41,8 @@
                 </StackLayout>
             </StackLayout>
             
-            <ScrollView IsVisible="{Binding IsNotSuccesful}">
-                <StackLayout Spacing="8">
+            
+                <StackLayout Spacing="8" IsVisible="{Binding IsNotSuccesful}">
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
                         <Label Text="Request Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
                     </ContentView>
@@ -64,6 +66,7 @@
                         />
 
                     <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
+                </StackLayout>
                 </StackLayout>
             </ScrollView>
             
