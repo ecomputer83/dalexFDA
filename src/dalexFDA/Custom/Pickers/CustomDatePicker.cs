@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class CustomDatePicker : DatePicker
     {

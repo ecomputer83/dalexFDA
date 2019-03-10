@@ -33,7 +33,7 @@ namespace dalexFDA.Droid
             Bootstrap_Init(bundle);
 
             Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            LoadApplication(new dalexFDA.Core.App());
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)

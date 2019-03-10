@@ -4,7 +4,7 @@ using PropertyChanged;
 using Xamarin.Forms;
 using dalexFDA.Abstractions;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class LeftNavViewModel: BaseViewModel

@@ -10,7 +10,7 @@ using Refit;
 using Newtonsoft.Json;
 using System.Diagnostics;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class ExistingUserSignupViewModel : BaseViewModel

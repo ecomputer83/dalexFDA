@@ -5,7 +5,7 @@ using dalexFDA.Abstractions;
 using PropertyChanged;
 using Xamarin.Forms;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class ConfirmAccountViewModel : BaseViewModel

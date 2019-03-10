@@ -2,7 +2,7 @@
 using System.Linq;
 using Xamarin.Forms;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class NumericValidationBehavior : Behavior<Entry>
     {

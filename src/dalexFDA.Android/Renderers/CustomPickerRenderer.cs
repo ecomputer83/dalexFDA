@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using dalexFDA;
+using dalexFDA.Core;
 using dalexFDA.Droid;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]

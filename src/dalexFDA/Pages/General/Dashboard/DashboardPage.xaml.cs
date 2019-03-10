@@ -4,7 +4,7 @@ using System.Diagnostics;
 using Xamarin.Forms;
 using dalexFDA.Abstractions;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public partial class DashboardPage : ContentPage
     {

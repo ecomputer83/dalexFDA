@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using dalexFDA.Abstractions;
 using System.Threading.Tasks;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class DashboardItemViewModel 
     {

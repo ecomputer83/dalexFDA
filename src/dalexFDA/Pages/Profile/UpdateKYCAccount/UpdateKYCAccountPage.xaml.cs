@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
 	public partial class UpdateKYCAccountPage : ContentPage
 	{

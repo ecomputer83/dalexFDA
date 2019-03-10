@@ -4,9 +4,9 @@ using Acr.UserDialogs;
 using dalexFDA.Abstractions;
 using PropertyChanged;
 using Xamarin.Forms;
-using static dalexFDA.DashboardViewModel;
+using static dalexFDA.Core.DashboardViewModel;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class InvestmentDetailsViewModel : BaseViewModel

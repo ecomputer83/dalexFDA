@@ -10,7 +10,7 @@ namespace dalexFDA.Droid
         {
             FreshIOC.Container.Register<IFileStorageService, AndroidFileStorageService>();
 
-            dalexFDA.ContainerConfig.Load();
+            dalexFDA.Core.ContainerConfig.Load();
         }
     }
 }

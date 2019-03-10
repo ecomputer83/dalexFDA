@@ -2,7 +2,7 @@
 using System.Collections;
 using Xamarin.Forms;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public static class ItemsSourcer
     {

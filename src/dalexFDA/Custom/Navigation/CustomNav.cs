@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using FreshMvvm;
 using Xamarin.Forms;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class CustomNav : MasterDetailPage, IFreshNavigationService
     {

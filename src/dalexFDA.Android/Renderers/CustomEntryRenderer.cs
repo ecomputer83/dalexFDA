@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Android.Graphics.Drawables;
-using dalexFDA;
+using dalexFDA.Core;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using dalexFDA.Droid;

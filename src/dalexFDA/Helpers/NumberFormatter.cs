@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Globalization;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class NumberFormatter
     {

@@ -199,13 +199,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\dalexFDA\dalexFDA.csproj">
-      <Project>{B1080B86-0D06-4DDE-B3FD-D9B090FE4C29}</Project>
-      <Name>dalexFDA</Name>
-    </ProjectReference>
     <ProjectReference Include="..\dalexFDA.Abstractions\dalexFDA.Abstractions.csproj">
       <Project>{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}</Project>
       <Name>dalexFDA.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dalexFDA\dalexFDA.Core.csproj">
+      <Project>{b1080b86-0d06-4dde-b3fd-d9b090fe4c29}</Project>
+      <Name>dalexFDA.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

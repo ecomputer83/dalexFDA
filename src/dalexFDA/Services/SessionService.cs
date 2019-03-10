@@ -1,7 +1,7 @@
 ﻿using System;
 using dalexFDA.Abstractions;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class SessionService : ISession
     {

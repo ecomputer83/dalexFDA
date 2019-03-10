@@ -5,7 +5,7 @@ using PropertyChanged;
 using Xamarin.Forms;
 using Acr.UserDialogs;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class DepositInvestmentDetailsViewModel : BaseViewModel

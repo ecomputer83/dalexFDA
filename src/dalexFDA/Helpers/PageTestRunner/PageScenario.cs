@@ -1,5 +1,5 @@
 ﻿using System;
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class PageScenario
     {

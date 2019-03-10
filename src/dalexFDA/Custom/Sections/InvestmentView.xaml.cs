@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Xamarin.Forms;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public partial class InvestmentView : ContentView
     {

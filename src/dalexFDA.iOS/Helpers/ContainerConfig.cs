@@ -11,7 +11,7 @@ namespace dalexFDA.iOS
         {
             FreshIOC.Container.Register<IFileStorageService, iOSFileStorageService>();
 
-            dalexFDA.ContainerConfig.Load();
+            dalexFDA.Core.ContainerConfig.Load();
         }
     }
 }

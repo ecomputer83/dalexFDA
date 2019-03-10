@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 { 
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class UpdateAccountPage : ContentPage

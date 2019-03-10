@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 using dalexFDA.Abstractions;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class ErrorManager : IErrorManager
     {

@@ -33,7 +33,7 @@ namespace dalexFDA.Droid
         {
             base.OnElementPropertyChanged(args);
 
-            if (args.PropertyName == dalexFDA.GradientEffect.GradientColorProperty.PropertyName)
+            if (args.PropertyName == dalexFDA.Core.GradientEffect.GradientColorProperty.PropertyName)
             {
                 SetGradient();
             }
@@ -46,7 +46,7 @@ namespace dalexFDA.Droid
                 var view = Element as VisualElement;
 
                 var startColor = view.BackgroundColor;
-                var endColor = dalexFDA.GradientEffect.GetGradientColor(view);
+                var endColor = dalexFDA.Core.GradientEffect.GetGradientColor(view);
 
                 var background = GetLinearTopDownGradient(startColor.ToAndroid(), endColor.ToAndroid());
 

@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using PropertyChanged;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class UnitTestsViewModel : BaseViewModel

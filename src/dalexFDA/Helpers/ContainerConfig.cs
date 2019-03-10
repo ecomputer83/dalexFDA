@@ -4,7 +4,7 @@ using FreshMvvm;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public static class ContainerConfig
     {

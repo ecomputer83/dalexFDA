@@ -2,7 +2,7 @@
 using dalexFDA.Abstractions;
 using Newtonsoft.Json;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class ConfigurationService : IConfigurationService
     {

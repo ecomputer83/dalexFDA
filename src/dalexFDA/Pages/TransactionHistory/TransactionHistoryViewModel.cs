@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public enum TransactionHistoryTab
     {
@@ -100,27 +100,40 @@ namespace dalexFDA
 
                 if (ActiveTab == TransactionHistoryTab.Deposit)
                 {
-                    Deposits = TransactionHistory.Deposits;
-                    foreach (var item in Deposits)
-                        list.Add(new TransactionHistoryItemViewModel(this, item));
+                    Deposits = TransactionHistory?.Deposits;
+                    if (Deposits != null)
+                    {
+                        foreach (var item in Deposits)
+                            list.Add(new TransactionHistoryItemViewModel(this, item));
+                    }
                 }
                 else if (ActiveTab == TransactionHistoryTab.Rollover)
                 {
-                    Rollovers = TransactionHistory.Rollovers;
-                    foreach (var item in Rollovers)
-                        list.Add(new TransactionHistoryItemViewModel(this, item));
+                    Rollovers = TransactionHistory?.Rollovers;
+
+                    if (Rollovers != null)
+                    {
+                        foreach (var item in Rollovers)
+                            list.Add(new TransactionHistoryItemViewModel(this, item));
+                    }
                 }
                 else if (ActiveTab == TransactionHistoryTab.Redemption)
                 {
-                    Redemptions = TransactionHistory.Redemptions;
-                    foreach (var item in Redemptions)
-                        list.Add(new TransactionHistoryItemViewModel(this, item));
+                    Redemptions = TransactionHistory?.Redemptions;
+                    if (Redemptions != null)
+                    {
+                        foreach (var item in Redemptions)
+                            list.Add(new TransactionHistoryItemViewModel(this, item));
+                    }
                 }
                 else if (ActiveTab == TransactionHistoryTab.Consolidation)
                 {
-                    Consolidations = TransactionHistory.Consolidations;
-                    foreach (var item in Consolidations)
-                        list.Add(new TransactionHistoryItemViewModel(this, item));
+                    Consolidations = TransactionHistory?.Consolidations;
+                    if (Consolidations != null)
+                    {
+                        foreach (var item in Consolidations)
+                            list.Add(new TransactionHistoryItemViewModel(this, item));
+                    }
                 }
 
                 var data = new ObservableCollection<TransactionHistoryItemViewModel>(list);

@@ -7,7 +7,7 @@ using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public partial class MyAccountPopupDialog : PopupPage
     {

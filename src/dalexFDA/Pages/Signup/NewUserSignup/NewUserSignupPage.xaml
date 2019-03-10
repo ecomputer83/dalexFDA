@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="dalexFDA.NewUserSignupPage"
-             xmlns:local="clr-namespace:dalexFDA"
+             x:Class="dalexFDA.Core.NewUserSignupPage"
+             xmlns:local="clr-namespace:dalexFDA.Core"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
              xmlns:circle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              BackgroundColor="{StaticResource OffWhite2}">

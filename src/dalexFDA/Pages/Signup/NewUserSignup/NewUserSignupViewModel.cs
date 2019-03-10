@@ -10,7 +10,7 @@ using Acr.UserDialogs;
 using Refit;
 using Newtonsoft.Json;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class NewUserSignupViewModel : BaseViewModel

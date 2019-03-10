@@ -42,7 +42,7 @@ namespace dalexFDA.iOS
 
             Bootstrap_Post_Forms_Init();
 
-            LoadApplication(new App());
+            LoadApplication(new dalexFDA.Core.App());
 
             Bootstrap_Post_Forms_LoadApp();
 

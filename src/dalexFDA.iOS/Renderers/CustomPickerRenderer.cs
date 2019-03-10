@@ -1,5 +1,5 @@
 ﻿using System;
-using dalexFDA;
+using dalexFDA.Core;
 using dalexFDA.iOS;
 using Foundation;
 using UIKit;

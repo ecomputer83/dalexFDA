@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using dalexFDA;
+using dalexFDA.Core;
 using dalexFDA.Droid;
 using Android.Content;
 

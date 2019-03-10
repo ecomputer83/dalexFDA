@@ -12,7 +12,7 @@ using Plugin.Permissions.Abstractions;
 using PropertyChanged;
 using Xamarin.Forms;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class MyProfileViewModel : BaseViewModel

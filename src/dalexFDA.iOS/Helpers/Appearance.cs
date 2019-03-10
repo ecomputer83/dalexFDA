@@ -1,4 +1,5 @@
 ﻿using System;
+using dalexFDA.Core;
 using UIKit;
 using Xamarin.Forms.Platform.iOS;
 

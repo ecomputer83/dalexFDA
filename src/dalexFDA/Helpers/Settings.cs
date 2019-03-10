@@ -2,7 +2,7 @@
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 
-namespace dalexFDA.Mobile.Helpers
+namespace dalexFDA.Core.Mobile.Helpers
 {
     public static class Settings
     {

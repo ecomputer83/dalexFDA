@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="dalexFDA.DashboardPage"
-             xmlns:local="clr-namespace:dalexFDA"
+             x:Class="dalexFDA.Core.DashboardPage"
+             xmlns:local="clr-namespace:dalexFDA.Core"
              BackgroundColor="{StaticResource PalmLeaf}">
     <NavigationPage.TitleView>
         <StackLayout VerticalOptions="Center">

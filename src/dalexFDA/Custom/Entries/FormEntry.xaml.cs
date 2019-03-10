@@ -4,7 +4,7 @@ using System.Diagnostics;
 using dalexFDA.Abstractions;
 using Xamarin.Forms;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public partial class FormEntry : ContentView
     {

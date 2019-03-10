@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace  dalexFDA
+namespace  dalexFDA.Core
 {
     public partial class ComingSoonViewModel: BaseViewModel
     {

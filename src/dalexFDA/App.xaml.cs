@@ -16,7 +16,7 @@ using Plugin.Media.Abstractions;
 using Plugin.Media;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public partial class App : Application, IAppService
     {

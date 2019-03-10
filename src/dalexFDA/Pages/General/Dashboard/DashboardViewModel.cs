@@ -7,7 +7,7 @@ using dalexFDA.Abstractions;
 using PropertyChanged;
 using System.Linq;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class DashboardViewModel : BaseViewModel

@@ -5,7 +5,7 @@ using Plugin.DeviceInfo.Abstractions;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class Settings : ISetting
     {

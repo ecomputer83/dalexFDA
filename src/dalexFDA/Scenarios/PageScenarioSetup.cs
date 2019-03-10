@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     public class PageScenarioSetup
     {

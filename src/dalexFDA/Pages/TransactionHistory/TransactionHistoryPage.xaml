@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="dalexFDA.TransactionHistoryPage"
+             x:Class="dalexFDA.Core.TransactionHistoryPage"
              xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
-             xmlns:local="clr-namespace:dalexFDA"
+             xmlns:local="clr-namespace:dalexFDA.Core"
              Title="{Binding Title}"
              BackgroundColor="{StaticResource OffWhite2}">
     <ContentPage.Resources>

@@ -7,7 +7,7 @@ using Acr.UserDialogs;
 using Refit;
 using System.Diagnostics;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class LoginViewModel : BaseViewModel

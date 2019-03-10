@@ -5,7 +5,7 @@ using Xamarin.Forms;
 using dalexFDA.Abstractions;
 using Acr.UserDialogs;
 
-namespace dalexFDA
+namespace dalexFDA.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class DepositPaymentViewModel : BaseViewModel
