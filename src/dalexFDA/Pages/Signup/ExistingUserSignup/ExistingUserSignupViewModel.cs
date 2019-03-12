@@ -47,6 +47,7 @@ namespace dalexFDA
         public bool SecurityQuestionHasError { get; set; }
         public string SecurityQuestionErrorMessage { get; set; }
         public string SecurityAnswer { get; set; }
+        public string SecurityHint { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
         public string PIN { get; set; }
@@ -140,13 +141,16 @@ namespace dalexFDA
                 {
                     using (Dialog.Loading("Fetching details..."))
                     {
-                        User = await AccountService.GetUserByPhoneNumber(FullPhoneNumber);
+                        var phoneExtension = NumberFormatter.ExtractNumber(PhoneExtension);
+                        var phoneNumber = NumberFormatter.ExtractNumber(PhoneNumber);
+                        User = await AccountService.GetKYCAccountByPhoneNumber(phoneExtension, phoneNumber);
 
                         if (User != null)
                         {
                             FullName = User.Name;
                             EmailAddress = User.Email;
                             SecurityQuestion = User.SecurityQuestion;
+                            SecurityHint = User.SecurityHint;
                         }
                         else
                         {
@@ -195,9 +199,10 @@ namespace dalexFDA
                         ConfirmPassword = PIN,
                         PhoneNumber = FullPhoneNumber,
                         SecurityQuestion = SecurityQuestion,
-                        SecurityAnswer = SecurityAnswer
+                        SecurityAnswer = SecurityAnswer,
+                        SecurityHint = SecurityHint
                     };
-                    var response = await AccountService.SignupExistingUser(request);
+                    var response = await AccountService.Signup(request);
 
                     var nav = new ConfirmAccountViewModel.Nav { Phone = FullPhoneNumber };
                     await CoreMethods.PushPageModel<ConfirmAccountViewModel>(nav, true);

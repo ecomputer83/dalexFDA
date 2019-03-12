@@ -33,7 +33,7 @@ namespace dalexFDA
         public string NewDurationErrorMessage { get; set; }
 
         public string SecurityQuestion { get; set; }
-
+        public string SecurityHint { get; set; }
         public string SecurityAnswer { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
@@ -49,7 +49,7 @@ namespace dalexFDA
             public InvestmentItem Investment { get; set; }
         }
 
-        private const string redemption_amount_error_message = "";
+        private const string redemption_amount_error_message = "Redeem Amount cannot be greater than expected";
         private const string new_duration_error_message = "Please enter a valid number of days.";
         private const string security_answer_error_message = "Please enter the answer to the question.";
         private const string wrong_security_answer_error_message = "Incorrect answer. Please try again";
@@ -79,6 +79,7 @@ namespace dalexFDA
                 AccountName = SessionService?.CurrentUser?.Name;
                 RedemptionAmount = 0;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
+                SecurityHint = "Hint: " + SessionService?.CurrentUser?.SecurityHint;
                 IsNotFirstRun = true;
             }
             catch (Exception ex)
@@ -100,8 +101,8 @@ namespace dalexFDA
                     var request = new RedeemInvestmentRequest
                     {
                         InvestmentId = Investment.Id,
-                        RedemptionAmount = (long)RedemptionAmount,
-                        ReinvestmentAmount = (long)ReinvestmentAmount,
+                        RedemptionAmount = RedemptionAmount,
+                        ReinvestmentAmount = ReinvestmentAmount,
                         Duration = Convert.ToInt32(NewDuration),
                         SecurityAnswer = SecurityAnswer
                     };
@@ -148,6 +149,9 @@ namespace dalexFDA
 
         public bool PerformValidation()
         {
+            RedemptionAmountHasError = RedemptionAmount > Investment.Redemption;
+            RedemptionAmountErrorMessage = redemption_amount_error_message;
+
             NewDurationHasError = NewDuration <= 0;
             NewDurationErrorMessage = new_duration_error_message;
 
@@ -163,7 +167,7 @@ namespace dalexFDA
                 }
             }
 
-            return SecurityAnswerHasError || NewDurationHasError;
+            return SecurityAnswerHasError || NewDurationHasError || RedemptionAmountHasError;
         }
     }
 }

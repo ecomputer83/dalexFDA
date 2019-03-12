@@ -51,7 +51,7 @@
                     <local:FormEntry Text="{Binding SecurityAnswer}" HasError="{Binding SecurityAnswerHasError}" ErrorMessage="{Binding SecurityAnswerErrorMessage}" 
                             Margin="32,0" Name="SecurityAnswer" Label="Answer"
                         />
-                    <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
+                    <Label Text="{Binding SecurityHint}" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
                 </StackLayout>
             </ScrollView>
             

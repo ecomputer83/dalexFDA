@@ -6,12 +6,14 @@ using PropertyChanged;
 using Acr.UserDialogs;
 using Refit;
 using System.Diagnostics;
+using Plugin.Connectivity.Abstractions;
 
 namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
     public class LoginViewModel : BaseViewModel
     {
+        readonly IConnectivity Connectivity;
         readonly IErrorManager ErrorManager;
         readonly IAppService AppService;
         readonly IAuthenticationService AuthService;
@@ -31,6 +33,7 @@ namespace dalexFDA
         //properties
         public string AccountNumber { get; set; }
         public string Password { get; set; }
+        public bool isConnected { get; set; }
 
         public string FullPhoneNumber { get { return NumberFormatter.ExtractNumber(PhoneExtension + PhoneNumber); } }
         public string PhoneNumber { get; set; }
@@ -55,8 +58,9 @@ namespace dalexFDA
         private const string pin_error_message = "Please enter a PIN.";
 
         public LoginViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog,
-            IAuthenticationService AuthService, IAccountService AccountService, ISession SessionService, ISetting SettingService)
+            IAuthenticationService AuthService, IAccountService AccountService, ISession SessionService, ISetting SettingService, IConnectivity connectivity)
         {
+            this.Connectivity = connectivity;
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
             this.Dialog = Dialog;
@@ -82,6 +86,12 @@ namespace dalexFDA
                 //PhoneExtension = "+234";
                 //PhoneNumber = "7037509734";
                 //PIN = "1234";
+
+                isConnected = Connectivity.IsConnected;
+                if (!Connectivity.IsConnected)
+                {
+                    throw new Exception("No internet connection, Please connect to internet");
+                }
             }
             catch (Exception ex)
             {

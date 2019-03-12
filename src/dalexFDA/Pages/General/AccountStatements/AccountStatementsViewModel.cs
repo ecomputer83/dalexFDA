@@ -34,7 +34,7 @@ namespace dalexFDA
         public string DeliveryModeErrorMessage { get; set; }
 
         public string SecurityQuestion { get; set; }
-
+        public string SecurityHint { get; set; }
         public string SecurityAnswer { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
@@ -68,6 +68,7 @@ namespace dalexFDA
                 DeliveryModes = await LookupService.GetDeliveryModes();
                 SelectedDeliveryModeIndex = 0;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
+                SecurityHint = "Hint: " + SessionService?.CurrentUser?.SecurityHint;
                 StartDate = EndDate = DateTime.Today;
             }
             catch (Exception ex)

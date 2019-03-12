@@ -37,6 +37,7 @@ namespace dalexFDA
         public string NewValueTextErrorMessage { get; set; }
 
         public string SecurityQuestion { get; set; }
+        public string SecurityHint { get; set; }
         public string SecurityAnswer { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
@@ -82,6 +83,7 @@ namespace dalexFDA
                 ContactTypes = await LookupService.GetContactTypes();
                 SelectedContactTypeIndex = 0;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
+                SecurityHint = "Hint: " + SessionService?.CurrentUser?.SecurityHint;
             }
             catch (Exception ex)
             {

@@ -32,7 +32,7 @@
                             HasError="{Binding BankHasError}" ErrorMessage="{Binding BankErrorMessage}" Margin="32,0,32,6"
                         />                        
                     <local:FormEntry Label="Teller/Cheque Number" Text="{Binding TellerNumber}" Name="TellerNumber" Placeholder="ADC123221"
-                             HasError="{Binding TellerNumberHasError}" ErrorMessage="{Binding TellerNumberErrorMessage}" Margin="32,0,32,6" 
+                             HasError="{Binding TellerNumberHasError}" ErrorMessage="{Binding TellerNumberErrorMessage}" Margin="32,0,32,6"
                         />                    
                     <local:FormEntry Label="Proposed Investment Amount [GHS]" Amount="{Binding InvestmentAmount}" Name="InvestmentAmount" 
                             ShouldFormat="true" Keyboard="Numeric" HorizontalTextAlignment="End" Margin="32,0,32,6" Placeholder="0.00"
@@ -53,7 +53,7 @@
                     <local:FormEntry Text="{Binding SecurityAnswer}" HasError="{Binding SecurityAnswerHasError}" ErrorMessage="{Binding SecurityAnswerErrorMessage}" 
                             Margin="32,0" Name="SecurityAnswer" Label="Answer"
                         />
-                    <Label Text="Hint: given by your father" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
+                    <Label Text="{Binding SecurityHint}" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
                 </StackLayout>
             </ScrollView>
             

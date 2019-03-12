@@ -50,6 +50,8 @@
                     <local:FormEntry Label="Security Answer" Text="{Binding SecurityAnswer}" HasError="{Binding SecurityAnswerHasError}" 
                             ErrorMessage="{Binding SecurityAnswerErrorMessage}" Margin="0,0,0,6" Name="SecurityAnswer" Keyboard="Default"
                         />
+                    <local:FormEntry Label="Security Hint" Text="{Binding SecurityHint}" Margin="0,0,0,6" Name="SecurityHint" Keyboard="Default"
+                        />
                     <local:FormEntry Label="4-Digit PIN" Text="{Binding PIN}" HasError="{Binding PinHasError}" ErrorMessage="{Binding PinErrorMessage}" IsPassword="true" 
                             HorizontalOptions="Start" EntryWidth="120" Margin="0,0,0,6" Keyboard="Numeric" Name="PIN" IsNumeric="true" MaxLength="4"
                         />

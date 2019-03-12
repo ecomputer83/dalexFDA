@@ -14,6 +14,8 @@ using Plugin.DeviceInfo.Abstractions;
 using Plugin.DeviceInfo;
 using Plugin.Media.Abstractions;
 using Plugin.Media;
+using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace dalexFDA
@@ -158,6 +160,7 @@ namespace dalexFDA
             FreshIOC.Container.Register<Acr.UserDialogs.IUserDialogs>(Acr.UserDialogs.UserDialogs.Instance); 
             FreshIOC.Container.Register<IDeviceInfo>(CrossDeviceInfo.Current);
             FreshIOC.Container.Register<IMedia>(CrossMedia.Current);
+            FreshIOC.Container.Register<IConnectivity>(CrossConnectivity.Current);
 
             if (Config.Mock.Enabled)
             {

@@ -81,6 +81,7 @@ namespace dalexFDA
         }
         public bool IsSecurityQuestionEnabled { get; set; }
 
+        public string SecurityHint { get; set; }
         public string SecurityAnswer { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
@@ -185,7 +186,8 @@ namespace dalexFDA
                         ConfirmPassword = PIN,
                         PhoneNumber = FullPhoneNumber,
                         SecurityQuestion = SecurityQuestion,
-                        SecurityAnswer = SecurityAnswer
+                        SecurityAnswer = SecurityAnswer,
+                        SecurityHint = SecurityHint,
                     };
                     var response = await AccountService.Signup(request);
 
@@ -259,12 +261,17 @@ namespace dalexFDA
 
                         if (User != null)
                         {
-                            FullName = User.Name;
-                            IsFullNameEnabled = string.IsNullOrEmpty(FullName);
-                            EmailAddress = User.Email;
-                            IsEmailAddressEnabled = string.IsNullOrEmpty(EmailAddress);
-                            SecurityQuestion = User.SecurityQuestion;
-                            IsSecurityQuestionEnabled = string.IsNullOrEmpty(SecurityQuestion);
+                            if (await Dialog.ConfirmAsync("User exists! Kindly register as existing user", "Existing User", "Ok"))
+                            {
+                                await CoreMethods.PopPageModel();
+                            }
+                            //FullName = User.Name;
+                            //IsFullNameEnabled = string.IsNullOrEmpty(FullName);
+                            //EmailAddress = User.Email;
+                            //IsEmailAddressEnabled = string.IsNullOrEmpty(EmailAddress);
+                            //SecurityQuestion = User.SecurityQuestion;
+                            //IsSecurityQuestionEnabled = string.IsNullOrEmpty(SecurityQuestion);
+                            //SecurityHint = User.SecurityHint;
                         }
                         else
                         {

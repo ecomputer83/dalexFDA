@@ -25,8 +25,8 @@
                                 Margin="0,0,0,6" Keyboard="Numeric" Name="PIN" IsNumeric="true" MaxLength="4"
                             />
 
-                        <Button Text="LOG IN" Style="{StaticResource PrimaryButton}" Command="{Binding Login}" Margin="0,16,0,8" />
-                        <Label Text="RESET PIN" TextColor="{StaticResource PalmLeaf}" HorizontalOptions="Center" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Margin="0,0,0,16">
+                        <Button Text="LOG IN" Style="{StaticResource PrimaryButton}" Command="{Binding Login}" Margin="0,16,0,8" IsEnabled="{Binding isConnected}" />
+                        <Label Text="RESET PIN" TextColor="{StaticResource PalmLeaf}" HorizontalOptions="Center" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Margin="0,0,0,16" IsEnabled="{Binding isConnected}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ResetPin}" />
                             </Label.GestureRecognizers>
@@ -44,7 +44,7 @@
                 </Grid.ColumnDefinitions>
 
                 <ContentView Grid.Column="0" HorizontalOptions="FillAndExpand">
-                    <Label FontSize="14" FontFamily="{StaticResource Roboto-Medium}" TextColor="#FFF" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center">
+                    <Label FontSize="14" FontFamily="{StaticResource Roboto-Medium}" TextColor="#FFF" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center" IsEnabled="{Binding isConnected}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="SIGN UP" />
@@ -61,7 +61,7 @@
                 <BoxView Grid.Column="1" WidthRequest="3" BackgroundColor="#FFF" />
 
                 <ContentView Grid.Column="2" HorizontalOptions="FillAndExpand">
-                    <Label FontSize="14" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#FFF" VerticalOptions="CenterAndExpand">
+                    <Label FontSize="14" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="#FFF" VerticalOptions="CenterAndExpand" IsEnabled="{Binding isConnected}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="CREATE" />

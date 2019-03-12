@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using PropertyChanged;
 using Xamarin.Forms;
 using dalexFDA.Abstractions;
+using Plugin.Connectivity.Abstractions;
 
 namespace dalexFDA
 {
@@ -14,6 +15,7 @@ namespace dalexFDA
         readonly Acr.UserDialogs.IUserDialogs Dialog;
         readonly ISetting Setting;
         readonly ISession SessionService;
+        readonly IConnectivity Connectivity;
 
         public bool IsPhotoAvailable { get { return !string.IsNullOrEmpty(PhotoSource); } }
         public bool IsPhotoNotAvailable { get { return !IsPhotoAvailable; } }
@@ -38,12 +40,12 @@ namespace dalexFDA
         public Command MyProfile { get; private set; }
         public Command Logout { get; private set; }
 
-        public LeftNavViewModel(IErrorManager ErrorManager, IAppService AppService, Acr.UserDialogs.IUserDialogs Dialog, ISetting setting,
+        public LeftNavViewModel(IErrorManager ErrorManager, IAppService AppService, Acr.UserDialogs.IUserDialogs Dialog, ISetting setting, IConnectivity connectivity,
                                 ISession SessionService)
         {
             //setup default services
             this.ErrorManager = ErrorManager;
-
+            this.Connectivity = connectivity;
             //setup other services
             this.AppService = AppService;
             this.Dialog = Dialog;
@@ -71,6 +73,11 @@ namespace dalexFDA
 
             try
             {
+                //isConnected = Connectivity.IsConnected;
+                if (!Connectivity.IsConnected)
+                {
+                    throw new Exception("No internet connection, Please connect to internet");
+                }
                 UserFullName = SessionService.CurrentUser.Name;
                 UserAddress = SessionService.CurrentUser.Address;
                 ClientID = "Client ID: " + SessionService.CurrentUser.ClientNo;

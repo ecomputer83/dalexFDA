@@ -27,7 +27,7 @@ namespace dalexFDA
         public string NewDurationErrorMessage { get; set; }
 
         public string SecurityQuestion { get; set; }
-
+        public string SecurityHint { get; set; }
         public string SecurityAnswer { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
@@ -69,6 +69,7 @@ namespace dalexFDA
                 }
                 AccountName = SessionService?.CurrentUser?.Name;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
+                SecurityHint = "Hint: " + SessionService?.CurrentUser?.SecurityHint;
             }
             catch (Exception ex)
             {
@@ -89,7 +90,7 @@ namespace dalexFDA
                     var request = new RolloverInvestmentRequest
                     {
                         InvestmentId = Investment.Id,
-                        ReinvestmentAmount = (long)ReinvestmentAmount,
+                        ReinvestmentAmount = ReinvestmentAmount,
                         Duration = Convert.ToInt32(NewDuration),
                         SecurityAnswer = SecurityAnswer
                     };

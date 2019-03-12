@@ -12,7 +12,7 @@ using Plugin.CurrentActivity;
 
 namespace dalexFDA.Droid
 {
-    [Activity(Label = "Dalex", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Dalex", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, WindowSoftInputMode = SoftInput.AdjustResize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         IEnvironmentConfiguration Config;
@@ -21,7 +21,7 @@ namespace dalexFDA.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            //Window.SetSoftInputMode(Android.Views.SoftInput.AdjustResize);
             base.OnCreate(bundle);
 
             ContainerConfig.Load();

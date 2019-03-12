@@ -49,14 +49,15 @@ namespace dalexFDA
         public string DurationErrorMessage { get; set; }
 
         public string SecurityQuestion { get; set; }
-
+        public string SecurityHint { get; set; }
         public string SecurityAnswer { get; set; }
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
 
         public Command Negotiate { get; set; }
         public Command Validate { get; private set; }
-        
+
+        private const string investment_amount_error_message = "Investment Amount cannot be greater than Deposit Amount";
         private const string bank_error_message = "Please select a bank.";
         private const string teller_number_error_message = "Please enter a teller / cheque number.";
         private const string duration_error_message = "Please enter a valid number of days.";
@@ -86,6 +87,7 @@ namespace dalexFDA
 
                 Duration = "0";
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
+                SecurityHint = "Hint: " + SessionService?.CurrentUser?.SecurityHint;
             }
             catch (Exception ex)
             {
@@ -106,10 +108,10 @@ namespace dalexFDA
                     var request = new InvestmentManualDeposit
                     {
                         DepositDate = TransactionDate,
-                        DepositAmount = (long)Deposit,
+                        DepositAmount = Deposit,
                         BankName = SelectedBank?.Name,
                         chequeNumber = TellerNumber,
-                        InvestmentAmount = (long)InvestmentAmount,
+                        InvestmentAmount = InvestmentAmount,
                         Duration = Convert.ToInt32(Duration),
                         SecurityAnswer = SecurityAnswer
                     };
@@ -164,6 +166,9 @@ namespace dalexFDA
         
         public bool PerformValidation()
         {
+            InvestmentAmountHasError = InvestmentAmount > Deposit;
+            InvestmentAmountErrorMessage = investment_amount_error_message;
+
             BankHasError = SelectedBank == null;
             BankErrorMessage = bank_error_message;
 
@@ -185,7 +190,7 @@ namespace dalexFDA
                 }
             }
 
-            return SecurityAnswerHasError || BankHasError || TellerNumberHasError || DurationHasError;
+            return SecurityAnswerHasError || BankHasError || TellerNumberHasError || DurationHasError || InvestmentAmountHasError;
         }
     }
 }
