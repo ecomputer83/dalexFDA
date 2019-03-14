@@ -11,5 +11,6 @@ namespace dalexFDA
 
         public string Token { get; set; }
         public User CurrentUser { get; set; }
+        public PushNotificationRequest PushNotification { get; set; }
     }
 }

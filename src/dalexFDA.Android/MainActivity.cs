@@ -9,6 +9,7 @@ using Android.OS;
 using dalexFDA.Abstractions;
 using FreshMvvm;
 using Plugin.CurrentActivity;
+using PushSharp.Client;
 
 namespace dalexFDA.Droid
 {
@@ -34,7 +35,7 @@ namespace dalexFDA.Droid
 
             Xamarin.Forms.Forms.Init(this, bundle);
             var formsApp = new App();
-            fomsApp.RegisterPushNotificationService = () => RegisterDeviceWithPushNotificationService();
+            formsApp.RegisterPushNotificationService = () => RegisterDeviceWithPushNotificationService();
             LoadApplication(formsApp);
         }
 
