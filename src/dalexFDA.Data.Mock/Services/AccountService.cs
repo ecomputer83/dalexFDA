@@ -109,8 +109,7 @@ namespace dalexFDA.Data.Mock
                 SecurityQuestion = data.SecurityQuestion,
                 SecurityAnswer = data.SecurityAnswer,
                 PhoneNumber = data.PhoneNumber,
-                PhoneNumberConfirmed = false,
-                Id = Guid.NewGuid()
+                PhoneNumberConfirmed = false
             };
             var existingUser = users.FirstOrDefault(x => x.PhoneNumber == data.PhoneNumber);
 
@@ -128,9 +127,9 @@ namespace dalexFDA.Data.Mock
         {
             users.AddRange(new List<User>
             {
-                new User { Id = new Guid("32999016-4DA7-409D-8D5E-F72736DAD00D"), Name = "John Doe", Password = "1234", Email = "john@mail.com", EmailConfirmed = true, SecurityQuestion = "What was your nickname in college?", SecurityAnswer = "Johnny", PhoneNumber = "2347034567890", Address = "123, Test Avenue, Ghana", ClientNo = "9187402" },
-                new User { Id = new Guid("25AB7E48-E45C-41D7-96FB-26FECFF25A17"), Name = "Jane Doe", Password = "1234", Email = "jane@mail.com", EmailConfirmed = false, SecurityQuestion = "What is your mother's secret?", SecurityAnswer = "Nothing", PhoneNumber = "2347134567890", Address = "234, Test Avenue, Ghana", ClientNo = "019201931" },
-                new User { Id = new Guid("2F1DF384-5E06-4C65-9549-6D7DCA13819C"), Name = "Mc Philips", Password = "0000", Email = "mcphilips@mail.com", EmailConfirmed = true, SecurityQuestion = "What is your favorite sport?", SecurityAnswer = "Football", PhoneNumber = "2347000000000", Address = "100, Test Avenue, Ghana", ClientNo = "1897092" }
+                new User { Id = "32999016-4DA7-409D-8D5E-F72736DAD00D", Name = "John Doe", Password = "1234", Email = "john@mail.com", EmailConfirmed = true, SecurityQuestion = "What was your nickname in college?", SecurityAnswer = "Johnny", PhoneNumber = "2347034567890", Address = "123, Test Avenue, Ghana", ClientNo = "9187402" },
+                new User { Id = "25AB7E48-E45C-41D7-96FB-26FECFF25A17", Name = "Jane Doe", Password = "1234", Email = "jane@mail.com", EmailConfirmed = false, SecurityQuestion = "What is your mother's secret?", SecurityAnswer = "Nothing", PhoneNumber = "2347134567890", Address = "234, Test Avenue, Ghana", ClientNo = "019201931" },
+                new User { Id = "2F1DF384-5E06-4C65-9549-6D7DCA13819C", Name = "Mc Philips", Password = "0000", Email = "mcphilips@mail.com", EmailConfirmed = true, SecurityQuestion = "What is your favorite sport?", SecurityAnswer = "Football", PhoneNumber = "2347000000000", Address = "100, Test Avenue, Ghana", ClientNo = "1897092" }
             });
         }
 

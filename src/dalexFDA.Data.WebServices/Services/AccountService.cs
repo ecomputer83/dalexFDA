@@ -37,6 +37,7 @@ namespace dalexFDA.Data.WebServices
                     PhoneNumber = response.phoneNumber,
                     SecurityQuestion = response.securityQuestion,
                     SecurityAnswer = response.securityAnswer,
+                    SecurityHint = response.securityHint,
                     Address = response.address,
                     ClientNo = response.clientNo,
                     Status = response.status,

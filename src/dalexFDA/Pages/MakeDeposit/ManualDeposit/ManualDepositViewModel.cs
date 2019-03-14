@@ -59,6 +59,7 @@ namespace dalexFDA
 
         private const string investment_amount_error_message = "Investment Amount cannot be greater than Deposit Amount";
         private const string bank_error_message = "Please select a bank.";
+        private const string transaction_error_message = "Please select a date.";
         private const string teller_number_error_message = "Please enter a teller / cheque number.";
         private const string duration_error_message = "Please enter a valid number of days.";
         private const string security_answer_error_message = "Please enter the answer to the question.";
@@ -169,6 +170,9 @@ namespace dalexFDA
             InvestmentAmountHasError = InvestmentAmount > Deposit;
             InvestmentAmountErrorMessage = investment_amount_error_message;
 
+            TransactionDateHasError = TransactionDate == default(DateTime);
+            TransactionDateErrorMessage = transaction_error_message;
+
             BankHasError = SelectedBank == null;
             BankErrorMessage = bank_error_message;
 
@@ -190,7 +194,7 @@ namespace dalexFDA
                 }
             }
 
-            return SecurityAnswerHasError || BankHasError || TellerNumberHasError || DurationHasError || InvestmentAmountHasError;
+            return SecurityAnswerHasError || BankHasError || TellerNumberHasError || DurationHasError || InvestmentAmountHasError || TransactionDateHasError;
         }
     }
 }

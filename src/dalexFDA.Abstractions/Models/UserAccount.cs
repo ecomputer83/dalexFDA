@@ -13,6 +13,7 @@ namespace dalexFDA.Abstractions
         public string address { get; set; }
         public string securityQuestion { get; set; }
         public string securityAnswer { get; set; }
+        public string securityHint { get; set; }
         public string status { get; set; }
         public string PostalAddress { get; set; }
         public DateTime BirthDate { get; set; }

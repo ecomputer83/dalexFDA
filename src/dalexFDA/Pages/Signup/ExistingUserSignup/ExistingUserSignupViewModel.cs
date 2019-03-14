@@ -197,7 +197,8 @@ namespace dalexFDA
                         Email = EmailAddress,
                         Password = PIN,
                         ConfirmPassword = PIN,
-                        PhoneNumber = FullPhoneNumber,
+                        PhoneNumber = NumberFormatter.ExtractNumber(PhoneNumber),
+                        Ext = NumberFormatter.ExtractNumber(PhoneExtension),
                         SecurityQuestion = SecurityQuestion,
                         SecurityAnswer = SecurityAnswer,
                         SecurityHint = SecurityHint

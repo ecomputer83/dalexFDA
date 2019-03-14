@@ -44,7 +44,7 @@
                     <local:FormEntry Label="Email Address" Text="{Binding EmailAddress}" HasError="{Binding EmailAddressHasError}" Name="EmailAddress"
                             ErrorMessage="{Binding EmailAddressErrorMessage}" Keyboard="Email" Margin="0,0,0,6" 
                         />
-                    <local:FormEntry Label="Security Question" Text="{Binding SecurityQuestion}" IsEnabled="false" EntryColor="{StaticResource GrayBoro}" Name="SecurityQuestion"
+                    <local:FormEntry Label="Security Question" Text="{Binding SecurityQuestion}" Name="SecurityQuestion"
                             HasError="{Binding SecurityQuestionHasError}" ErrorMessage="{Binding SecurityQuestionErrorMessage}" Margin="0,0,0,6" 
                         />
                     <local:FormEntry Label="Security Answer" Text="{Binding SecurityAnswer}" HasError="{Binding SecurityAnswerHasError}" 
