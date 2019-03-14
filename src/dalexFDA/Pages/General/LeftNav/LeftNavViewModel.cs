@@ -78,6 +78,12 @@ namespace dalexFDA
                 {
                     throw new Exception("No internet connection, Please connect to internet");
                 }
+
+                App app = Application.Current as App;
+                if (app.RegisterPushNotificationService != null)
+                {
+                    app.RegisterPushNotificationService();
+                }
                 UserFullName = SessionService.CurrentUser.Name;
                 UserAddress = SessionService.CurrentUser.Address;
                 ClientID = "Client ID: " + SessionService.CurrentUser.ClientNo;

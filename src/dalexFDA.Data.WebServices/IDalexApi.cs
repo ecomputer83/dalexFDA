@@ -37,6 +37,9 @@ namespace dalexFDA.Data.WebServices
         [Get("/api/Account/GetUser")]
         Task<UserAccount> GetUser();
 
+        [Get("api/Account/GetDevice")]
+        Task<MobileDevice> GetDevice();
+
         [Get("/api/Account/GetApplication")]
         Task<KYCApplication> GetApplication();
 
@@ -51,6 +54,9 @@ namespace dalexFDA.Data.WebServices
 
         [Post("/api/Account/UpdateKYC")]
         Task<bool> UpdateKYCAccount(KYCProfileRequest request);
+
+        [Post("/api/Account/UpdateMobileDevice")]
+        Task<bool> UpdateMobileDevice(MobileDevice request);
 
         #endregion
 

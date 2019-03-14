@@ -24,6 +24,7 @@ namespace dalexFDA
     {
         public object CurrentNavigation { get; set; }
         IEnvironmentConfiguration Config;
+        public System.Action RegisterPushNotificationService { get; set; }
 
         public App()
         {

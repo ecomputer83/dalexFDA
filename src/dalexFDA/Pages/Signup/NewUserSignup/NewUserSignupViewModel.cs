@@ -9,6 +9,7 @@ using System.Diagnostics;
 using Acr.UserDialogs;
 using Refit;
 using Newtonsoft.Json;
+using Plugin.Connectivity.Abstractions;
 
 namespace dalexFDA
 {
@@ -19,9 +20,11 @@ namespace dalexFDA
         readonly IAppService AppService;
         readonly IAccountService AccountService;
         readonly ISetting Settings;
+        readonly ISession session;
         readonly IDeviceInfo DeviceInfo;
         readonly IUserDialogs Dialog;
         readonly ILookupService LookupService;
+        readonly IConnectivity Connectivity;
 
         public bool IsAgreementSelected { get; set; }
         public bool IsRegisterEnabled { get { return !IsAgreementSelected; } }
@@ -118,8 +121,8 @@ namespace dalexFDA
         private const string inconsistent_pin_error_message = "The PINs do not match.";
         private const string empty_string = "";
 
-        public NewUserSignupViewModel(IErrorManager ErrorManager, IAppService AppService, IAccountService AccountService, ISetting Settings,
-                                        IDeviceInfo DeviceInfo, IUserDialogs Dialog, ILookupService LookupService)
+        public NewUserSignupViewModel(IErrorManager ErrorManager, IAppService AppService, IAccountService AccountService, ISetting Settings, ISession session,
+                                        IDeviceInfo DeviceInfo, IUserDialogs Dialog, ILookupService LookupService, IConnectivity connectivity)
         {
             this.ErrorManager = ErrorManager; 
             this.AppService = AppService; 
@@ -128,7 +131,8 @@ namespace dalexFDA
             this.DeviceInfo = DeviceInfo;
             this.Dialog = Dialog;
             this.LookupService = LookupService;
-
+            this.session = session;
+            this.Connectivity = connectivity;
             Register = new Command(async () => await ExecuteRegister());
             Cancel = new Command(async () => await ExecuteCancel());
             Agree = new Command(async () => await ExecuteAgree());
@@ -175,6 +179,10 @@ namespace dalexFDA
             {
                 if (!IsAgreementSelected) return;
                 if (PerformValidation()) return;
+                if (!Connectivity.IsConnected)
+                {
+                    throw new Exception("No internet connection, Please connect to internet");
+                }
 
                 using (Dialog.Loading("Registering..."))
                 {
@@ -189,6 +197,16 @@ namespace dalexFDA
                         SecurityQuestion = SecurityQuestion,
                         SecurityAnswer = SecurityAnswer,
                         SecurityHint = SecurityHint,
+                        MobileDevice = new MobileDevice{
+                            DeviceId = this.DeviceInfo.Id,
+                            DeviceType = DeviceInfo.Platform.ToString(),
+                            DeviceVersion = DeviceInfo.Version,
+                            DeviceVendorId = DeviceInfo.Id,
+                            DeviceModel = DeviceInfo.Model,
+                            PushNotificationId = this.session?.PushNotification?.PushNotificationID,
+                            PushNotificationAppId = this.session?.PushNotification?.PushNotificationAppID,
+                            PushNotificationService = this.session?.PushNotification?.PushNotificationService
+                        }
                     };
                     var response = await AccountService.Signup(request);
 

@@ -23,6 +23,15 @@ namespace dalexFDA.Data.WebServices
             return response;
         }
 
+        public async Task<MobileDevice> GetDevice(){
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            return await service.GetDevice();
+        }
+
+        public async Task<bool> UpdateMobileDevice(MobileDevice device){
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            return await service.UpdateMobileDevice(device);
+        }
         public async Task<User> GetUser()
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);

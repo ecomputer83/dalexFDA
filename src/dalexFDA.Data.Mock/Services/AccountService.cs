@@ -137,5 +137,15 @@ namespace dalexFDA.Data.Mock
         {
             return Task.FromResult(new KYCApplication());
         }
+
+        public Task<MobileDevice> GetDevice()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateMobileDevice(MobileDevice device)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

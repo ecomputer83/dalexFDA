@@ -5,5 +5,6 @@ namespace dalexFDA.Abstractions
     {
         User CurrentUser { get; set; }
         string Token { get; set; }
+        PushNotificationRequest PushNotification { get; set; }
     }
 }

@@ -33,7 +33,9 @@ namespace dalexFDA.Droid
             Bootstrap_Init(bundle);
 
             Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+            var formsApp = new App();
+            fomsApp.RegisterPushNotificationService = () => RegisterDeviceWithPushNotificationService();
+            LoadApplication(formsApp);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
@@ -41,6 +43,52 @@ namespace dalexFDA.Droid
             Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
+        private void RegisterDeviceWithPushNotificationService()
+        {
+            ISetting Settings = FreshIOC.Container.Resolve<ISetting>();
+            ISession session = FreshIOC.Container.Resolve<ISession>();
+            try
+            {
+                bool registerWithServer = false;
+                //Check to ensure everything's setup right
+                PushClient.CheckDevice(this);
+                PushClient.CheckManifest(this);
+
+
+                //If it's empty, we need to register
+                if (!PushClient.IsRegistered(this))
+                {
+
+                    PushClient.Register(this, PushSharp.ClientSample.MonoForAndroid.PushHandlerBroadcastReceiver.SENDER_IDS);
+                    registerWithServer = true;
+                }
+
+                if (!registerWithServer)
+                {
+                    registerWithServer = !PushClient.IsRegisteredOnServer(this);
+                }
+
+                if (registerWithServer)
+                {
+                    Console.WriteLine("RegisterWithServer");
+                    string registrationId = PushClient.GetRegistrationId(this);
+
+                    Settings.PushNotificationID = registrationId;
+
+                    App app = Xamarin.Forms.Application.Current as App;
+                    PushNotificationRequest request = new PushNotificationRequest();
+                    request.PushNotificationService = "GCM";
+                    request.PushNotificationAppID = Config.Push.AppId;
+                    request.PushNotificationID = registrationId;
+
+                    session.PushNotification = request;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"RegisterDeviceWithPushNotificationService. Error - {ex.Message} - {ex}");
+            }
+        }
         void Bootstrap_Init(Bundle bundle)
         {
             //needs to be called before registering services on android because of acr dialog

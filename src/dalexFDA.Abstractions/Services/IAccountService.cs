@@ -14,8 +14,10 @@ namespace dalexFDA.Abstractions
         Task<User> GetKYCAccountByPhoneNumber(string phoneExtension, string phoneNumber);
         Task<User> GetUser();
         Task<KYCApplication> GetApplication();
+        Task<MobileDevice> GetDevice();
         Task<List<User>> GetUsers();
         Task<string> AddDocument(DocumentRequest request);
         Task<bool> UpdateKYCAccount(KYCProfileRequest request);
+        Task<bool> UpdateMobileDevice(MobileDevice device);
     }
 }

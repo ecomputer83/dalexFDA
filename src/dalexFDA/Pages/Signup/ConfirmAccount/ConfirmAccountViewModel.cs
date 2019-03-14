@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using dalexFDA.Abstractions;
+using Plugin.DeviceInfo.Abstractions;
 using PropertyChanged;
 using Xamarin.Forms;
 
@@ -15,6 +16,7 @@ namespace dalexFDA
         readonly IAccountService AccountService;
         readonly IUserDialogs Dialog;
         readonly ISession SessionService;
+        readonly IDeviceInfo DeviceInfo;
 
         public string Phone { get; set; }
         public string Token { get; set; }
@@ -34,14 +36,14 @@ namespace dalexFDA
 
         private const string token_error_message = "Please enter the code in the SMS sent to you.";
 
-        public ConfirmAccountViewModel(IErrorManager ErrorManager, IAppService AppService, IAccountService AccountService, IUserDialogs Dialog, ISession SessionService)
+        public ConfirmAccountViewModel(IErrorManager ErrorManager, IDeviceInfo deviceInfo, IAppService AppService, IAccountService AccountService, IUserDialogs Dialog, ISession SessionService)
         {
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
             this.AccountService = AccountService;
             this.Dialog = Dialog;
             this.SessionService = SessionService;
-
+            this.DeviceInfo = deviceInfo;
             Confirm = new Command(async () => await ExecuteConfirm());
             Cancel = new Command(async () => await ExecuteCancel());
             Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
@@ -85,6 +87,20 @@ namespace dalexFDA
 
                     if (response)
                     {
+                        var MobileDevice = new MobileDevice
+                        {
+                            DeviceId = this.DeviceInfo.Id,
+                            DeviceType = DeviceInfo.Platform.ToString(),
+                            DeviceVersion = DeviceInfo.Version,
+                            DeviceVendorId = DeviceInfo.Id,
+                            DeviceModel = DeviceInfo.Model,
+                            PushNotificationId = this.SessionService?.PushNotification?.PushNotificationID,
+                            PushNotificationAppId = this.SessionService?.PushNotification?.PushNotificationAppID,
+                            PushNotificationService = this.SessionService?.PushNotification?.PushNotificationService
+                        };
+
+                        await AccountService.UpdateMobileDevice(MobileDevice);
+
                         if (string.IsNullOrEmpty(Data.type))
                         {
                             AppService.Logout();

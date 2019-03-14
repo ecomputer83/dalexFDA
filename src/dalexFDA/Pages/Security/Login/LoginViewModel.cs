@@ -7,6 +7,7 @@ using Acr.UserDialogs;
 using Refit;
 using System.Diagnostics;
 using Plugin.Connectivity.Abstractions;
+using Plugin.DeviceInfo.Abstractions;
 
 namespace dalexFDA
 {
@@ -21,6 +22,7 @@ namespace dalexFDA
         readonly IUserDialogs Dialog;
         readonly ISession SessionService;
         readonly ISetting SettingService;
+        readonly IDeviceInfo deviceInfo;
 
         //commands
         public Command Login { get; private set; }
@@ -57,7 +59,7 @@ namespace dalexFDA
         private const string phone_number_error_message = "Please enter a phone number.";
         private const string pin_error_message = "Please enter a PIN.";
 
-        public LoginViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog,
+        public LoginViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog, IDeviceInfo DeviceInfo,
             IAuthenticationService AuthService, IAccountService AccountService, ISession SessionService, ISetting SettingService, IConnectivity connectivity)
         {
             this.Connectivity = connectivity;
@@ -68,6 +70,7 @@ namespace dalexFDA
             this.AccountService = AccountService;
             this.SessionService = SessionService;
             this.SettingService = SettingService;
+            this.deviceInfo = DeviceInfo;
 
             Login = new Command(async () => await ExecuteLogin());
             ResetPin = new Command(async () => await ExecuteResetPin());
@@ -92,6 +95,12 @@ namespace dalexFDA
                 {
                     throw new Exception("No internet connection, Please connect to internet");
                 }
+
+                App app = Application.Current as App;
+                if (app.RegisterPushNotificationService != null)
+                {
+                    app.RegisterPushNotificationService();
+                }
             }
             catch (Exception ex)
             {
@@ -104,7 +113,10 @@ namespace dalexFDA
             try
             {
                 if (PerformValidation()) return;
-
+                if (!Connectivity.IsConnected)
+                {
+                    throw new Exception("No internet connection, Please connect to internet");
+                }
                 using (Dialog.Loading("Authenticating..."))
                 {
                     var request = new LoginRequest
@@ -117,13 +129,22 @@ namespace dalexFDA
                     if (response != null)
                     {
                         SessionService.Token = response.access_token;
-                        if (response.PhoneConfirmation == "0" && response.EmailConfirmation == "0")
+
+                        var device = await AccountService.GetDevice();
+
+                        if ((response.PhoneConfirmation == "0" && response.EmailConfirmation == "0") || device.DeviceId != deviceInfo.Id)
                         {
                             var nav = new ConfirmAccountViewModel.Nav { Phone = FullPhoneNumber, type = "isToken" };
                             await CoreMethods.PushPageModel<ConfirmAccountViewModel>(nav, true);
                         }
                         else
                         {
+                            device.PushNotificationAppId = SessionService?.PushNotification?.PushNotificationAppID;
+                            device.PushNotificationId = SessionService?.PushNotification?.PushNotificationID;
+                            device.PushNotificationService = SessionService?.PushNotification?.PushNotificationService;
+
+                            await AccountService.UpdateMobileDevice(device);
+
                             var user = await AccountService.GetUser();
                             if (user != null)
                             {

@@ -11,6 +11,7 @@ namespace dalexFDA.Abstractions
         string User_email { get; set; }
         string User_phoneNmuber { get; set; }
         bool isFirstTime { get; set; }
+        string PushNotificationID { get; set; }
         void StoreAndGenerateAppID();
     }
 }
