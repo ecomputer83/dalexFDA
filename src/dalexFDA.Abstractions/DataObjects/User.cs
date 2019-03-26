@@ -34,6 +34,12 @@ namespace dalexFDA.Abstractions
         public long AccessFailedCount { get; set; }
         public string Id { get; set; }
         public string UserName { get; set; }
+
+        public string Gender { get; set; }
+        public string Occupation { get; set; }
+        public string Title { get; set; }
+        public string ContactName { get; set; }
+        public string ContactNumber { get; set; }
     }
 
     public class AuthorizedAccount

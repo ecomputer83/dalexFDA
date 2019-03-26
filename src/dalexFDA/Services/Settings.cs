@@ -130,6 +130,40 @@ namespace dalexFDA
             }
         }
 
+        public string PushNotificationID
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("push_notification_id", UserTokenDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("push_notification_id", value);
+            }
+        }
+        public string PushNotificationAppID
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("push_notification_app_id", UserTokenDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("push_notification_app_id", value);
+            }
+        }
+        public string PushNotificationService
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault("push_notification_service", UserTokenDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue("push_notification_service", value);
+            }
+        }
+
         public void StoreAndGenerateAppID()
         {
             if (string.IsNullOrEmpty(AppID))

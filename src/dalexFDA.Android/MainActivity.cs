@@ -5,11 +5,14 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Gms.Common;
 using Android.OS;
 using dalexFDA.Abstractions;
 using FreshMvvm;
 using Plugin.CurrentActivity;
-using PushSharp.Client;
+using Firebase.Iid;
+using Firebase.Messaging;
+using Firebase;
 
 namespace dalexFDA.Droid
 {
@@ -32,11 +35,13 @@ namespace dalexFDA.Droid
             Config = config;
 
             Bootstrap_Init(bundle);
-
+            
             Xamarin.Forms.Forms.Init(this, bundle);
             var formsApp = new App();
             formsApp.RegisterPushNotificationService = () => RegisterDeviceWithPushNotificationService();
             LoadApplication(formsApp);
+            FirebaseApp app = FirebaseApp.InitializeApp(Android.App.Application.Context);
+            SendRegistrationToServer(FirebaseInstanceId.Instance.Token);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
@@ -46,49 +51,9 @@ namespace dalexFDA.Droid
 
         private void RegisterDeviceWithPushNotificationService()
         {
-            ISetting Settings = FreshIOC.Container.Resolve<ISetting>();
-            ISession session = FreshIOC.Container.Resolve<ISession>();
-            try
-            {
-                bool registerWithServer = false;
-                //Check to ensure everything's setup right
-                PushClient.CheckDevice(this);
-                PushClient.CheckManifest(this);
+            if(IsPlayServicesAvailable())
+            FirebaseMessaging.Instance.SubscribeToTopic("all");
 
-
-                //If it's empty, we need to register
-                if (!PushClient.IsRegistered(this))
-                {
-
-                    PushClient.Register(this, PushSharp.ClientSample.MonoForAndroid.PushHandlerBroadcastReceiver.SENDER_IDS);
-                    registerWithServer = true;
-                }
-
-                if (!registerWithServer)
-                {
-                    registerWithServer = !PushClient.IsRegisteredOnServer(this);
-                }
-
-                if (registerWithServer)
-                {
-                    Console.WriteLine("RegisterWithServer");
-                    string registrationId = PushClient.GetRegistrationId(this);
-
-                    Settings.PushNotificationID = registrationId;
-
-                    App app = Xamarin.Forms.Application.Current as App;
-                    PushNotificationRequest request = new PushNotificationRequest();
-                    request.PushNotificationService = "GCM";
-                    request.PushNotificationAppID = Config.Push.AppId;
-                    request.PushNotificationID = registrationId;
-
-                    session.PushNotification = request;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"RegisterDeviceWithPushNotificationService. Error - {ex.Message} - {ex}");
-            }
         }
         void Bootstrap_Init(Bundle bundle)
         {
@@ -135,6 +100,47 @@ namespace dalexFDA.Droid
 
             
         }
+
+        public bool IsPlayServicesAvailable()
+        {
+            var resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
+            if (resultCode != ConnectionResult.Success)
+            {
+                if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
+                {
+                    //GoogleApiAvailability.Instance.GetErrorString(resultCode);
+                }
+                else
+                {
+                    Finish();
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+
+        void SendRegistrationToServer(string token)
+        {
+            if (!string.IsNullOrEmpty(token))
+            {
+                // Add custom implementation, as needed.
+                var configService = FreshIOC.Container.Resolve<IConfigurationService>();
+                var settingService = FreshIOC.Container.Resolve<ISetting>();
+                var config = configService.Load();
+                Config = config;
+
+                PushNotificationRequest request = new PushNotificationRequest();
+                request.PushNotificationAppID = Config.Push.AppId;
+                request.PushNotificationService = "FCM";
+                request.PushNotificationID = token;
+                settingService.PushNotificationID = request.PushNotificationID;
+                settingService.PushNotificationAppID = request.PushNotificationAppID;
+                settingService.PushNotificationService = request.PushNotificationService;
+            }
+        }
+
     }
 }
 

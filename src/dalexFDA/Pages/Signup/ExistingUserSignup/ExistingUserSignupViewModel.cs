@@ -118,7 +118,13 @@ namespace dalexFDA
                 {
                     TermsText = await LookupService.GetTermsAndConditions();
                     PrivacyPolicyText = await LookupService.GetPrivacyPolicy();
+                    App app = Application.Current as App;
+                    if (app.RegisterPushNotificationService != null)
+                    {
+                        app.RegisterPushNotificationService();
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -218,9 +224,9 @@ namespace dalexFDA
                             DeviceVersion = DeviceInfo.Version,
                             DeviceVendorId = DeviceInfo.Id,
                             DeviceModel = DeviceInfo.Model,
-                            PushNotificationId = this.session?.PushNotification?.PushNotificationID,
-                            PushNotificationAppId = this.session?.PushNotification?.PushNotificationAppID,
-                            PushNotificationService = this.session?.PushNotification?.PushNotificationService
+                            PushNotificationId = this.Settings?.PushNotificationID,
+                            PushNotificationAppId = this.Settings?.PushNotificationAppID,
+                            PushNotificationService = this.Settings?.PushNotificationService
                         }
 
                     };

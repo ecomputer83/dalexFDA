@@ -3,11 +3,10 @@ using Android.App;
 using Android.Content;
 using Android.Util;
 using PushSharp.Client;
-using Lead.Mobile;
-using Lead.Mobile.Abstractions;
-using Lead.Mobile.Droid;
-using Lead.Mobile.Abstractions.Configuration;
 using FreshMvvm;
+using dalexFDA.Abstractions;
+using dalexFDA;
+using dalexFDA.Droid;
 
 //VERY VERY VERY IMPORTANT NOTE!!!!
 // Your package name MUST NOT start with an uppercase letter.
@@ -15,40 +14,8 @@ using FreshMvvm;
 // If it does you will get a very cryptic error in logcat and it will not be obvious why you are crying!
 // So please, for the love of all that is kind on this earth, use a LOWERCASE first letter in your Package Name!!!!
 
-
-#if ENV_LOCAL
-[assembly: Permission(Name = "org.second.lead.local.permission.C2D_MESSAGE")] 
-[assembly: UsesPermission(Name = "org.second.lead.local.permission.C2D_MESSAGE")]
-#endif
-
-#if ENV_FEATURE
-[assembly: Permission(Name = "org.second.lead.feature.permission.C2D_MESSAGE")] 
-[assembly: UsesPermission(Name = "org.second.lead.feature.permission.C2D_MESSAGE")]
-#endif
-
-#if ENV_INTEGRATION
-[assembly: Permission(Name = "org.second.lead.integration.permission.C2D_MESSAGE")] 
-[assembly: UsesPermission(Name = "org.second.lead.integration.permission.C2D_MESSAGE")]
-#endif
-
-#if ENV_DEV
-[assembly: Permission(Name = "org.second.lead.dev.permission.C2D_MESSAGE")] 
-[assembly: UsesPermission(Name = "org.second.lead.dev.permission.C2D_MESSAGE")]
-#endif
-
-#if ENV_TEST
-[assembly: Permission(Name = "org.second.lead.test.permission.C2D_MESSAGE")] 
-[assembly: UsesPermission(Name = "org.second.lead.test.permission.C2D_MESSAGE")]
-#endif
-
-#if ENV_PROD
-[assembly: Permission(Name = "org.second.lead.prod.permission.C2D_MESSAGE")] 
-[assembly: UsesPermission(Name = "org.second.lead.prod.permission.C2D_MESSAGE")]
-#endif
-#if ENV_STORE
-[assembly: Permission(Name = "org.second.lead.permission.C2D_MESSAGE")] 
-[assembly: UsesPermission(Name = "org.second.lead.permission.C2D_MESSAGE")]
-#endif
+[assembly: Permission(Name = "com.codeware.dalexFDA.permission.C2D_MESSAGE")]
+[assembly: UsesPermission(Name = "com.codeware.dalexFDA.permission.C2D_MESSAGE")]
 
 [assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
 
@@ -61,47 +28,9 @@ namespace PushSharp.ClientSample.MonoForAndroid
 {
     //You must subclass this!
     [BroadcastReceiver(Permission = GCMConstants.PERMISSION_GCM_INTENTS)]
-
-#if ENV_LOCAL
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "org.second.lead.local" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "org.second.lead.local" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "org.second.lead.local" })]
-#endif
-
-#if ENV_FEATURE
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "org.second.lead.feature" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "org.second.lead.feature" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "org.second.lead.feature" })]
-#endif
-
-#if ENV_INTEGRATION
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "org.second.lead.integration" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "org.second.lead.integration" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "org.second.lead.integration" })]
-#endif
-
-#if ENV_DEV
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "org.second.lead.dev" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "org.second.lead.dev" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "org.second.lead.dev" })]
-#endif
-
-#if ENV_TEST
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "org.second.lead.test" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "org.second.lead.test" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "org.second.lead.test" })]
-#endif
-
-#if ENV_PROD
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "org.second.lead.prod" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "org.second.lead.prod" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "org.second.lead.prod" })]
-#endif
-#if ENV_STORE
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "org.second.lead" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "org.second.lead" })]
-    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "org.second.lead" })]
-#endif
+    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "com.codeware.dalexFDA" })]
+    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "com.codeware.dalexFDA" })]
+    [IntentFilter(new string[] { GCMConstants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "com.codeware.dalexFDA" })]
     public class PushHandlerBroadcastReceiver : PushHandlerBroadcastReceiverBase<PushHandlerService>
     {
         static IEnvironmentConfiguration Config = FreshIOC.Container.Resolve<IConfigurationService>().Load();
@@ -131,6 +60,7 @@ namespace PushSharp.ClientSample.MonoForAndroid
             //Settings.PushNotificationID = registrationId;           uncomment later
 
             var configService = FreshIOC.Container.Resolve<IConfigurationService>();
+            var sessionService = FreshIOC.Container.Resolve<ISession>();
             var config = configService.Load();
             Config = config;
 
@@ -138,7 +68,7 @@ namespace PushSharp.ClientSample.MonoForAndroid
             request.PushNotificationAppID = Config.Push.AppId;
             request.PushNotificationService = "GCM";
             request.PushNotificationID = registrationId;
-            app.SubmitPushNotificationID(request);
+            sessionService.PushNotification = request;
 
 
             //createNotification("PushSharp-GCM Registered...", "The device has been Registered, Tap to View!");
@@ -180,7 +110,7 @@ namespace PushSharp.ClientSample.MonoForAndroid
             }
 
 
-            createNotification("SBC Playbook", alert);
+            createNotification("Dalex FDA", alert);
         }
 
         protected override bool OnRecoverableError(Context context, string errorId)

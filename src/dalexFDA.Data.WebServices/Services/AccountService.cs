@@ -58,7 +58,12 @@ namespace dalexFDA.Data.WebServices
                     ProofOfResUtilityBill = response.ProofOfResUtilityBill,
                     Nationality = response.Nationality,
                     HomeTown = response.HomeTown,
-                    ExpiryDateOfId = response.ExpiryDateOfId
+                    ExpiryDateOfId = response.ExpiryDateOfId,
+                    Gender = response.Gender,
+                    ContactName = response.ContactName,
+                    ContactNumber = response.ContactNumber,
+                    Occupation = response.Occupation,
+                    Title = response.Title
                 };
                 return user;
             }
@@ -79,6 +84,14 @@ namespace dalexFDA.Data.WebServices
         {
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
             var response = await service.GetUserByPhoneNumber(phoneNumber);
+
+            return response;
+        }
+
+        public async Task<bool> GenerateSMSToken(string phoneNumber)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.GenerateSMSToken(phoneNumber);
 
             return response;
         }

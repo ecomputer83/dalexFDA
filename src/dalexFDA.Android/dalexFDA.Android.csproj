@@ -79,6 +79,15 @@
     <PackageReference Include="Xam.Plugin.Media">
       <Version>4.0.1.5</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Common">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Iid">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Messaging">
+      <Version>60.1142.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2" />
@@ -118,6 +127,15 @@
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>3.1.1</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Base">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Basement">
+      <Version>60.1142.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Tasks">
+      <Version>60.1142.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Effects\RemoveBorderEffect.cs" />
@@ -131,9 +149,12 @@
     <Compile Include="Services\AndroidFileStorageService.cs" />
     <Compile Include="Effects\GradientEffect.cs" />
     <Compile Include="Helpers\ContainerConfig.cs" />
+    <Compile Include="Services\FCMService.cs" />
+    <Compile Include="Services\FirebaseIIDService.cs" />
     <Compile Include="Services\PushServices.cs" />
   </ItemGroup>
   <ItemGroup>
+    <GoogleServicesJson Include="google-services.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -183,13 +204,13 @@
     <AndroidResource Include="Resources\xml\file_paths.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dalexFDA\dalexFDA.csproj">
-      <Project>{B1080B86-0D06-4DDE-B3FD-D9B090FE4C29}</Project>
-      <Name>dalexFDA</Name>
-    </ProjectReference>
     <ProjectReference Include="..\dalexFDA.Abstractions\dalexFDA.Abstractions.csproj">
       <Project>{FD3F6766-995F-44B9-8DFC-6EAE63F1AA55}</Project>
       <Name>dalexFDA.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dalexFDA\dalexFDA.csproj">
+      <Project>{b1080b86-0d06-4dde-b3fd-d9b090fe4c29}</Project>
+      <Name>dalexFDA</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

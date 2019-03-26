@@ -147,5 +147,10 @@ namespace dalexFDA.Data.Mock
         {
             throw new NotImplementedException();
         }
+
+        public Task<bool> GenerateSMSToken(string phoneNumber)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

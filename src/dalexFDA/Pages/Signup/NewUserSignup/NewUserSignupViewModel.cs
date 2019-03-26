@@ -153,6 +153,11 @@ namespace dalexFDA
                     IsFullNameEnabled = IsEmailAddressEnabled = IsSecurityQuestionEnabled = true;
                     TermsText = await LookupService.GetTermsAndConditions();
                     PrivacyPolicyText = await LookupService.GetPrivacyPolicy();
+                    App app = Application.Current as App;
+                    if (app.RegisterPushNotificationService != null)
+                    {
+                        app.RegisterPushNotificationService();
+                    }
                 }
             }
             catch (Exception ex)

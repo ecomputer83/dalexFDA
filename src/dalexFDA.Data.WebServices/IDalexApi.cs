@@ -37,7 +37,7 @@ namespace dalexFDA.Data.WebServices
         [Get("/api/Account/GetUser")]
         Task<UserAccount> GetUser();
 
-        [Get("api/Account/GetDevice")]
+        [Get("/api/Account/GetDevice")]
         Task<MobileDevice> GetDevice();
 
         [Get("/api/Account/GetApplication")]
@@ -45,6 +45,9 @@ namespace dalexFDA.Data.WebServices
 
         [Get("/api/Account/GetAccount")]
         Task<User> GetUserByPhoneNumber(string PhoneNumber);
+
+        [Post("/api/Account/GenerateSMSToken")]
+        Task<bool> GenerateSMSToken(string PhoneNumber);
 
         [Get("/api/Account/GetKYCAccount")]
         Task<User> GetKYCUserByPhoneNumber(string PhoneNumber, string ext);

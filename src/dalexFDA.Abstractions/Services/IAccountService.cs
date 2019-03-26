@@ -15,6 +15,7 @@ namespace dalexFDA.Abstractions
         Task<User> GetUser();
         Task<KYCApplication> GetApplication();
         Task<MobileDevice> GetDevice();
+        Task<bool> GenerateSMSToken(string phoneNumber);
         Task<List<User>> GetUsers();
         Task<string> AddDocument(DocumentRequest request);
         Task<bool> UpdateKYCAccount(KYCProfileRequest request);

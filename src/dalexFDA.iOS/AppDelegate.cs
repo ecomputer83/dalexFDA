@@ -1,18 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using dalexFDA.Abstractions;
 using Foundation;
 using FreshMvvm;
 using UIKit;
-
+using UserNotifications;
+using Firebase.CloudMessaging;
+using Firebase.Analytics;
 namespace dalexFDA.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IUNUserNotificationCenterDelegate
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -34,7 +34,7 @@ namespace dalexFDA.iOS
             Config = config;
 
             Bootstrap_Init();
-
+            Firebase.Core.App.Configure();
             global::Xamarin.Forms.Forms.Init();
 
             Settings = FreshIOC.Container.Resolve<ISetting>();
@@ -48,6 +48,26 @@ namespace dalexFDA.iOS
             LoadApplication(fomsApp);
 
             Bootstrap_Post_Forms_LoadApp();
+            // Register your app for remote notifications.
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+            {
+                // For iOS 10 display notification (sent via APNS)
+                UNUserNotificationCenter.Current.Delegate = this;
+
+                var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
+                UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) => {
+                    Console.WriteLine(granted);
+                });
+            }
+            else
+            {
+                // iOS 9 or before
+                var allNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound;
+                var settings = UIUserNotificationSettings.GetSettingsForTypes(allNotificationTypes, null);
+                UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+            }
+
+            UIApplication.SharedApplication.RegisterForRemoteNotifications();
 
             return base.FinishedLaunching(app, options);
         }
@@ -79,13 +99,18 @@ namespace dalexFDA.iOS
 
         public void RegisterDeviceWithPushNotificationService()
         {
+
             try
             {
-                UIUserNotificationType notificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Sound;
-                var settings = UIUserNotificationSettings.GetSettingsForTypes(notificationTypes, new NSSet(new string[] { }));
 
-                UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
-                UIApplication.SharedApplication.RegisterForRemoteNotifications();
+                Firebase.InstanceID.InstanceId.Notifications.ObserveTokenRefresh((sender, e) => {
+                    var newToken = Firebase.InstanceID.InstanceId.SharedInstance.Token;
+                    // if you want to send notification per user, use this token
+                    System.Diagnostics.Debug.WriteLine(newToken);
+
+                    connectFCM();
+                });
+                
             }
             catch (Exception ex)
             {
@@ -97,6 +122,13 @@ namespace dalexFDA.iOS
         {
             try
             {
+           //     #if DEBUG
+           //         Firebase.InstanceID.InstanceId.SharedInstance.SetApnsToken(deviceToken, Firebase.InstanceID.ApnsTokenType.Sandbox);
+           //     #endif
+           //     #if RELEASE
+			        //Firebase.InstanceID.InstanceId.SharedInstance.SetApnsToken(deviceToken, Firebase.InstanceID.ApnsTokenType.Prod);
+           //     #endif
+
                 ISession session = FreshIOC.Container.Resolve<ISession>();
                 Console.WriteLine("RegisteredForRemoteNotifications: {0}", deviceToken);
 
@@ -114,12 +146,14 @@ namespace dalexFDA.iOS
 
                     App app = Xamarin.Forms.Application.Current as App;
                     PushNotificationRequest request = new PushNotificationRequest();
-                    request.PushNotificationService = "APNS";
+                    request.PushNotificationService = "FCM";
                     request.PushNotificationAppID = Config.Push.AppId;
                     request.PushNotificationID = DeviceToken;
 
-
-                    session.PushNotification = request;
+                    Settings.PushNotificationID = request.PushNotificationID;
+                    Settings.PushNotificationAppID = request.PushNotificationAppID;
+                    Settings.PushNotificationService = request.PushNotificationService;
+                    //session.PushNotification = request;
                 }
             }
             catch (Exception ex)
@@ -134,11 +168,44 @@ namespace dalexFDA.iOS
             Console.WriteLine("ReceivedRemoteNotification");
             ProcessNotification(userInfo, false);
         }
-
+        // iOS 9 <=, fire when recieve notification foreground
         public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
-            Console.WriteLine("DidReceiveRemoteNotification");
-            ProcessNotification(userInfo, false);
+            Messaging.SharedInstance.AppDidReceiveMessage(userInfo);
+
+            // Generate custom event
+            NSString[] keys = { new NSString("Event_type") };
+            NSObject[] values = { new NSString("Recieve_Notification") };
+            var parameters = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(keys, values, keys.Length);
+
+            // Send custom event
+            Firebase.Analytics.Analytics.LogEvent("CustomEvent", parameters);
+
+            if (application.ApplicationState == UIApplicationState.Active)
+            {
+                ProcessNotification(userInfo, true);
+            }
+        }
+
+        // iOS 10, fire when recieve notification foreground
+        [Export("userNotificationCenter:willPresentNotification:withCompletionHandler:")]
+        public void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler)
+        {
+            var title = notification.Request.Content.Title;
+            var body = notification.Request.Content.Body;
+            ProcessNotification(title, body, true);
+        }
+
+        private void connectFCM()
+        {
+            Messaging.SharedInstance.Connect((error) =>
+            {
+                if (error == null)
+                {
+                    Messaging.SharedInstance.Subscribe("/topics/all");
+                }
+                System.Diagnostics.Debug.WriteLine(error != null ? "error occured" : "connect success");
+            });
         }
 
         public override void DidFailToContinueUserActivitiy(UIApplication application, string userActivityType, NSError error)
@@ -164,34 +231,59 @@ namespace dalexFDA.iOS
                 Console.WriteLine("ProcessNotification");
 
                 NSDictionary aps = options.ObjectForKey(new NSString("aps")) as NSDictionary;
-                NSDictionary custom = options.ObjectForKey(new NSString("custom")) as NSDictionary;
+                NSDictionary custom = null;
 
-                string alert = String.Empty;
-                string messageType = String.Empty;
-                string messageIncidentID = String.Empty;
+                string messageBody = String.Empty;
+                string messageTitle = String.Empty;
 
                 if (aps != null)
                 {
                     if (aps.ContainsKey(new NSString("alert")))
-                        alert = (aps[new NSString("alert")] as NSString).ToString();
+                        custom = aps[new NSString("alert")] as NSDictionary;
                 }
 
                 if (custom != null)
                 {
-                    if (custom.ContainsKey(new NSString("type")))
-                        messageType = (custom[new NSString("type")] as NSString).ToString();
+                    if (custom.ContainsKey(new NSString("body")))
+                        messageBody = (custom[new NSString("body")] as NSString).ToString();
 
-                    if (custom.ContainsKey(new NSString("id")))
-                        messageIncidentID = (custom[new NSString("id")] as NSString).ToString();
+                    if (custom.ContainsKey(new NSString("title")))
+                        messageTitle = (custom[new NSString("title")] as NSString).ToString();
                 }
 
 
                 if (!fromFinishedLaunching)
                 {
                     //Manually show an alert
-                    if (!string.IsNullOrEmpty(alert))
+                    if (!string.IsNullOrEmpty(messageBody))
                     {
-                        UIAlertView avAlert = new UIAlertView("Notification", alert, null, "OK", null);
+                        UIAlertView avAlert = new UIAlertView(messageTitle, messageBody, null, "OK", null);
+                        avAlert.Show();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                UIAlertView alert = new UIAlertView("Failed Processing Push Notification", ex.Message, null, "OK", null);
+                alert.Show();
+            }
+        }
+        void ProcessNotification(string title, string body, bool fromFinishedLaunching)
+        {
+            try
+            {
+                Console.WriteLine("ProcessNotification");
+
+                string messageBody = body;
+                string messageTitle = title;
+
+                if (!fromFinishedLaunching)
+                {
+                    //Manually show an alert
+                    if (!string.IsNullOrEmpty(messageBody))
+                    {
+                        UIAlertView avAlert = new UIAlertView(messageTitle, messageBody, null, "OK", null);
                         avAlert.Show();
                     }
                 }

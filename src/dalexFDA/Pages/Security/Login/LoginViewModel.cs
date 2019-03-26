@@ -134,17 +134,23 @@ namespace dalexFDA
 
                         if ((response.PhoneConfirmation == "0" && response.EmailConfirmation == "0") || device.DeviceId != deviceInfo.Id)
                         {
+                            if(device.DeviceId != deviceInfo.Id)
+                            {
+                                await AccountService.GenerateSMSToken(FullPhoneNumber);
+                            }
                             var nav = new ConfirmAccountViewModel.Nav { Phone = FullPhoneNumber, type = "isToken" };
                             await CoreMethods.PushPageModel<ConfirmAccountViewModel>(nav, true);
                         }
                         else
                         {
-                            device.PushNotificationAppId = SessionService?.PushNotification?.PushNotificationAppID;
-                            device.PushNotificationId = SessionService?.PushNotification?.PushNotificationID;
-                            device.PushNotificationService = SessionService?.PushNotification?.PushNotificationService;
+                            if (!string.IsNullOrEmpty(SettingService?.PushNotificationAppID))
+                            {
+                                device.PushNotificationAppId = SettingService?.PushNotificationAppID;
+                                device.PushNotificationId = SettingService?.PushNotificationID;
+                                device.PushNotificationService = SettingService?.PushNotificationService;
 
-                            await AccountService.UpdateMobileDevice(device);
-
+                                await AccountService.UpdateMobileDevice(device);
+                            }
                             var user = await AccountService.GetUser();
                             if (user != null)
                             {
@@ -162,12 +168,12 @@ namespace dalexFDA
             }
             catch(ApiException ex)
             {
-                await CoreMethods.DisplayAlert("Oops", "Invalid Phone number or password. Please try again.", "Ok");
+                await CoreMethods.DisplayAlert("Oops", "error 001 - An error occured, kindly contact administrator.", "Ok");
                 Debug.WriteLine($"{ex.Message}");
             }
             catch (Exception ex)
             {
-                await CoreMethods.DisplayAlert("Oops", "Invalid Phone number or password. Please try again.", "Ok");
+                await CoreMethods.DisplayAlert("Oops", "error 002 - An error occured, kindly contact administrator.", "Ok");
                 Debug.WriteLine($"{ex.Message}");
             }
         }

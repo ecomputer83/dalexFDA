@@ -205,7 +205,7 @@ namespace dalexFDA
                 if (!NewValueTextHasError)
                 {
                     NewValueTextHasError = !ValidatePhone(NewValueText);
-                    NewValueTextErrorMessage = invalid_email_address_error_message;
+                    NewValueTextErrorMessage = invalid_phone_address_error_message;
                 }
             }
             else
@@ -216,7 +216,7 @@ namespace dalexFDA
                 if (!NewValueTextHasError)
                 {
                     NewValueTextHasError = !ValidateEmail(NewValueText);
-                    NewValueTextErrorMessage = invalid_phone_address_error_message;
+                    NewValueTextErrorMessage = invalid_email_address_error_message;
                 }
             }
 

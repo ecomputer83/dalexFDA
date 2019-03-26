@@ -64,7 +64,7 @@
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Contact Phone Number" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
-                    <Label Text="{Binding Profile.ContactPhoneNumber}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
+                    <Label Text="{Binding Profile.ContactNumber}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
@@ -87,11 +87,11 @@
                     <Label Text="{Binding Profile.Nationality}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
 
-
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Term" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
-                    <Label Text="{Binding Investment.Days, StringFormat='{0:F0} Days'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
+                    <Label Text="Occupation" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                    <Label Text="{Binding Profile.Occupation}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

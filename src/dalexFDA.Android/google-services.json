@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "185086061728",
+    "firebase_url": "https://dalexfda.firebaseio.com",
+    "project_id": "dalexfda",
+    "storage_bucket": "dalexfda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185086061728:android:f38b13322b8c10c4",
+        "android_client_info": {
+          "package_name": "com.codeware.dalexFDA"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185086061728-sgrrtt5kc3cjpoa42k3i3psrv50fjkh2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDieiff5cc83hhw5Tyvs8BL-L1MYMS-780"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
