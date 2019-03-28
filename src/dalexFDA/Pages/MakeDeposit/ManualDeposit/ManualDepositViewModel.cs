@@ -30,9 +30,10 @@ namespace dalexFDA
         public bool DepositHasError { get; set; }
         public string DepositErrorMessage { get; set; }
 
-        public List<Lookup> Banks { get; set; }
-        public int? SelectedBankIndex { get; set; }
-        public Lookup SelectedBank => SelectedBankIndex != null ? Banks?.ToList()[SelectedBankIndex.GetValueOrDefault()] : null;
+        //public List<Lookup> Banks { get; set; }
+        //public int? SelectedBankIndex { get; set; }
+        //public Lookup SelectedBank => SelectedBankIndex != null ? Banks?.ToList()[SelectedBankIndex.GetValueOrDefault()] : null;
+        public string Bank { get; set; }
         public bool BankHasError { get; set; }
         public string BankErrorMessage { get; set; }
 
@@ -58,7 +59,7 @@ namespace dalexFDA
         public Command Validate { get; private set; }
 
         private const string investment_amount_error_message = "Investment Amount cannot be greater than Deposit Amount";
-        private const string bank_error_message = "Please select a bank.";
+        private const string bank_error_message = "Please enter a bank name.";
         private const string transaction_error_message = "Please select a date.";
         private const string teller_number_error_message = "Please enter a teller / cheque number.";
         private const string duration_error_message = "Please enter a valid number of days.";
@@ -84,7 +85,7 @@ namespace dalexFDA
 
             try
             {
-                Banks = await LookupService.GetBanks();
+                //Banks = await LookupService.GetBanks();
 
                 Duration = "0";
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
@@ -110,7 +111,7 @@ namespace dalexFDA
                     {
                         DepositDate = TransactionDate,
                         DepositAmount = Deposit,
-                        BankName = SelectedBank?.Name,
+                        BankName = Bank,
                         chequeNumber = TellerNumber,
                         InvestmentAmount = InvestmentAmount,
                         Duration = Convert.ToInt32(Duration),
@@ -147,7 +148,7 @@ namespace dalexFDA
             switch (name)
             {
                 case "Bank":
-                    BankHasError = SelectedBank == null;
+                    BankHasError = string.IsNullOrEmpty(Bank);
                     BankErrorMessage = bank_error_message;
                     break;
                 case "TellerNumber":
@@ -173,7 +174,7 @@ namespace dalexFDA
             TransactionDateHasError = TransactionDate == default(DateTime);
             TransactionDateErrorMessage = transaction_error_message;
 
-            BankHasError = SelectedBank == null;
+            BankHasError = string.IsNullOrEmpty(Bank);
             BankErrorMessage = bank_error_message;
 
             TellerNumberHasError = string.IsNullOrEmpty(TellerNumber);

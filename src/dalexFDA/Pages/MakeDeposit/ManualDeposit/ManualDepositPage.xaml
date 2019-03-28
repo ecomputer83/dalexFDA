@@ -27,10 +27,13 @@
                         />                    
                     <local:FormEntry Label="Deposit Amount [GHS]" Amount="{Binding Deposit}" Placeholder="0.00" HasError="{Binding DepositHasError}" Keyboard="Numeric"
                             ErrorMessage="{Binding DepositErrorMessage}" HorizontalTextAlignment="End" Margin="32,0,32,6" Name="Deposit" ShouldFormat="true"
-                        />                    
-                    <local:FormPicker Label="Bank" ItemsSource="{Binding Banks}" SelectedIndex="{Binding SelectedBankIndex}" Name="Bank" Placeholder="Bank Name"
+                        />
+                    <local:FormEntry Label="Bank" Text="{Binding Bank}" Placeholder="Bank Name" HasError="{Binding BankHasError}"
+                            ErrorMessage="{Binding BankErrorMessage}" Margin="32,0,32,6" Name="Bank"
+                        />
+                    <!--<local:FormPicker Label="Bank" ItemsSource="{Binding Banks}" SelectedIndex="{Binding SelectedBankIndex}" Name="Bank" Placeholder="Bank Name"
                             HasError="{Binding BankHasError}" ErrorMessage="{Binding BankErrorMessage}" Margin="32,0,32,6"
-                        />                        
+                        />-->                        
                     <local:FormEntry Label="Teller/Cheque Number" Text="{Binding TellerNumber}" Name="TellerNumber" Placeholder="ADC123221"
                              HasError="{Binding TellerNumberHasError}" ErrorMessage="{Binding TellerNumberErrorMessage}" Margin="32,0,32,6"
                         />                    

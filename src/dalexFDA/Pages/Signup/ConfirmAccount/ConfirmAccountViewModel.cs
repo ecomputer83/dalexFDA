@@ -16,6 +16,7 @@ namespace dalexFDA
         readonly IAccountService AccountService;
         readonly IUserDialogs Dialog;
         readonly ISession SessionService;
+        readonly ISetting SettingService;
         readonly IDeviceInfo DeviceInfo;
 
         public string Phone { get; set; }
@@ -36,13 +37,15 @@ namespace dalexFDA
 
         private const string token_error_message = "Please enter the code in the SMS sent to you.";
 
-        public ConfirmAccountViewModel(IErrorManager ErrorManager, IDeviceInfo deviceInfo, IAppService AppService, IAccountService AccountService, IUserDialogs Dialog, ISession SessionService)
+        public ConfirmAccountViewModel(IErrorManager ErrorManager, IDeviceInfo deviceInfo, IAppService AppService,
+             IAccountService AccountService, IUserDialogs Dialog, ISession SessionService, ISetting SettingService)
         {
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
             this.AccountService = AccountService;
             this.Dialog = Dialog;
             this.SessionService = SessionService;
+            this.SettingService = SettingService;
             this.DeviceInfo = deviceInfo;
             Confirm = new Command(async () => await ExecuteConfirm());
             Cancel = new Command(async () => await ExecuteCancel());
@@ -94,10 +97,10 @@ namespace dalexFDA
                             DeviceVersion = DeviceInfo.Version,
                             DeviceVendorId = DeviceInfo.Id,
                             DeviceModel = DeviceInfo.Model,
-                            PushNotificationId = this.SessionService?.PushNotification?.PushNotificationID,
-                            PushNotificationAppId = this.SessionService?.PushNotification?.PushNotificationAppID,
-                            PushNotificationService = this.SessionService?.PushNotification?.PushNotificationService
-                        };
+                            PushNotificationAppId = SettingService?.PushNotificationAppID,
+                            PushNotificationId = SettingService?.PushNotificationID,
+                            PushNotificationService = SettingService?.PushNotificationService
+                    };
 
                         await AccountService.UpdateMobileDevice(MobileDevice);
 

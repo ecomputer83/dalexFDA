@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIRequiredDeviceCapabilities</key>
+	<dict>
+		<key>armv7</key>
+		<true/>
+		<key>front-facing-camera</key>
+		<true/>
+	</dict>
+	<key>artistName</key>
+	<string>Dalex Finance</string>
+	<key>bundleDisplayName</key>
+	<string>DalexFDA</string>
+	<key>bundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>bundleVersion</key>
+	<string>1.0.0</string>
+	<key>copyright</key>
+	<string>© 2019 Dalex Finance.</string>
+	<key>drmVersionNumber</key>
+	<integer>0</integer>
+	<key>fileExtension</key>
+	<string>.app</string>
+	<key>gameCenterEnabled</key>
+	<false/>
+	<key>gameCenterEverEnabled</key>
+	<false/>
+	<key>genre</key>
+	<string>Business</string>
+	<key>genreId</key>
+	<integer>6014</integer>
+	<key>itemName</key>
+	<string>DalexFDA</string>
+	<key>kind</key>
+	<string>software</string>
+	<key>playlistArtistName</key>
+	<string>Dalex Finance</string>
+	<key>playlistName</key>
+	<string>DalexFDA</string>
+	<key>releaseDate</key>
+	<string>2019-03-27T03:23:10Z</string>
+	<key>s</key>
+	<integer>143441</integer>
+	<key>softwareIconNeedsShine</key>
+	<false/>
+	<key>softwareSupportedDeviceIds</key>
+	<array>
+		<integer>9</integer>
+		<integer>4</integer>
+		<integer>1</integer>
+	</array>
+	<key>softwareVersionBundleId</key>
+	<string>com.codeware.dalexFDA</string>
+	<key>versionRestrictions</key>
+	<integer>16843008</integer>
+	<key>subgenres</key>
+	<array>
+		<dict>
+			<key>genre</key>
+			<string>Business &amp; Investing</string>
+			<key>genreId</key>
+			<integer>13009</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
