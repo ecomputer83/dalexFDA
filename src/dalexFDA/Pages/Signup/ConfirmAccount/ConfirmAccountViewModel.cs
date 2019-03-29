@@ -88,22 +88,24 @@ namespace dalexFDA
                 {
                     var response = await AccountService.ConfirmAccount(Phone, Token);
 
-                    if (response && !string.IsNullOrEmpty(Data.type))
+                    if (response)
                     {
-                        var MobileDevice = new MobileDevice
+                        if (!string.IsNullOrEmpty(Data.type))
                         {
-                            DeviceId = this.DeviceInfo.Id,
-                            DeviceType = DeviceInfo.Platform.ToString(),
-                            DeviceVersion = DeviceInfo.Version,
-                            DeviceVendorId = DeviceInfo.Id,
-                            DeviceModel = DeviceInfo.Model,
-                            PushNotificationAppId = SettingService?.PushNotificationAppID,
-                            PushNotificationId = SettingService?.PushNotificationID,
-                            PushNotificationService = SettingService?.PushNotificationService
-                    };
+                            var MobileDevice = new MobileDevice
+                            {
+                                DeviceId = this.DeviceInfo.Id,
+                                DeviceType = DeviceInfo.Platform.ToString(),
+                                DeviceVersion = DeviceInfo.Version,
+                                DeviceVendorId = DeviceInfo.Id,
+                                DeviceModel = DeviceInfo.Model,
+                                PushNotificationAppId = SettingService?.PushNotificationAppID,
+                                PushNotificationId = SettingService?.PushNotificationID,
+                                PushNotificationService = SettingService?.PushNotificationService
+                            };
 
-                        await AccountService.UpdateMobileDevice(MobileDevice);
-
+                            await AccountService.UpdateMobileDevice(MobileDevice);
+                        }
                         if (string.IsNullOrEmpty(Data.type))
                         {
                             AppService.Logout();
