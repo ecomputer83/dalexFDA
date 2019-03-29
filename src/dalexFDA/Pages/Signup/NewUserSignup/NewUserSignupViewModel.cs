@@ -223,7 +223,7 @@ namespace dalexFDA
             {
                 var errorContent = JsonConvert.DeserializeObject<ErrorMessage>(ex.Content);
 
-                await CoreMethods.DisplayAlert("Oops", "An error occured. Please try again later.", "Ok");
+                await CoreMethods.DisplayAlert("Oops", "User already registered, please login.", "Ok");
 
                 Debug.WriteLine($"=======ApiException: {ex.Content}=======");
             }

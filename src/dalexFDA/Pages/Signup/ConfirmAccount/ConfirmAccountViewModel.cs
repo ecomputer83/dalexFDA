@@ -88,7 +88,7 @@ namespace dalexFDA
                 {
                     var response = await AccountService.ConfirmAccount(Phone, Token);
 
-                    if (response)
+                    if (response && !string.IsNullOrEmpty(Data.type))
                     {
                         var MobileDevice = new MobileDevice
                         {
