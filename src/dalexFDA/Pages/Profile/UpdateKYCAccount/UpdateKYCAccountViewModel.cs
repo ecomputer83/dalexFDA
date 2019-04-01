@@ -194,28 +194,35 @@ namespace dalexFDA
 
                 using (Dialog.Loading())
                 {
-                    var updateRequest = new KYCProfileRequest
+                    if (IsPassportComplete && IsEvidenceOfAddressComplete && IsValidIDCardComplete)
                     {
-                        BirthDate = DOB,
-                        PlaceOfBirth = POB,
-                        ProofOfResUtilityBill = EvidenceOfAddressID,
-                        Address = Address,
-                        HomeTown = HomeTown,
-                        PostalAddress = PostalAddress,
-                        Nationality = Nationality,
-                        CopyOfValidId = ValidIDCardID,
-                        ExpiryDateOfId = ExpiryDate
-                    };
-                    var response = await AccountService.UpdateKYCAccount(updateRequest);
+                        var updateRequest = new KYCProfileRequest
+                        {
+                            BirthDate = DOB,
+                            PlaceOfBirth = POB,
+                            ProofOfResUtilityBill = EvidenceOfAddressID,
+                            Address = Address,
+                            HomeTown = HomeTown,
+                            PostalAddress = PostalAddress,
+                            Nationality = Nationality,
+                            CopyOfValidId = ValidIDCardID,
+                            ExpiryDateOfId = ExpiryDate
+                        };
+                        var response = await AccountService.UpdateKYCAccount(updateRequest);
 
-                    if (response)
-                    {
-                        await CoreMethods.DisplayAlert("KYC Update", "Your request submitted successfully. We will get back to you shortly.", "Ok");
-                        AppService.StartAccountStatements();
-                    }     
+                        if (response)
+                        {
+                            await CoreMethods.DisplayAlert("KYC Update", "Your request submitted successfully. We will get back to you shortly.", "Ok");
+                            AppService.StartAccountStatements();
+                        }
+                        else
+                        {
+                            await CoreMethods.DisplayAlert("KYC Update", "Unable to update your account. Please try again.", "Ok");
+                        }
+                    }
                     else
                     {
-                        await CoreMethods.DisplayAlert("KYC Update", "Unable to update your account. Please try again.", "Ok");
+                        await CoreMethods.DisplayAlert("KYC Update", "All documents are expected to be uploaded before submission.", "Ok");
                     }
                 }
             }

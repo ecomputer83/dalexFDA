@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using dalexFDA.Abstractions;
+using Microsoft.AppCenter.Crashes;
 
 namespace dalexFDA
 {
@@ -18,6 +19,7 @@ namespace dalexFDA
 
         public async Task DisplayErrorMessageAsync(Exception ex, string errorMessage = null)
         {
+            Crashes.TrackError(ex);
             //log exception
             LogException(ex);
 
