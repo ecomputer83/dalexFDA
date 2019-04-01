@@ -115,18 +115,19 @@ namespace dalexFDA
             try
             {
                 SessionService.CurrentUser = await AccountService.GetUser();
-
-                var kycresponse = await AccountService.GetApplication();
-
-                if(kycresponse?.Application_Status.ToLower() != "completed")
-                {
-                    await CoreMethods.DisplayAlert("KYC Update", "KYC Application is in progress, We will get back to you shortly.", "Ok");
-                    AppService.StartAccountStatements();
-                }
-
                 PassportPhotographID = SessionService.CurrentUser?.PhotoUrl;
                 EvidenceOfAddressID = SessionService.CurrentUser?.ProofOfResUtilityBill;
                 ValidIDCardID = SessionService.CurrentUser?.CopyOfValidId;
+
+                var kycresponse = await AccountService.GetApplication();
+
+                if (kycresponse?.Application_Status.ToLower() != "completed")
+                {
+                    await CoreMethods.DisplayAlert("KYC Update", "KYC Application is in progress, We will get back to you shortly.", "Ok");
+                    AppService.StartDashboard();
+                }
+
+
             }
             catch (Exception ex)
             {
