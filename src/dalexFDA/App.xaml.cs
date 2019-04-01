@@ -41,8 +41,8 @@ namespace dalexFDA
 
         protected override void OnStart()
         {
-            AppCenter.Start($"ios=29fd6c0a-2f69-4f66-9749-c55e91d0062c;" +
-                            $"android=051857ad-487a-438d-8dbc-962a0ff2fad0;",
+            AppCenter.Start($"ios=366e60b4-d330-42dc-ac8f-8dda5594f106;" +
+                            $"android=b21a2db4-47b4-41d6-b78a-653936fc8efa;",
                             typeof(Analytics), typeof(Crashes));
         }
 

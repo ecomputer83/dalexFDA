@@ -8,6 +8,7 @@ using Refit;
 using System.Diagnostics;
 using Plugin.Connectivity.Abstractions;
 using Plugin.DeviceInfo.Abstractions;
+using Microsoft.AppCenter.Crashes;
 
 namespace dalexFDA
 {
@@ -168,11 +169,13 @@ namespace dalexFDA
             }
             catch(ApiException ex)
             {
+                Crashes.TrackError(ex);
                 await CoreMethods.DisplayAlert("Oops", "error 001 - An error occured, kindly contact administrator.", "Ok");
                 Debug.WriteLine($"{ex.Message}");
             }
             catch (Exception ex)
             {
+                Crashes.TrackError(ex);
                 await CoreMethods.DisplayAlert("Oops", "error 002 - An error occured, kindly contact administrator.", "Ok");
                 Debug.WriteLine($"{ex.Message}");
             }

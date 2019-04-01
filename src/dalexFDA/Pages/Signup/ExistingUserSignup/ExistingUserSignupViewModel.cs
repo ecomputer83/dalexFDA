@@ -10,6 +10,7 @@ using Refit;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using Plugin.Connectivity.Abstractions;
+using Microsoft.AppCenter.Crashes;
 
 namespace dalexFDA
 {
@@ -238,6 +239,7 @@ namespace dalexFDA
             }
             catch (ApiException ex)
             {
+                Crashes.TrackError(ex);
                 var errorContent = JsonConvert.DeserializeObject<ErrorMessage>(ex.Content);
 
                 await CoreMethods.DisplayAlert("Oops", "User already registered, please login", "Ok");
@@ -246,6 +248,7 @@ namespace dalexFDA
             }
             catch (Exception ex)
             {
+                Crashes.TrackError(ex);
                 await ErrorManager.DisplayErrorMessageAsync(ex);
             }
         }
