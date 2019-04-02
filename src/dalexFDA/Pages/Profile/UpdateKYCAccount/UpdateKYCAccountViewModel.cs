@@ -143,10 +143,10 @@ namespace dalexFDA
             {
                 if (IsPassportComplete) return;
 
-                using (UserDialogs.Instance.Loading("Please wait...", null, null, true, MaskType.Gradient))
-                {
+                //using (UserDialogs.Instance.Loading("Please wait...", null, null, true, MaskType.Gradient))
+                //{
                     PassportPhotographID = await CapturePhoto(DocumentType.PassportPhotograph);
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -160,10 +160,10 @@ namespace dalexFDA
             {
                 if (IsEvidenceOfAddressComplete) return;
 
-                using (UserDialogs.Instance.Loading("Please wait...", null, null, true, MaskType.Black))
-                {
+                //using (UserDialogs.Instance.Loading("Please wait...", null, null, true, MaskType.Black))
+                //{
                     EvidenceOfAddressID = await CapturePhoto(DocumentType.EvidenceOfAddress);
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -177,10 +177,10 @@ namespace dalexFDA
             {
                 if (IsValidIDCardComplete) return;
 
-                using (UserDialogs.Instance.Loading("Please wait...", null, null, true, MaskType.Clear))
-                {
+                //using (UserDialogs.Instance.Loading("Please wait...", null, null, true, MaskType.Clear))
+                //{
                     ValidIDCardID = await CapturePhoto(DocumentType.ValidIDCard);
-                }
+                //}
             }
             catch (Exception ex)
             {

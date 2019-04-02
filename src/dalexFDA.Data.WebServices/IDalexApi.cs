@@ -20,7 +20,7 @@ namespace dalexFDA.Data.WebServices
         Task<bool> ConfirmAccount(string PhoneNumber, string token);
 
         [Post("/api/Account/SetPassword")]
-        Task ResetPassword(ResetPinRequest request);
+        Task ResetPassword([Body(BodySerializationMethod.Json)]ResetPinRequest request);
 
         #endregion
 

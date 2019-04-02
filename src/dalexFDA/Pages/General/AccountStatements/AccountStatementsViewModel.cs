@@ -89,8 +89,8 @@ namespace dalexFDA
                 {
                     var request = new StatementRequest
                     {
-                        StartDate = StartDate,
-                        EndDate = EndDate,
+                        StartDate = StartDate.AddHours(1),
+                        EndDate = EndDate.AddHours(1),
                         DeliveryMode = SelectedDeliveryMode?.Code,
                         SecurityAnswer = SecurityAnswer
                     };

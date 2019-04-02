@@ -11,6 +11,7 @@ using Refit;
 using Newtonsoft.Json;
 using Plugin.Connectivity.Abstractions;
 using Microsoft.AppCenter.Crashes;
+using System.Collections.Generic;
 
 namespace dalexFDA
 {
@@ -223,10 +224,18 @@ namespace dalexFDA
             catch(ApiException ex)
             {
                 Crashes.TrackError(ex);
-                var errorContent = JsonConvert.DeserializeObject<ErrorMessage>(ex.Content);
-
-                await CoreMethods.DisplayAlert("Oops", "User already registered, please login.", "Ok");
-
+                var content = ex.GetContentAs<Dictionary<String, String>>();
+                if (content != null)
+                {
+                    if (content["error"] != null)
+                    {
+                        await CoreMethods.DisplayAlert("Oops", content["error_description"], "Ok");
+                    }
+                }
+                else
+                {
+                    await CoreMethods.DisplayAlert("Oops", "error 001 - An error occured, kindly contact administrator.", "Ok");
+                }
                 Debug.WriteLine($"=======ApiException: {ex.Content}=======");
             }
             catch (Exception ex)

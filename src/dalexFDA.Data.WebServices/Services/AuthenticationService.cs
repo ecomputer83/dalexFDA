@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using dalexFDA.Abstractions;
+using Refit;
 
 namespace dalexFDA.Data.WebServices
 {
@@ -15,17 +17,10 @@ namespace dalexFDA.Data.WebServices
 
         public async Task<AuthorizedAccount> Authenticate(LoginRequest request)
         {
-            try
-            {
                 var service = RestServiceHelper.For<IDalexApi>(Config.Api);
                 var response = await service.Login(request);
 
                 return response;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
         }
     }
 }

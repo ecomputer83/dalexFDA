@@ -61,15 +61,15 @@
                 </StackLayout>
             </ScrollView>
                 
-            <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='16,8', iOS='16'}" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" Margin="{OnPlatform Android='16,8', iOS='16,8'}" HeightRequest="50" VerticalOptions="FillAndExpand">
                 <svg:SvgImage 
                         Svg="{Binding IsAgreementSelected, Converter={StaticResource CheckBoxImage}}"
                         ColorMapping="{Binding IsAgreementSelected, Converter={StaticResource CheckBoxColor}}"
                         WidthRequest="25" VerticalOptions="Center" Margin="0,0,0,0"
                         Command="{Binding Agree}"
                     />
-                <Label FontSize="14" FontFamily="{StaticResource Roboto-Medium}" TextColor="{StaticResource AndroidGreen}" HorizontalOptions="Center" VerticalOptions="Start"
-                       VerticalTextAlignment="Start" HorizontalTextAlignment="Center">
+                <Label FontSize="14" FontFamily="{StaticResource Roboto-Medium}" TextColor="{StaticResource AndroidGreen}" HorizontalOptions="Center"
+                       VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" LineBreakMode="CharacterWrap">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="I agree to the " />
@@ -78,7 +78,7 @@
                                     <TapGestureRecognizer Command="{Binding Terms}" />
                                 </Span.GestureRecognizers>
                             </Span>
-                            <Span Text="of use of the app and I have read through the " />
+                            <Span Text="of use of the app and I have read through the "   />
                             <Span Text="Privacy Policy." TextDecorations="Underline">
                                 <Span.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding PrivacyPolicy}" />
@@ -87,6 +87,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" Spacing="8" VerticalOptions="EndAndExpand" Padding="{OnPlatform Android='16,0,16,12', iOS='16'}">

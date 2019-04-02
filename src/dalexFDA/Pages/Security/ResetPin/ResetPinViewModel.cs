@@ -1,5 +1,7 @@
 ﻿using Acr.UserDialogs;
 using dalexFDA.Abstractions;
+using Microsoft.AppCenter.Crashes;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,7 +29,7 @@ namespace dalexFDA
         public bool PhoneHasError { get { return PhoneNumberHasError || PhoneExtensionHasError; } }
 
         public string PIN { get; set; }
-        public bool PinHasError { get; set; }
+        public bool PinHasError { get; set; }   
         public string PinErrorMessage { get; set; }
 
         public string ConfirmPIN { get; set; }
@@ -100,8 +102,25 @@ namespace dalexFDA
                     }
                 }
             }
+            catch (ApiException ex)
+            {
+                Crashes.TrackError(ex);
+                var content = ex.GetContentAs<Dictionary<String, String>>();
+                if (content != null)
+                {
+                    if (content["error"] != null)
+                    {
+                        await CoreMethods.DisplayAlert("Oops", content["error_description"], "Ok");
+                    }
+                }
+                else
+                {
+                    await CoreMethods.DisplayAlert("Oops", "error 001 - An error occured, kindly contact administrator.", "Ok");
+                }
+            }
             catch (Exception ex)
             {
+                Crashes.TrackError(ex);
                 await ErrorManager.DisplayErrorMessageAsync(ex);
             }
         }
