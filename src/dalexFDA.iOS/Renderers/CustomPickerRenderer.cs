@@ -38,7 +38,7 @@ namespace dalexFDA.iOS
             });
             UIFont font = UIFont.FromDescriptor(newDescriptor, 0);
 
-            Control.AttributedPlaceholder = new NSAttributedString(Control.AttributedPlaceholder.Value, foregroundColor: placeholderColor);
+            //Control.AttributedPlaceholder = new NSAttributedString(Control.AttributedPlaceholder?.Value, foregroundColor: placeholderColor);
             this.Control.Font = font;
         }
 
