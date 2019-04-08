@@ -94,6 +94,11 @@ namespace dalexFDA
             MainPage = new CustomNav();
         }
 
+        public void StartKYCUpdate()
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<UpdateKYCAccountViewModel>();
+            StartFlow(page);
+        }
         public void StartDashboard()
         {
             var page = FreshPageModelResolver.ResolvePageModel<DashboardViewModel>();
@@ -181,5 +186,7 @@ namespace dalexFDA
             var assembly = typeof(App).GetTypeInfo().Assembly;
             XamSvg.Shared.Config.ResourceAssembly = assembly;
         }
+
+        
     }
 }

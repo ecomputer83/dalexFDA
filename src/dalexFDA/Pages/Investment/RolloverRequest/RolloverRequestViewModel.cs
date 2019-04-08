@@ -20,7 +20,7 @@ namespace dalexFDA
         public bool IsNotSuccesful { get { return !IsSuccessful; } }
         public string AccountName { get; set; }
 
-        public double ReinvestmentAmount { get { return Investment?.Redemption > 0 ? (Investment.Redemption) : 0; } }
+        public double ReinvestmentAmount { get { return Investment?.Maturity > 0 ? (Investment.Maturity) : 0; } }
 
         public double NewDuration { get; set; }
         public bool NewDurationHasError { get; set; }

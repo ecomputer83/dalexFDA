@@ -12,6 +12,7 @@ namespace dalexFDA.Abstractions
         void StartTransferHistory();
         void StartContactChange();
         void StartMyProfile();
+        void StartKYCUpdate();
         void Logout();
     }
 }

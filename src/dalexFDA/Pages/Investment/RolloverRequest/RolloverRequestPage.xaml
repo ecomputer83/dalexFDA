@@ -37,7 +37,7 @@
                 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Amount Available" TextColor="{StaticResource OffWhite3}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
-                    <Label Text="{Binding Investment.Redemption, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
+                    <Label Text="{Binding Investment.Maturity, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
             </StackLayout>
             
@@ -72,7 +72,7 @@
             
             <StackLayout IsVisible="{Binding IsSuccessful}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
                 <svg:SvgImage Svg="res:images.icon-success" ColorMapping="000000=6D9B36" WidthRequest="70" HorizontalOptions="Center" />
-                <Label Text="Transaction Successful!" TextColor="{StaticResource PalmLeaf}" FontSize="20" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                <Label Text="Pending Approval!" TextColor="{StaticResource PalmLeaf}" FontSize="20" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
             </StackLayout>
             
             <Button IsVisible="{Binding IsNotSuccesful}" Text="NEGOTIATE TRANSACTION" Style="{StaticResource PrimaryButton}" Command="{Binding Negotiate}" Margin="16,2,16,8" 

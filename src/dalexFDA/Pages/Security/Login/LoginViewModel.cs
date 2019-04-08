@@ -158,7 +158,15 @@ namespace dalexFDA
                             {
                                 SessionService.CurrentUser = user;
                                 SettingService.isFirstTime = false;
-                                AppService.StartMainFlow();
+
+                                if (user.Status == UserAccountStatus.Active)
+                                {
+                                    AppService.StartMainFlow();
+                                }
+                                else
+                                {
+                                    AppService.StartKYCUpdate();
+                                }
                             }
                         }
                     }

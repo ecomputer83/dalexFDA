@@ -152,7 +152,7 @@ namespace dalexFDA
             RedemptionAmountHasError = RedemptionAmount > Investment.Redemption;
             RedemptionAmountErrorMessage = redemption_amount_error_message;
 
-            NewDurationHasError = NewDuration <= 0;
+            NewDurationHasError = NewDuration <= 0 && ReinvestmentAmount > 0;
             NewDurationErrorMessage = new_duration_error_message;
 
             SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);

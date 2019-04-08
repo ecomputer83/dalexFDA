@@ -100,25 +100,32 @@ namespace dalexFDA
 
                 if (ActiveTab == TransactionHistoryTab.Deposit)
                 {
-                    Deposits = TransactionHistory.Deposits;
+                    Deposits = TransactionHistory?.Deposits;
+                    if(Deposits != null)
                     foreach (var item in Deposits)
                         list.Add(new TransactionHistoryItemViewModel(this, item));
                 }
                 else if (ActiveTab == TransactionHistoryTab.Rollover)
                 {
-                    Rollovers = TransactionHistory.Rollovers;
+                    Rollovers = TransactionHistory?.Rollovers;
+
+                    if(Rollovers != null)
                     foreach (var item in Rollovers)
                         list.Add(new TransactionHistoryItemViewModel(this, item));
                 }
                 else if (ActiveTab == TransactionHistoryTab.Redemption)
                 {
-                    Redemptions = TransactionHistory.Redemptions;
+                    Redemptions = TransactionHistory?.Redemptions;
+
+                    if(Redemptions != null)
                     foreach (var item in Redemptions)
                         list.Add(new TransactionHistoryItemViewModel(this, item));
                 }
                 else if (ActiveTab == TransactionHistoryTab.Consolidation)
                 {
-                    Consolidations = TransactionHistory.Consolidations;
+                    Consolidations = TransactionHistory?.Consolidations;
+
+                    if(Consolidations != null)
                     foreach (var item in Consolidations)
                         list.Add(new TransactionHistoryItemViewModel(this, item));
                 }
