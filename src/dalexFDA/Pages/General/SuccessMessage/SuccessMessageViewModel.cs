@@ -12,7 +12,7 @@ namespace dalexFDA
     public class SuccessMessageViewModel : BaseViewModel
     {
         readonly IErrorManager ErrorManager;
-
+        readonly IAppService AppService;
         public string Message { get; set; }
 
         public Command Close { get; set; }
@@ -23,10 +23,10 @@ namespace dalexFDA
             public string Message { get; set; }
         }
 
-        public SuccessMessageViewModel(IErrorManager ErrorManager)
+        public SuccessMessageViewModel(IErrorManager ErrorManager, IAppService AppService)
         {
             this.ErrorManager = ErrorManager;
-
+            this.AppService = AppService;
             Close = new Command(async () => await ExecuteClose());
         }
 
@@ -51,6 +51,7 @@ namespace dalexFDA
             try
             {
                 await CoreMethods.PopPageModel(true);
+                AppService.StartDashboard();
             }
             catch (Exception ex)
             {

@@ -26,7 +26,19 @@ namespace dalexFDA
         public string RedemptionAmountErrorMessage { get; set; }
 
         public double Redemption { get; set; }
-        public double ReinvestmentAmount { get { return Investment?.Redemption > 0 ? (Investment.Redemption - RedemptionAmount) : 0; } }
+        public double ReinvestmentAmount {
+            get {
+                double result = 0;
+                if (Investment?.Redemption > 0)
+                {
+                    result = Investment.Redemption - RedemptionAmount;
+                }
+                if (result < 0.1)
+                    result = 0;
+
+                return result;
+            }
+        }
 
         public int NewDuration { get; set; }
         public bool NewDurationHasError { get; set; }
