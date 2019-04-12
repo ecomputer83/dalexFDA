@@ -22,6 +22,9 @@ namespace dalexFDA
         readonly IUserDialogs Dialog;
         readonly IMedia Media;
 
+        public string DateText { get; set; } = "Date of Birth";
+        public string Job { get; set; } = "Occupation";
+        public bool isIndividual { get; set; }
         public User Profile { get; set; }
         public string DisplayName { get; set; }
 
@@ -46,6 +49,12 @@ namespace dalexFDA
                 using (Dialog.Loading("Please wait..."))
                 {
                     Profile = await AccountService.GetUser();
+                    isIndividual = (Profile.Group == 1);
+                    if(Profile.Group != 1)
+                    {
+                        DateText = "Date of incorporation";
+                        Job = "Business Activities";
+                    }
                     DisplayName = Profile != null ? Profile.Name : "";
                     if (Profile != null)
                     {

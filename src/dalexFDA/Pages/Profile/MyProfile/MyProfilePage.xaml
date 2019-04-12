@@ -42,17 +42,17 @@
                     <Label Text="{Binding Profile.Email}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" IsVisible="{Binding isIndividual}">
                     <Label Text="Gender" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
                     <Label Text="{Binding Profile.Gender}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Date of Birth" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                    <Label Text="{Binding DateText}" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
                     <Label Text="{Binding Profile.BirthDate, StringFormat='{0:dd MMM}'}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" IsVisible="{Binding isIndividual}">
                     <Label Text="Title" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
                     <Label Text="{Binding Profile.Title}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
@@ -77,18 +77,18 @@
                     <Label Text="{Binding Profile.PostalAddress}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" IsVisible="{Binding isIndividual}">
                     <Label Text="Place of Birth" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
                     <Label Text="{Binding Profile.PlaceOfBirth}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" IsVisible="{Binding isIndividual}">
                     <Label Text="Nationality" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
                     <Label Text="{Binding Profile.Nationality}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Occupation" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
+                    <Label Text="{Binding Job}" TextColor="{StaticResource Manatee}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
                     <Label Text="{Binding Profile.Occupation}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
 

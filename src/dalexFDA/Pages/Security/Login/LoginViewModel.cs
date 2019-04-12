@@ -58,7 +58,7 @@ namespace dalexFDA
             public string Name { get; set; }
         }
 
-        private const string phone_number_error_message = "Please enter a phone number.";
+        private const string phone_number_error_message = "Phone number should not start with 0, Field required.";
         private const string pin_error_message = "Please enter a PIN.";
 
         public LoginViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog, IDeviceInfo DeviceInfo,
@@ -179,19 +179,37 @@ namespace dalexFDA
             catch(ApiException ex)
             {
                 Crashes.TrackError(ex);
-
-                var content = ex.GetContentAs<Dictionary<String, String>>();
+                var content = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorMessage>(ex.Content);
                 if (content != null)
                 {
-                    if (content["error"] != null)
+                    if (content.error != null)
                     {
-                        await CoreMethods.DisplayAlert("Oops", content["error_description"], "Ok");
+                        if (content.error.error_description != null)
+                        {
+                            await CoreMethods.DisplayAlert("Oops", content.error.error_description, "Ok");
+                        }
+                        else
+                        {
+                            await CoreMethods.DisplayAlert("Oops", content.error.ToString(), "Ok");
+                        }
+                    }
+                    else if (content.ModelState != null)
+                    {
+                        if (content.ModelState.error != null)
+                        {
+                            await CoreMethods.DisplayAlert("Oops", string.Join(", ", content.ModelState.error), "Ok");
+                        }
+                    }
+                    else
+                    {
+                        await CoreMethods.DisplayAlert("Oops", ex.Message, "Ok");
                     }
                 }
                 else
                 {
                     await CoreMethods.DisplayAlert("Oops", "error 001 - An error occured, kindly contact administrator.", "Ok");
                 }
+
                 Debug.WriteLine($"{ex.Message}");
             }
             catch (Exception ex)
@@ -199,7 +217,7 @@ namespace dalexFDA
 
                 Crashes.TrackError(ex);
 
-                await CoreMethods.DisplayAlert("Oops", "error 002 - An error occured, kindly contact administrator.", "Ok");
+                await CoreMethods.DisplayAlert("Oops", "error "+ex.Message+" - An error occured, kindly contact administrator.", "Ok");
                 Debug.WriteLine($"{ex.Message}");
             }
         }
@@ -273,7 +291,7 @@ namespace dalexFDA
                     PhoneNumberErrorMessage = PhoneExtensionHasError ? phone_number_error_message : "";
                     break;
                 case "PhoneNumber":
-                    PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
+                    PhoneNumberHasError = !string.IsNullOrEmpty(PhoneNumber) ? PhoneNumber.StartsWith("0") : true;
                     PhoneNumberErrorMessage = PhoneNumberHasError ? phone_number_error_message : "";
                     break;
                 case "PIN":

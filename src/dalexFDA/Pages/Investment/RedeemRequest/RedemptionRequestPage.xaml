@@ -37,7 +37,7 @@
                 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Amount Available" TextColor="{StaticResource OffWhite3}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" />
-                    <Label Text="{Binding Investment.Redemption, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
+                            <Label Text="{Binding AmountAvailable, StringFormat='GHS {0:N2}'}" TextColor="{StaticResource White}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" />
                 </StackLayout>
             </StackLayout>
             

@@ -97,7 +97,14 @@ namespace dalexFDA
         public void StartKYCUpdate()
         {
             var page = FreshPageModelResolver.ResolvePageModel<UpdateKYCAccountViewModel>();
-            StartFlow(page);
+            var container = new CustomFreshNavigationContainer(page)
+            {
+                BarTextColor = Color.White
+            };
+
+            CurrentNavigation = container.Navigation;
+
+            MainPage = container;
         }
         public void StartDashboard()
         {

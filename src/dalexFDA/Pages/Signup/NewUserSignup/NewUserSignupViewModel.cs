@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Plugin.Connectivity.Abstractions;
 using Microsoft.AppCenter.Crashes;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace dalexFDA
 {
@@ -112,7 +113,7 @@ namespace dalexFDA
         public Command PrivacyPolicy { get; private set; }
 
         private const string fullname_error_message = "Please enter your full name.";
-        private const string phone_number_error_message = "Please enter your phone number.";
+        private const string phone_number_error_message = "Phone number should not start with 0, Field required.";
         private const string email_address_error_message = "Please enter an email address.";
         private const string invalid_email_address_error_message = "Please enter a valid email address.";
         private const string security_question_error_message = "Please enter a question.";
@@ -224,18 +225,37 @@ namespace dalexFDA
             catch(ApiException ex)
             {
                 Crashes.TrackError(ex);
-                var content = ex.GetContentAs<Dictionary<String, String>>();
+                var content = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorMessage>(ex.Content);
                 if (content != null)
                 {
-                    if (content["error"] != null)
+                    if (content.error != null)
                     {
-                        await CoreMethods.DisplayAlert("Oops", content["error_description"], "Ok");
+                        if (content.error.error_description != null)
+                        {
+                            await CoreMethods.DisplayAlert("Oops", content.error.error_description, "Ok");
+                        }
+                        else
+                        {
+                            await CoreMethods.DisplayAlert("Oops", content.error.ToString(), "Ok");
+                        }
+                    }
+                    else if (content.ModelState != null)
+                    {
+                        if (content.ModelState.error != null)
+                        {
+                            await CoreMethods.DisplayAlert("Oops", string.Join(", ", content.ModelState.error), "Ok");
+                        }
+                    }
+                    else
+                    {
+                        await CoreMethods.DisplayAlert("Oops", ex.Message, "Ok");
                     }
                 }
                 else
                 {
                     await CoreMethods.DisplayAlert("Oops", "error 001 - An error occured, kindly contact administrator.", "Ok");
                 }
+
                 Debug.WriteLine($"=======ApiException: {ex.Content}=======");
             }
             catch (Exception ex)
@@ -301,6 +321,10 @@ namespace dalexFDA
                             {
                                 await CoreMethods.PopPageModel();
                             }
+                            else
+                            {
+                                await CoreMethods.PopPageModel();
+                            }
                             //FullName = User.Name;
                             //IsFullNameEnabled = string.IsNullOrEmpty(FullName);
                             //EmailAddress = User.Email;
@@ -349,7 +373,7 @@ namespace dalexFDA
                     PhoneNumberErrorMessage = PhoneExtensionHasError ? phone_number_error_message : empty_string;
                     break;
                 case "PhoneNumber":
-                    PhoneNumberHasError = string.IsNullOrEmpty(PhoneNumber);
+                    PhoneNumberHasError = !string.IsNullOrEmpty(PhoneNumber) ? PhoneNumber.StartsWith("0") : true;
                     PhoneNumberErrorMessage = PhoneNumberHasError ? phone_number_error_message : empty_string;
                     break;
                 case "FullName":

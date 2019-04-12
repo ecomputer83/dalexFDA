@@ -63,7 +63,8 @@ namespace dalexFDA.Data.WebServices
                     ContactName = response.ContactName,
                     ContactNumber = response.ContactNumber,
                     Occupation = response.Occupation,
-                    Title = response.Title
+                    Title = response.Title,
+                    Group = response.Group
                 };
                 return user;
             }

@@ -26,12 +26,31 @@ namespace dalexFDA
         public string RedemptionAmountErrorMessage { get; set; }
 
         public double Redemption { get; set; }
+
+        public double AmountAvailable
+        {
+            get
+            {
+                double result = 0;
+                return (Investment?.RemainDays != "0") ? Investment.Redemption : Investment.Maturity;
+            }
+        }
         public double ReinvestmentAmount {
             get {
                 double result = 0;
-                if (Investment?.Redemption > 0)
+                if(Investment?.RemainDays != "0")
                 {
-                    result = Investment.Redemption - RedemptionAmount;
+                    if (Investment?.Redemption > 0)
+                    {
+                        result = Investment.Redemption - RedemptionAmount;
+                    }
+                }
+                else
+                {
+                    if (Investment?.Maturity > 0)
+                    {
+                        result = Investment.Maturity - RedemptionAmount;
+                    }
                 }
                 if (result < 0.1)
                     result = 0;
@@ -161,7 +180,7 @@ namespace dalexFDA
 
         public bool PerformValidation()
         {
-            RedemptionAmountHasError = RedemptionAmount > Investment.Redemption;
+            RedemptionAmountHasError = (Investment?.RemainDays != "0") ? RedemptionAmount > Investment.Redemption: RedemptionAmount > Investment.Maturity;
             RedemptionAmountErrorMessage = redemption_amount_error_message;
 
             NewDurationHasError = NewDuration <= 0 && ReinvestmentAmount > 0;
