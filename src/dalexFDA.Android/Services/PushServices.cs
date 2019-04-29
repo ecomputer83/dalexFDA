@@ -133,7 +133,7 @@ namespace PushSharp.ClientSample.MonoForAndroid
             intent.AddFlags(ActivityFlags.ClearTop);
             var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-            var notificationBuilder = new Notification.Builder(this)
+            var notificationBuilder = new Android.App.Notification.Builder(this)
                 .SetSmallIcon(Android.Resource.Drawable.SymActionEmail)
                 .SetContentTitle(title)
                 .SetContentText(desc)

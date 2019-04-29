@@ -179,37 +179,19 @@ namespace dalexFDA
             catch(ApiException ex)
             {
                 Crashes.TrackError(ex);
-                var content = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorMessage>(ex.Content);
+                var content = ex.GetContentAs<Dictionary<String, String>>();
                 if (content != null)
                 {
-                    if (content.error != null)
+                    if (content["error"] != null)
                     {
-                        if (content.error.error_description != null)
-                        {
-                            await CoreMethods.DisplayAlert("Oops", content.error.error_description, "Ok");
-                        }
-                        else
-                        {
-                            await CoreMethods.DisplayAlert("Oops", content.error.ToString(), "Ok");
-                        }
-                    }
-                    else if (content.ModelState != null)
-                    {
-                        if (content.ModelState.error != null)
-                        {
-                            await CoreMethods.DisplayAlert("Oops", string.Join(", ", content.ModelState.error), "Ok");
-                        }
-                    }
-                    else
-                    {
-                        await CoreMethods.DisplayAlert("Oops", ex.Message, "Ok");
+                        await CoreMethods.DisplayAlert("Oops", content["error_description"], "Ok");
                     }
                 }
                 else
                 {
                     await CoreMethods.DisplayAlert("Oops", "error 001 - An error occured, kindly contact administrator.", "Ok");
                 }
-
+                
                 Debug.WriteLine($"{ex.Message}");
             }
             catch (Exception ex)

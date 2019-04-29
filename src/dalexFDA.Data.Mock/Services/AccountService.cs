@@ -152,5 +152,30 @@ namespace dalexFDA.Data.Mock
         {
             throw new NotImplementedException();
         }
+
+        public Task<string> AddTransaction(Transaction transaction)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Transaction> GetTransaction(int TransactionId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> PostQuery(int Id, QueryRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Notification>> GetNotification()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ROResponse> GetRO(string Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

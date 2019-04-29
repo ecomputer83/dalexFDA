@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="dalexFDA.NotificationPage"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             xmlns:local="clr-namespace:dalexFDA"
+             Title="Notifications"
+             BackgroundColor="{StaticResource OffWhite2}">
+    <ContentPage.Content>
+        <ListView x:Name="list" ItemsSource="{Binding NotificationItems}" CachingStrategy="RecycleElement" 
+                    SeparatorVisibility="None" HasUnevenRows="true" ItemTapped="Handle_ItemTapped" BackgroundColor="{StaticResource OffWhite3}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                <ViewCell>
+                        <local:NotificationItemView Margin="8,4" Title="{Binding Data.Title}" Ndate="{Binding Data.NotificationDate}" 
+                            Description="{Binding Data.Body}"
+                        />
+                </ViewCell>
+                    </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

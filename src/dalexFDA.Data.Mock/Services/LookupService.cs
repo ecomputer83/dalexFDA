@@ -11,12 +11,14 @@ namespace dalexFDA.Data.Mock
         List<Lookup> banks = new List<Lookup>();
         List<Lookup> contactTypes = new List<Lookup>();
         List<Lookup> deliveryModes = new List<Lookup>();
+        List<Lookup> messageTypes = new List<Lookup>();
 
         public LookupService()
         {
             SetupBanks();
             SetupContactTypes();
             SetupDeliveryModes();
+            SetupMessageTypes();
         }
 
         public Task<List<Lookup>> GetBanks()
@@ -32,6 +34,11 @@ namespace dalexFDA.Data.Mock
         public Task<List<Lookup>> GetDeliveryModes()
         {
             return Task.FromResult(deliveryModes);
+        }
+
+        public Task<List<Lookup>> GetMessageTypes()
+        {
+            return Task.FromResult(messageTypes);
         }
 
         public Task<string> GetPrivacyPolicy()
@@ -97,6 +104,15 @@ namespace dalexFDA.Data.Mock
             deliveryModes = new List<Lookup>
             {
                 new Lookup { Code = "E-Mail", Name = "Email Address" }
+            };
+        }
+
+        void SetupMessageTypes()
+        {
+            messageTypes = new List<Lookup>
+            {
+                new Lookup { Code = "3", Name = "FeedBack" },
+                new Lookup { Code = "2", Name = "Complaint" }
             };
         }
     }

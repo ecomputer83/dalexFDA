@@ -8,33 +8,22 @@ using Acr.UserDialogs;
 namespace dalexFDA
 {
     [AddINotifyPropertyChangedInterface]
-    public class DepositInvestmentDetailsViewModel : BaseViewModel
+    public class EnquiryViewModel : BaseViewModel
     {
         readonly IErrorManager ErrorManager;
         readonly IAppService AppService;
         readonly IUserDialogs Dialog;
-        readonly IInvestmentService IInvestmentService;
         readonly IAccountService AccountService;
         readonly ISession SessionService;
 
         public bool IsSuccessful { get; set; }
         public bool IsNotSuccesful { get { return !IsSuccessful; } }
 
-        public DateTime TransactionDate { get; set; }
-        public bool TransactionDateHasError { get; set; }
-        public string TransactionDateErrorMessage { get; set; }
+        public string ClientName { get; set; }
 
-        public string RefNumber { get; set; }
-        public bool RefNumberHasError { get; set; }
-        public string RefNumberErrorMessage { get; set; }
-
-        public double InvestmentAmount { get; set; }
-        public bool InvestmentAmountHasError { get; set; }
-        public string InvestmentAmountErrorMessage { get; set; }
-
-        public int Duration { get; set; }
-        public bool DurationHasError { get; set; }
-        public string DurationErrorMessage { get; set; }
+        public string Message { get; set; }
+        public bool MessageHasError { get; set; }
+        public string MessageErrorMessage { get; set; }
 
         public string SecurityQuestion { get; set; }
         public string SecurityHint { get; set; }
@@ -42,35 +31,23 @@ namespace dalexFDA
         public bool SecurityAnswerHasError { get; set; }
         public string SecurityAnswerErrorMessage { get; set; }
 
-        public ETransferRequest ETransferRequest { get; set; }
-        public int Id { get; set; }
-
         public Command Negotiate { get; set; }
         public Command Done { get; set; }
         public Command Validate { get; private set; }
 
-        Nav Data;
-        public class Nav
-        {
-            public int Id { get; set; }
-        }
-
-        private const string ref_number_error_message = "Please enter a payment reference number.";
-        private const string investment_amount_error_message = "Please enter an amount.";
-        private const string duration_error_message = "Please enter a valid number of days.";
+        private const string message_error_message = "Message can not be empty.";
         private const string security_answer_error_message = "Please enter the answer to the question.";
         private const string wrong_security_answer_error_message = "Incorrect answer. Please try again";
 
-        public DepositInvestmentDetailsViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog,
-                                                IInvestmentService IInvestmentService, ISession SessionService, IAccountService accountService)
+        public EnquiryViewModel(IErrorManager ErrorManager, IAppService AppService, IUserDialogs Dialog,
+                                                ISession SessionService, IAccountService accountService)
         {
             this.ErrorManager = ErrorManager;
             this.AppService = AppService;
             this.Dialog = Dialog;
-            this.IInvestmentService = IInvestmentService;
             this.SessionService = SessionService;
             this.AccountService = accountService;
-            
+
             Negotiate = new Command(async () => await ExecuteNegotiate());
             Done = new Command(async () => await ExecuteDone());
             Validate = new Command<ValidationCommandNav>(async (obj) => await ExecuteValidate(obj));
@@ -82,23 +59,7 @@ namespace dalexFDA
 
             try
             {
-                Data = initData as Nav;
-                if(Data != null)
-                {
-                    Id = Data.Id;
-                    var Trans = await AccountService.GetTransaction(Id);
-                    if(Trans.status == 1)
-                    {
-                        RefNumber = Trans.PaymentReference;
-                        InvestmentAmount = Trans.Amount;
-                    }
-                    else
-                    {
-                        Dialog.Alert("No Payment was made, try gain later!!");
-                        AppService.StartElectronicFundTransfer();
-                    }
-                }
-                TransactionDate = DateTime.Now;
+                ClientName = SessionService?.CurrentUser?.Name;
                 SecurityQuestion = SessionService?.CurrentUser?.SecurityQuestion?.ToUpper();
                 SecurityHint = "Hint: " + SessionService?.CurrentUser?.SecurityHint;
             }
@@ -116,14 +77,16 @@ namespace dalexFDA
 
                 using (Dialog.Loading("Loading..."))
                 {
-                    ETransferRequest.DepositDate = TransactionDate;
-                    ETransferRequest.InvestmentAmount = InvestmentAmount;
-                    ETransferRequest.Duration = Convert.ToInt32(Duration);
-                    ETransferRequest.SecurityAnswer = SecurityAnswer;
-                    ETransferRequest.PaymentReference = RefNumber;
-                    bool response = await IInvestmentService.DepositEInvestment(ETransferRequest);
+                    var request = new QueryRequest
+                    {
+                        Client_No = SessionService?.CurrentUser?.ClientNo,
+                        Client_Name = SessionService?.CurrentUser?.Name,
+                        Email_Address = SessionService?.CurrentUser?.Email,
+                        Message_Detail = Message
+                    };
+                    string response = await AccountService.PostQuery(1, request);
 
-                    if (response)
+                    if (response != null)
                         IsSuccessful = true;
                     else
                         await CoreMethods.DisplayAlert("Oops", "Operation failed. Please try again", "Ok");
@@ -166,17 +129,9 @@ namespace dalexFDA
         {
             switch (name)
             {
-                case "RefNumber":
-                    RefNumberHasError = string.IsNullOrEmpty(RefNumber);
-                    RefNumberErrorMessage = ref_number_error_message;
-                    break;
-                case "InvestmentAmount":
-                    InvestmentAmountHasError = string.IsNullOrEmpty(InvestmentAmount.ToString());
-                    InvestmentAmountErrorMessage = investment_amount_error_message;
-                    break;
-                case "Duration":
-                    DurationHasError = string.IsNullOrEmpty(Duration.ToString());
-                    DurationErrorMessage = duration_error_message;
+                case "Message":
+                    MessageHasError = string.IsNullOrEmpty(Message);
+                    MessageErrorMessage = message_error_message;
                     break;
                 case "SecurityAnswer":
                     SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
@@ -187,14 +142,8 @@ namespace dalexFDA
 
         public bool PerformValidation()
         {
-            RefNumberHasError = string.IsNullOrEmpty(RefNumber);
-            RefNumberErrorMessage = ref_number_error_message;
-
-            InvestmentAmountHasError = InvestmentAmount <= 0;
-            InvestmentAmountErrorMessage = investment_amount_error_message;
-
-            DurationHasError = Duration <= 0;
-            DurationErrorMessage = duration_error_message;
+            MessageHasError = string.IsNullOrEmpty(Message);
+            MessageErrorMessage = message_error_message;
 
             SecurityAnswerHasError = string.IsNullOrEmpty(SecurityAnswer);
             SecurityAnswerErrorMessage = security_answer_error_message;
@@ -208,7 +157,7 @@ namespace dalexFDA
                 }
             }
 
-            return RefNumberHasError || InvestmentAmountHasError || DurationHasError || SecurityAnswerHasError;
+            return MessageHasError || SecurityAnswerHasError;
         }
     }
 }

@@ -20,11 +20,11 @@ namespace dalexFDA
         public bool IsSuccessful { get; set; }
         public bool IsNotSuccesful { get { return !IsSuccessful; } }
         public string AccountName { get; set; }
-
+        public double remain { get; set; }
         public double RedemptionAmount { get; set; }
         public bool RedemptionAmountHasError { get; set; }
         public string RedemptionAmountErrorMessage { get; set; }
-
+        public bool isDurationEnabled { get { return ReinvestmentAmount > 0; } }
         public double Redemption { get; set; }
 
         public double AmountAvailable
@@ -52,8 +52,10 @@ namespace dalexFDA
                         result = Investment.Maturity - RedemptionAmount;
                     }
                 }
-                if (result < 0.1)
+                if (result < 0.1 && result >= -0.5) {
+                    remain = result;
                     result = 0;
+                }
 
                 return result;
             }
@@ -132,7 +134,7 @@ namespace dalexFDA
                     var request = new RedeemInvestmentRequest
                     {
                         InvestmentId = Investment.Id,
-                        RedemptionAmount = RedemptionAmount,
+                        RedemptionAmount = (remain != 0) ? RedemptionAmount+remain : RedemptionAmount,
                         ReinvestmentAmount = ReinvestmentAmount,
                         Duration = Convert.ToInt32(NewDuration),
                         SecurityAnswer = SecurityAnswer
@@ -180,7 +182,7 @@ namespace dalexFDA
 
         public bool PerformValidation()
         {
-            RedemptionAmountHasError = (Investment?.RemainDays != "0") ? RedemptionAmount > Investment.Redemption: RedemptionAmount > Investment.Maturity;
+            RedemptionAmountHasError = (remain != 0) ? false : (Investment?.RemainDays != "0") ? RedemptionAmount > Investment.Redemption: RedemptionAmount > Investment.Maturity;
             RedemptionAmountErrorMessage = redemption_amount_error_message;
 
             NewDurationHasError = NewDuration <= 0 && ReinvestmentAmount > 0;

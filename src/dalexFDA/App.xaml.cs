@@ -16,6 +16,7 @@ using Plugin.Media.Abstractions;
 using Plugin.Media;
 using Plugin.Connectivity;
 using Plugin.Connectivity.Abstractions;
+using Acr.UserDialogs;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace dalexFDA
@@ -148,6 +149,16 @@ namespace dalexFDA
             var page = FreshPageModelResolver.ResolvePageModel<MyProfileViewModel>();
             StartFlow(page);
         }
+        public void StartFeedback()
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<FeedbackViewModel>();
+            StartFlow(page);
+        }
+        public void StartEnquiry()
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<EnquiryViewModel>();
+            StartFlow(page);
+        }
 
         public void Logout()
         {
@@ -194,6 +205,26 @@ namespace dalexFDA
             XamSvg.Shared.Config.ResourceAssembly = assembly;
         }
 
-        
+        public static async void DisplayNetworkErrorPrompt(Page current)
+        {
+            await current.DisplayAlert("Network", "It appears that you are not connected to the network. Please connect and then try again.", "OK");
+        }
+
+        public static async void DisplayNetworkErrorPrompt(IUserDialogs dialog)
+        {
+            await dialog.AlertAsync("It appears that you are not connected to the network. Please connect and then try again.", "Network", "OK");
+        }
+
+        public void StartNotification()
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<NotificationViewModel>();
+            StartFlow(page);
+        }
+
+        public void StartRO()
+        {
+            var page = FreshPageModelResolver.ResolvePageModel<RelationManagerViewModel>();
+            StartFlow(page);
+        }
     }
 }

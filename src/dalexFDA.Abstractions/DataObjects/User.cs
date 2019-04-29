@@ -15,6 +15,7 @@ namespace dalexFDA.Abstractions
         public string ConfirmPassword { get; set; }
         public string Status { get; set; }
 
+        public string Ro { get; set; }
         public string PostalAddress { get; set; }
         public DateTime BirthDate { get; set; }
         public string PhotoUrl { get; set; }

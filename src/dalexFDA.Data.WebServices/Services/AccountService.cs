@@ -23,6 +23,14 @@ namespace dalexFDA.Data.WebServices
             return response;
         }
 
+        public async Task<string> PostQuery(int Id, QueryRequest request)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.AddQuery(Id, request);
+
+            return response;
+        }
+
         public async Task<MobileDevice> GetDevice(){
             var service = RestServiceHelper.For<IDalexApi>(Config.Api);
             return await service.GetDevice();
@@ -64,7 +72,8 @@ namespace dalexFDA.Data.WebServices
                     ContactNumber = response.ContactNumber,
                     Occupation = response.Occupation,
                     Title = response.Title,
-                    Group = response.Group
+                    Group = response.Group,
+                    Ro = response.ro
                 };
                 return user;
             }
@@ -148,6 +157,38 @@ namespace dalexFDA.Data.WebServices
             await service.ResetPassword(request);
 
             //return response;
+        }
+
+        public async Task<string> AddTransaction(Transaction transaction)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.AddTransaction(transaction);
+
+            return response;
+        }
+
+        public async Task<Transaction> GetTransaction(int TransactionId)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.GetTransaction(TransactionId);
+
+            return response;
+        }
+
+        public async Task<ROResponse> GetRO(string Id)
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.GetRo(Id);
+
+            return response;
+        }
+
+        public async Task<List<Notification>> GetNotification()
+        {
+            var service = RestServiceHelper.For<IDalexApi>(Config.Api);
+            var response = await service.GetNotfication();
+
+            return response;
         }
     }
 }

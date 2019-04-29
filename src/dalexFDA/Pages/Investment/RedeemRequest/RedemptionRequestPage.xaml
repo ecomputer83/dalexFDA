@@ -55,7 +55,7 @@
                             EntryColor="{StaticResource GrayBoro}" Margin="32,0,32,6"
                         />
                     <local:FormEntry Label="New Duration [Days]" Text="{Binding NewDuration}" HasError="{Binding NewDurationHasError}" ErrorMessage="{Binding NewDurationErrorMessage}" 
-                            HorizontalTextAlignment="End" Margin="32,0,32,6" IsNumeric="true" Name="NewDuration"
+                            HorizontalTextAlignment="End" Margin="32,0,32,6" IsNumeric="true" Name="NewDuration" IsEnabled="{Binding isDurationEnabled}"
                         />
                     
                     <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">

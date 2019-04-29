@@ -38,6 +38,7 @@ namespace dalexFDA
         public Command Enquiries { get; private set; }
         public Command Feedback { get; private set; }
         public Command MyProfile { get; private set; }
+        public Command RO { get; private set; }
         public Command Logout { get; private set; }
 
         public LeftNavViewModel(IErrorManager ErrorManager, IAppService AppService, Acr.UserDialogs.IUserDialogs Dialog, ISetting setting, IConnectivity connectivity,
@@ -64,6 +65,7 @@ namespace dalexFDA
             Enquiries = new Command(async () => await ExecuteEnquiries());
             Feedback = new Command(async () => await ExecuteFeedback());
             MyProfile = new Command(async () => await ExecuteMyProfile());
+            RO = new Command(async () => await ExecuteRO());
             Logout = new Command(async () => await ExecuteLogout());
         }
 
@@ -173,7 +175,19 @@ namespace dalexFDA
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("Notifications", "Coming Soon", "OK");
+                AppService.StartNotification();
+            }
+            catch (Exception ex)
+            {
+                await ErrorManager.DisplayErrorMessageAsync(ex);
+            }
+        }
+
+        private async Task ExecuteRO()
+        {
+            try
+            {
+                AppService.StartRO();
             }
             catch (Exception ex)
             {
@@ -197,7 +211,7 @@ namespace dalexFDA
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("Enquires", "Coming Soon", "OK");
+                AppService.StartEnquiry();
             }
             catch (Exception ex)
             {
@@ -209,7 +223,7 @@ namespace dalexFDA
         {
             try
             {
-                await this.CoreMethods.DisplayAlert("Feedback and Complaints", "Coming Soon", "OK");
+                AppService.StartFeedback();
             }
             catch (Exception ex)
             {

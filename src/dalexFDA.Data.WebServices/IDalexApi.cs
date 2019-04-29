@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using dalexFDA.Abstractions;
 using Refit;
@@ -46,6 +47,15 @@ namespace dalexFDA.Data.WebServices
         [Get("/api/Account/GetAccount")]
         Task<User> GetUserByPhoneNumber(string PhoneNumber);
 
+        [Get("/api/Account/GetRo")]
+        Task<ROResponse> GetRo(string Id);
+
+        [Get("/api/Account/RetrieveTransaction")]
+        Task<Transaction> GetTransaction(int Id);
+
+        [Get("/api/Account/GetNotfication")]
+        Task<List<Notification>> GetNotfication();
+
         [Post("/api/Account/GenerateSMSToken")]
         Task<bool> GenerateSMSToken(string PhoneNumber);
 
@@ -54,6 +64,12 @@ namespace dalexFDA.Data.WebServices
         
         [Post("/api/Account/AddDocument")]
         Task<string> AddDocument(DocumentRequest request);
+
+        [Post("/api/Account/AddTransaction")]
+        Task<string> AddTransaction(Transaction request);
+
+        [Post("/api/Account/PostQuery/{Id}")]
+        Task<string> AddQuery(int Id, QueryRequest request);
 
         [Post("/api/Account/UpdateKYC")]
         Task<bool> UpdateKYCAccount(KYCProfileRequest request);

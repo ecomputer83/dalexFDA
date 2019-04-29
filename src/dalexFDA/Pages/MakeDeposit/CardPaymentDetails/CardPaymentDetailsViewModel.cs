@@ -93,8 +93,8 @@ namespace dalexFDA
                 {
                     ETransferRequest.PaymentReference = "MC-1520443531487";
 
-                    var nav = new DepositInvestmentDetailsViewModel.Nav { ETransferRequest = this.ETransferRequest };
-                    await CoreMethods.PushPageModel<DepositInvestmentDetailsViewModel>(nav);
+                    //var nav = new DepositInvestmentDetailsViewModel.Nav { ETransferRequest = this.ETransferRequest };
+                    //await CoreMethods.PushPageModel<DepositInvestmentDetailsViewModel>(nav);
                 }                
             }
             catch (Exception ex)

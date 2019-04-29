@@ -12,7 +12,6 @@ namespace dalexFDA
         public DataTemplate RolloverTemplate { get; set; }
         public DataTemplate RedemptionTemplate { get; set; }
         public DataTemplate ConsolidationTemplate { get; set; }
-
         public TransactionHistoryDataTemplateSelector()
         {
 

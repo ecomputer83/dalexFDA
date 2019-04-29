@@ -24,10 +24,11 @@ namespace dalexFDA.Droid.Services
         {
 
             var body = message.GetNotification().Body;
-            SendNotification(body, message.Data);
+            var title = message.GetNotification().Title;
+            SendNotification(body, title, message.Data);
         }
 
-        void SendNotification(string messageBody, IDictionary<string, string> data)
+        void SendNotification(string messageBody, string messageTitle, IDictionary<string, string> data)
         {
             var intent = new Intent(this, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.ClearTop);
@@ -40,7 +41,7 @@ namespace dalexFDA.Droid.Services
 
             var notificationBuilder = new NotificationCompat.Builder(this)
                                       .SetSmallIcon(Resource.Drawable.logo)
-                                      .SetContentTitle("DalexFDA Notification")
+                                      .SetContentTitle("DalexFD - "+messageTitle)
                                       .SetContentText(messageBody)
                                       .SetAutoCancel(true)
                                       .SetContentIntent(pendingIntent);

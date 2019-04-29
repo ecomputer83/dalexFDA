@@ -8,6 +8,7 @@ namespace dalexFDA.Abstractions
     {
         Task<List<Lookup>> GetBanks();
         Task<List<Lookup>> GetDeliveryModes();
+        Task<List<Lookup>> GetMessageTypes();
         Task<List<Lookup>> GetContactTypes();
         Task<string> GetTermsAndConditions();
         Task<string> GetPrivacyPolicy();

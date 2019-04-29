@@ -56,7 +56,7 @@
                         <local:MenuItem Text="Enquiries" Command="{Binding Enquiries}" Icon="res:images.icon-card" />
                         <local:MenuItem Text="Feedback and Complaints" Command="{Binding Feedback}" Icon="res:images.icon-travel" />
                         <local:MenuItem Text="My Profile" Command="{Binding MyProfile}" Icon="res:images.icon-profile" />
-                        <local:MenuItem Text="My Relationship Officer" Command="{Binding Settings}" Icon="res:images.icon-transfer" />
+                        <local:MenuItem Text="My Relationship Officer" Command="{Binding RO}" Icon="res:images.icon-transfer" />
                         <local:MenuItem Text="Logout" Command="{Binding Logout}" Icon="res:images.icon-logout" />
                     </StackLayout>
                 </ScrollView>

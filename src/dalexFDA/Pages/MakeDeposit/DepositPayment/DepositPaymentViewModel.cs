@@ -12,11 +12,13 @@ namespace dalexFDA
     {
         readonly IErrorManager ErrorManager;
         readonly IUserDialogs Dialog;
+        readonly ISession SessionService;
+        readonly IAccountService AccountService;
 
         public double Deposit { get; set; }
         public bool DepositHasError { get; set; }
         public string DepositErrorMessage { get; set; }
-
+        public int TransactionId { get; set; }
         public string TransactionFee { get { return Deposit > 0 ? NumberFormatter.FormatAmount((Deposit * 0.015).ToString()) : "0.00"; } }
 
         public bool IsBank { get { return !IsCard; } }
@@ -30,10 +32,12 @@ namespace dalexFDA
 
         private const string deposit_amount_error_message = "Please enter an amount.";
 
-        public DepositPaymentViewModel(IErrorManager ErrorManager, IUserDialogs Dialog)
+        public DepositPaymentViewModel(IErrorManager ErrorManager, IUserDialogs Dialog, ISession sessionService, IAccountService accountService)
         {
             this.ErrorManager = ErrorManager;
             this.Dialog = Dialog;
+            this.SessionService = sessionService;
+            this.AccountService = accountService;
 
             Bank = new Command(async () => await ExecuteBank());
             Card = new Command(async () => await ExecuteCard());
@@ -73,12 +77,26 @@ namespace dalexFDA
 
                 using (Dialog.Loading("Loading..."))
                 {
-                    var request = new ETransferRequest
+                    var request = new Transaction
                     {
-                        DepositAmount = Deposit
+                        Amount = Deposit,
+                        Description = "Payment for new FDA Investment",
+                        Chamber = "MOBILE",
+                        ClientNo = SessionService?.CurrentUser?.ClientNo
                     };
-                    var nav = new CardPaymentDetailsViewModel.Nav { ETransferRequest = request };
-                    await CoreMethods.PushPageModel<CardPaymentDetailsViewModel>(nav);
+
+                    string response = await AccountService.AddTransaction(request);
+                    //var nav = new CardPaymentDetailsViewModel.Nav { ETransferRequest = request };
+                    //await CoreMethods.PushPageModel<CardPaymentDetailsViewModel>(nav);
+
+                    if (!string.IsNullOrEmpty(response))
+                    {
+                        response = response.Replace("\"", "");
+                        var resp = response.Split('|');
+                        TransactionId = int.Parse(resp[0]);
+                        var nav = new WebBrowserViewModel.Nav { Url = resp[1], Id = TransactionId};
+                        await CoreMethods.PushPageModel<WebBrowserViewModel>(nav, true);
+                    }
                 }                
             }
             catch (Exception ex)

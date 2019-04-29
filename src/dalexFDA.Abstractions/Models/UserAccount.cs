@@ -30,6 +30,8 @@ namespace dalexFDA.Abstractions
         public string ContactName { get; set; }
         public string ContactNumber { get; set; }
         public int Group { get; set; }
+
+        public string ro { get; set; }
     }
 
     public class KYCApplication

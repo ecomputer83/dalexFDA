@@ -32,7 +32,6 @@
     <Folder Include="Helpers\PageTestRunner\" />
     <Folder Include="Helpers\PageTestRunner\UnitTests\" />
     <Folder Include="Helpers\PageTestRunner\UnitTestScenarios\" />
-    <Folder Include="Custom\Entries\" />
     <Folder Include="Custom\Navigation\" />
     <Folder Include="Custom\Effects\" />
     <Folder Include="Custom\Menu\" />
@@ -146,8 +145,26 @@
     <Compile Remove="Custom\Modal\MyAccountPopupDialog.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Custom\Entries\FormEditor.xaml.cs">
+      <DependentUpon>FormEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Custom\Sections\NotificationItemView.xaml.cs">
+      <DependentUpon>NotificationItemView.xaml</DependentUpon>
+    </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Pages\General\Dashboard\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\General\WebBrowser\WebBrowser.xaml.cs">
+      <DependentUpon>WebBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Misc\Feedback\FeedbackPage.xaml.cs">
+      <DependentUpon>FeedbackPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Misc\Enquiry\EnquiryPage.xaml.cs">
+      <DependentUpon>EnquiryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Profile\RelationManager\RelationManagerPage.xaml.cs">
+      <DependentUpon>RelationManagerPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\Profile\UpdateKYCAccount\UpdateKYCAccountPage.xaml.cs">
       <DependentUpon>UpdateKYCAccountPage.xaml</DependentUpon>
@@ -160,6 +177,9 @@
     </Compile>
     <Compile Update="Custom\Pages\BeneficiaryPopupDialog.xaml.cs">
       <DependentUpon>BeneficiaryPopupDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Notification\NotificationPage.xaml.cs">
+      <DependentUpon>NotificationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

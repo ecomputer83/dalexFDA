@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="dalexFDA.NotificationItemView">
+    <ContentView.Content>
+        <Grid Padding="16" BackgroundColor="#FFF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+
+            <Label x:Name="title" Grid.Row="0" Grid.Column="0" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" TextColor="{StaticResource PalmLeaf}" />
+
+            <Label x:Name="ndate" Grid.Row="0" Grid.Column="1" FontSize="14" FontFamily="{StaticResource Roboto-Medium}" TextColor="{StaticResource Liver}" VerticalOptions="Center" />
+
+            <Label Grid.Row="1" Grid.ColumnSpan="2" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" x:Name="desc" />
+            
+        </Grid>
+    </ContentView.Content>
+</ContentView>

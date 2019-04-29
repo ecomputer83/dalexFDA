@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="dalexFDA.WebBrowserPage"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             BackgroundColor="{StaticResource OffWhite2}">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+            <Button x:Name="cancelButton" Text="Cancel" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource OutlineWhiteButton}" Margin="16,0" Clicked="Handle_Close" />
+            <Button x:Name="doneButton" Text="DOne" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource OutlineWhiteButton}" Margin="16,0" Clicked="Handle_Done" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <WebView VerticalOptions="FillAndExpand" Source="{Binding Url}"  Navigated="WebView_Navigated" />
+    </ContentPage.Content>
+</ContentPage>

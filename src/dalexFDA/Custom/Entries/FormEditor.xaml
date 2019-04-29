@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="dalexFDA.FormEditor"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
+             xmlns:behaviors="clr-namespace:dalexFDA;assembly=dalexFDA"
+             xmlns:effects="clr-namespace:dalexFDA;assembly=dalexFDA">
+    <ContentView.Content>
+        <StackLayout Spacing="2" Padding="0" Margin="0">
+            <Label x:Name="label" IsVisible="false" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="0,0,0,6" />
+            <StackLayout x:Name="container" BackgroundColor="{StaticResource PalmLeaf}">
+                <StackLayout x:Name="innerContainer" BackgroundColor="{StaticResource White}" Margin="1">
+                    <Editor x:Name="data" Text="" Margin="8,0" TextColor="{StaticResource Liver}" Unfocused="Handle_Unfocused"
+                            VerticalOptions="CenterAndExpand" FontSize="16" TextChanged="Handle_TextChanged"
+                            Focused="Handle_Focused" FontFamily="{StaticResource Roboto-Regular}">
+                        <Editor.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double" iOS="170" Android="150" />
+                        </Editor.HeightRequest>
+                    </Editor>
+                </StackLayout>
+            </StackLayout>
+            <Label x:Name="caption" IsVisible="false" TextColor="{StaticResource Kucrimson}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="4,0" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

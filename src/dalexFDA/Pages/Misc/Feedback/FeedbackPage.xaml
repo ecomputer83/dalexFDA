@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="dalexFDA.FeedbackPage"
+             xmlns:local="clr-namespace:dalexFDA;assembly=dalexFDA"
+             xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+             xmlns:local1="clr-namespace:dalexFDA">
+    <NavigationPage.TitleView>
+        <StackLayout VerticalOptions="Center">
+            <Label Text="FeedBack / Complaint" FontFamily="{StaticResource Roboto-Bold}" TextColor="#FFF" VerticalTextAlignment="Center">
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="20" />
+                </Label.FontSize>
+            </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <ScrollView IsVisible="{Binding IsNotSuccesful}">
+                <StackLayout Spacing="8">
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,0,0,0">
+                        <Label Text="Form Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+                    <local:FormEntry Text="{Binding ClientName}" IsEnabled="false" EntryColor="{StaticResource GrayBoro}"
+                            Margin="32,0,32,6" Name="ClientName" Label="Client Name"
+                        />
+                    <local:FormPicker Label="Message Type" ItemsSource="{Binding MessageTypes}" SelectedIndex="{Binding SelectedMessageTypeIndex}" Name="MessageType" Placeholder="Please select a message type"
+                            HasError="{Binding MessageTypeHasError}" ErrorMessage="{Binding MessageTypeErrorMessage}" Margin="32,0,32,6"
+                        />
+                    <local1:FormEditor Label="Message" Text="{Binding Message}" HasError="{Binding MessageHasError}" 
+                            ErrorMessage="{Binding MessageErrorMessage}" Margin="32,0,32,6" Name="Message" Placeholder="how can we help you?"
+                        />
+
+                    <ContentView BackgroundColor="{StaticResource Isabelline}" Margin="0,8,0,0">
+                        <Label Text="Security Section" TextColor="{StaticResource PalmLeaf}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="16,8" VerticalOptions="Center" />
+                    </ContentView>
+
+                    <Label Text="Security Question" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" Margin="32,0" />
+                    <Label Text="{Binding SecurityQuestion}" TextColor="{StaticResource Liver}" FontSize="16" FontFamily="{StaticResource Roboto-Regular}" Margin="32,0,32,6" />
+                    
+                    <local:FormEntry Text="{Binding SecurityAnswer}" HasError="{Binding SecurityAnswerHasError}" ErrorMessage="{Binding SecurityAnswerErrorMessage}" 
+                            Margin="32,0" Name="SecurityAnswer" Label="Answer"
+                        />
+                    <Label Text="{Binding SecurityHint}" TextColor="{StaticResource Manatee}" FontSize="14" FontFamily="{StaticResource Roboto-Light}" Margin="32,0" />
+                </StackLayout>
+            </ScrollView>
+            
+            <StackLayout IsVisible="{Binding IsSuccessful}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <svg:SvgImage Svg="res:images.icon-success" ColorMapping="000000=6D9B36" WidthRequest="70" HorizontalOptions="Center" />
+                <Label Text="Enquiry Submitted!" TextColor="{StaticResource PalmLeaf}" FontSize="20" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+                <Button Text="DONE" TextColor="{StaticResource PalmLeaf}" Style="{StaticResource OutlinePrimaryButton}" HorizontalOptions="Center" Command="{Binding Done}" Margin="16" />
+            </StackLayout>
+
+            <Button IsVisible="{Binding IsNotSuccesful}" Text="SUBMIT" Style="{StaticResource PrimaryButton}" Command="{Binding Negotiate}" Margin="16" VerticalOptions="EndAndExpand"  />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

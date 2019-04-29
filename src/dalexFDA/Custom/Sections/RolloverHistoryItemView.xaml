@@ -27,10 +27,10 @@
             <Label Grid.Row="4" Grid.Column="0" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Text="Duration" TextColor="{StaticResource Manatee}" VerticalOptions="End" />
             <Label Grid.Row="5" Grid.Column="0" x:Name="duration" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" TextColor="{StaticResource Liver}" HorizontalTextAlignment="Start" VerticalOptions="Start" />
 
-            <Label Grid.Row="1" Grid.Column="1" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Text="Type" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Manatee}" VerticalOptions="Start" />
+            <Label Grid.Row="1" Grid.Column="1" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Text="Transaction Type" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Manatee}" VerticalOptions="Start" />
             <Label Grid.Row="2" Grid.Column="1" x:Name="type" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Liver}"  VerticalOptions="Start" />
 
-            <Label Grid.Row="4" Grid.Column="1" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Text="Approved Status" HorizontalOptions="End" TextColor="{StaticResource Manatee}" VerticalOptions="End" />
+            <Label Grid.Row="4" Grid.Column="1" FontSize="14" FontFamily="{StaticResource Roboto-Regular}" Text="Transaction Status" HorizontalOptions="End" TextColor="{StaticResource Manatee}" VerticalOptions="End" />
             <Label Grid.Row="5" Grid.Column="1" x:Name="status" FontSize="16" FontFamily="{StaticResource Roboto-Medium}" HorizontalOptions="End" TextColor="{StaticResource Liver}"  VerticalOptions="Start" />
         </Grid>
     </ContentView.Content>
